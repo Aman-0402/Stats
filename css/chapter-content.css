@@ -491,3 +491,130 @@
         font-size: 0.9375rem;
     }
 }
+
+/* ==========================================
+   PREMIUM BADGE LIST (MODERN REPLACEMENT)
+   ========================================== */
+
+.section-intro {
+    color: var(--text-secondary);
+    max-width: 850px;
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+/* Badge-based List */
+.stat-badges {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--spacing-lg);
+}
+
+.stat-badges li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background-color: var(--bg-tertiary);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-sm);
+    border-left: 4px solid var(--primary-color);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.stat-badges li:hover {
+    transform: translateX(6px);
+    background-color: var(--bg-secondary);
+    box-shadow: var(--shadow-md);
+}
+
+/* Badge Label */
+.stat-badges .badge {
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        var(--primary-light)
+    );
+    color: #ffffff;
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+}
+
+/* Light Mode Support */
+body.light .stat-badges li {
+    background-color: #f1f5f9;
+    border-left-color: var(--primary-light);
+}
+
+body.light .section-intro {
+    color: #475569;
+}
+/* Section Title */
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+    border-left: 5px solid var(--primary);
+    padding-left: 12px;
+}
+
+/* Grid Layout */
+.scope-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: var(--spacing-md);
+}
+
+/* Card Design */
+.scope-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover Effect */
+.scope-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Icon */
+.scope-icon {
+    font-size: 2rem;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+/* Heading */
+.scope-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+    color: var(--primary-light);
+}
+
+/* Text */
+.scope-card p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Optional Accent Line */
+.scope-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+}
