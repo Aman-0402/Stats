@@ -1,0 +1,493 @@
+/* ==========================================
+   CHAPTER CONTENT STYLES - Statistics eBook
+   Styles for all chapter pages
+   ========================================== */
+
+/* ==========================================
+   CHAPTER LAYOUT
+   ========================================== */
+
+.chapter-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ==========================================
+   CHAPTER TOPICS (From Contents)
+   ========================================== */
+
+.chapter-topics-section {
+    background-color: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    border-left: 4px solid var(--accent-color);
+    box-shadow: var(--shadow-md);
+}
+
+.chapter-topics-section h3 {
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.25rem;
+}
+
+.chapter-topics-list {
+    list-style: none;
+    padding: 0;
+}
+
+.chapter-topics-list li {
+    position: relative;
+    padding-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-secondary);
+}
+
+.chapter-topics-list li::before {
+    content: '○';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+/* ==========================================
+   SECTIONS
+   ========================================== */
+
+.section {
+    margin-bottom: var(--spacing-xxl);
+    background-color: var(--bg-primary);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--primary-color);
+    box-shadow: var(--shadow-md);
+}
+
+.section-number {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.section h2 {
+    color: var(--primary-light);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.75rem;
+}
+
+.section h3 {
+    color: var(--text-primary);
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.25rem;
+}
+
+.section h4 {
+    color: var(--text-primary);
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.125rem;
+}
+
+.section p {
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+}
+
+.section ul,
+.section ol {
+    margin-bottom: var(--spacing-md);
+}
+
+/* ==========================================
+   HIGHLIGHT BOXES
+   ========================================== */
+
+.highlight-box {
+    background-color: var(--bg-tertiary);
+    border-left: 4px solid var(--secondary-color);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-md) 0;
+}
+
+.highlight-box p:last-child {
+    margin-bottom: 0;
+}
+
+.highlight-box.info {
+    border-left-color: var(--primary-light);
+}
+
+.highlight-box.success {
+    border-left-color: var(--secondary-color);
+}
+
+.highlight-box.warning {
+    border-left-color: var(--accent-color);
+}
+
+.highlight-box.danger {
+    border-left-color: #ef4444;
+}
+
+/* ==========================================
+   ICON LISTS
+   ========================================== */
+
+.icon-list {
+    list-style: none;
+    padding: 0;
+}
+
+.icon-list li {
+    padding-left: 2rem;
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+    line-height: 1.6;
+}
+
+.icon-list li::before {
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+}
+
+.icon-list.book li::before { content: '📘'; }
+.icon-list.computer li::before { content: '💻'; }
+.icon-list.robot li::before { content: '🤖'; }
+.icon-list.graduate li::before { content: '🎓'; }
+.icon-list.check li::before { content: '✔'; color: var(--secondary-color); }
+.icon-list.cross li::before { content: '❌'; }
+.icon-list.star li::before { content: '⭐'; }
+.icon-list.arrow li::before { content: '→'; color: var(--primary-light); }
+.icon-list.bullet li::before { content: '•'; color: var(--primary-color); }
+
+/* ==========================================
+   FORMULAS
+   ========================================== */
+
+.formula-box {
+    background-color: var(--bg-dark);
+    border: 2px solid var(--border-color);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-md) 0;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    overflow-x: auto;
+}
+
+.formula {
+    font-size: 1.25rem;
+    color: var(--primary-light);
+    line-height: 2;
+}
+
+/* Inline formula */
+.inline-formula {
+    font-family: 'Courier New', monospace;
+    background-color: var(--bg-tertiary);
+    padding: 0.2em 0.6em;
+    border-radius: var(--radius-sm);
+    color: var(--primary-light);
+    font-size: 0.95em;
+}
+
+/* ==========================================
+   EXAMPLES
+   ========================================== */
+
+.example-box {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+    border: 2px solid var(--primary-color);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    margin: var(--spacing-lg) 0;
+}
+
+.example-title {
+    font-weight: 700;
+    color: var(--primary-light);
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.example-title::before {
+    content: '💡';
+    font-size: 1.5rem;
+}
+
+.example-box p:last-child {
+    margin-bottom: 0;
+}
+
+/* ==========================================
+   TABLES
+   ========================================== */
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--spacing-md) 0;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: var(--spacing-md);
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.comparison-table th {
+    background-color: var(--bg-tertiary);
+    color: var(--primary-light);
+    font-weight: 700;
+}
+
+.comparison-table tr:hover {
+    background-color: var(--bg-tertiary);
+}
+
+.comparison-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* ==========================================
+   KEY POINTS & BADGES
+   ========================================== */
+
+.key-point {
+    background-color: var(--bg-tertiary);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    display: inline-block;
+    margin: var(--spacing-xs) var(--spacing-xs) var(--spacing-xs) 0;
+    font-weight: 600;
+    font-size: 0.9375rem;
+}
+
+.arrow-transform {
+    color: var(--primary-light);
+    font-weight: 700;
+    margin: 0 var(--spacing-sm);
+}
+
+/* ==========================================
+   STEP-BY-STEP LISTS
+   ========================================== */
+
+.steps-list {
+    counter-reset: step-counter;
+    list-style: none;
+    padding: 0;
+}
+
+.steps-list li {
+    counter-increment: step-counter;
+    padding-left: 3rem;
+    margin-bottom: var(--spacing-md);
+    position: relative;
+    line-height: 1.6;
+}
+
+.steps-list li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+/* ==========================================
+   MISCONCEPTIONS
+   ========================================== */
+
+.misconception-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.misconception-item {
+    background-color: var(--bg-tertiary);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--accent-color);
+}
+
+.misconception-item .wrong {
+    color: #ef4444;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+}
+
+.misconception-item .right {
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+/* ==========================================
+   GRID LAYOUTS
+   ========================================== */
+
+.two-column-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.three-column-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+}
+
+/* ==========================================
+   DEFINITION BOXES
+   ========================================== */
+
+.definition-box {
+    background-color: var(--bg-tertiary);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-md) 0;
+}
+
+.definition-box .term {
+    color: var(--primary-light);
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.definition-box .meaning {
+    color: var(--text-primary);
+    line-height: 1.8;
+}
+
+/* ==========================================
+   NOTE BOXES
+   ========================================== */
+
+.note-box {
+    background-color: rgba(245, 158, 11, 0.1);
+    border-left: 4px solid var(--accent-color);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-md) 0;
+}
+
+.note-box::before {
+    content: '📝 Note: ';
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.tip-box {
+    background-color: rgba(16, 185, 129, 0.1);
+    border-left: 4px solid var(--secondary-color);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-md) 0;
+}
+
+.tip-box::before {
+    content: '💡 Tip: ';
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+.warning-box {
+    background-color: rgba(239, 68, 68, 0.1);
+    border-left: 4px solid #ef4444;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    margin: var(--spacing-md) 0;
+}
+
+.warning-box::before {
+    content: '⚠️ Warning: ';
+    font-weight: 700;
+    color: #ef4444;
+}
+
+/* ==========================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================== */
+
+@media (max-width: 768px) {
+    .section {
+        padding: var(--spacing-md);
+    }
+
+    .section-number {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .section h2 {
+        font-size: 1.5rem;
+    }
+
+    .formula {
+        font-size: 1rem;
+    }
+
+    .steps-list li {
+        padding-left: 2.5rem;
+    }
+
+    .steps-list li::before {
+        width: 1.75rem;
+        height: 1.75rem;
+        font-size: 0.875rem;
+    }
+
+    .two-column-grid,
+    .three-column-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .chapter-content {
+        padding: 0;
+    }
+
+    .section {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .formula-box {
+        padding: var(--spacing-md);
+    }
+
+    .example-box {
+        padding: var(--spacing-md);
+    }
+
+    .icon-list li {
+        padding-left: 1.75rem;
+        font-size: 0.9375rem;
+    }
+}

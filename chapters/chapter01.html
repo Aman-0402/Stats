@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 1: Introduction to Statistics - Statistics eBook</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/chapter-content.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="book-title">Statistics: A Comprehensive Guide</h1>
+                <nav class="header-nav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="../contents.html" class="nav-link">Contents</a>
+                    <a href="../resources/glossary.html" class="nav-link">Glossary</a>
+                    <a href="../resources/formulas.html" class="nav-link">Formulas</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="chapter-content">
+                <!-- Chapter Header -->
+                <div class="page-header">
+                    <span class="badge">Phase 1: Foundations and Data Organization</span>
+                    <h1 class="page-title">Chapter 1: Introduction to Statistics</h1>
+                    <p class="page-subtitle">Understanding the fundamentals of statistics and its applications</p>
+                </div>
+
+                <!-- Chapter Topics -->
+                <div class="chapter-topics-section">
+                    <h3>📋 Topics Covered in This Chapter</h3>
+                    <ul class="chapter-topics-list">
+                        <li>Definition and scope of statistics</li>
+                        <li>Descriptive vs. Inferential statistics</li>
+                        <li>Population vs. Sample</li>
+                        <li>Types of Data (Qualitative/Quantitative)</li>
+                    </ul>
+                </div>
+
+                <!-- Section 1: What is Statistics? -->
+                <div class="section" id="what-is-statistics">
+                    <h2>What is Statistics?</h2>
+                    <p><strong>Statistics</strong> is the science of collecting, organizing, analyzing, interpreting, and presenting data to make decisions.</p>
+                    
+                    <div class="highlight-box success">
+                        <p><strong>👉 In simple words:</strong></p>
+                        <p style="font-size: 1.25rem; text-align: center; margin-top: var(--spacing-sm);">
+                            Raw Data <span class="arrow-transform">→</span> Useful Information
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Section 2: Why Statistics is Important? -->
+                <div class="section" id="importance">
+                    <h2>Why Statistics is Important?</h2>
+
+                    <h3>📘 As a Subject</h3>
+                    <ul class="icon-list book">
+                        <li>Foundation of data analysis</li>
+                        <li>Helps understand patterns & behavior of data</li>
+                        <li>Required for probability & inference</li>
+                    </ul>
+
+                    <h3>💻 In Data Science</h3>
+                    <ul class="icon-list computer">
+                        <li>Data analysis & summarization</li>
+                        <li>Drawing conclusions from samples</li>
+                        <li>Core of EDA (Exploratory Data Analysis)</li>
+                    </ul>
+
+                    <h3>🤖 In AI / Machine Learning</h3>
+                    <ul class="icon-list robot">
+                        <li>Model evaluation</li>
+                        <li>Probability-based learning</li>
+                        <li>Loss functions & optimization</li>
+                    </ul>
+
+                    <h3>🎓 In Research & Exams</h3>
+                    <ul class="icon-list graduate">
+                        <li>Surveys & experiments</li>
+                        <li>Hypothesis testing</li>
+                        <li>Important for UPSC, SSC, GATE, NET, MBA, PhD</li>
+                    </ul>
+                </div>
+
+                <!-- Section 3: Definition of Statistics -->
+                <div class="section" id="definition">
+                    <h2>Definition of Statistics </h2>
+                    
+                    <div class="highlight-box info">
+                        <p style="font-size: 1.125rem; line-height: 1.8;">
+                            <strong>Statistics</strong> deals with the <em>collection, classification, presentation, analysis, and interpretation</em> of numerical data.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Section 4: Key Terms -->
+                <div class="section" id="key-terms">
+                    <h2>Key Terms </h2>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Term</th>
+                                <th>Meaning</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Data</strong></td>
+                                <td>Raw facts or numbers</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Collection</strong></td>
+                                <td>Gathering data</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Classification</strong></td>
+                                <td>Grouping data</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tabulation</strong></td>
+                                <td>Data in tables</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Presentation</strong></td>
+                                <td>Graphs/charts</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Analysis</strong></td>
+                                <td>Mathematical study</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Interpretation</strong></td>
+                                <td>Meaning & decision</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 5: Meaning of Statistics -->
+                <div class="section" id="meaning">
+                    <h2>Meaning of Statistics</h2>
+
+                    <h3>🔹 Statistics as Plural</h3>
+                    <p>Numerical facts (marks, sales, population)</p>
+                    <div class="highlight-box">
+                        <p><strong>Examples:</strong> Student marks, company sales figures, population data</p>
+                    </div>
+
+                    <h3>🔹 Statistics as Singular</h3>
+                    <p>Methods & techniques (mean, probability, regression)</p>
+                    <div class="highlight-box">
+                        <p><strong>Examples:</strong> Calculating average, applying regression analysis, probability theory</p>
+                    </div>
+                </div>
+
+                <!-- Section 6: Main Functions -->
+                <div class="section" id="functions">
+                    <h2>Main Functions of Statistics</h2>
+
+                    <ul class="icon-list check">
+                        <li>Simplifies large data</li>
+                        <li>Helps comparison</li>
+                        <li>Supports decision-making</li>
+                        <li>Predicts trends</li>
+                        <li>Measures uncertainty</li>
+                    </ul>
+                </div>
+
+                <!-- Section 7: Simple Example -->
+                <div class="section" id="simple-example">
+                    <h2>Simple Example</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">Student Marks Analysis</div>
+                        
+                        <ol class="steps-list">
+                            <li><strong>Collection:</strong> Exam results</li>
+                            <li><strong>Organization:</strong> Arrange in a table</li>
+                            <li><strong>Analysis:</strong> Calculate average</li>
+                            <li><strong>Interpretation:</strong> Understand class performance</li>
+                        </ol>
+
+                        <div class="highlight-box success" style="margin-top: var(--spacing-md);">
+                            <p style="text-align: center; font-weight: 700; font-size: 1.125rem;">
+                                👉 Without statistics, numbers are meaningless.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 8: Numerical Example -->
+                <div class="section" id="numerical-example">
+                    <h2>Numerical Example (Mean)</h2>
+
+                    <div class="formula-box">
+                        <div class="formula">
+                            Mean = (Sum of observations) / (Number of observations)
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">Calculating Class Average</div>
+                        
+                        <p><strong>Student Marks:</strong> 85, 92, 78, 65, 70, 88, 95, 60, 72, 74</p>
+                        
+                        <p style="margin-top: var(--spacing-md);"><strong>Step 1:</strong> Sum of observations</p>
+                        <p style="padding-left: var(--spacing-md);">85 + 92 + 78 + 65 + 70 + 88 + 95 + 60 + 72 + 74 = 779</p>
+                        
+                        <p style="margin-top: var(--spacing-md);"><strong>Step 2:</strong> Number of observations = 10</p>
+                        
+                        <p style="margin-top: var(--spacing-md);"><strong>Step 3:</strong> Calculate mean</p>
+                        <div class="formula-box" style="margin-top: var(--spacing-sm);">
+                            <div class="formula">Mean = 779 / 10 = 77.9</div>
+                        </div>
+
+                        <div class="highlight-box success" style="margin-top: var(--spacing-md);">
+                            <p><strong>👉 Result:</strong> Average marks = <strong style="color: var(--primary-light); font-size: 1.25rem;">77.9</strong></p>
+                            <p style="margin-top: var(--spacing-sm);"><strong>Meaning:</strong> Overall class performance at a glance.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 9: Scope of Statistics -->
+                <div class="section" id="scope">
+                    <h2>Scope of Statistics</h2>
+
+                    <div style="display: grid; gap: var(--spacing-md);">
+                        <div class="highlight-box">
+                            <h4 style="color: var(--primary-light); margin-bottom: var(--spacing-sm);">📊 Business & Economics</h4>
+                            <p>Forecasting, profit analysis, risk management</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4 style="color: var(--primary-light); margin-bottom: var(--spacing-sm);">💻 Data Science</h4>
+                            <p>EDA, feature selection, model validation</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4 style="color: var(--primary-light); margin-bottom: var(--spacing-sm);">🤖 AI / Machine Learning</h4>
+                            <p>Probability distributions, loss functions, evaluation metrics</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4 style="color: var(--primary-light); margin-bottom: var(--spacing-sm);">🏥 Medical</h4>
+                            <p>Clinical trials, disease analysis, treatment efficacy</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4 style="color: var(--primary-light); margin-bottom: var(--spacing-sm);">🎓 Education & Research</h4>
+                            <p>Result analysis, hypothesis testing, research methodology</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4 style="color: var(--primary-light); margin-bottom: var(--spacing-sm);">🏛️ Government</h4>
+                            <p>Census, population studies, employment statistics</p>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4 style="color: var(--primary-light); margin-bottom: var(--spacing-sm);">📝 Competitive Exams</h4>
+                            <p>UPSC, SSC, GATE, MBA, NET, PhD entrance tests</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 10: Common Misconceptions -->
+                <div class="section" id="misconceptions">
+                    <h2>Common Misconceptions</h2>
+
+                    <div class="misconception-grid">
+                        <div class="misconception-item">
+                            <p class="wrong">❌ Statistics = only math</p>
+                            <p class="right">✔ It's about analysis + interpretation</p>
+                        </div>
+
+                        <div class="misconception-item">
+                            <p class="wrong">❌ One average explains everything</p>
+                            <p class="right">✔ Need context & variability</p>
+                        </div>
+
+                        <div class="misconception-item">
+                            <p class="wrong">❌ Statistics gives exact truth</p>
+                            <p class="right">✔ Works with probability & uncertainty</p>
+                        </div>
+
+                        <div class="misconception-item">
+                            <p class="wrong">❌ Data = information</p>
+                            <p class="right">✔ Data becomes information after analysis</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 11: Descriptive vs. Inferential Statistics -->
+                <div class="section" id="descriptive-vs-inferential">
+                    <h2>Descriptive vs. Inferential Statistics</h2>
+
+                    <h3>1️⃣ What is this Topic?</h3>
+                    <p>Statistics has two main branches:</p>
+                    <ul class="icon-list arrow">
+                        <li><strong>Descriptive Statistics</strong> → What does the data show?</li>
+                        <li><strong>Inferential Statistics</strong> → What can we conclude about the population from a sample?</li>
+                    </ul>
+
+                    <h3>2️⃣ Why is it Important?</h3>
+
+                    <div class="highlight-box info">
+                        <p><strong>📘 Statistics:</strong> Basic classification of the subject</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>💻 Data Science:</strong></p>
+                        <ul style="margin-top: var(--spacing-xs); padding-left: var(--spacing-md);">
+                            <li>Descriptive → EDA</li>
+                            <li>Inferential → Prediction & conclusions</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🤖 AI / ML:</strong></p>
+                        <ul style="margin-top: var(--spacing-xs); padding-left: var(--spacing-md);">
+                            <li>Descriptive → Understand data</li>
+                            <li>Inferential → Generalize to unseen data</li>
+                        </ul>
+                    </div>
+
+
+                    <h3>3️⃣ Core Definitions</h3>
+
+                    <div class="two-column-grid">
+                        <div class="definition-box">
+                            <div class="term">🔹 Descriptive Statistics</div>
+                            <div class="meaning">
+                                <ul class="icon-list bullet">
+                                    <li>Collects, organizes, summarizes, and presents data</li>
+                                    <li>Does NOT predict or generalize</li>
+                                </ul>
+                                <div class="highlight-box success" style="margin-top: var(--spacing-sm);">
+                                    <p><strong>👉 Focus:</strong> Given data only</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="definition-box">
+                            <div class="term">🔹 Inferential Statistics</div>
+                            <div class="meaning">
+                                <ul class="icon-list bullet">
+                                    <li>Draws conclusions about a population using a sample</li>
+                                    <li>Involves probability & uncertainty</li>
+                                </ul>
+                                <div class="highlight-box success" style="margin-top: var(--spacing-sm);">
+                                    <p><strong>👉 Focus:</strong> Beyond the data</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>4️⃣ Key Terms </h3>
+
+                    <table class="comparison-table">
+                        <tbody>
+                            <tr>
+                                <td><strong>Population:</strong></td>
+                                <td>Entire group</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sample:</strong></td>
+                                <td>Part of population</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Parameter:</strong></td>
+                                <td>Population value</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Statistic:</strong></td>
+                                <td>Sample value</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>5️⃣ Tools Used</h3>
+
+                    <div class="two-column-grid">
+                        <div class="highlight-box">
+                            <h4 style="color: var(--primary-light); margin-bottom: var(--spacing-sm);">📊 Descriptive Statistics</h4>
+                            <ul class="icon-list check">
+                                <li><strong>Central Tendency:</strong> Mean, Median, Mode</li>
+                                <li><strong>Dispersion:</strong> Range, Variance, Standard Deviation</li>
+                                <li><strong>Presentation:</strong> Tables, Bar chart, Histogram, Pie chart</li>
+                            </ul>
+                        </div>
+
+                        <div class="highlight-box">
+                            <h4 style="color: var(--primary-light); margin-bottom: var(--spacing-sm);">📈 Inferential Statistics</h4>
+                            <ul class="icon-list check">
+                                <li>Probability & Sampling</li>
+                                <li>Estimation & Confidence Interval</li>
+                                <li>Hypothesis Testing (z, t, χ² tests)</li>
+                                <li>Regression & Correlation</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>6️⃣ Simple Real-Life Example</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Student Survey Example</div>
+                        
+                        <p><strong>Scenario:</strong></p>
+                        <ul style="padding-left: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                            <li><strong>Population:</strong> 10,000 students</li>
+                            <li><strong>Sample:</strong> 200 students</li>
+                        </ul>
+
+                        <div class="two-column-grid" style="margin-top: var(--spacing-md);">
+                            <div class="highlight-box success">
+                                <h4 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">Descriptive:</h4>
+                                <ul style="padding-left: var(--spacing-md);">
+                                    <li>Average = 72, SD = 8</li>
+                                    <li>(only for 200 students)</li>
+                                </ul>
+                            </div>
+
+                            <div class="highlight-box info">
+                                <h4 style="color: var(--primary-light); margin-bottom: var(--spacing-sm);">Inferential:</h4>
+                                <ul style="padding-left: var(--spacing-md);">
+                                    <li>"Average of all students ≈ 72"</li>
+                                    <li>"Most students score between 64–80"</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>7️⃣ Numerical Insight</h3>
+
+                    <div class="example-box">
+                        <p><strong>Data:</strong> 60, 70, 80, 90</p>
+                        
+                        <div style="margin-top: var(--spacing-md);">
+                            <p><strong>Descriptive:</strong> Mean = 75 <em>(summary only)</em></p>
+                            <p style="margin-top: var(--spacing-sm);"><strong>Inferential:</strong> Population mean ≈ 75 ± error</p>
+                        </div>
+                    </div>
+
+                    <h3>8️⃣ Easy Comparison </h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Situation</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Average of given data</td>
+                                <td><strong style="color: var(--secondary-color);">Descriptive</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Predicting population average</td>
+                                <td><strong style="color: var(--primary-light);">Inferential</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Charts & tables</td>
+                                <td><strong style="color: var(--secondary-color);">Descriptive</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Hypothesis testing</td>
+                                <td><strong style="color: var(--primary-light);">Inferential</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box success" style="margin-top: var(--spacing-md); text-align: center;">
+                        <p style="font-size: 1.125rem; font-weight: 700;">
+                            👉 Descriptive = <span style="color: var(--secondary-color);">What happened</span><br>
+                            👉 Inferential = <span style="color: var(--primary-light);">What may happen</span>
+                        </p>
+                    </div>
+
+                    <h3>9️⃣ Applications</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Field</th>
+                                <th>Descriptive vs Inferential</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Data Science</strong></td>
+                                <td>EDA vs A/B testing</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ML</strong></td>
+                                <td>Data understanding vs model validation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Business</strong></td>
+                                <td>Reports vs forecasting</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Research</strong></td>
+                                <td>Presentation vs conclusions</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>🔟 Common Mistakes</h3>
+
+                    <div class="misconception-grid">
+                        <div class="misconception-item">
+                            <p class="wrong">❌ Mixing both</p>
+                            <p class="right">✔ Descriptive = summarize, Inferential = conclude</p>
+                        </div>
+
+                        <div class="misconception-item">
+                            <p class="wrong">❌ Assuming inferential results are exact</p>
+                            <p class="right">✔ They are probabilistic</p>
+                        </div>
+
+                        <div class="misconception-item">
+                            <p class="wrong">❌ Using small or biased samples</p>
+                            <p class="right">✔ Use random, representative samples</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 12: Population vs Sample -->
+                <div class="section" id="population-vs-sample">
+                    <h2>Population vs Sample</h2>
+
+                    <h3>1️⃣ What is this Topic?</h3>
+                    <ul class="icon-list arrow">
+                        <li><strong>Population:</strong> Entire group we want to study</li>
+                        <li><strong>Sample:</strong> A smaller part taken from the population</li>
+                    </ul>
+                    
+                    <div class="highlight-box success">
+                        <p style="font-weight: 600;">👉 Most statistical conclusions are made about populations using samples.</p>
+                    </div>
+
+                    <h3>2️⃣ Why is it Important?</h3>
+
+                    <div class="highlight-box info">
+                        <p><strong>📘 Statistics:</strong> Basis of sampling & inferential statistics</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>💻 Data Science:</strong> Models trained on samples, applied to populations</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🤖 AI / ML:</strong> Generalization from training data to real-world data</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🎓 Exams & Research:</strong> Core topic for UPSC, SSC, GATE, NET, MBA</p>
+                    </div>
+
+                    <h3>3️⃣ Core Definitions</h3>
+
+                    <div class="two-column-grid">
+                        <div class="definition-box">
+                            <div class="term">🔹 Population</div>
+                            <div class="meaning">
+                                <p style="margin-bottom: var(--spacing-sm);">Complete set of all individuals or observations</p>
+                                <p><strong>Examples:</strong></p>
+                                <ul class="icon-list bullet">
+                                    <li>All students in India</li>
+                                    <li>Entire voter list</li>
+                                    <li>All company transactions</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="definition-box">
+                            <div class="term">🔹 Sample</div>
+                            <div class="meaning">
+                                <p style="margin-bottom: var(--spacing-sm);">Subset selected from the population</p>
+                                <p><strong>Examples:</strong></p>
+                                <ul class="icon-list bullet">
+                                    <li>500 students from all students</li>
+                                    <li>One month sales from 5 years data</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>4️⃣ Key Terms </h3>
+
+                    <table class="comparison-table">
+                        <tbody>
+                            <tr>
+                                <td><strong>Census:</strong></td>
+                                <td>Study of entire population</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sampling:</strong></td>
+                                <td>Selecting a sample</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Representative Sample:</strong></td>
+                                <td>Reflects population</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bias:</strong></td>
+                                <td>Systematic selection error</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>5️⃣ Why Use Samples?</h3>
+
+                    <p>Studying the whole population is often:</p>
+
+                    <ul class="icon-list cross">
+                        <li>Expensive</li>
+                        <li>Time-consuming</li>
+                        <li>Impractical</li>
+                    </ul>
+
+                    <div class="highlight-box success">
+                        <p style="font-weight: 700; text-align: center; font-size: 1.125rem;">
+                            👉 Sampling is efficient and practical
+                        </p>
+                    </div>
+
+                    <h3>6️⃣ Characteristics of a Good Sample</h3>
+
+                    <ul class="icon-list check">
+                        <li>Randomly selected</li>
+                        <li>Sufficient size</li>
+                        <li>Free from bias</li>
+                        <li>Represents population well</li>
+                    </ul>
+
+                    <h3>7️⃣ Population vs Sample Symbols </h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Concept</th>
+                                <th>Population</th>
+                                <th>Sample</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Size</strong></td>
+                                <td>Large</td>
+                                <td>Small</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Symbol</strong></td>
+                                <td>N</td>
+                                <td>n</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mean</strong></td>
+                                <td>μ (mu)</td>
+                                <td>x̄ (x-bar)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Std. Deviation</strong></td>
+                                <td>σ (sigma)</td>
+                                <td>s</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="note-box">
+                        Parameters (μ, σ) describe populations, while statistics (x̄, s) describe samples.
+                    </div>
+
+                    <h3>8️⃣ Simple Numerical Example</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Height Measurement</div>
+                        
+                        <p><strong>Sample heights (cm):</strong> 160, 165, 170, 175, 180</p>
+
+                        <div style="margin-top: var(--spacing-md);">
+                            <div class="formula-box">
+                                <div class="formula">Sample mean (x̄) = (160 + 165 + 170 + 175 + 180) / 5 = 170 cm</div>
+                            </div>
+                        </div>
+
+                        <div class="highlight-box success" style="margin-top: var(--spacing-md);">
+                            <p style="font-weight: 600;">👉 Used to estimate population mean (μ)</p>
+                        </div>
+                    </div>
+
+                    <h3>9️⃣ Easy Analogy</h3>
+
+                    <div class="example-box" style="text-align: center;">
+                        <p style="font-size: 1.5rem; margin-bottom: var(--spacing-md);">
+                            <strong>Population:</strong> Ocean 🌊<br>
+                            <strong>Sample:</strong> Bucket of water 🪣
+                        </p>
+                        
+                        <div class="highlight-box success">
+                            <p style="font-weight: 700; font-size: 1.125rem;">
+                                📌 A good sample reflects the population.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3>🔟 Applications</h3>
+
+                    <table class="comparison-table">
+                        <tbody>
+                            <tr>
+                                <td><strong>📊 Data Science</strong></td>
+                                <td>Training data vs real-world data</td>
+                            </tr>
+                            <tr>
+                                <td><strong>🤖 ML</strong></td>
+                                <td>Overfitting vs generalization</td>
+                            </tr>
+                            <tr>
+                                <td><strong>💼 Business</strong></td>
+                                <td>Surveys & market research</td>
+                            </tr>
+                            <tr>
+                                <td><strong>🎓 Exams</strong></td>
+                                <td>Sampling, estimation, testing</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>1️⃣1️⃣ Common Mistakes</h3>
+
+                    <div class="misconception-grid">
+                        <div class="misconception-item">
+                            <p class="wrong">❌ Sample is always small</p>
+                            <p class="right">✔ Size depends on variability</p>
+                        </div>
+
+                        <div class="misconception-item">
+                            <p class="wrong">❌ Any sample works</p>
+                            <p class="right">✔ Biased samples mislead</p>
+                        </div>
+
+                        <div class="misconception-item">
+                            <p class="wrong">❌ Sample mean = population mean</p>
+                            <p class="right">✔ It's only an estimate</p>
+                        </div>
+
+                        <div class="misconception-item">
+                            <p class="wrong">❌ Census is always better</p>
+                            <p class="right">✔ Sampling is often smarter</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 13: Types of Data -->
+                <div class="section" id="types-of-data">
+                    <h2>Types of Data: Qualitative & Quantitative  </h2>
+
+                    <h3>1️⃣ What is Data?</h3>
+                    <p><strong>Data = raw facts, figures, or observations collected for analysis.</strong></p>
+                    
+                    <div class="highlight-box warning">
+                        <p><strong>👉 Knowing the data type is crucial because it decides:</strong></p>
+                        <ul class="icon-list bullet" style="margin-top: var(--spacing-xs); padding-left: var(--spacing-md);">
+                            <li>Formulas to use</li>
+                            <li>Graphs to draw</li>
+                            <li>Models to apply</li>
+                        </ul>
+                        <p style="margin-top: var(--spacing-sm); font-weight: 700; color: #ef4444;">
+                            ⚠️ Wrong data type = wrong analysis
+                        </p>
+                    </div>
+
+                    <h3>2️⃣ Why is it Important?</h3>
+
+                    <div class="highlight-box info">
+                        <p><strong>📘 Statistics:</strong> Choosing methods & graphs</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>💻 Data Science:</strong> Feature engineering & encoding</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🤖 AI / ML:</strong> Correct handling improves model performance</p>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🎓 Exams:</strong> Very common theory + MCQs (UPSC, SSC, GATE, NET, MBA)</p>
+                    </div>
+
+                    <h3>3️⃣ Main Types of Data</h3>
+
+                    <p>Data is broadly classified into:</p>
+
+                    <div class="two-column-grid">
+                        <div class="key-point" style="text-align: center; width: 100%; font-size: 1.125rem;">
+                            📋 Qualitative (Categorical)
+                        </div>
+                        <div class="key-point" style="text-align: center; width: 100%; font-size: 1.125rem;">
+                            🔢 Quantitative (Numerical)
+                        </div>
+                    </div>
+
+                    <h3>4️⃣ Qualitative Data (Categorical)</h3>
+
+                    <div class="definition-box">
+                        <div class="meaning">
+                            <ul class="icon-list bullet">
+                                <li>Describes qualities or categories</li>
+                                <li>Answers: "What type?"</li>
+                                <li>Cannot be averaged</li>
+                            </ul>
+                            <p style="margin-top: var(--spacing-sm);"><strong>Examples:</strong> Gender, Blood group, Color, Department</p>
+                        </div>
+                    </div>
+
+                    <h4>🔹 Types of Qualitative Data</h4>
+
+                    <div class="two-column-grid">
+                        <div class="highlight-box success">
+                            <h4 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">1. Nominal</h4>
+                            <ul class="icon-list bullet">
+                                <li>No order</li>
+                                <li><strong>Examples:</strong> Gender, Blood group, Nationality</li>
+                            </ul>
+                        </div>
+
+                        <div class="highlight-box info">
+                            <h4 style="color: var(--primary-light); margin-bottom: var(--spacing-sm);">2. Ordinal</h4>
+                            <ul class="icon-list bullet">
+                                <li>Ordered categories</li>
+                                <li>Difference not measurable</li>
+                                <li><strong>Examples:</strong> Grades (A, B, C), Ratings (Poor → Excellent)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>5️⃣ Quantitative Data (Numerical)</h3>
+
+                    <div class="definition-box">
+                        <div class="meaning">
+                            <ul class="icon-list bullet">
+                                <li>Data in numbers</li>
+                                <li>Answers: "How much / How many?"</li>
+                                <li>Arithmetic operations are valid</li>
+                            </ul>
+                            <p style="margin-top: var(--spacing-sm);"><strong>Examples:</strong> Height, Weight, Marks, Salary</p>
+                        </div>
+                    </div>
+
+                    <h4>🔹 Types of Quantitative Data</h4>
+
+                    <div class="two-column-grid">
+                        <div class="highlight-box success">
+                            <h4 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">1. Discrete</h4>
+                            <ul class="icon-list bullet">
+                                <li>Countable, whole numbers</li>
+                                <li><strong>Examples:</strong> No. of students, cars, defects</li>
+                            </ul>
+                        </div>
+
+                        <div class="highlight-box info">
+                            <h4 style="color: var(--primary-light); margin-bottom: var(--spacing-sm);">2. Continuous</h4>
+                            <ul class="icon-list bullet">
+                                <li>Measurable, any value in a range</li>
+                                <li><strong>Examples:</strong> Height, Weight, Time</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>6️⃣ Quick Real-Life Example</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Student Data Analysis</div>
+
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Variable</th>
+                                    <th>Value</th>
+                                    <th>Data Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Aman</td>
+                                    <td><strong style="color: var(--secondary-color);">Qualitative (Nominal)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Grade</td>
+                                    <td>A</td>
+                                    <td><strong style="color: var(--secondary-color);">Qualitative (Ordinal)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Marks</td>
+                                    <td>85</td>
+                                    <td><strong style="color: var(--primary-light);">Quantitative (Discrete)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Height</td>
+                                    <td>172.5 cm</td>
+                                    <td><strong style="color: var(--primary-light);">Quantitative (Continuous)</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="highlight-box success" style="margin-top: var(--spacing-md);">
+                            <p style="font-weight: 600;">👉 One dataset can have multiple data types</p>
+                        </div>
+                    </div>
+
+                    <h3>7️⃣ Math Applicability</h3>
+
+                    <div class="two-column-grid">
+                        <div class="highlight-box success">
+                            <p><strong>✔ Quantitative:</strong> Mean, median, etc. possible</p>
+                            <p style="margin-top: var(--spacing-xs);"><em>Example: Marks → Mean possible</em></p>
+                        </div>
+
+                        <div class="highlight-box danger">
+                            <p><strong>❌ Qualitative:</strong> No averaging</p>
+                            <p style="margin-top: var(--spacing-xs);"><em>Example: Gender → Mean not possible</em></p>
+                        </div>
+                    </div>
+
+                    <h3>8️⃣ Easy Identification Trick</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Question Asked</th>
+                                <th>Data Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>What category?</td>
+                                <td><strong style="color: var(--secondary-color);">Qualitative</strong></td>
+                            </tr>
+                            <tr>
+                                <td>How many?</td>
+                                <td><strong style="color: var(--primary-light);">Quantitative (Discrete)</strong></td>
+                            </tr>
+                            <tr>
+                                <td>How much?</td>
+                                <td><strong style="color: var(--primary-light);">Quantitative (Continuous)</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box success" style="margin-top: var(--spacing-md); text-align: center;">
+                        <p style="font-size: 1.125rem; font-weight: 700;">
+                            👉 Qualitative = Labels 🏷️<br>
+                            👉 Quantitative = Numbers 🔢
+                        </p>
+                    </div>
+
+                    <h3>9️⃣ Applications</h3>
+
+                    <table class="comparison-table">
+                        <tbody>
+                            <tr>
+                                <td><strong>📊 Data Science</strong></td>
+                                <td>Encoding vs Scaling</td>
+                            </tr>
+                            <tr>
+                                <td><strong>🤖 ML</strong></td>
+                                <td>Categorical handling vs Numerical modeling</td>
+                            </tr>
+                            <tr>
+                                <td><strong>💼 Business</strong></td>
+                                <td>Customer type vs Sales analysis</td>
+                            </tr>
+                            <tr>
+                                <td><strong>🎓 Exams</strong></td>
+                                <td>Choosing correct charts & tests</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>🔟 Common Mistakes</h3>
+
+                    <div class="misconception-grid">
+                        <div class="misconception-item">
+                            <p class="wrong">❌ Treating ordinal as numerical</p>
+                            <p class="right">✔ Order ≠ equal difference</p>
+                        </div>
+
+                        <div class="misconception-item">
+                            <p class="wrong">❌ Averaging categorical data</p>
+                            <p class="right">✔ Only numerical data can be averaged</p>
+                        </div>
+
+                        <div class="misconception-item">
+                            <p class="wrong">❌ Confusing discrete & continuous</p>
+                            <p class="right">✔ Counting = Discrete, Measuring = Continuous</p>
+                        </div>
+
+                        <div class="misconception-item">
+                            <p class="wrong">❌ Ignoring data types in ML</p>
+                            <p class="right">✔ Leads to wrong model results</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Statistics eBook. Created by <a href="https://github.com/Aman-0402">Aman</a>.</p>
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../contents.html">Contents</a>
+                    <a href="../resources/glossary.html">Glossary</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+</body>
+</html>
