@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 2: Data Collection & Organization - Statistics eBook</title>
+    <meta name="description" content="Learn about methods of data collection, types of measurement scales, frequency distribution, and data organization techniques.">
+    <meta name="author" content="Aman">
+    <meta name="keywords" content="data collection, measurement scales, nominal, ordinal, interval, ratio, frequency distribution, tabulation">
+    
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/chapter-content.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="book-title">Statistics</h1>
+                <nav class="header-nav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="../contents.html" class="nav-link">Contents</a>
+                    <a href="../resources/glossary.html" class="nav-link">Glossary</a>
+                    <a href="../resources/formulas.html" class="nav-link">Formulas</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="chapter-content">
+                <!-- Chapter Header -->
+                <div class="page-header">
+                    <span class="badge">Phase 1: Foundations and Data Organization</span>
+                    <h1 class="page-title">Chapter 2: Data Collection & Organization</h1>
+                    <p class="page-subtitle">Learn systematic methods to collect, measure, and organize data effectively</p>
+                </div>
+
+                <!-- Chapter Topics -->
+                <div class="chapter-topics-section">
+                    <h3>📋 Topics Covered in This Chapter</h3>
+                    <ul class="chapter-topics-list">
+                        <li>Methods of data collection (Primary & Secondary)</li>
+                        <li>Types of measurement scales (Nominal, Ordinal, Interval, Ratio)</li>
+                        <li>Frequency distribution</li>
+                        <li>Tabulation and classification</li>
+                    </ul>
+                </div>
+
+                <!-- Section 1: Methods of Data Collection -->
+                <div class="section" id="data-collection-methods">
+                    <h2>Methods of Data Collection</h2>
+                    
+                    <h3>What is Data Collection?</h3>
+                    <p>Data collection is the systematic process of gathering information (data) from relevant sources to answer questions, test hypotheses, or analyze trends.</p>
+                    
+                    <div class="highlight-box success">
+                        <p><strong>👉 In simple words:</strong></p>
+                        <p class="text-center mt-sm">Data collection is how we get the raw facts before doing statistics.</p>
+                    </div>
+
+                    <h3>Why is it Important?</h3>
+
+                    <h4>📘 Statistics</h4>
+                    <ul class="stat-badges">
+                        <li><span class="badge">Foundation</span> All statistical analysis starts with data</li>
+                        <li><span class="badge">Quality</span> Wrong data → wrong conclusions</li>
+                        <li><span class="badge">Accuracy</span> Quality of data collection determines reliability</li>
+                    </ul>
+
+                    <h4>💻 Data Science & AI/ML</h4>
+                    <ul class="stat-badges">
+                        <li><span class="badge">Learning</span> Models learn only from collected data</li>
+                        <li><span class="badge">Bias</span> Poor data collection leads to biased models</li>
+                        <li><span class="badge">Success</span> Real-world AI success = good data + good models</li>
+                    </ul>
+
+                    <h4>💼 Business & Research</h4>
+                    <ul class="stat-badges">
+                        <li><span class="badge">Research</span> Market research and customer behavior analysis</li>
+                        <li><span class="badge">Decisions</span> Policy decisions and strategic planning</li>
+                        <li><span class="badge">Methods</span> Used in surveys, experiments, and case studies</li>
+                    </ul>
+
+                    <h3>🔑 Key Terms</h3>
+
+                    <table class="comparison-table">
+                        <tbody>
+                            <tr>
+                                <td><strong>Data</strong></td>
+                                <td>Raw facts or observations (numbers, text, images, etc.)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Population</strong></td>
+                                <td>Entire group under study (Example: All students in a university)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sample</strong></td>
+                                <td>A subset of the population (Example: 100 students selected)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Primary Data</strong></td>
+                                <td>Data collected first-hand by the researcher</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Secondary Data</strong></td>
+                                <td>Data collected from existing sources</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Classification of Data Collection Methods</h3>
+                    <p>Broadly, there are two main methods:</p>
+
+                    <div class="two-column-grid">
+                        <div class="key-point text-center">
+                            🟢 Primary Data Collection Methods<br>
+                            (Data collected by the researcher directly)
+                        </div>
+                        <div class="key-point text-center">
+                            🔵 Secondary Data Collection Methods<br>
+                            (Data already collected by someone else)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Primary Data Collection Methods -->
+                <div class="section" id="primary-methods">
+                    <h2>Primary Data Collection Methods</h2>
+
+                    <h3>1️⃣ Direct Personal Investigation</h3>
+                    <ul class="icon-list bullet">
+                        <li>The investigator personally visits respondents and collects data</li>
+                        <li>Questions are asked directly and answers are recorded by the investigator</li>
+                        <li>Most accurate and reliable, but time-consuming and costly</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <div class="example-title">Example</div>
+                        <p>A researcher personally interviewing farmers about crop yield.</p>
+                    </div>
+
+                    <h3>2️⃣ Indirect Oral Investigation</h3>
+                    <ul class="icon-list bullet">
+                        <li>Data are collected from third persons or witnesses instead of actual respondents</li>
+                        <li>Used when direct contact is not possible or respondents are unwilling</li>
+                        <li>Requires careful cross-checking of information</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <div class="example-title">Example</div>
+                        <p>Collecting information about a factory accident from workers and supervisors.</p>
+                    </div>
+
+                    <h3>3️⃣ Information from Local Sources or Correspondents</h3>
+                    <ul class="icon-list bullet">
+                        <li>Local agents or correspondents are appointed in different areas</li>
+                        <li>They regularly supply information to the investigator</li>
+                        <li>Commonly used by newspapers, government agencies, and research organizations</li>
+                    </ul>
+                    
+                    <div class="example-box">
+                        <div class="example-title">Example</div>
+                        <p>Newspapers collecting regional price data through local reporters.</p>
+                    </div>
+
+                    <h3>4️⃣ Information Through Questionnaires and Schedules</h3>
+                    <p>Data are collected using pre-designed questions.</p>
+
+                    <div class="two-column-grid">
+                        <div class="definition-box">
+                            <div class="term">🔹 Questionnaire</div>
+                            <div class="meaning">
+                                <ul class="icon-list bullet">
+                                    <li>Sent to respondents (email/post/online form)</li>
+                                    <li>Respondents fill it themselves</li>
+                                    <li>Cheaper but response rate may be low</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="definition-box">
+                            <div class="term">🔹 Schedule</div>
+                            <div class="meaning">
+                                <ul class="icon-list bullet">
+                                    <li>Filled by an enumerator during face-to-face interviews</li>
+                                    <li>Higher accuracy and response rate</li>
+                                    <li>Used in census surveys</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Comparison Table: Modes of Data Collection</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Mode</th>
+                                <th>Who Collects Data</th>
+                                <th>Cost</th>
+                                <th>Reliability</th>
+                                <th>Suitable When</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Direct Personal Investigation</td>
+                                <td>Investigator himself</td>
+                                <td>High</td>
+                                <td>Very High</td>
+                                <td>Small-scale, intensive studies</td>
+                            </tr>
+                            <tr>
+                                <td>Indirect Oral Investigation</td>
+                                <td>Witnesses / Third persons</td>
+                                <td>Medium</td>
+                                <td>Moderate</td>
+                                <td>Sensitive or difficult situations</td>
+                            </tr>
+                            <tr>
+                                <td>Local Sources / Correspondents</td>
+                                <td>Appointed agents</td>
+                                <td>Low</td>
+                                <td>Moderate</td>
+                                <td>Continuous & wide-area data</td>
+                            </tr>
+                            <tr>
+                                <td>Questionnaire</td>
+                                <td>Respondents themselves</td>
+                                <td>Low</td>
+                                <td>Low to Moderate</td>
+                                <td>Educated & scattered respondents</td>
+                            </tr>
+                            <tr>
+                                <td>Schedule</td>
+                                <td>Enumerator</td>
+                                <td>High</td>
+                                <td>High</td>
+                                <td>Large official surveys</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 3: Secondary Data Collection Methods -->
+                <div class="section" id="secondary-methods">
+                    <h2>Secondary Data Collection Methods</h2>
+
+                    <p>Secondary data are data that have already been collected and processed by someone else for a purpose different from the current study. These data are reused by the investigator for analysis.</p>
+
+                    <h3>🔵 Sources of Secondary Data</h3>
+
+                    <div class="two-column-grid">
+                        <div class="definition-box">
+                            <div class="term">📚 1️⃣ Published Sources</div>
+                            <div class="meaning">
+                                <p>Data that are publicly available in printed or digital form.</p>
+                                <p><strong>Common Sources:</strong></p>
+                                <ul class="icon-list bullet">
+                                    <li>Government reports (economic surveys, statistical abstracts)</li>
+                                    <li>Census data</li>
+                                    <li>Research journals and publications</li>
+                                    <li>Newspapers and magazines</li>
+                                    <li>Company annual reports</li>
+                                </ul>
+                                <p class="mt-sm"><strong>✅ Advantages:</strong> Easily available, Low cost, Time-saving</p>
+                                <p><strong>⚠️ Limitations:</strong> May not perfectly suit objective, Data may be outdated</p>
+                            </div>
+                        </div>
+
+                        <div class="definition-box">
+                            <div class="term">💾 2️⃣ Unpublished Sources</div>
+                            <div class="meaning">
+                                <p>Data not publicly available, but maintained by institutions or organizations.</p>
+                                <p><strong>Common Sources:</strong></p>
+                                <ul class="icon-list bullet">
+                                    <li>Internal company records</li>
+                                    <li>University project and thesis reports</li>
+                                    <li>Hospital and medical records</li>
+                                    <li>Office files and private documents</li>
+                                </ul>
+                                <p class="mt-sm"><strong>✅ Advantages:</strong> More detailed, Often more specific</p>
+                                <p><strong>⚠️ Limitations:</strong> Difficult to access, Confidentiality issues</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>📊 Examples of Secondary Data Use</h3>
+                    <ul class="icon-list check">
+                        <li>Using World Bank population statistics for demographic analysis</li>
+                        <li>Using previous sales records of a company to forecast future demand</li>
+                    </ul>
+
+                    <h3>🧾 Summary Table: Sources of Secondary Data</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Basis</th>
+                                <th>Published Sources</th>
+                                <th>Unpublished Sources</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Availability</td>
+                                <td>Publicly available</td>
+                                <td>Restricted access</td>
+                            </tr>
+                            <tr>
+                                <td>Cost</td>
+                                <td>Low</td>
+                                <td>Very low or free</td>
+                            </tr>
+                            <tr>
+                                <td>Examples</td>
+                                <td>Census, journals, newspapers</td>
+                                <td>Company files, project reports</td>
+                            </tr>
+                            <tr>
+                                <td>Reliability</td>
+                                <td>Moderate</td>
+                                <td>Relatively higher</td>
+                            </tr>
+                            <tr>
+                                <td>Accessibility</td>
+                                <td>Easy</td>
+                                <td>Difficult</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Difference Between Primary Data and Secondary Data</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Basis</th>
+                                <th>Primary Data</th>
+                                <th>Secondary Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Meaning</strong></td>
+                                <td>Data originally collected by the investigator for the first time</td>
+                                <td>Data that already exist and were collected earlier</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Originality</strong></td>
+                                <td>Original in nature, collected directly from source</td>
+                                <td>Not original, already in existence</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Suitability</strong></td>
+                                <td>Always collected for specific objective</td>
+                                <td>Collected earlier for different objective</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cost</strong></td>
+                                <td>Costly in terms of time, money, and effort</td>
+                                <td>Less expensive and economical</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Reliability</strong></td>
+                                <td>More reliable (collected firsthand)</td>
+                                <td>Less reliable (depends on original source)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Real-Life / Practical Example</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">🎓 Student Marks Example</div>
+                        <p><strong>Suppose you want to analyze average marks of students.</strong></p>
+                        
+                        <ol class="steps-list">
+                            <li><strong>Decide what data you need:</strong> marks of students</li>
+                            <li><strong>Choose method:</strong>
+                                <ul class="icon-list bullet mt-xs">
+                                    <li>Primary: Conduct class test (direct collection)</li>
+                                    <li>Secondary: Use last year's result database</li>
+                                </ul>
+                            </li>
+                            <li><strong>Collect data</strong></li>
+                            <li><strong>Clean data</strong></li>
+                            <li><strong>Analyze:</strong> mean, median, performance trends</li>
+                        </ol>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center font-bold">👉 Correct method = correct insight</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Types of Measurement Scales -->
+                <div class="section" id="measurement-scales">
+                    <h2>Types of Scales (Nominal, Ordinal, Interval, Ratio)</h2>
+
+                    <h3>What are Scales of Measurement?</h3>
+                    <p>Scales of measurement define how data is measured, categorized, and analyzed in statistics.</p>
+                    
+                    <div class="highlight-box success">
+                        <p><strong>👉 In simple terms:</strong></p>
+                        <p class="mt-sm">They tell us what mathematical operations are allowed on data.</p>
+                        <p class="mt-sm"><strong>Example:</strong> Can we count? Can we rank? Can we add/subtract? Can we multiply/divide?</p>
+                    </div>
+
+                    <h3>Why is it Important?</h3>
+
+                    <div class="highlight-box info">
+                        <p><strong>📘 Statistics:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Determines which statistical measures to use (mean, median, mode)</li>
+                            <li>Determines which graphs are valid</li>
+                            <li>Prevents wrong analysis</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>💻 Data Science & AI/ML:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Feature selection depends on scale type</li>
+                            <li>Encoding techniques differ (One-hot encoding, Label encoding)</li>
+                            <li>Wrong scale → wrong model behavior</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>💼 Business & Research:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Survey design</li>
+                            <li>Market research</li>
+                            <li>Psychometric & social science studies</li>
+                        </ul>
+                    </div>
+
+                    <h3>🔑 Key Terms</h3>
+
+                    <table class="comparison-table">
+                        <tbody>
+                            <tr>
+                                <td><strong>Variable</strong></td>
+                                <td>A characteristic that can change (age, gender, marks)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Measurement Scale</strong></td>
+                                <td>Rule for assigning values to variables</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Categorical Data</strong></td>
+                                <td>Data in categories (gender, color)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Numerical Data</strong></td>
+                                <td>Data in numbers (age, income)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Four Types of Measurement Scales</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Scale</th>
+                                <th>Categorization</th>
+                                <th>Order</th>
+                                <th>Equal Interval</th>
+                                <th>True Zero</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Nominal</strong></td>
+                                <td>✅</td>
+                                <td>❌</td>
+                                <td>❌</td>
+                                <td>❌</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ordinal</strong></td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>❌</td>
+                                <td>❌</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Interval</strong></td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>❌</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ratio</strong></td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 5: Nominal Scale -->
+                <div class="section" id="nominal-scale">
+                    <h2>📍 Nominal Scale (1st Level of Measurement)</h2>
+
+                    <div class="definition-box">
+                        <div class="term">Meaning</div>
+                        <div class="meaning">
+                            <ul class="icon-list bullet">
+                                <li>Classifies data into categories or names only</li>
+                                <li>No order or ranking is possible</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Key Features</h3>
+                    <ul class="icon-list check">
+                        <li>Only classification</li>
+                        <li>No numerical meaning</li>
+                        <li>No comparison of magnitude</li>
+                    </ul>
+
+                    <h3>Examples</h3>
+                    <ul class="icon-list bullet">
+                        <li>Gender (Male, Female)</li>
+                        <li>Blood Group (A, B, AB, O)</li>
+                        <li>Nationality</li>
+                        <li>Marital Status</li>
+                    </ul>
+
+                    <h3>Statistical Use</h3>
+                    <ul class="icon-list check">
+                        <li>Mode</li>
+                        <li>Frequency tables</li>
+                        <li>Bar charts</li>
+                    </ul>
+                </div>
+
+                <!-- Section 6: Ordinal Scale -->
+                <div class="section" id="ordinal-scale">
+                    <h2>📊 Ordinal Scale (2nd Level of Measurement)</h2>
+
+                    <div class="definition-box">
+                        <div class="term">Definition</div>
+                        <div class="meaning">
+                            <p>Data can be ranked or ordered, but the difference between ranks is not measurable.</p>
+                            <div class="highlight-box success mt-sm">
+                                <p class="text-center font-bold">👉 Ordinal = Order matters, gap doesn't</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Characteristics</h3>
+                    <ul class="icon-list check">
+                        <li>Relative position matters</li>
+                        <li>No equal intervals</li>
+                    </ul>
+
+                    <h3>Examples</h3>
+                    <ul class="icon-list bullet">
+                        <li>Student ranks (1st, 2nd, 3rd)</li>
+                        <li>Satisfaction levels (Poor, Average, Good, Excellent)</li>
+                        <li>Education level (Primary, Secondary, Graduate)</li>
+                    </ul>
+
+                    <h3>Real-Life Example</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Ranks in an Exam</div>
+                        <ul class="icon-list bullet">
+                            <li>Aman – 1st</li>
+                            <li>Anjali – 2nd</li>
+                            <li>Arindam – 3rd</li>
+                        </ul>
+                        <p class="mt-md"><strong>We know who is better, not how much better.</strong></p>
+                    </div>
+
+                    <h3>Allowed Operations</h3>
+                    <div class="two-column-grid">
+                        <div class="highlight-box success">
+                            <p><strong>✔ Allowed:</strong></p>
+                            <ul class="icon-list check mt-xs">
+                                <li>Comparison</li>
+                                <li>Median</li>
+                                <li>Percentiles</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-box danger">
+                            <p><strong>❌ Not Allowed:</strong></p>
+                            <ul class="icon-list cross mt-xs">
+                                <li>Mean</li>
+                                <li>Arithmetic operations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 7: Interval Scale -->
+                <div class="section" id="interval-scale">
+                    <h2>📏 Interval Scale (3rd Level of Measurement)</h2>
+
+                    <div class="definition-box">
+                        <div class="term">Definition</div>
+                        <div class="meaning">
+                            <p>Ordered data with equal intervals, but no true zero.</p>
+                            <div class="highlight-box success mt-sm">
+                                <p class="text-center font-bold">👉 Interval = Order + Equal gaps, zero is arbitrary</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Characteristics</h3>
+                    <ul class="icon-list check">
+                        <li>Differences are meaningful</li>
+                        <li>Ratios are meaningless</li>
+                    </ul>
+
+                    <h3>Examples</h3>
+                    <ul class="icon-list bullet">
+                        <li>Temperature (°C, °F)</li>
+                        <li>Calendar years</li>
+                        <li>IQ scores</li>
+                    </ul>
+
+                    <h3>Real-Life Example</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Weather Temperature</div>
+                        <p><strong>Temperatures:</strong></p>
+                        <p class="mt-sm">10°C → 20°C → 30°C</p>
+                        <p class="mt-sm"><strong>Difference is meaningful</strong></p>
+                        <p class="mt-sm"><strong>But:</strong> 30°C is NOT twice as hot as 15°C</p>
+                    </div>
+
+                    <h3>Allowed Operations</h3>
+                    <div class="two-column-grid">
+                        <div class="highlight-box success">
+                            <p><strong>✔ Allowed:</strong></p>
+                            <ul class="icon-list check mt-xs">
+                                <li>Mean</li>
+                                <li>Median</li>
+                                <li>Standard deviation</li>
+                                <li>Addition & subtraction</li>
+                            </ul>
+                        </div>
+                        <div class="highlight-box danger">
+                            <p><strong>❌ Not Allowed:</strong></p>
+                            <ul class="icon-list cross mt-xs">
+                                <li>Multiplication</li>
+                                <li>Division</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 8: Ratio Scale -->
+                <div class="section" id="ratio-scale">
+                    <h2>📐 Ratio Scale (4th Level of Measurement)</h2>
+
+                    <div class="definition-box">
+                        <div class="term">Definition</div>
+                        <div class="meaning">
+                            <p>Interval scale with a true zero. Ratios are meaningful.</p>
+                            <div class="highlight-box success mt-sm">
+                                <p class="text-center font-bold">👉 Ratio = Complete scale</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Characteristics</h3>
+                    <ul class="icon-list check">
+                        <li>All mathematical operations allowed</li>
+                        <li>Zero means absence of quantity</li>
+                    </ul>
+
+                    <h3>Examples</h3>
+                    <ul class="icon-list bullet">
+                        <li>Height</li>
+                        <li>Weight</li>
+                        <li>Age</li>
+                        <li>Income</li>
+                        <li>Distance</li>
+                    </ul>
+
+                    <h3>Real-Life Example</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Monthly Sales</div>
+                        <p><strong>Monthly sales:</strong></p>
+                        <ul class="icon-list bullet mt-sm">
+                            <li>₹0 → No sales</li>
+                            <li>₹20,000 → Twice of ₹10,000</li>
+                        </ul>
+                        <p class="mt-md"><strong>Ratios make sense here.</strong></p>
+                    </div>
+
+                    <h3>Allowed Operations</h3>
+                    <div class="highlight-box success">
+                        <p><strong>✔ All Operations Allowed:</strong></p>
+                        <ul class="icon-list check mt-sm">
+                            <li>Mean</li>
+                            <li>Median</li>
+                            <li>Mode</li>
+                            <li>All arithmetic operations</li>
+                        </ul>
+                    </div>
+
+                    <h3>Numerical Example</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">📊 Student Data</div>
+                        
+                        <table class="comparison-table mt-md">
+                            <thead>
+                                <tr>
+                                    <th>Student</th>
+                                    <th>Gender</th>
+                                    <th>Rank</th>
+                                    <th>Marks</th>
+                                    <th>Age</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>A</td>
+                                    <td>Male</td>
+                                    <td>1</td>
+                                    <td>85</td>
+                                    <td>20</td>
+                                </tr>
+                                <tr>
+                                    <td>B</td>
+                                    <td>Female</td>
+                                    <td>2</td>
+                                    <td>75</td>
+                                    <td>21</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="highlight-box success mt-md">
+                            <p><strong>Scale Identification:</strong></p>
+                            <ul class="icon-list bullet mt-sm">
+                                <li>Gender → <strong>Nominal</strong></li>
+                                <li>Rank → <strong>Ordinal</strong></li>
+                                <li>Marks → <strong>Interval</strong> (no absolute zero)</li>
+                                <li>Age → <strong>Ratio</strong> (true zero exists)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 9: Frequency Distribution -->
+                <div class="section" id="frequency-distribution">
+                    <h2>Frequency Distribution</h2>
+
+                    <h3>What is Frequency Distribution?</h3>
+                    <p>A frequency distribution is a systematic arrangement of data that shows how often (frequency) each value or group of values occurs.</p>
+                    
+                    <div class="highlight-box success">
+                        <p><strong>👉 In simple words:</strong></p>
+                        <p class="mt-sm">It tells us how data is spread.</p>
+                        <p class="mt-sm">Instead of looking at a long list of numbers, frequency distribution summarizes data neatly.</p>
+                    </div>
+
+                    <h3>🔑 Key Terms</h3>
+
+                    <table class="comparison-table">
+                        <tbody>
+                            <tr>
+                                <td><strong>Frequency (f)</strong></td>
+                                <td>Number of times a value occurs</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Class Interval</strong></td>
+                                <td>Group or range of values (Example: 0–10, 10–20)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Class Limits</strong></td>
+                                <td>Lower limit and Upper limit</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Class Width</strong></td>
+                                <td>Upper limit − Lower limit</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mid-point (Class Mark)</strong></td>
+                                <td>(Lower limit + Upper limit) / 2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Types of Frequency Distribution</h3>
+
+                    <div class="two-column-grid">
+                        <div class="key-point text-center">
+                            1️⃣ Ungrouped Frequency Distribution
+                        </div>
+                        <div class="key-point text-center">
+                            2️⃣ Grouped Frequency Distribution
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 10: Ungrouped Frequency Distribution -->
+                <div class="section" id="ungrouped-frequency">
+                    <h2>Ungrouped Frequency Distribution</h2>
+
+                    <div class="definition-box">
+                        <div class="term">Definition</div>
+                        <div class="meaning">
+                            <ul class="icon-list bullet">
+                                <li>Data is listed without grouping</li>
+                                <li>Suitable for small datasets</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Example</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Student Marks</div>
+                        <p><strong>Raw Data:</strong> 5, 7, 5, 6, 8, 7, 5</p>
+
+                        <table class="comparison-table mt-md">
+                            <thead>
+                                <tr>
+                                    <th>Value (x)</th>
+                                    <th>Frequency (f)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>5</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center">👉 Easy to understand, but not suitable for large data</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 11: Grouped Frequency Distribution -->
+                <div class="section" id="grouped-frequency">
+                    <h2>Grouped Frequency Distribution</h2>
+
+                    <div class="definition-box">
+                        <div class="term">Definition</div>
+                        <div class="meaning">
+                            <ul class="icon-list bullet">
+                                <li>Data grouped into class intervals</li>
+                                <li>Used for large datasets</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>🪜 Steps to Construct Grouped Frequency Distribution</h3>
+
+                    <ol class="steps-list">
+                        <li><strong>Find Range:</strong> Range = Max value − Min value</li>
+                        <li><strong>Decide Number of Classes:</strong> Usually 5 to 15 classes</li>
+                        <li><strong>Calculate Class Width:</strong> Class Width = Range / Number of Classes</li>
+                        <li><strong>Form Class Intervals</strong></li>
+                        <li><strong>Count Frequencies</strong></li>
+                    </ol>
+
+                    <h3>Real-Life Example</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Student Marks Analysis</div>
+                        
+                        <p><strong>Marks obtained by 20 students:</strong></p>
+                        <p class="mt-sm">45, 52, 60, 47, 55, 68, 72, 49, 51, 58, 62, 65, 70, 73, 75, 80, 82, 85, 90, 95</p>
+
+                        <h4 class="mt-lg">Step-by-Step Solution:</h4>
+
+                        <p class="mt-md"><strong>Step 1: Find Range</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>Max = 95</li>
+                            <li>Min = 45</li>
+                            <li>Range = 95 − 45 = 50</li>
+                        </ul>
+
+                        <p class="mt-md"><strong>Step 2: Choose Number of Classes</strong></p>
+                        <p>Let's take 5 classes</p>
+
+                        <p class="mt-md"><strong>Step 3: Calculate Class Width</strong></p>
+                        <div class="formula-box">
+                            <div class="formula">Class Width = 50 / 5 = 10</div>
+                        </div>
+
+                        <p class="mt-md"><strong>Step 4: Create Frequency Distribution Table</strong></p>
+
+                        <table class="comparison-table mt-sm">
+                            <thead>
+                                <tr>
+                                    <th>Class Interval</th>
+                                    <th>Frequency</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>45–55</td>
+                                    <td>5</td>
+                                </tr>
+                                <tr>
+                                    <td>55–65</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>65–75</td>
+                                    <td>5</td>
+                                </tr>
+                                <tr>
+                                    <td>75–85</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>85–95</td>
+                                    <td>2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center font-bold">👉 Now the data is easy to interpret</p>
+                        </div>
+
+                        <p class="mt-md"><strong>Interpretation:</strong></p>
+                        <ul class="icon-list check">
+                            <li>Most students scored between 65–75</li>
+                            <li>Very few students scored above 85</li>
+                            <li>Performance is moderately spread</li>
+                        </ul>
+
+                        <p class="mt-md"><strong>This understanding is impossible from raw data alone!</strong></p>
+                    </div>
+
+                    <h3>Example 2: Blood Group Data</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Blood Type Frequency Distribution</div>
+
+                        <p><strong>Step 1: Raw Data (Given)</strong></p>
+                        <p class="mt-sm">B, AB, AB, B, AB, B, AB, B, AB, B, A, O, B, A, O, B, AB, O, A, B</p>
+                        <p>(Total observations = 20)</p>
+
+                        <p class="mt-md"><strong>Step 2: Frequency Distribution Table</strong></p>
+
+                        <table class="comparison-table mt-sm">
+                            <thead>
+                                <tr>
+                                    <th>Blood Type</th>
+                                    <th>Frequency (f)</th>
+                                    <th>Relative Frequency</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>A</td>
+                                    <td>4</td>
+                                    <td>4/20 = 0.20</td>
+                                </tr>
+                                <tr>
+                                    <td>B</td>
+                                    <td>7</td>
+                                    <td>7/20 = 0.35</td>
+                                </tr>
+                                <tr>
+                                    <td>AB</td>
+                                    <td>5</td>
+                                    <td>5/20 = 0.25</td>
+                                </tr>
+                                <tr>
+                                    <td>O</td>
+                                    <td>4</td>
+                                    <td>4/20 = 0.20</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Total</strong></td>
+                                    <td><strong>20</strong></td>
+                                    <td><strong>1.00</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="note-box mt-md">
+                            <strong>Relative Frequency = Frequency ÷ Total observations</strong><br>
+                            It shows the proportion or percentage of each category.<br>
+                            Example: AB = 5 / 20 = 0.25 (25%)
+                        </div>
+
+                        <p class="mt-md"><strong>Step 3: Cumulative Frequency Distribution</strong></p>
+
+                        <table class="comparison-table mt-sm">
+                            <thead>
+                                <tr>
+                                    <th>Blood Type</th>
+                                    <th>Frequency (f)</th>
+                                    <th>Cumulative Frequency (cf)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>A</td>
+                                    <td>4</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>B</td>
+                                    <td>7</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>AB</td>
+                                    <td>5</td>
+                                    <td>16</td>
+                                </tr>
+                                <tr>
+                                    <td>O</td>
+                                    <td>4</td>
+                                    <td>20</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section 12: Tabulation and Classification -->
+                <div class="section" id="tabulation-classification">
+                    <h2>Tabulation and Classification</h2>
+
+                    <h3>What are Classification and Tabulation?</h3>
+
+                    <div class="two-column-grid">
+                        <div class="definition-box">
+                            <div class="term">Classification</div>
+                            <div class="meaning">
+                                <p>The process of grouping raw data into meaningful categories or classes based on common characteristics.</p>
+                            </div>
+                        </div>
+
+                        <div class="definition-box">
+                            <div class="term">Tabulation</div>
+                            <div class="meaning">
+                                <p>The process of presenting classified data in a systematic table format using rows and columns.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box success">
+                        <p class="text-center font-bold">👉 Classification organizes data → Tabulation presents it clearly</p>
+                    </div>
+
+                    <h3>🔑 Key Terms</h3>
+
+                    <table class="comparison-table">
+                        <tbody>
+                            <tr>
+                                <td><strong>Raw Data</strong></td>
+                                <td>Data in its original unorganized form</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Classification</strong></td>
+                                <td>Grouping data into classes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tabulation</strong></td>
+                                <td>Presentation of classified data in tables</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Class</strong></td>
+                                <td>A group/category of data</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Attributes</strong></td>
+                                <td>Qualitative characteristics (gender, category)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Variables</strong></td>
+                                <td>Quantitative characteristics (age, income)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Classification of Data</h3>
+
+                    <p><strong>Meaning:</strong> Classification arranges data into homogeneous groups so that:</p>
+                    <ul class="icon-list check">
+                        <li>Similar items are together</li>
+                        <li>Dissimilar items are separated</li>
+                    </ul>
+
+                    <h3>Types of Classification</h3>
+
+                    <div class="scope-grid">
+                        <div class="scope-card">
+                            <span class="scope-icon">1️⃣</span>
+                            <h4>Qualitative Classification</h4>
+                            <p>Based on qualities or attributes (non-numerical)</p>
+                            <p class="mt-sm"><strong>Examples:</strong> Gender, Employment status, Literacy</p>
+                        </div>
+
+                        <div class="scope-card">
+                            <span class="scope-icon">2️⃣</span>
+                            <h4>Quantitative Classification</h4>
+                            <p>Based on numerical values (forms class intervals)</p>
+                            <p class="mt-sm"><strong>Examples:</strong> Age groups, Income groups, Marks ranges</p>
+                        </div>
+
+                        <div class="scope-card">
+                            <span class="scope-icon">3️⃣</span>
+                            <h4>Chronological Classification</h4>
+                            <p>Data arranged according to time</p>
+                            <p class="mt-sm"><strong>Examples:</strong> Sales by year, Population growth by decade</p>
+                        </div>
+
+                        <div class="scope-card">
+                            <span class="scope-icon">4️⃣</span>
+                            <h4>Geographical Classification</h4>
+                            <p>Data classified by location</p>
+                            <p class="mt-sm"><strong>Examples:</strong> State-wise population, Country-wise GDP</p>
+                        </div>
+                    </div>
+
+                    <h3>Real-Life Example (Classification)</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">🎓 Student Data (Raw)</div>
+                        <p class="mt-sm">Aman (Male, 95), Anjali (Female, 78), Arindam (Male, 92), Alice (Female, 88)</p>
+
+                        <p class="mt-md"><strong>Classification:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li><strong>Qualitative:</strong> Gender</li>
+                            <li><strong>Quantitative:</strong> Marks</li>
+                        </ul>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center">👉 This helps in structured analysis</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 13: Tabulation of Data -->
+                <div class="section" id="tabulation">
+                    <h2>Tabulation of Data</h2>
+
+                    <div class="definition-box">
+                        <div class="term">Meaning of Tabulation</div>
+                        <div class="meaning">
+                            <p>Tabulation presents classified data in rows and columns for:</p>
+                            <ul class="icon-list check mt-sm">
+                                <li>Easy comparison</li>
+                                <li>Quick understanding</li>
+                                <li>Statistical analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Parts of a Statistical Table</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Part</th>
+                                <th>Meaning</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Table Number</strong></td>
+                                <td>Identification</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Title</strong></td>
+                                <td>What the table shows</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Captions</strong></td>
+                                <td>Column headings</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Stubs</strong></td>
+                                <td>Row headings</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Body</strong></td>
+                                <td>Actual data</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Footnote</strong></td>
+                                <td>Explanation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Source</strong></td>
+                                <td>Data source</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Types of Tabulation</h3>
+
+                    <h4>1️⃣ Simple (One-way) Table</h4>
+                    <p>Data classified by one characteristic</p>
+                    
+                    <div class="example-box">
+                        <div class="example-title">Example: Students by Gender</div>
+                        <table class="comparison-table mt-sm">
+                            <thead>
+                                <tr>
+                                    <th>Gender</th>
+                                    <th>Number of Students</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Male</td>
+                                    <td>30</td>
+                                </tr>
+                                <tr>
+                                    <td>Female</td>
+                                    <td>25</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4>2️⃣ Double (Two-way) Table</h4>
+                    <p>Data classified by two characteristics</p>
+                    
+                    <div class="example-box">
+                        <div class="example-title">Example: Gender and Result</div>
+                        <table class="comparison-table mt-sm">
+                            <thead>
+                                <tr>
+                                    <th>Gender</th>
+                                    <th>Pass</th>
+                                    <th>Fail</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Male</td>
+                                    <td>25</td>
+                                    <td>5</td>
+                                    <td>30</td>
+                                </tr>
+                                <tr>
+                                    <td>Female</td>
+                                    <td>23</td>
+                                    <td>2</td>
+                                    <td>25</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4>3️⃣ Multiple (Multi-way) Table</h4>
+                    <p>Data classified by more than two characteristics (Example: Gender, result, and stream)</p>
+
+                    <h3>Mathematical / Numerical Example</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">🎓 Marks Classification and Tabulation</div>
+                        
+                        <p><strong>Marks:</strong> 45, 52, 60, 65, 70, 72, 75, 80, 85, 90</p>
+
+                        <p class="mt-md"><strong>Step 1: Classification (Quantitative)</strong></p>
+                        
+                        <table class="comparison-table mt-sm">
+                            <thead>
+                                <tr>
+                                    <th>Marks Range</th>
+                                    <th>Students</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>40–50</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>50–60</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>60–70</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>70–80</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>80–90</td>
+                                    <td>2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center font-bold">👉 This table is now ready for graphical representation</p>
+                        </div>
+                    </div>
+
+                    <h3>Descriptive Explanation (Intuition)</h3>
+
+                    <ul class="icon-list check">
+                        <li>Classification simplifies complexity</li>
+                        <li>Tabulation enhances readability</li>
+                        <li>Enables quick comparison</li>
+                        <li>Essential step before charts and statistics</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Statistics eBook. Created by <a href="https://github.com/Aman-0402">Aman</a>.</p>
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../contents.html">Contents</a>
+                    <a href="../resources/glossary.html">Glossary</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+</body>
+</html>
