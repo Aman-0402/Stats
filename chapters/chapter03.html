@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 3: Data Visualization - Statistics eBook</title>
+    <meta name="description" content="Learn data visualization techniques including bar charts, histograms, pie charts, line graphs, boxplots, frequency polygons, ogives, and scatter plots with Python implementation.">
+    <meta name="author" content="Aman">
+    <meta name="keywords" content="data visualization, bar chart, histogram, pie chart, line graph, boxplot, frequency polygon, ogive, scatter plot, correlation, python, matplotlib">
+    
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/chapter-content.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="book-title">Statistics</h1>
+                <nav class="header-nav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="../contents.html" class="nav-link">Contents</a>
+                    <a href="../resources/glossary.html" class="nav-link">Glossary</a>
+                    <a href="../resources/formulas.html" class="nav-link">Formulas</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="chapter-content">
+                <!-- Chapter Header -->
+                <div class="page-header">
+                    <span class="badge">Phase 1: Foundations and Data Organization</span>
+                    <h1 class="page-title">Chapter 3: Data Visualization</h1>
+                    <p class="page-subtitle">Transform data into meaningful visual insights using charts, graphs, and plots</p>
+                </div>
+
+                <!-- Chapter Topics -->
+                <div class="chapter-topics-section">
+                    <h3>📋 Topics Covered in This Chapter</h3>
+                    <ul class="chapter-topics-list">
+                        <li>Bar charts, histograms, and pie charts</li>
+                        <li>Line graphs and boxplots</li>
+                        <li>Frequency polygons and ogives</li>
+                        <li>Scatter plots and correlation</li>
+                        <li>Python implementation with matplotlib</li>
+                    </ul>
+                </div>
+
+                <!-- Section 1: Introduction to Data Visualization -->
+                <div class="section" id="intro-visualization">
+                    <h2>What is Data Visualization?</h2>
+                    
+                    <p>Data Visualization is the graphical representation of data using charts, graphs, and plots to communicate information clearly and effectively.</p>
+                    
+                    <div class="highlight-box success">
+                        <p><strong>👉 Instead of reading long tables of numbers, visualization helps us:</strong></p>
+                        <ul class="icon-list check mt-sm">
+                            <li>See patterns</li>
+                            <li>Understand trends</li>
+                            <li>Compare values</li>
+                            <li>Detect outliers</li>
+                        </ul>
+                    </div>
+
+                    <h3>Why Data Visualization is Important</h3>
+
+                    <div class="highlight-box info">
+                        <p><strong>📘 In Statistics:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Summarizes large datasets visually</li>
+                            <li>Makes comparison easy</li>
+                            <li>Helps in exploratory data analysis (EDA)</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📊 In Data Science:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>First step before modeling</li>
+                            <li>Helps understand data distribution</li>
+                            <li>Detects missing values and anomalies</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🤖 In AI / Machine Learning:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Visualizes feature distributions</li>
+                            <li>Understands class imbalance</li>
+                            <li>Interprets model outputs and results</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 2: Bar Charts, Histograms, and Pie Charts -->
+                <div class="section" id="basic-charts">
+                    <h2>Bar Charts, Histograms, and Pie Charts</h2>
+
+                    <h3>Core Concepts & Definitions</h3>
+
+                    <div class="viz-comparison-grid">
+                        <div class="chart-type-card">
+                            <span class="chart-type-icon">📊</span>
+                            <h4>Bar Chart</h4>
+                            <ul class="icon-list bullet">
+                                <li>Used to compare categories</li>
+                                <li>Each bar represents a category</li>
+                                <li>Height/length shows value or frequency</li>
+                                <li>Bars are separated by gaps</li>
+                            </ul>
+                            <div class="highlight-box success mt-md">
+                                <p class="text-center font-bold">📌 Used for categorical data</p>
+                            </div>
+                        </div>
+
+                        <div class="chart-type-card">
+                            <span class="chart-type-icon">📈</span>
+                            <h4>Histogram</h4>
+                            <ul class="icon-list bullet">
+                                <li>Shows distribution of continuous data</li>
+                                <li>Data divided into bins (class intervals)</li>
+                                <li>Bars touch each other</li>
+                                <li>Shows shape of data (normal, skewed, uniform)</li>
+                            </ul>
+                            <div class="highlight-box success mt-md">
+                                <p class="text-center font-bold">📌 Used for numerical/continuous data</p>
+                            </div>
+                        </div>
+
+                        <div class="chart-type-card">
+                            <span class="chart-type-icon">🥧</span>
+                            <h4>Pie Chart</h4>
+                            <ul class="icon-list bullet">
+                                <li>Represents parts of a whole</li>
+                                <li>Circle divided into sectors</li>
+                                <li>Each slice shows percentage or proportion</li>
+                                <li>Total = 100%</li>
+                            </ul>
+                            <div class="highlight-box success mt-md">
+                                <p class="text-center font-bold">📌 Used when data has few categories</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Real-Life / Practical Examples</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">🎓 Example 1: Student Grades (Bar Chart)</div>
+                        <p><strong>Suppose we count how many students got each grade:</strong></p>
+
+                        <table class="comparison-table mt-md">
+                            <thead>
+                                <tr>
+                                    <th>Grade</th>
+                                    <th>Number of Students</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>A</td>
+                                    <td>12</td>
+                                </tr>
+                                <tr>
+                                    <td>B</td>
+                                    <td>18</td>
+                                </tr>
+                                <tr>
+                                    <td>C</td>
+                                    <td>10</td>
+                                </tr>
+                                <tr>
+                                    <td>D</td>
+                                    <td>5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center font-bold">👉 Best visualized using a Bar Chart (category comparison)</p>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">🧮 Example 2: Student Marks (Histogram)</div>
+                        <p><strong>Marks of 50 students in a test (0–100):</strong></p>
+                        <p class="mt-sm">We want to know:</p>
+                        <ul class="icon-list bullet">
+                            <li>Are most students average?</li>
+                            <li>Is the data skewed?</li>
+                            <li>How spread out are marks?</li>
+                        </ul>
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center font-bold">👉 Best visualized using a Histogram</p>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">🏪 Example 3: Company Market Share (Pie Chart)</div>
+
+                        <table class="comparison-table mt-md">
+                            <thead>
+                                <tr>
+                                    <th>Company</th>
+                                    <th>Market Share (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>A</td>
+                                    <td>40</td>
+                                </tr>
+                                <tr>
+                                    <td>B</td>
+                                    <td>30</td>
+                                </tr>
+                                <tr>
+                                    <td>C</td>
+                                    <td>20</td>
+                                </tr>
+                                <tr>
+                                    <td>D</td>
+                                    <td>10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center font-bold">👉 Best visualized using a Pie Chart</p>
+                        </div>
+                    </div>
+
+                    <h3>Mathematical / Numerical Example</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Histogram (Frequency Distribution Concept)</div>
+                        <p><strong>Let marks be grouped into bins:</strong></p>
+
+                        <table class="comparison-table mt-md">
+                            <thead>
+                                <tr>
+                                    <th>Marks Range</th>
+                                    <th>Frequency</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0–20</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>20–40</td>
+                                    <td>7</td>
+                                </tr>
+                                <tr>
+                                    <td>40–60</td>
+                                    <td>15</td>
+                                </tr>
+                                <tr>
+                                    <td>60–80</td>
+                                    <td>18</td>
+                                </tr>
+                                <tr>
+                                    <td>80–100</td>
+                                    <td>7</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <ul class="icon-list bullet mt-md">
+                            <li>Class Interval = 20</li>
+                            <li>Height of bar = Frequency</li>
+                            <li>Area of bar ∝ Frequency</li>
+                        </ul>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center">📌 Histogram visually represents this frequency table</p>
+                        </div>
+                    </div>
+
+                    <h3>Comparison Table</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Chart Type</th>
+                                <th>Data Type</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Bar Chart</strong></td>
+                                <td>Categorical</td>
+                                <td>Compare categories</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Histogram</strong></td>
+                                <td>Continuous</td>
+                                <td>Show distribution</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pie Chart</strong></td>
+                                <td>Categorical</td>
+                                <td>Show proportions</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 3: Python Implementation - Basic Charts -->
+                <div class="section" id="python-basic-charts">
+                    <h2>Python Implementation (Google Colab)</h2>
+
+                    <p>Let's implement all three charts step by step.</p>
+
+                    <h3>📦 Step 1: Import Libraries</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📊 Bar Chart – Student Grades</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>grades = ['A', 'B', 'C', 'D']
+students = [12, 18, 10, 5]
+
+plt.bar(grades, students)
+plt.xlabel("Grades")
+plt.ylabel("Number of Students")
+plt.title("Distribution of Student Grades")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Explanation:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li><code>plt.bar()</code> creates bar chart</li>
+                            <li>X-axis → Grades</li>
+                            <li>Y-axis → Number of students</li>
+                            <li>Bars have gaps → categorical data</li>
+                        </ul>
+                    </div>
+
+                    <h3>📈 Histogram – Student Marks</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>marks = np.random.randint(30, 100, 50)
+
+plt.hist(marks, bins=5)
+plt.xlabel("Marks")
+plt.ylabel("Number of Students")
+plt.title("Distribution of Student Marks")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Explanation:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li><code>bins=5</code> divides data into 5 intervals</li>
+                            <li>Bars touch → continuous data</li>
+                            <li>Shows shape of distribution</li>
+                        </ul>
+                    </div>
+
+                    <h3>🥧 Pie Chart – Market Share</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>companies = ['Company A', 'Company B', 'Company C', 'Company D']
+market_share = [40, 30, 20, 10]
+
+plt.pie(market_share, labels=companies, autopct='%1.1f%%')
+plt.title("Market Share Distribution")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Explanation:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li><code>autopct</code> shows percentage</li>
+                            <li>Each slice shows part of whole (100%)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 4: Line Graphs and Boxplots -->
+                <div class="section" id="line-boxplot">
+                    <h2>Line Graphs and Boxplots</h2>
+
+                    <h3>What are Line Graphs and Boxplots?</h3>
+
+                    <div class="two-column-grid">
+                        <div class="definition-box">
+                            <div class="term">📈 Line Graph</div>
+                            <div class="meaning">
+                                <p>A line graph shows how a numerical value changes over time or ordered sequence by connecting data points with lines.</p>
+                            </div>
+                        </div>
+
+                        <div class="definition-box">
+                            <div class="term">📦 Boxplot (Box-and-Whisker Plot)</div>
+                            <div class="meaning">
+                                <p>A boxplot is a statistical visualization that summarizes data using minimum, maximum, median, quartiles, and outliers.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="mt-md">Both are core tools of Exploratory Data Analysis (EDA).</p>
+
+                    <h3>Why are they Important?</h3>
+
+                    <div class="highlight-box info">
+                        <p><strong>📘 In Statistics:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Line graphs show trends and patterns</li>
+                            <li>Boxplots show spread, skewness, and outliers</li>
+                            <li>Help compare multiple datasets visually</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📊 In Data Science:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Time-series trend analysis</li>
+                            <li>Outlier detection before modeling</li>
+                            <li>Comparing distributions across groups</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🤖 In AI / Machine Learning:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Monitoring training vs validation loss</li>
+                            <li>Detecting data leakage and anomalies</li>
+                            <li>Understanding feature variability</li>
+                        </ul>
+                    </div>
+
+                    <h3>Core Concepts & Definitions</h3>
+
+                    <h4>📈 Line Graph – Key Concepts</h4>
+                    <table class="comparison-table">
+                        <tbody>
+                            <tr>
+                                <td><strong>X-axis</strong></td>
+                                <td>Time / order (days, months, epochs)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Y-axis</strong></td>
+                                <td>Measured value (sales, temperature, accuracy)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Data Point</strong></td>
+                                <td>(x, y) pair</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Trend</strong></td>
+                                <td>Overall direction (upward, downward, flat)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box success mt-md">
+                        <p class="text-center font-bold">📌 Best for time-series or ordered data</p>
+                    </div>
+
+                    <h4>📦 Boxplot – Key Concepts</h4>
+                    <table class="comparison-table">
+                        <tbody>
+                            <tr>
+                                <td><strong>Minimum (Lower Whisker)</strong></td>
+                                <td>Smallest value (excluding outliers)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Q1 (First Quartile)</strong></td>
+                                <td>25% of data below this</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Median (Q2)</strong></td>
+                                <td>Middle value (50%)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Q3 (Third Quartile)</strong></td>
+                                <td>75% of data below this</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Maximum (Upper Whisker)</strong></td>
+                                <td>Largest value (excluding outliers)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Outliers</strong></td>
+                                <td>Values far from the rest</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box success mt-md">
+                        <p class="text-center font-bold">📌 Best for distribution comparison & outlier detection</p>
+                    </div>
+
+                    <h3>Real-Life / Practical Examples</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">🎓 Example 1: Student Performance Over Time (Line Graph)</div>
+                        <p><strong>A student's marks over 6 tests:</strong></p>
+
+                        <table class="comparison-table mt-md">
+                            <thead>
+                                <tr>
+                                    <th>Test</th>
+                                    <th>Marks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>55</td></tr>
+                                <tr><td>2</td><td>60</td></tr>
+                                <tr><td>3</td><td>58</td></tr>
+                                <tr><td>4</td><td>65</td></tr>
+                                <tr><td>5</td><td>70</td></tr>
+                                <tr><td>6</td><td>75</td></tr>
+                            </tbody>
+                        </table>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center">👉 Line graph shows improvement trend</p>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">🏪 Example 2: Salaries in a Company (Boxplot)</div>
+                        <p><strong>Salaries (₹ in thousands):</strong> 25, 28, 30, 32, 35, 36, 38, 40, 90</p>
+
+                        <div class="highlight-box success mt-md">
+                            <p><strong>👉 Boxplot shows:</strong></p>
+                            <ul class="icon-list bullet">
+                                <li>Typical salary range</li>
+                                <li>One outlier (₹90k)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Mathematical / Numerical Example</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">🔢 Boxplot Calculation (Step-by-Step)</div>
+                        <p><strong>Dataset (sorted):</strong> 10, 12, 14, 15, 18, 20, 22, 25</p>
+
+                        <ol class="steps-list mt-md">
+                            <li><strong>Median (Q2):</strong> (15 + 18) / 2 = 16.5</li>
+                            <li><strong>Q1 (lower half: 10,12,14,15):</strong> (12 + 14) / 2 = 13</li>
+                            <li><strong>Q3 (upper half: 18,20,22,25):</strong> (20 + 22) / 2 = 21</li>
+                            <li><strong>IQR:</strong> Q3 − Q1 = 21 − 13 = 8</li>
+                        </ol>
+
+                        <div class="note-box mt-md">
+                            <strong>📌 Outlier rule:</strong><br>
+                            • Below: Q1 − 1.5×IQR<br>
+                            • Above: Q3 + 1.5×IQR
+                        </div>
+                    </div>
+
+                    <h3>When to Use Which?</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Visualization</th>
+                                <th>Best Use</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Line Graph</strong></td>
+                                <td>Trend over time</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Boxplot</strong></td>
+                                <td>Spread & outliers</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Histogram</strong></td>
+                                <td>Distribution shape</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bar Chart</strong></td>
+                                <td>Category comparison</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 5: Python Implementation - Line & Boxplot -->
+                <div class="section" id="python-line-boxplot">
+                    <h2>Python Implementation (Google Colab)</h2>
+
+                    <h3>📦 Step 1: Import Libraries</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📈 Line Graph – Student Marks</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>tests = [1, 2, 3, 4, 5, 6]
+marks = [55, 60, 58, 65, 70, 75]
+
+plt.plot(tests, marks, marker='o')
+plt.xlabel("Test Number")
+plt.ylabel("Marks")
+plt.title("Student Performance Over Time")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Explanation:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li><code>plt.plot()</code> creates line graph</li>
+                            <li><code>marker='o'</code> highlights data points</li>
+                            <li>Shows trend clearly</li>
+                        </ul>
+                    </div>
+
+                    <h3>📦 Boxplot – Salary Distribution</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>salaries = [25, 28, 30, 32, 35, 36, 38, 40, 90]
+
+plt.boxplot(salaries)
+plt.ylabel("Salary (in thousands)")
+plt.title("Salary Distribution with Outlier")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Explanation:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>Box → Q1 to Q3</li>
+                            <li>Line inside → Median</li>
+                            <li>Dots beyond whiskers → Outliers</li>
+                        </ul>
+                    </div>
+
+                    <h3>📦 Multiple Boxplots (Comparison)</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>data = {
+    'IT': [30, 35, 40, 45, 100],
+    'HR': [20, 22, 25, 27, 30],
+    'Sales': [25, 28, 30, 35, 60]
+}
+
+df = pd.DataFrame(data)
+
+plt.boxplot(df.values, labels=df.columns)
+plt.title("Department-wise Salary Distribution")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>📌 Useful for group comparison</strong></p>
+                    </div>
+                </div>
+
+                <!-- Section 6: Frequency Polygons and Ogives -->
+                <div class="section" id="frequency-polygons-ogives">
+                    <h2>Frequency Polygons and Ogives</h2>
+
+                    <h3>What are Frequency Polygons and Ogives?</h3>
+
+                    <div class="two-column-grid">
+                        <div class="definition-box">
+                            <div class="term">📈 Frequency Polygon</div>
+                            <div class="meaning">
+                                <p>A line graph created by joining the midpoints of class intervals with straight lines, where the height represents frequency.</p>
+                            </div>
+                        </div>
+
+                        <div class="definition-box">
+                            <div class="term">📉 Ogive (Cumulative Frequency Curve)</div>
+                            <div class="meaning">
+                                <p>A graph that shows cumulative frequencies against class boundaries. It helps answer questions like "How many observations are below a certain value?"</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="mt-md">These are advanced forms of frequency distribution visualization and are very important in statistics.</p>
+
+                    <h3>Why are they Important?</h3>
+
+                    <div class="highlight-box info">
+                        <p><strong>📘 In Statistics:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Show distribution shape more smoothly than histograms</li>
+                            <li>Help find median, quartiles, percentiles</li>
+                            <li>Used in theory and exams extensively</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📊 In Data Science:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Understand cumulative behavior of data</li>
+                            <li>Compare multiple distributions</li>
+                            <li>Identify thresholds and cut-off points</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🤖 In AI / Machine Learning:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Analyze feature distributions</li>
+                            <li>Decide normalization ranges</li>
+                            <li>Understand data concentration</li>
+                        </ul>
+                    </div>
+
+                    <h3>Core Concepts & Definitions</h3>
+
+                    <h4>📈 Frequency Polygon – Key Terms</h4>
+
+                    <table class="comparison-table">
+                        <tbody>
+                            <tr>
+                                <td><strong>Class Interval</strong></td>
+                                <td>Grouped range of data</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Class Midpoint</strong></td>
+                                <td>Midpoint = (Lower Limit + Upper Limit) / 2</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Frequency</strong></td>
+                                <td>Number of observations in a class</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Polygon Line</strong></td>
+                                <td>Line joining midpoints</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box success mt-md">
+                        <p class="text-center font-bold">📌 Constructed using class midpoints vs frequencies</p>
+                    </div>
+
+                    <h4>📉 Ogive – Key Terms</h4>
+
+                    <table class="comparison-table">
+                        <tbody>
+                            <tr>
+                                <td><strong>Cumulative Frequency (CF)</strong></td>
+                                <td>Running total of frequencies</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Less-than Ogive</strong></td>
+                                <td>CF up to upper class boundary</td>
+                            </tr>
+                            <tr>
+                                <td><strong>More-than Ogive</strong></td>
+                                <td>CF from lower class boundary downward</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Percentile / Median</strong></td>
+                                <td>Obtained from ogive</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box success mt-md">
+                        <p class="text-center font-bold">📌 Constructed using class boundaries vs cumulative frequencies</p>
+                    </div>
+
+                    <h3>Real-Life Example</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">🎓 Marks of Students (Grouped Data)</div>
+
+                        <table class="comparison-table mt-md">
+                            <thead>
+                                <tr>
+                                    <th>Marks</th>
+                                    <th>Frequency</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>0–10</td><td>3</td></tr>
+                                <tr><td>10–20</td><td>7</td></tr>
+                                <tr><td>20–30</td><td>12</td></tr>
+                                <tr><td>30–40</td><td>8</td></tr>
+                                <tr><td>40–50</td><td>5</td></tr>
+                            </tbody>
+                        </table>
+
+                        <div class="two-column-grid mt-md">
+                            <div class="highlight-box success">
+                                <p><strong>📈 Frequency Polygon shows:</strong></p>
+                                <ul class="icon-list bullet mt-xs">
+                                    <li>Overall shape of distribution</li>
+                                    <li>Peaks (most common class)</li>
+                                    <li>Comparison of multiple datasets</li>
+                                </ul>
+                            </div>
+
+                            <div class="highlight-box info">
+                                <p><strong>📉 Ogive shows:</strong></p>
+                                <ul class="icon-list bullet mt-xs">
+                                    <li>Number of students below a certain mark</li>
+                                    <li>Helps find median & quartiles</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Mathematical / Numerical Example</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">🔢 Step 1: Find Class Midpoints (Frequency Polygon)</div>
+
+                        <table class="comparison-table mt-md">
+                            <thead>
+                                <tr>
+                                    <th>Class</th>
+                                    <th>Frequency</th>
+                                    <th>Midpoint</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>0–10</td><td>3</td><td>5</td></tr>
+                                <tr><td>10–20</td><td>7</td><td>15</td></tr>
+                                <tr><td>20–30</td><td>12</td><td>25</td></tr>
+                                <tr><td>30–40</td><td>8</td><td>35</td></tr>
+                                <tr><td>40–50</td><td>5</td><td>45</td></tr>
+                            </tbody>
+                        </table>
+
+                        <div class="note-box mt-md">
+                            <strong>📌 Plot:</strong><br>
+                            • X-axis → Midpoints<br>
+                            • Y-axis → Frequencies
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">🔢 Step 2: Compute Cumulative Frequency (Ogive)</div>
+
+                        <table class="comparison-table mt-md">
+                            <thead>
+                                <tr>
+                                    <th>Class</th>
+                                    <th>Frequency</th>
+                                    <th>Cumulative Frequency</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>0–10</td><td>3</td><td>3</td></tr>
+                                <tr><td>10–20</td><td>7</td><td>10</td></tr>
+                                <tr><td>20–30</td><td>12</td><td>22</td></tr>
+                                <tr><td>30–40</td><td>8</td><td>30</td></tr>
+                                <tr><td>40–50</td><td>5</td><td>35</td></tr>
+                            </tbody>
+                        </table>
+
+                        <div class="note-box mt-md">
+                            <strong>📌 Plot:</strong><br>
+                            • X-axis → Upper class boundary<br>
+                            • Y-axis → Cumulative frequency
+                        </div>
+                    </div>
+
+                    <h3>Comparison Table</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Frequency Polygon</th>
+                                <th>Ogive</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Based on</strong></td>
+                                <td>Frequency</td>
+                                <td>Cumulative frequency</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Shape</strong></td>
+                                <td>Line graph</td>
+                                <td>Increasing curve</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Use</strong></td>
+                                <td>Distribution shape</td>
+                                <td>Median, quartiles</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Exam importance</strong></td>
+                                <td>High</td>
+                                <td>Very high</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 7: Python Implementation - Frequency Polygon & Ogive -->
+                <div class="section" id="python-frequency-ogive">
+                    <h2>Python Implementation (Google Colab)</h2>
+
+                    <h3>📦 Step 1: Import Libraries</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📈 Frequency Polygon</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>class_intervals = [(0,10), (10,20), (20,30), (30,40), (40,50)]
+frequencies = [3, 7, 12, 8, 5]
+
+midpoints = [(low + high) / 2 for low, high in class_intervals]
+
+plt.plot(midpoints, frequencies, marker='o')
+plt.xlabel("Class Midpoints")
+plt.ylabel("Frequency")
+plt.title("Frequency Polygon")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Explanation:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>Midpoints calculated from class limits</li>
+                            <li>Line connects frequencies smoothly</li>
+                            <li>Better shape visualization than histogram</li>
+                        </ul>
+                    </div>
+
+                    <h3>📉 Less-than Ogive</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>upper_limits = [10, 20, 30, 40, 50]
+cumulative_freq = np.cumsum(frequencies)
+
+plt.plot(upper_limits, cumulative_freq, marker='o')
+plt.xlabel("Upper Class Boundary")
+plt.ylabel("Cumulative Frequency")
+plt.title("Less-than Ogive")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Explanation:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li><code>np.cumsum()</code> computes cumulative total</li>
+                            <li>Curve always increases</li>
+                            <li>Used to find median & percentiles</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 8: Scatter Plot & Correlation -->
+                <div class="section" id="scatter-correlation">
+                    <h2>Scatter Plot & Correlation</h2>
+
+                    <h3>What is a Scatter Plot?</h3>
+
+                    <p>A scatter plot is a graph that displays pairs of numerical values as points on a 2D plane to study the relationship between two variables.</p>
+
+                    <div class="highlight-box info">
+                        <p><strong>Each point represents:</strong></p>
+                        <ul class="icon-list bullet mt-sm">
+                            <li>X-axis → Independent variable</li>
+                            <li>Y-axis → Dependent variable</li>
+                        </ul>
+                    </div>
+
+                    <h3>What is Correlation?</h3>
+
+                    <p>Correlation measures the strength and direction of relationship between two numerical variables.</p>
+
+                    <div class="highlight-box success">
+                        <p><strong>It answers:</strong></p>
+                        <ul class="icon-list bullet mt-sm">
+                            <li>Do variables move together?</li>
+                            <li>If yes, how strongly and in which direction?</li>
+                        </ul>
+                    </div>
+
+                    <h3>Why are They Important?</h3>
+
+                    <div class="highlight-box info">
+                        <p><strong>📘 In Statistics:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Identify relationships between variables</li>
+                            <li>Foundation of regression analysis</li>
+                            <li>Helps in hypothesis formulation</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📊 In Data Science:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Feature relationship analysis</li>
+                            <li>Detect multicollinearity</li>
+                            <li>Exploratory Data Analysis (EDA)</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🤖 In AI / Machine Learning:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Feature selection</li>
+                            <li>Removing redundant features</li>
+                            <li>Understanding input-output relationships</li>
+                        </ul>
+                    </div>
+
+                    <h3>Core Concepts & Definitions</h3>
+
+                    <h4>📊 Scatter Plot – Key Concepts</h4>
+
+                    <table class="comparison-table">
+                        <tbody>
+                            <tr>
+                                <td><strong>Point (x, y)</strong></td>
+                                <td>One observation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pattern</strong></td>
+                                <td>Shape formed by points</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Trend</strong></td>
+                                <td>Direction of relationship</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Outliers</strong></td>
+                                <td>Points far from others</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>📈 Correlation – Key Concepts</h4>
+
+                    <table class="comparison-table">
+                        <tbody>
+                            <tr>
+                                <td><strong>Positive Correlation</strong></td>
+                                <td>Both increase/decrease together</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Negative Correlation</strong></td>
+                                <td>One increases, other decreases</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Zero Correlation</strong></td>
+                                <td>No relationship</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Correlation Coefficient (r)</strong></td>
+                                <td>Value between −1 and +1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="note-box mt-md">
+                        <strong>📌 Interpretation of r:</strong><br>
+                        • r = +1 → Perfect positive<br>
+                        • r = −1 → Perfect negative<br>
+                        • r = 0 → No correlation
+                    </div>
+
+                    <h3>Real-Life / Practical Examples</h3>
+
+                    <div class="viz-comparison-grid">
+                        <div class="example-box">
+                            <div class="example-title">🎓 Study Hours vs Marks</div>
+                            <p class="mt-sm">More study hours → Higher marks</p>
+                            <div class="mt-md">
+                                <span class="correlation-badge positive">Expected: Positive Correlation</span>
+                            </div>
+                        </div>
+
+                        <div class="example-box">
+                            <div class="example-title">🏪 Price vs Demand</div>
+                            <p class="mt-sm">Higher price → Lower demand</p>
+                            <div class="mt-md">
+                                <span class="correlation-badge negative">Expected: Negative Correlation</span>
+                            </div>
+                        </div>
+
+                        <div class="example-box">
+                            <div class="example-title">🌦 Shoe Size vs IQ</div>
+                            <p class="mt-sm">No meaningful relationship</p>
+                            <div class="mt-md">
+                                <span class="correlation-badge neutral">Expected: Zero Correlation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Mathematical / Numerical Example</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">🔢 Pearson Correlation Coefficient Formula</div>
+
+                        <div class="math-formula">
+                            r = Σ(x − x̄)(y − ȳ) / √[Σ(x − x̄)² Σ(y − ȳ)²]
+                        </div>
+
+                        <div class="note-box mt-md">
+                            <strong>📌 Meaning:</strong><br>
+                            • Numerator → Covariance<br>
+                            • Denominator → Normalization using standard deviation
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">🔢 Simple Numerical Example</div>
+
+                        <table class="comparison-table mt-md">
+                            <thead>
+                                <tr>
+                                    <th>X (Hours)</th>
+                                    <th>Y (Marks)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>2</td><td>40</td></tr>
+                                <tr><td>4</td><td>50</td></tr>
+                                <tr><td>6</td><td>65</td></tr>
+                                <tr><td>8</td><td>80</td></tr>
+                            </tbody>
+                        </table>
+
+                        <ul class="icon-list bullet mt-md">
+                            <li>Mean of X = 5</li>
+                            <li>Mean of Y = 58.75</li>
+                            <li>r ≈ +0.98</li>
+                        </ul>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center font-bold">👉 Strong positive correlation</p>
+                        </div>
+                    </div>
+
+                    <h3>Correlation Interpretation Table</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>r Value</th>
+                                <th>Relationship</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>+0.8 to +1</td>
+                                <td>Strong positive</td>
+                            </tr>
+                            <tr>
+                                <td>+0.3 to +0.7</td>
+                                <td>Moderate positive</td>
+                            </tr>
+                            <tr>
+                                <td>−0.3 to +0.3</td>
+                                <td>Weak / none</td>
+                            </tr>
+                            <tr>
+                                <td>−0.7 to −0.3</td>
+                                <td>Moderate negative</td>
+                            </tr>
+                            <tr>
+                                <td>−1 to −0.8</td>
+                                <td>Strong negative</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 9: Python Implementation - Scatter & Correlation -->
+                <div class="section" id="python-scatter-correlation">
+                    <h2>Python Implementation (Google Colab)</h2>
+
+                    <h3>📦 Step 1: Import Libraries</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📈 Scatter Plot – Study Hours vs Marks</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>study_hours = [2, 4, 6, 8, 10]
+marks = [40, 50, 65, 80, 90]
+
+plt.scatter(study_hours, marks)
+plt.xlabel("Study Hours")
+plt.ylabel("Marks")
+plt.title("Scatter Plot: Study Hours vs Marks")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Explanation:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li><code>plt.scatter()</code> plots individual points</li>
+                            <li>Visual inspection shows upward trend</li>
+                        </ul>
+                    </div>
+
+                    <h3>🔢 Correlation Using NumPy</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>correlation = np.corrcoef(study_hours, marks)
+correlation</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="note-box">
+                        <strong>📌 Output:</strong><br>
+                        • Matrix format<br>
+                        • Diagonal = 1<br>
+                        • Off-diagonal = correlation coefficient
+                    </div>
+
+                    <h3>🔢 Correlation Using Pandas</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>df = pd.DataFrame({
+    'Study Hours': study_hours,
+    'Marks': marks
+})
+
+df.corr()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Explanation:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li><code>df.corr()</code> computes Pearson correlation</li>
+                            <li>Common in EDA pipelines</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Statistics eBook. Created by <a href="https://github.com/Aman-0402">Aman</a>.</p>
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../contents.html">Contents</a>
+                    <a href="../resources/glossary.html">Glossary</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+</body>
+</html>
