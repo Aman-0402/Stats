@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4: Measures of Central Tendency - Statistics eBook</title>
+    <meta name="description" content="Learn about measures of central tendency including mean, median, mode, weighted mean, and combined mean with properties, applications, and Python implementation.">
+    <meta name="author" content="Aman">
+    <meta name="keywords" content="mean, median, mode, weighted mean, combined mean, central tendency, statistics, descriptive statistics, python">
+    
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/chapter-content.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="book-title">Statistics</h1>
+                <nav class="header-nav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="../contents.html" class="nav-link">Contents</a>
+                    <a href="../resources/glossary.html" class="nav-link">Glossary</a>
+                    <a href="../resources/formulas.html" class="nav-link">Formulas</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="chapter-content">
+                <!-- Chapter Header -->
+                <div class="page-header">
+                    <span class="badge">Phase 2: Descriptive Analysis</span>
+                    <h1 class="page-title">Chapter 4: Measures of Central Tendency</h1>
+                    <p class="page-subtitle">Understanding the central or typical values that represent your data</p>
+                </div>
+
+                <!-- Chapter Topics -->
+                <div class="chapter-topics-section">
+                    <h3>📋 Topics Covered in This Chapter</h3>
+                    <ul class="chapter-topics-list">
+                        <li>Mean, Median, and Mode</li>
+                        <li>Properties and applications</li>
+                        <li>Weighted mean and combined mean</li>
+                        <li>Python implementation with NumPy and Pandas</li>
+                    </ul>
+                </div>
+
+                <!-- Section 1: Introduction -->
+                <div class="section" id="intro-central-tendency">
+                    <h2>What are Measures of Central Tendency?</h2>
+                    
+                    <p>Measures of Central Tendency are statistical values that represent the central or typical value of a dataset.</p>
+                    
+                    <div class="highlight-box success">
+                        <p><strong>They answer a simple but powerful question:</strong></p>
+                        <p class="text-center font-bold mt-sm">"What is the most representative value of the data?"</p>
+                    </div>
+
+                    <p class="mt-md">The three most important measures are:</p>
+                    <ul class="icon-list bullet">
+                        <li>Mean</li>
+                        <li>Median</li>
+                        <li>Mode</li>
+                    </ul>
+
+                    <h3>Why are They Important?</h3>
+
+                    <div class="highlight-box info">
+                        <p><strong>📘 In Statistics:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Summarize large datasets using a single value</li>
+                            <li>Foundation of descriptive statistics</li>
+                            <li>Used in almost every statistical analysis</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📊 In Data Science:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>First step of Exploratory Data Analysis (EDA)</li>
+                            <li>Helps understand data distribution</li>
+                            <li>Assists in feature understanding</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🤖 In AI / Machine Learning:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Used in data preprocessing</li>
+                            <li>Handling missing values</li>
+                            <li>Understanding data imbalance and skewness</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 2: Core Concepts -->
+                <div class="section" id="core-concepts">
+                    <h2>Core Concepts & Definitions</h2>
+
+                    <div class="viz-comparison-grid">
+                        <div class="chart-type-card">
+                            <span class="chart-type-icon">📊</span>
+                            <h4>Mean (Arithmetic Mean)</h4>
+                            <p><strong>Definition:</strong> Average of all values</p>
+                            <div class="formula-box mt-sm">
+                                <div class="formula">Mean = Σx / n</div>
+                            </div>
+                            <ul class="icon-list bullet mt-md">
+                                <li>Uses all observations</li>
+                                <li>Sensitive to outliers</li>
+                            </ul>
+                        </div>
+
+                        <div class="chart-type-card">
+                            <span class="chart-type-icon">📈</span>
+                            <h4>Median</h4>
+                            <p><strong>Definition:</strong> Middle value when data is ordered</p>
+                            <ul class="icon-list bullet mt-sm">
+                                <li>If odd number of values → middle value</li>
+                                <li>If even number → average of two middle values</li>
+                                <li>Not affected by extreme values</li>
+                            </ul>
+                        </div>
+
+                        <div class="chart-type-card">
+                            <span class="chart-type-icon">🎯</span>
+                            <h4>Mode</h4>
+                            <p><strong>Definition:</strong> Most frequently occurring value</p>
+                            <p class="mt-sm"><strong>Can be:</strong></p>
+                            <ul class="icon-list bullet">
+                                <li>Unimodal (one mode)</li>
+                                <li>Bimodal (two modes)</li>
+                                <li>Multimodal</li>
+                            </ul>
+                            <p class="mt-sm">✅ Useful for categorical data</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Real-Life Examples -->
+                <div class="section" id="real-life-examples">
+                    <h2>Real-Life / Practical Examples</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">🎓 Example 1: Student Marks</div>
+                        <p><strong>Marks scored by 5 students:</strong> 40, 50, 55, 60, 90</p>
+
+                        <ul class="icon-list bullet mt-md">
+                            <li><strong>Mean:</strong> Overall performance</li>
+                            <li><strong>Median:</strong> Typical student performance</li>
+                            <li><strong>Mode:</strong> Most common score</li>
+                        </ul>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">🏪 Example 2: Salaries in a Company</div>
+                        <p><strong>Salaries:</strong> 25k, 30k, 32k, 35k, 40k, 5 lakh</p>
+
+                        <ul class="icon-list bullet mt-md">
+                            <li>Mean is misleading due to very high salary</li>
+                            <li>Median shows true central tendency</li>
+                        </ul>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center font-bold">📌 This is why median is preferred for income data</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Mathematical Examples -->
+                <div class="section" id="mathematical-examples">
+                    <h2>Mathematical / Numerical Examples</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">🔢 Example 1: Mean</div>
+                        <p><strong>Data:</strong> 10, 20, 30, 40, 50</p>
+
+                        <div class="formula-box mt-md">
+                            <p>Mean = (10 + 20 + 30 + 40 + 50) / 5</p>
+                            <p>Mean = 150 / 5</p>
+                            <div class="formula mt-sm">Mean = 30</div>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">🔢 Example 2: Median</div>
+                        
+                        <p><strong>Case 1: Odd number of values</strong></p>
+                        <p class="mt-sm">Data (already ordered): 10, 20, 30, 40, 50</p>
+                        <ul class="icon-list bullet mt-sm">
+                            <li>Middle value = 30</li>
+                            <li><strong>Median = 30</strong></li>
+                        </ul>
+
+                        <p class="mt-md"><strong>Case 2: Even number of values</strong></p>
+                        <p class="mt-sm">Data: 10, 20, 30, 40</p>
+                        <div class="formula-box mt-sm">
+                            <p>Median = (20 + 30) / 2</p>
+                            <div class="formula">Median = 25</div>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">🔢 Example 3: Mode</div>
+                        <p><strong>Data:</strong> 2, 3, 3, 4, 5</p>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center"><strong>Mode = 3</strong> (appears most frequently)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5: Comparison Table -->
+                <div class="section" id="comparison-table">
+                    <h2>Comparison Table</h2>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Measure</th>
+                                <th>Based On</th>
+                                <th>Affected by Outliers?</th>
+                                <th>Best Used When</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Mean</strong></td>
+                                <td>All values</td>
+                                <td>✅ Yes</td>
+                                <td>Symmetric data</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Median</strong></td>
+                                <td>Middle value</td>
+                                <td>❌ No</td>
+                                <td>Skewed data</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mode</strong></td>
+                                <td>Frequency</td>
+                                <td>❌ No</td>
+                                <td>Categorical data</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 6: Python Implementation -->
+                <div class="section" id="python-implementation">
+                    <h2>Python Implementation (Google Colab)</h2>
+
+                    <h3>📦 Step 1: Import Libraries</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📊 Using NumPy</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>data = [10, 20, 30, 40, 50]
+
+mean_value = np.mean(data)
+median_value = np.median(data)
+
+mean_value, median_value</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Explanation:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li><code>np.mean()</code> → arithmetic mean</li>
+                            <li><code>np.median()</code> → median value</li>
+                        </ul>
+                    </div>
+
+                    <h3>📊 Using Pandas</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>data = pd.Series([10, 20, 30, 40, 50, 50])
+
+data.mean(), data.median(), data.mode()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Explanation:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li><code>data.mode()</code> can return multiple values</li>
+                            <li>Pandas handles real datasets efficiently</li>
+                        </ul>
+                    </div>
+
+                    <h3>📈 Visual Comparison</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>plt.hist(data, bins=5)
+plt.axvline(data.mean(), linestyle='--', label='Mean')
+plt.axvline(data.median(), linestyle='-', label='Median')
+plt.legend()
+plt.title("Mean vs Median Visualization")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>📌 Helps visualize skewness</strong></p>
+                    </div>
+                </div>
+
+                <!-- Section 7: Properties -->
+                <div class="section" id="properties">
+                    <h2>Properties of Mean, Median, and Mode</h2>
+
+                    <h3>Properties of Arithmetic Mean</h3>
+
+                    <div class="two-column-grid">
+                        <div class="definition-box">
+                            <div class="term">Mathematical Properties</div>
+                            <div class="meaning">
+                                <ul class="icon-list check">
+                                    <li>Sum of deviations from mean = 0<br>Σ(x − x̄) = 0</li>
+                                    <li>Mean is rigidly defined</li>
+                                    <li>Uses all observations</li>
+                                    <li>Least affected by sampling fluctuations</li>
+                                    <li>Suitable for algebraic manipulation</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="definition-box">
+                            <div class="term">Limitations</div>
+                            <div class="meaning">
+                                <ul class="icon-list cross">
+                                    <li>Highly affected by outliers</li>
+                                    <li>Not suitable for open-ended classes</li>
+                                    <li>Cannot be calculated for qualitative data</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Properties of Median</h3>
+
+                    <div class="two-column-grid">
+                        <div class="definition-box">
+                            <div class="term">Statistical Properties</div>
+                            <div class="meaning">
+                                <ul class="icon-list check">
+                                    <li>Divides data into two equal halves</li>
+                                    <li>Positional measure</li>
+                                    <li>Not affected by extreme values</li>
+                                    <li>Can be used for open-ended distributions</li>
+                                    <li>Suitable for skewed data</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="definition-box">
+                            <div class="term">Limitations</div>
+                            <div class="meaning">
+                                <ul class="icon-list cross">
+                                    <li>Not based on all values</li>
+                                    <li>Cannot be used for further algebraic analysis</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Properties of Mode</h3>
+
+                    <div class="two-column-grid">
+                        <div class="definition-box">
+                            <div class="term">Behavioral Properties</div>
+                            <div class="meaning">
+                                <ul class="icon-list check">
+                                    <li>Value with maximum frequency</li>
+                                    <li>Can be unimodal, bimodal, or multimodal</li>
+                                    <li>Only measure applicable to nominal data</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="definition-box">
+                            <div class="term">Limitations</div>
+                            <div class="meaning">
+                                <ul class="icon-list cross">
+                                    <li>May not exist</li>
+                                    <li>Not stable</li>
+                                    <li>Ignores most data values</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 8: Mathematical Properties Example -->
+                <div class="section" id="property-example">
+                    <h2>Mathematical Properties (With Explanation)</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">🔢 Mean Property Example</div>
+                        
+                        <p><strong>Data:</strong> 10, 20, 30</p>
+                        <p class="mt-sm"><strong>Mean = 20</strong></p>
+
+                        <p class="mt-md"><strong>Deviations:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>(10 − 20) = −10</li>
+                            <li>(20 − 20) = 0</li>
+                            <li>(30 − 20) = +10</li>
+                        </ul>
+
+                        <div class="formula-box mt-md">
+                            <p>Σ(x − x̄) = −10 + 0 + 10 = 0</p>
+                        </div>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center font-bold">📌 This property is widely used in variance & standard deviation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 9: Python Property Demonstration -->
+                <div class="section" id="python-properties">
+                    <h2>Python Demonstration (Google Colab)</h2>
+
+                    <h3>📦 Import Libraries</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+import pandas as pd</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📊 Mean Property Verification</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>data = np.array([10, 20, 30])
+mean = np.mean(data)
+
+np.sum(data - mean)</code></pre>
+                        </div>
+                        <div class="code-output">
+0.0
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>✔ Confirms theoretical property</strong></p>
+                    </div>
+
+                    <h3>📊 Median vs Mean in Skewed Data</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>income = [20000, 25000, 30000, 35000, 1000000]
+
+np.mean(income), np.median(income)</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Explanation:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>Mean is inflated</li>
+                            <li>Median reflects reality</li>
+                        </ul>
+                    </div>
+
+                    <h3>📊 Mode for Categorical Data</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>survey = pd.Series(["Python", "Java", "Python", "C++", "Python"])
+
+survey.mode()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Most preferred option returned</strong></p>
+                    </div>
+                </div>
+
+                <!-- Section 10: Quick Decision Table -->
+                <div class="section" id="decision-table">
+                    <h2>Quick Decision Table</h2>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Situation</th>
+                                <th>Best Measure</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Normal distribution</td>
+                                <td><strong>Mean</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Skewed distribution</td>
+                                <td><strong>Median</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Categorical data</td>
+                                <td><strong>Mode</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Outliers present</td>
+                                <td><strong>Median</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Most common item</td>
+                                <td><strong>Mode</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 11: Weighted Mean and Combined Mean -->
+                <div class="section" id="weighted-combined-mean">
+                    <h2>Weighted Mean and Combined Mean</h2>
+
+                    <h3>What are Weighted Mean and Combined Mean?</h3>
+
+                    <div class="two-column-grid">
+                        <div class="definition-box">
+                            <div class="term">📊 Weighted Mean</div>
+                            <div class="meaning">
+                                <p>An average where each value does not contribute equally. Some values are more important, so they are given weights.</p>
+                            </div>
+                        </div>
+
+                        <div class="definition-box">
+                            <div class="term">🔗 Combined Mean</div>
+                            <div class="meaning">
+                                <p>An overall mean calculated by combining two or more groups having different sizes and different means.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box success">
+                        <p class="text-center font-bold">📌 Both are extensions of the arithmetic mean and are extremely important in real-life data analysis</p>
+                    </div>
+
+                    <h3>Why are They Important?</h3>
+
+                    <div class="highlight-box info">
+                        <p><strong>📘 In Statistics:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Used when observations have different importance</li>
+                            <li>Frequently asked in competitive exams</li>
+                            <li>Core topic in averages</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📊 In Data Science:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Used in performance metrics</li>
+                            <li>Handling group-wise averages</li>
+                            <li>Feature engineering</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🤖 In AI / Machine Learning:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Computing weighted losses</li>
+                            <li>Dataset-level statistics</li>
+                            <li>Evaluation metrics</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 12: Weighted Mean Concepts -->
+                <div class="section" id="weighted-mean-concepts">
+                    <h2>Core Concepts & Definitions</h2>
+
+                    <h3>🔹 Weighted Mean</h3>
+
+                    <ul class="icon-list bullet">
+                        <li>Each value has a weight</li>
+                        <li>Larger weight → higher influence</li>
+                    </ul>
+
+                    <div class="formula-box mt-md">
+                        <strong>Formula:</strong>
+                        <div class="math-formula mt-sm">
+                            x̄w = Σ(wᵢxᵢ) / Σwᵢ
+                        </div>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        <strong>Where:</strong><br>
+                        • xᵢ = value<br>
+                        • wᵢ = weight
+                    </div>
+
+                    <h3 class="mt-lg">🔹 Combined Mean</h3>
+
+                    <p><strong>Used when:</strong></p>
+                    <ul class="icon-list bullet">
+                        <li>Mean of group 1 is known</li>
+                        <li>Mean of group 2 is known</li>
+                        <li>Sizes of both groups are known</li>
+                    </ul>
+
+                    <div class="formula-box mt-md">
+                        <strong>Formula:</strong>
+                        <div class="math-formula mt-sm">
+                            x̄ₒₒₘbᵢₙₑd = (n₁x̄₁ + n₂x̄₂) / (n₁ + n₂)
+                        </div>
+                    </div>
+
+                    <!-- Weighted Mean Image -->
+                    <div class="example-box mt-lg">
+                        <div class="example-title">📊 Weighted Mean Formula Visualization</div>
+                        <img src="../images/Weighted Mean.png" alt="Weighted Mean Formula" style="width: 100%; max-width: 600px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="example-box mt-md">
+                        <div class="example-title">📊 Weighted Mean Detailed Explanation</div>
+                        <img src="../images/Weighted Mean 1.png" alt="Weighted Mean Explanation" style="width: 100%; max-width: 600px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <!-- Combined Mean Image -->
+                    <div class="example-box mt-lg">
+                        <div class="example-title">🔗 Combined Mean Formula</div>
+                        <img src="../images/Combined Mean.png" alt="Combined Mean Formula" style="width: 100%; max-width: 600px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+
+                <!-- Section 13: Weighted Mean Examples -->
+                <div class="section" id="weighted-mean-examples">
+                    <h2>Real-Life / Practical Examples</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">🎓 Example 1: Final Exam Result (Weighted Mean)</div>
+                        <p><strong>A student's marks:</strong></p>
+
+                        <table class="comparison-table mt-md">
+                            <thead>
+                                <tr>
+                                    <th>Component</th>
+                                    <th>Marks</th>
+                                    <th>Weight</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Assignment</td>
+                                    <td>80</td>
+                                    <td>20%</td>
+                                </tr>
+                                <tr>
+                                    <td>Midterm</td>
+                                    <td>70</td>
+                                    <td>30%</td>
+                                </tr>
+                                <tr>
+                                    <td>Final Exam</td>
+                                    <td>90</td>
+                                    <td>50%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center">👉 Final score must consider importance of exams</p>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">🏫 Example 2: Two Classes' Average Marks (Combined Mean)</div>
+
+                        <table class="comparison-table mt-md">
+                            <thead>
+                                <tr>
+                                    <th>Class</th>
+                                    <th>Students</th>
+                                    <th>Average Marks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>A</td>
+                                    <td>30</td>
+                                    <td>65</td>
+                                </tr>
+                                <tr>
+                                    <td>B</td>
+                                    <td>20</td>
+                                    <td>75</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="highlight-box success mt-md">
+                            <p><strong>👉 Overall school average ≠ simple average</strong></p>
+                            <p class="mt-sm">👉 Must consider number of students</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 14: Mathematical Examples with Images -->
+                <div class="section" id="weighted-calculations">
+                    <h2>Mathematical / Numerical Examples</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">🔢 Example 1: Weighted Mean (Step-by-Step)</div>
+                        <p><strong>Using exam data:</strong></p>
+
+                        <div class="formula-box mt-md">
+                            <p>x̄w = [80(0.2) + 70(0.3) + 90(0.5)] / (0.2 + 0.3 + 0.5)</p>
+                            <p>x̄w = (16 + 21 + 45) / 1</p>
+                            <p>x̄w = 82</p>
+                        </div>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center font-bold">✅ Final Score = 82</p>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">🔢 Example 2: Combined Mean (Step-by-Step)</div>
+                        
+                        <p><strong>Given:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>n₁ = 30, x̄₁ = 65</li>
+                            <li>n₂ = 20, x̄₂ = 75</li>
+                        </ul>
+
+                        <div class="formula-box mt-md">
+                            <p>x̄ₒₒₘbᵢₙₑd = [30(65) + 20(75)] / 50</p>
+                            <p>x̄ₒₒₘbᵢₙₑd = (1950 + 1500) / 50</p>
+                            <p>x̄ₒₒₘbᵢₙₑd = 3450 / 50</p>
+                            <p>x̄ₒₒₘbᵢₙₑd = 69</p>
+                        </div>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center font-bold">✅ Combined Mean = 69</p>
+                        </div>
+
+                        <!-- Combined Mean Step-by-Step Image -->
+                        <div class="mt-lg">
+                            <img src="../images/Example 2 Combined Mean (Step-by-Step).png" alt="Combined Mean Step-by-Step Calculation" style="width: 100%; max-width: 700px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 15: Weighted vs Combined Mean -->
+                <div class="section" id="weighted-vs-combined">
+                    <h2>Weighted vs Combined Mean</h2>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Aspect</th>
+                                <th>Weighted Mean</th>
+                                <th>Combined Mean</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Uses weights</strong></td>
+                                <td>✅ Yes</td>
+                                <td>❌ No</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Uses group sizes</strong></td>
+                                <td>❌ No</td>
+                                <td>✅ Yes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Application</strong></td>
+                                <td>Importance-based</td>
+                                <td>Group merging</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Exam importance</strong></td>
+                                <td>Very High</td>
+                                <td>Very High</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 16: Python Implementation - Weighted Mean -->
+                <div class="section" id="python-weighted-mean">
+                    <h2>Python Implementation (Google Colab)</h2>
+
+                    <h3>📦 Step 1: Import Libraries</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+import pandas as pd</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📊 Weighted Mean using NumPy</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>marks = np.array([80, 70, 90])
+weights = np.array([0.2, 0.3, 0.5])
+
+weighted_mean = np.average(marks, weights=weights)
+weighted_mean</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Explanation:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li><code>np.average()</code> supports weights</li>
+                            <li>Automatically applies formula</li>
+                        </ul>
+                    </div>
+
+                    <h3>📊 Weighted Mean using Pandas</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>df = pd.DataFrame({
+    'Marks': [80, 70, 90],
+    'Weights': [0.2, 0.3, 0.5]
+})
+
+(df['Marks'] * df['Weights']).sum() / df['Weights'].sum()</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📊 Combined Mean using Python</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>n1, mean1 = 30, 65
+n2, mean2 = 20, 75
+
+combined_mean = (n1*mean1 + n2*mean2) / (n1 + n2)
+combined_mean</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Simple and exam-friendly logic</strong></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Statistics eBook. Created by <a href="https://github.com/Aman-0402">Aman</a>.</p>
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../contents.html">Contents</a>
+                    <a href="../resources/glossary.html">Glossary</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+</body>
+</html>
