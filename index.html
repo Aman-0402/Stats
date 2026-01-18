@@ -103,6 +103,14 @@
             animation: pixelFadeIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
 
+        .pixel.red {
+            background: linear-gradient(135deg, #ff4444 0%, #ff6666 100%);
+            box-shadow: 
+                0 0 8px rgba(255, 68, 68, 0.6),
+                0 0 16px rgba(255, 68, 68, 0.3),
+                inset 0 0 4px rgba(255, 255, 255, 0.3);
+        }
+
         .pixel::before {
             content: '';
             position: absolute;
@@ -775,8 +783,18 @@
             const pixels = [];
             let pixelIndex = 0;
 
+            // Check which characters should be red (for "AMAN")
+            const textUpper = text.toUpperCase();
+            const redWord = 'AMAN';
+            let charPosition = 0;
+
             chars.forEach((char, charIndex) => {
                 const charData = PIXEL_FONT[char] || PIXEL_FONT[' '];
+                
+                // Check if this character is part of "AMAN"
+                const isPartOfAman = textUpper.includes(redWord) && 
+                    textUpper.indexOf(redWord) <= charIndex && 
+                    charIndex < textUpper.indexOf(redWord) + redWord.length;
                 
                 charData.forEach((row, rowIndex) => {
                     row.forEach((pixel, colIndex) => {
@@ -785,7 +803,8 @@
                             pixels.push({
                                 x: charIndex * 6 + colIndex,
                                 y: rowIndex,
-                                delay
+                                delay,
+                                isRed: isPartOfAman
                             });
                             pixelIndex++;
                         }
@@ -804,6 +823,9 @@
             pixels.forEach((pixel) => {
                 const pixelDiv = document.createElement('div');
                 pixelDiv.className = 'pixel';
+                if (pixel.isRed) {
+                    pixelDiv.classList.add('red');
+                }
                 pixelDiv.style.gridColumn = pixel.x + 1;
                 pixelDiv.style.gridRow = pixel.y + 1;
                 pixelDiv.style.animationDelay = `${pixel.delay}s`;
