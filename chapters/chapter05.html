@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5: Measures of Dispersion - Statistics eBook</title>
+    <meta name="description" content="Learn about measures of dispersion including range, variance, standard deviation, interquartile range (IQR), and coefficient of variation with Python implementation.">
+    <meta name="author" content="Aman">
+    <meta name="keywords" content="dispersion, variance, standard deviation, range, IQR, coefficient of variation, statistics, python">
+    
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/chapter-content.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="book-title">Statistics</h1>
+                <nav class="header-nav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="../contents.html" class="nav-link">Contents</a>
+                    <a href="../resources/glossary.html" class="nav-link">Glossary</a>
+                    <a href="../resources/formulas.html" class="nav-link">Formulas</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="chapter-content">
+                <!-- Chapter Header -->
+                <div class="page-header">
+                    <span class="badge">Phase 2: Descriptive Analysis</span>
+                    <h1 class="page-title">Chapter 5: Measures of Dispersion</h1>
+                    <p class="page-subtitle">Understanding how spread out or scattered data values are around the center</p>
+                </div>
+
+                <!-- Chapter Topics -->
+                <div class="chapter-topics-section">
+                    <h3>📋 Topics Covered in This Chapter</h3>
+                    <ul class="chapter-topics-list">
+                        <li>Range, Variance, and Standard Deviation</li>
+                        <li>Interquartile Range (IQR)</li>
+                        <li>Coefficient of Variation (CV)</li>
+                        <li>Python implementation with NumPy and Pandas</li>
+                    </ul>
+                </div>
+
+                <!-- Section 1: Introduction -->
+                <div class="section" id="intro-dispersion">
+                    <h2>What are Measures of Dispersion?</h2>
+                    
+                    <p>Measures of Dispersion describe how spread out or scattered the data values are around a central value (mean/median).</p>
+                    
+                    <div class="highlight-box success">
+                        <p><strong>While measures of central tendency tell us where the center is,</strong></p>
+                        <p class="text-center font-bold mt-sm">dispersion tells us how far data points move away from that center.</p>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        📌 Two datasets can have the same mean but very different variability.
+                    </div>
+
+                    <h3>Why are Measures of Dispersion Important?</h3>
+
+                    <div class="highlight-box info">
+                        <p><strong>📘 In Statistics:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Measure consistency, stability, and reliability of data</li>
+                            <li>Essential for comparing datasets with same averages</li>
+                            <li>Core part of descriptive statistics</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📊 In Data Science:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Helps understand data variability</li>
+                            <li>Required for feature scaling</li>
+                            <li>Identifies noisy vs stable features</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🤖 In AI / Machine Learning:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Used in standardization (Z-score)</li>
+                            <li>Impacts model convergence</li>
+                            <li>Detects outliers and variance inflation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 2: Core Concepts -->
+                <div class="section" id="core-concepts">
+                    <h2>Core Concepts & Definitions</h2>
+
+                    <h3>🔹 Dispersion</h3>
+                    <ul class="icon-list bullet">
+                        <li>Degree to which data values spread around the center</li>
+                        <li>Low dispersion → data clustered tightly</li>
+                        <li>High dispersion → data widely scattered</li>
+                    </ul>
+
+                    <h3>🔹 Range</h3>
+                    <ul class="icon-list bullet">
+                        <li>Simplest measure of dispersion</li>
+                        <li>Difference between maximum and minimum values</li>
+                    </ul>
+
+                    <div class="formula-box">
+                        <div class="formula">Range = Maximum − Minimum</div>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        📌 Uses only two values
+                    </div>
+
+                    <h3>🔹 Variance</h3>
+                    <ul class="icon-list bullet">
+                        <li>Average of squared deviations from the mean</li>
+                        <li>Measures overall variability</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <div class="example-title">Population Variance</div>
+                        <img src="../images/Population Variance.png" alt="Population Variance Formula" style="width: 100%; max-width: 500px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">Sample Variance</div>
+                        <img src="../images/Sample Variance.png" alt="Sample Variance Formula" style="width: 100%; max-width: 500px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="note-box mt-md">
+                        📌 Squaring avoids negative deviations
+                    </div>
+
+                    <h3>🔹 Standard Deviation</h3>
+                    <ul class="icon-list bullet">
+                        <li>Square root of variance</li>
+                        <li>Expressed in same units as data</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <div class="example-title">Standard Deviation Formula</div>
+                        <img src="../images/Standard Deviation.png" alt="Standard Deviation Formula" style="width: 100%; max-width: 500px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="note-box mt-md">
+                        📌 Most widely used dispersion measure
+                    </div>
+                </div>
+
+                <!-- Section 3: Real-Life Examples -->
+                <div class="section" id="real-life-examples">
+                    <h2>Real-Life / Practical Examples</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">🎓 Example 1: Student Marks</div>
+                        
+                        <p><strong>Class A:</strong> 50, 52, 53, 54, 55</p>
+                        <p><strong>Class B:</strong> 30, 45, 55, 70, 90</p>
+
+                        <ul class="icon-list bullet mt-md">
+                            <li>Both may have similar mean</li>
+                            <li>Class B has higher dispersion</li>
+                        </ul>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">🏪 Example 2: Product Quality Control</div>
+                        <ul class="icon-list bullet">
+                            <li>Low SD → consistent quality</li>
+                            <li>High SD → defective products likely</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 4: Mathematical Examples -->
+                <div class="section" id="mathematical-examples">
+                    <h2>Mathematical / Numerical Examples</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">🔢 Example Dataset: 2, 4, 6, 8, 10</div>
+
+                        <h4 class="mt-md">🔹 Step 1: Mean</h4>
+                        <div class="formula-box">
+                            <p>x̄ = (2 + 4 + 6 + 8 + 10) / 5 = 6</p>
+                        </div>
+
+                        <h4 class="mt-md">🔹 Step 2: Range</h4>
+                        <div class="formula-box">
+                            <p>Range = 10 − 2 = 8</p>
+                        </div>
+
+                        <h4 class="mt-md">🔹 Step 3: Variance (Sample)</h4>
+
+                        <table class="comparison-table mt-sm">
+                            <thead>
+                                <tr>
+                                    <th>x</th>
+                                    <th>x − mean</th>
+                                    <th>(x − mean)²</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2</td>
+                                    <td>-4</td>
+                                    <td>16</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>-2</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>2</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>4</td>
+                                    <td>16</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="formula-box mt-md">
+                            <p>s² = (16 + 4 + 0 + 4 + 16) / (5 - 1)</p>
+                            <p>s² = 40 / 4</p>
+                            <div class="formula">s² = 10</div>
+                        </div>
+
+                        <h4 class="mt-md">🔹 Step 4: Standard Deviation</h4>
+                        <div class="formula-box">
+                            <div class="formula">s = √10 ≈ 3.16</div>
+                        </div>
+
+                        <div class="highlight-box success mt-md">
+                            <p><strong>📌 Interpretation:</strong></p>
+                            <p class="mt-sm">Data points deviate approximately 3 units from mean on average.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5: Comparison Table -->
+                <div class="section" id="comparison-table">
+                    <h2>Comparison Table</h2>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Measure</th>
+                                <th>Uses All Data?</th>
+                                <th>Unit</th>
+                                <th>Sensitivity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Range</strong></td>
+                                <td>❌ No</td>
+                                <td>Same as data</td>
+                                <td>Highly sensitive</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Variance</strong></td>
+                                <td>✅ Yes</td>
+                                <td>Squared units</td>
+                                <td>Very sensitive</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Std Deviation</strong></td>
+                                <td>✅ Yes</td>
+                                <td>Same as data</td>
+                                <td>Moderate</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 6: Python Implementation -->
+                <div class="section" id="python-implementation">
+                    <h2>Python Implementation (Google Colab)</h2>
+
+                    <h3>📦 Step 1: Import Libraries</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📊 Dataset</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>data = np.array([2, 4, 6, 8, 10])</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>🔹 Range</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>data.max() - data.min()</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>🔹 Variance</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>np.var(data)        # Population variance
+np.var(data, ddof=1)  # Sample variance</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Explanation:</strong></p>
+                        <p><code>ddof=1</code> applies n−1 correction for sample variance</p>
+                    </div>
+
+                    <h3>🔹 Standard Deviation</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>np.std(data)
+np.std(data, ddof=1)</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📊 Visualization</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>plt.hist(data, bins=5)
+plt.axvline(np.mean(data), linestyle='--', label='Mean')
+plt.legend()
+plt.title("Data Spread Visualization")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 7: Interquartile Range (IQR) -->
+                <div class="section" id="iqr">
+                    <h2>Interquartile Range (IQR)</h2>
+
+                    <h3>What is Interquartile Range (IQR)?</h3>
+
+                    <p>The Interquartile Range (IQR) is a measure of dispersion that shows how spread out the middle 50% of the data is.</p>
+                    <p class="mt-sm">It focuses only on the central portion of the dataset, ignoring extreme values (outliers).</p>
+
+                    <div class="formula-box mt-md">
+                        <div class="formula">IQR = Q3 − Q1</div>
+                    </div>
+
+                    <div class="example-box mt-md">
+                        <div class="example-title">Interquartile Range Visualization</div>
+                        <img src="../images/Interquartile Range.png" alt="Interquartile Range" style="width: 100%; max-width: 600px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="note-box mt-md">
+                        <strong>Where:</strong><br>
+                        • Q1 = First quartile (25th percentile)<br>
+                        • Q3 = Third quartile (75th percentile)
+                    </div>
+
+                    <h3>Why is IQR Important?</h3>
+
+                    <div class="highlight-box info">
+                        <p><strong>📘 In Statistics:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Robust measure of spread</li>
+                            <li>Less affected by outliers than range or variance</li>
+                            <li>Commonly used with boxplots</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📊 In Data Science:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Outlier detection</li>
+                            <li>Feature spread analysis</li>
+                            <li>Robust EDA for skewed data</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🤖 In AI / Machine Learning:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Removing extreme values before training</li>
+                            <li>Improving model stability</li>
+                            <li>Used in robust preprocessing pipelines</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 8: IQR Core Concepts -->
+                <div class="section" id="iqr-concepts">
+                    <h2>Core Concepts & Definitions</h2>
+
+                    <h3>🔹 Quartiles</h3>
+                    <ul class="icon-list bullet">
+                        <li>Q1 (First Quartile) → 25% data below this value</li>
+                        <li>Q2 (Second Quartile / Median) → 50% data below</li>
+                        <li>Q3 (Third Quartile) → 75% data below</li>
+                    </ul>
+
+                    <h3>🔹 Interquartile Range (IQR)</h3>
+                    <ul class="icon-list bullet">
+                        <li>Measures spread of middle 50%</li>
+                        <li>Formula: IQR = Q3 − Q1</li>
+                    </ul>
+
+                    <h3>🔹 Outlier Detection (IQR Method)</h3>
+
+                    <div class="two-column-grid">
+                        <div class="definition-box">
+                            <div class="term">Lower Bound</div>
+                            <div class="meaning">
+                                <div class="formula-box">Q1 − 1.5×IQR</div>
+                            </div>
+                        </div>
+
+                        <div class="definition-box">
+                            <div class="term">Upper Bound</div>
+                            <div class="meaning">
+                                <div class="formula-box">Q3 + 1.5×IQR</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        Values outside these bounds are considered outliers.
+                    </div>
+                </div>
+
+                <!-- Section 9: IQR Examples -->
+                <div class="section" id="iqr-examples">
+                    <h2>Real-Life / Practical Examples</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">🎓 Example 1: Student Marks</div>
+                        <p><strong>Marks:</strong> 35, 40, 45, 50, 55, 60, 90</p>
+
+                        <ul class="icon-list bullet mt-md">
+                            <li>Extreme high value (90) exists</li>
+                            <li>Mean & SD are affected</li>
+                            <li>IQR focuses on typical students</li>
+                        </ul>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">🏪 Example 2: House Prices</div>
+                        <ul class="icon-list bullet">
+                            <li>A few luxury houses skew the data</li>
+                            <li>IQR reflects normal market range</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 10: IQR Mathematical Example -->
+                <div class="section" id="iqr-calculation">
+                    <h2>Mathematical / Numerical Example (Step-by-Step)</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">🔢 Given Data (Sorted): 10, 12, 14, 16, 18, 20, 22, 24</div>
+
+                        <h4 class="mt-md">🔹 Step 1: Find Median (Q2)</h4>
+                        <p>Middle values = 16 and 18</p>
+                        <div class="formula-box mt-sm">
+                            <p>Q2 = (16 + 18) / 2 = 17</p>
+                        </div>
+
+                        <h4 class="mt-md">🔹 Step 2: Find Q1</h4>
+                        <p>Lower half: 10, 12, 14, 16</p>
+                        <div class="formula-box mt-sm">
+                            <p>Q1 = (12 + 14) / 2 = 13</p>
+                        </div>
+
+                        <h4 class="mt-md">🔹 Step 3: Find Q3</h4>
+                        <p>Upper half: 18, 20, 22, 24</p>
+                        <div class="formula-box mt-sm">
+                            <p>Q3 = (20 + 22) / 2 = 21</p>
+                        </div>
+
+                        <h4 class="mt-md">🔹 Step 4: Compute IQR</h4>
+                        <div class="formula-box">
+                            <div class="formula">IQR = 21 − 13 = 8</div>
+                        </div>
+
+                        <h4 class="mt-md">🔹 Step 5: Outlier Limits</h4>
+                        <ul class="icon-list bullet">
+                            <li>Lower = 13 − 1.5(8) = 1</li>
+                            <li>Upper = 21 + 1.5(8) = 33</li>
+                        </ul>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center font-bold">📌 Any value &lt; 1 or &gt; 33 is an outlier</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 11: IQR Comparison Table -->
+                <div class="section" id="iqr-comparison">
+                    <h2>Comparison with Other Dispersion Measures</h2>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Measure</th>
+                                <th>Uses Middle 50%</th>
+                                <th>Outlier Resistant</th>
+                                <th>Best For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Range</strong></td>
+                                <td>❌</td>
+                                <td>❌</td>
+                                <td>Quick spread</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Variance</strong></td>
+                                <td>❌</td>
+                                <td>❌</td>
+                                <td>Mathematical analysis</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Std Dev</strong></td>
+                                <td>❌</td>
+                                <td>❌</td>
+                                <td>Normal data</td>
+                            </tr>
+                            <tr>
+                                <td><strong>IQR</strong></td>
+                                <td>✅</td>
+                                <td>✅</td>
+                                <td>Skewed data</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 12: IQR Python Implementation -->
+                <div class="section" id="iqr-python">
+                    <h2>Python Implementation (Google Colab)</h2>
+
+                    <h3>📦 Step 1: Import Libraries</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📊 Dataset</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>data = np.array([10, 12, 14, 16, 18, 20, 22, 24])</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>🔹 Calculate Quartiles & IQR (NumPy)</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>Q1 = np.percentile(data, 25)
+Q3 = np.percentile(data, 75)
+
+IQR = Q3 - Q1
+
+Q1, Q3, IQR</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>🔹 Outlier Detection</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+
+outliers = data[(data < lower_bound) | (data > upper_bound)]
+outliers</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📦 Boxplot Visualization</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>plt.boxplot(data)
+plt.title("Boxplot showing IQR")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Explanation:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>Box → Q1 to Q3</li>
+                            <li>Line → Median</li>
+                            <li>Whiskers → Data range (excluding outliers)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 13: Coefficient of Variation -->
+                <div class="section" id="coefficient-variation">
+                    <h2>Coefficient of Variation (CV)</h2>
+
+                    <h3>What is the Coefficient of Variation?</h3>
+
+                    <p>The Coefficient of Variation (CV) is a relative measure of dispersion that shows how much variability exists relative to the mean.</p>
+                    <p class="mt-sm">Instead of telling spread in absolute units (like SD), CV tells spread in percentage terms.</p>
+
+                    <div class="formula-box mt-md">
+                        <div class="formula">CV = (Standard Deviation / Mean) × 100</div>
+                    </div>
+
+                    <h3>Why is CV Important?</h3>
+
+                    <div class="highlight-box info">
+                        <p><strong>📘 In Statistics:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Compares consistency between datasets</li>
+                            <li>Useful when means are different</li>
+                            <li>Widely used in exams and theory questions</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📊 In Data Science:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Comparing variability of features with different scales</li>
+                            <li>Evaluating data stability</li>
+                            <li>Feature reliability analysis</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🤖 In AI / Machine Learning:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Selecting stable features</li>
+                            <li>Comparing model metrics across datasets</li>
+                            <li>Performance consistency checks</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 14: CV Core Concepts -->
+                <div class="section" id="cv-concepts">
+                    <h2>Core Concepts & Definitions</h2>
+
+                    <h3>🔹 Absolute vs Relative Dispersion</h3>
+
+                    <div class="two-column-grid">
+                        <div class="key-point">
+                            <strong>Standard Deviation</strong><br>
+                            Absolute variability (units matter)
+                        </div>
+                        <div class="key-point">
+                            <strong>Coefficient of Variation</strong><br>
+                            Relative variability (unit-free)
+                        </div>
+                    </div>
+
+                    <h3>🔹 Key Properties of CV</h3>
+                    <ul class="icon-list bullet">
+                        <li>Expressed in percentage</li>
+                        <li>Lower CV → More consistent data</li>
+                        <li>Higher CV → More variability / risk</li>
+                        <li>Meaningful only when mean &gt; 0</li>
+                    </ul>
+                </div>
+
+                <!-- Section 15: CV Examples -->
+                <div class="section" id="cv-examples">
+                    <h2>Real-Life / Practical Examples</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">🎓 Example 1: Two Classes' Marks</div>
+
+                        <table class="comparison-table mt-md">
+                            <thead>
+                                <tr>
+                                    <th>Class</th>
+                                    <th>Mean</th>
+                                    <th>Standard Deviation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>A</td>
+                                    <td>60</td>
+                                    <td>6</td>
+                                </tr>
+                                <tr>
+                                    <td>B</td>
+                                    <td>80</td>
+                                    <td>10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <ul class="icon-list bullet mt-md">
+                            <li>SD alone is misleading</li>
+                            <li>CV compares relative spread</li>
+                        </ul>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">🏪 Example 2: Investment Risk</div>
+                        <ul class="icon-list bullet">
+                            <li>Lower CV → Safer investment</li>
+                            <li>Higher CV → Riskier returns</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 16: CV Mathematical Example -->
+                <div class="section" id="cv-calculation">
+                    <h2>Mathematical / Numerical Example</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">🔢 Step-by-Step Calculation</div>
+
+                        <h4 class="mt-md">For Class A:</h4>
+                        <div class="formula-box">
+                            <p>CV<sub>A</sub> = (6 / 60) × 100 = 10%</p>
+                        </div>
+
+                        <h4 class="mt-md">For Class B:</h4>
+                        <div class="formula-box">
+                            <p>CV<sub>B</sub> = (10 / 80) × 100 = 12.5%</p>
+                        </div>
+
+                        <div class="highlight-box success mt-lg">
+                            <p><strong>📌 Interpretation:</strong></p>
+                            <ul class="icon-list bullet mt-sm">
+                                <li>Class A is more consistent</li>
+                                <li>Class B has greater relative variation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 17: CV Tables -->
+                <div class="section" id="cv-tables">
+                    <h2>Interpretation Guide</h2>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>CV Value</th>
+                                <th>Interpretation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>&lt; 10%</td>
+                                <td>Very consistent</td>
+                            </tr>
+                            <tr>
+                                <td>10% – 20%</td>
+                                <td>Moderate variation</td>
+                            </tr>
+                            <tr>
+                                <td>&gt; 20%</td>
+                                <td>High variation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="note-box mt-md">
+                        (Rule of thumb – may vary by domain)
+                    </div>
+
+                    <h3 class="mt-lg">Comparison with Other Measures</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Measure</th>
+                                <th>Unit-Free</th>
+                                <th>Best For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Range</strong></td>
+                                <td>❌</td>
+                                <td>Quick spread</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Std Deviation</strong></td>
+                                <td>❌</td>
+                                <td>Absolute variability</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CV</strong></td>
+                                <td>✅</td>
+                                <td>Relative comparison</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 18: CV Python Implementation -->
+                <div class="section" id="cv-python">
+                    <h2>Python Implementation (Google Colab)</h2>
+
+                    <h3>📦 Step 1: Import Libraries</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+import pandas as pd</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📊 Example Data</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>class_A = np.array([55, 58, 60, 62, 65])
+class_B = np.array([70, 75, 80, 85, 90])</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>🔹 Calculate Mean & SD</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>mean_A = np.mean(class_A)
+std_A = np.std(class_A, ddof=1)
+
+mean_B = np.mean(class_B)
+std_B = np.std(class_B, ddof=1)
+
+mean_A, std_A, mean_B, std_B</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>🔹 Calculate Coefficient of Variation</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>CV_A = (std_A / mean_A) * 100
+CV_B = (std_B / mean_B) * 100
+
+CV_A, CV_B</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Explanation:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li><code>ddof=1</code> → sample standard deviation</li>
+                            <li>CV gives fair comparison across datasets</li>
+                        </ul>
+                    </div>
+
+                    <h3>📊 Using Pandas</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>df = pd.DataFrame({
+    'Class A': class_A,
+    'Class B': class_B
+})
+
+(df.std() / df.mean()) * 100</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Statistics eBook. Created by <a href="https://github.com/Aman-0402">Aman</a>.</p>
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../contents.html">Contents</a>
+                    <a href="../resources/glossary.html">Glossary</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+</body>
+</html>
