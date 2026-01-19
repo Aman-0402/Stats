@@ -385,67 +385,61 @@ console.log('💡 Tip: Use Ctrl+K to jump to Contents, Ctrl+H for Home, or ESC t
 // ==========================================
 
 function initMCQs() {
-  const questions = document.querySelectorAll('.mcq-question');
-
-  // Correct answers for each question (index-based)
-  const correctAnswers = ['B', 'C', 'C', 'C', 'B'];
-
-  questions.forEach((question, index) => {
-    const options = question.querySelectorAll('.option');
-    const showAnswerBtn = question.querySelector('.show-answer-btn');
-    const answerContent = question.querySelector('.answer-content');
-
-    let selectedOption = null;
-    let isLocked = false;
-
-    // Handle option click
-    options.forEach(option => {
-      option.addEventListener('click', () => {
-        if (isLocked) return; // prevent changes after answer reveal
-
-        options.forEach(opt => opt.classList.remove('selected'));
-        option.classList.add('selected');
-        selectedOption = option.getAttribute('data-option');
-      });
-    });
-
-    // Handle show answer button
-    if (showAnswerBtn) {
-      showAnswerBtn.addEventListener('click', () => {
-        if (isLocked) return;
-
-        if (!selectedOption) {
-          alert("⚠️ Please select an option before viewing the answer!");
-          return;
-        }
-
-        isLocked = true;
-
-        // Reveal answer content
-        if (answerContent) {
-          answerContent.classList.add('visible');
-        }
-
-        // Highlight options
-        options.forEach(option => {
-          const optionValue = option.getAttribute('data-option');
-
-          if (optionValue === correctAnswers[index]) {
-            option.classList.add('correct');
-          } else if (optionValue === selectedOption) {
-            option.classList.add('incorrect');
-          }
-
-          // Disable further clicking
-          option.style.pointerEvents = 'none';
+    const questions = document.querySelectorAll('.mcq-question');
+  
+    questions.forEach((question) => {
+      const options = question.querySelectorAll('.option');
+      const showAnswerBtn = question.querySelector('.show-answer-btn');
+      const answerContent = question.querySelector('.answer-content');
+      const correctAnswer = question.dataset.correct;
+  
+      let selectedOption = null;
+      let isLocked = false;
+  
+      // Handle option click
+      options.forEach(option => {
+        option.addEventListener('click', () => {
+          if (isLocked) return;
+  
+          options.forEach(opt => opt.classList.remove('selected'));
+          option.classList.add('selected');
+          selectedOption = option.getAttribute('data-option');
         });
-
-        // Hide show answer button
-        showAnswerBtn.classList.add('hidden');
       });
-    }
-  });
-}
-
-// Initialize MCQs on DOM ready
-document.addEventListener('DOMContentLoaded', initMCQs);
+  
+      // Handle show answer button
+      if (showAnswerBtn) {
+        showAnswerBtn.addEventListener('click', () => {
+          if (isLocked) return;
+  
+          if (!selectedOption) {
+            alert("⚠️ Please select an option before viewing the answer!");
+            return;
+          }
+  
+          isLocked = true;
+  
+          if (answerContent) {
+            answerContent.classList.add('visible');
+          }
+  
+          options.forEach(option => {
+            const optionValue = option.getAttribute('data-option');
+  
+            if (optionValue === correctAnswer) {
+              option.classList.add('correct');
+            } else if (optionValue === selectedOption) {
+              option.classList.add('incorrect');
+            }
+  
+            option.style.pointerEvents = 'none';
+          });
+  
+          showAnswerBtn.classList.add('hidden');
+        });
+      }
+    });
+  }
+  
+  document.addEventListener('DOMContentLoaded', initMCQs);
+  
