@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 6: Skewness and Kurtosis - Statistics eBook</title>
+    <meta name="description" content="Learn about skewness and kurtosis including definitions, types, interpretation using graphs and formulas, with Python implementation.">
+    <meta name="author" content="Aman">
+    <meta name="keywords" content="skewness, kurtosis, distribution shape, positive skewness, negative skewness, leptokurtic, platykurtic, statistics, python">
+    
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/chapter-content.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="book-title">Statistics</h1>
+                <nav class="header-nav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="../contents.html" class="nav-link">Contents</a>
+                    <a href="../resources/glossary.html" class="nav-link">Glossary</a>
+                    <a href="../resources/formulas.html" class="nav-link">Formulas</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="chapter-content">
+                <!-- Chapter Header -->
+                <div class="page-header">
+                    <span class="badge">Phase 2: Descriptive Analysis</span>
+                    <h1 class="page-title">Chapter 6: Skewness and Kurtosis</h1>
+                    <p class="page-subtitle">Understanding the shape and characteristics of data distributions</p>
+                </div>
+
+                <!-- Chapter Topics -->
+                <div class="chapter-topics-section">
+                    <h3>📋 Topics Covered in This Chapter</h3>
+                    <ul class="chapter-topics-list">
+                        <li>Skewness: Definition and Types</li>
+                        <li>Measuring Peakedness: Kurtosis</li>
+                        <li>Interpretation Using Graphs and Formulas</li>
+                        <li>Python implementation with visualization</li>
+                    </ul>
+                </div>
+
+                <!-- Section 1: Introduction to Skewness -->
+                <div class="section" id="intro-skewness">
+                    <h2>Skewness: Definition and Types</h2>
+
+                    <h3>What is Skewness?</h3>
+                    
+                    <p>Skewness is a statistical measure that describes the asymmetry of a data distribution around its central value (mean/median).</p>
+                    
+                    <div class="highlight-box success">
+                        <p><strong>In simple words, skewness tells us:</strong></p>
+                        <p class="text-center font-bold mt-sm">Is the data leaning more towards the left or the right?</p>
+                    </div>
+
+                    <p class="mt-md">A perfectly balanced (symmetric) distribution has zero skewness.</p>
+
+                    <h3>Why is Skewness Important?</h3>
+
+                    <div class="highlight-box info">
+                        <p><strong>📘 In Statistics:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Helps understand the shape of distribution</li>
+                            <li>Affects interpretation of mean, median, and mode</li>
+                            <li>Common in theory, numericals, and MCQs</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📊 In Data Science:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Indicates data imbalance</li>
+                            <li>Guides choice of transformation techniques</li>
+                            <li>Helps in proper EDA</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🤖 In AI / Machine Learning:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Skewed features can degrade model performance</li>
+                            <li>Impacts normalization & standardization</li>
+                            <li>Influences algorithm assumptions (e.g., linear models)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 2: Core Concepts -->
+                <div class="section" id="core-concepts-skewness">
+                    <h2>Core Concepts & Definitions</h2>
+
+                    <h3>🔹 Distribution</h3>
+                    <ul class="icon-list bullet">
+                        <li>Arrangement of data values across a range</li>
+                        <li>Can be symmetric or asymmetric</li>
+                    </ul>
+
+                    <h3>🔹 Symmetry</h3>
+                    <ul class="icon-list bullet">
+                        <li>Left side ≈ Right side around the center</li>
+                        <li>Mean = Median = Mode</li>
+                    </ul>
+
+                    <h3>🔹 Skewness</h3>
+                    <ul class="icon-list bullet">
+                        <li>Degree and direction of asymmetry</li>
+                        <li>Indicates tail direction, not data concentration</li>
+                    </ul>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>📌 Important Rule to Remember</strong></p>
+                        <p class="text-center font-bold mt-sm">👉 Skewness is determined by the direction of the longer tail</p>
+                    </div>
+                </div>
+
+                <!-- Section 3: Types of Skewness -->
+                <div class="section" id="types-skewness">
+                    <h2>Types of Skewness</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">Types of Skewness Visualization</div>
+                        <img src="../images/Types of Skewness.jpg" alt="Types of Skewness" style="width: 100%; max-width: 700px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <h3>🔹 1. Zero Skewness (Symmetrical Distribution)</h3>
+                    
+                    <ul class="icon-list bullet">
+                        <li>Distribution is perfectly balanced</li>
+                        <li>Left tail = Right tail</li>
+                        <li>Mean = Median = Mode</li>
+                    </ul>
+
+                    <div class="example-box mt-md">
+                        <div class="example-title">📌 Examples</div>
+                        <ul class="icon-list bullet">
+                            <li>Heights of students</li>
+                            <li>Measurement errors</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="mt-lg">🔹 2. Positive Skewness (Right-Skewed Distribution)</h3>
+                    
+                    <ul class="icon-list bullet">
+                        <li>Long tail on the right side</li>
+                        <li>Most data values are small</li>
+                        <li>Few extremely large values</li>
+                    </ul>
+
+                    <div class="formula-box mt-md">
+                        <strong>📐 Relationship:</strong>
+                        <div class="formula mt-sm">Mean &gt; Median &gt; Mode</div>
+                    </div>
+
+                    <div class="example-box mt-md">
+                        <div class="example-title">📌 Examples</div>
+                        <ul class="icon-list bullet">
+                            <li>Income distribution</li>
+                            <li>House prices</li>
+                            <li>Exam marks (hard paper)</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="mt-lg">🔹 3. Negative Skewness (Left-Skewed Distribution)</h3>
+                    
+                    <ul class="icon-list bullet">
+                        <li>Long tail on the left side</li>
+                        <li>Most data values are large</li>
+                        <li>Few extremely small values</li>
+                    </ul>
+
+                    <div class="formula-box mt-md">
+                        <strong>📐 Relationship:</strong>
+                        <div class="formula mt-sm">Mean &lt; Median &lt; Mode</div>
+                    </div>
+
+                    <div class="example-box mt-md">
+                        <div class="example-title">📌 Examples</div>
+                        <ul class="icon-list bullet">
+                            <li>Easy exam scores</li>
+                            <li>Employee age near retirement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 4: Real-Life Examples -->
+                <div class="section" id="skewness-examples">
+                    <h2>Real-Life / Practical Examples</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">🎓 Student Marks</div>
+                        <ul class="icon-list bullet">
+                            <li>Easy exam → Negative skewness</li>
+                            <li>Moderate exam → Symmetric</li>
+                            <li>Very hard exam → Positive skewness</li>
+                        </ul>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">🏪 Income Distribution</div>
+                        <ul class="icon-list bullet">
+                            <li>Majority earn moderate income</li>
+                            <li>Few earn extremely high income</li>
+                            <li>Result → Positive skewness</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 5: Mean-Median-Mode Rule -->
+                <div class="section" id="mmm-rule">
+                    <h2>Mathematical / Numerical Explanation (Intuitive)</h2>
+
+                    <h3>🔹 Mean–Median–Mode Rule</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Type of Skewness</th>
+                                <th>Relationship</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Symmetric</strong></td>
+                                <td>Mean = Median = Mode</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Positive (Right)</strong></td>
+                                <td>Mean &gt; Median &gt; Mode</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Negative (Left)</strong></td>
+                                <td>Mean &lt; Median &lt; Mode</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="note-box mt-md">
+                        📌 This rule is very important for exams.
+                    </div>
+                </div>
+
+                <!-- Section 6: Python Implementation - Skewness -->
+                <div class="section" id="python-skewness">
+                    <h2>Python Implementation (Google Colab)</h2>
+
+                    <h3>📦 Step 1: Import Libraries</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📊 Symmetric Data</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>data_sym = [40, 45, 50, 55, 60]
+
+plt.hist(data_sym, bins=5)
+plt.title("Symmetric Distribution")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📊 Positively Skewed Data</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>data_pos = [10, 12, 15, 18, 20, 50, 80]
+
+plt.hist(data_pos, bins=5)
+plt.title("Positive Skewness")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📊 Negatively Skewed Data</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>data_neg = [20, 40, 60, 70, 75, 80, 85]
+
+plt.hist(data_neg, bins=5)
+plt.title("Negative Skewness")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>🔹 Calculate Skewness Using Pandas</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>pd.Series(data_pos).skew()
+pd.Series(data_neg).skew()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Interpretation:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>Positive value → Right skewed</li>
+                            <li>Negative value → Left skewed</li>
+                            <li>Value ≈ 0 → Symmetric</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 7: Introduction to Kurtosis -->
+                <div class="section" id="intro-kurtosis">
+                    <h2>Measuring Peakedness: Kurtosis</h2>
+
+                    <h3>What is Kurtosis?</h3>
+                    
+                    <p>Kurtosis is a statistical measure that describes the peakedness or flatness of a data distribution relative to a normal distribution.</p>
+                    
+                    <div class="highlight-box success">
+                        <p><strong>In simple terms, kurtosis answers:</strong></p>
+                        <p class="text-center font-bold mt-sm">How sharp is the peak and how heavy are the tails of the distribution?</p>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        📌 Kurtosis is about tails + peak, not skewness (which is about symmetry).
+                    </div>
+
+                    <h3>Why is Kurtosis Important?</h3>
+
+                    <div class="highlight-box info">
+                        <p><strong>📘 In Statistics:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Describes shape of distribution</li>
+                            <li>Helps compare distributions with same mean & variance</li>
+                            <li>Common in theory and MCQs</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📊 In Data Science:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Detects extreme values (heavy tails)</li>
+                            <li>Important in risk and anomaly analysis</li>
+                            <li>Improves understanding of feature behavior</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🤖 In AI / Machine Learning:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Heavy-tailed features can affect model stability</li>
+                            <li>Helps in choosing robust models</li>
+                            <li>Useful in financial & sensor data</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 8: Core Concepts - Kurtosis -->
+                <div class="section" id="core-concepts-kurtosis">
+                    <h2>Core Concepts & Definitions</h2>
+
+                    <h3>🔹 Peakedness</h3>
+                    <ul class="icon-list bullet">
+                        <li>Degree to which data is concentrated around the mean</li>
+                        <li>Sharp peak → more concentration</li>
+                        <li>Flat peak → less concentration</li>
+                    </ul>
+
+                    <h3>🔹 Tails</h3>
+                    <ul class="icon-list bullet">
+                        <li>Extreme ends of the distribution</li>
+                        <li>Heavy tails → more extreme values</li>
+                        <li>Light tails → fewer extreme values</li>
+                    </ul>
+
+                    <h3>🔹 Kurtosis (Mathematical Meaning)</h3>
+                    <ul class="icon-list bullet">
+                        <li>Based on the fourth central moment</li>
+                        <li>Measures tail heaviness more than just peak height</li>
+                    </ul>
+                </div>
+
+                <!-- Section 9: Types of Kurtosis -->
+                <div class="section" id="types-kurtosis">
+                    <h2>Types of Kurtosis</h2>
+
+                    <div class="viz-comparison-grid">
+                        <div class="chart-type-card">
+                            <span class="chart-type-icon">📊</span>
+                            <h4>1. Mesokurtic (Normal)</h4>
+                            <ul class="icon-list bullet mt-sm">
+                                <li>Moderate peak</li>
+                                <li>Moderate tails</li>
+                                <li>Kurtosis ≈ 3 (raw kurtosis)</li>
+                            </ul>
+                            <div class="note-box mt-md">
+                                📌 Example: Normal distribution
+                            </div>
+                        </div>
+
+                        <div class="chart-type-card">
+                            <span class="chart-type-icon">📈</span>
+                            <h4>2. Leptokurtic (High Peak)</h4>
+                            <ul class="icon-list bullet mt-sm">
+                                <li>Sharp peak</li>
+                                <li>Heavy tails</li>
+                                <li>More extreme values</li>
+                                <li>Kurtosis &gt; 3</li>
+                            </ul>
+                            <div class="note-box mt-md">
+                                📌 Examples: Financial returns, Network traffic data
+                            </div>
+                        </div>
+
+                        <div class="chart-type-card">
+                            <span class="chart-type-icon">📉</span>
+                            <h4>3. Platykurtic (Flat Peak)</h4>
+                            <ul class="icon-list bullet mt-sm">
+                                <li>Flat or broad peak</li>
+                                <li>Thin tails</li>
+                                <li>Fewer outliers</li>
+                                <li>Kurtosis &lt; 3</li>
+                            </ul>
+                            <div class="note-box mt-md">
+                                📌 Example: Uniform-like distributions
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 10: Kurtosis Formula -->
+                <div class="section" id="kurtosis-formula">
+                    <h2>Mathematical / Numerical Explanation</h2>
+
+                    <h3>🔢 Kurtosis Formula (Population)</h3>
+
+                    <div class="formula-box">
+                        <div class="math-formula">
+                            Kurtosis = [(1/N)Σ(x−μ)⁴] / σ⁴
+                        </div>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        <strong>Where:</strong><br>
+                        • μ = Mean<br>
+                        • σ = Standard deviation
+                    </div>
+
+                    <h3 class="mt-lg">🔹 Excess Kurtosis (Most Used)</h3>
+
+                    <div class="formula-box">
+                        <div class="formula">Excess Kurtosis = Kurtosis − 3</div>
+                    </div>
+
+                    <table class="comparison-table mt-md">
+                        <thead>
+                            <tr>
+                                <th>Excess Kurtosis</th>
+                                <th>Interpretation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>= 0</td>
+                                <td>Mesokurtic</td>
+                            </tr>
+                            <tr>
+                                <td>&gt; 0</td>
+                                <td>Leptokurtic</td>
+                            </tr>
+                            <tr>
+                                <td>&lt; 0</td>
+                                <td>Platykurtic</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="note-box mt-md">
+                        📌 In Python & Data Science, excess kurtosis is usually reported.
+                    </div>
+                </div>
+
+                <!-- Section 11: Kurtosis Examples -->
+                <div class="section" id="kurtosis-examples">
+                    <h2>Real-Life / Practical Examples</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">🏦 Finance (Stock Returns)</div>
+                        <ul class="icon-list bullet">
+                            <li>Leptokurtic distribution</li>
+                            <li>Many small changes, few extreme crashes</li>
+                        </ul>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">🎓 Exam Scores</div>
+                        <ul class="icon-list bullet">
+                            <li>Very hard exam → leptokurtic</li>
+                            <li>Uniform difficulty → platykurtic</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 12: Python Implementation - Kurtosis -->
+                <div class="section" id="python-kurtosis">
+                    <h2>Python Implementation (Google Colab)</h2>
+
+                    <h3>📦 Step 1: Import Libraries</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📊 Create Example Datasets</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>normal_data = np.random.normal(50, 10, 1000)
+lepto_data = np.random.laplace(50, 5, 1000)
+platy_data = np.random.uniform(20, 80, 1000)</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📊 Visualize Distributions</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>plt.hist(normal_data, bins=30, alpha=0.5, label='Normal')
+plt.hist(lepto_data, bins=30, alpha=0.5, label='Leptokurtic')
+plt.hist(platy_data, bins=30, alpha=0.5, label='Platykurtic')
+plt.legend()
+plt.title("Comparison of Kurtosis Types")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>🔹 Calculate Kurtosis (Pandas)</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>pd.Series(normal_data).kurt()
+pd.Series(lepto_data).kurt()
+pd.Series(platy_data).kurt()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Interpretation:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>Value ≈ 0 → Mesokurtic</li>
+                            <li>Positive → Leptokurtic</li>
+                            <li>Negative → Platykurtic</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 13: Interpretation Using Graphs and Formulas -->
+                <div class="section" id="interpretation">
+                    <h2>Interpretation Using Graphs and Formulas</h2>
+
+                    <h3>What does "Interpretation using Graphs and Formulas" mean?</h3>
+
+                    <p>This topic focuses on reading, understanding, and concluding about a dataset by using:</p>
+                    <ul class="icon-list bullet">
+                        <li>📈 Graphs (histogram, density curve, boxplot)</li>
+                        <li>🧮 Formulas & numerical values (skewness, kurtosis)</li>
+                    </ul>
+
+                    <p class="mt-md">In practice, data scientists and statisticians rarely stop at calculation—they must interpret what the numbers and shapes mean.</p>
+
+                    <h3>Why This Topic is Important</h3>
+
+                    <div class="highlight-box info">
+                        <p><strong>📘 In Statistics:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Converts formulas into meaningful conclusions</li>
+                            <li>Essential for descriptive analysis</li>
+                            <li>Very common in theory + interpretation questions</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📊 In Data Science:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Core part of Exploratory Data Analysis (EDA)</li>
+                            <li>Helps choose transformations</li>
+                            <li>Guides model assumptions</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🤖 In AI / Machine Learning:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Identifies skewed or heavy-tailed features</li>
+                            <li>Improves preprocessing decisions</li>
+                            <li>Affects model accuracy & stability</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 14: Core Concepts - Interpretation -->
+                <div class="section" id="interpretation-concepts">
+                    <h2>Core Concepts & Definitions</h2>
+
+                    <h3>🔹 Graphical Interpretation</h3>
+                    <p>Understanding distribution shape using:</p>
+                    <ul class="icon-list bullet">
+                        <li>Histogram</li>
+                        <li>Density curve</li>
+                        <li>Boxplot</li>
+                    </ul>
+
+                    <h3>🔹 Formula-Based Interpretation</h3>
+                    <p>Using numerical measures:</p>
+                    <ul class="icon-list bullet">
+                        <li>Skewness → asymmetry</li>
+                        <li>Kurtosis → peakedness & tail heaviness</li>
+                    </ul>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>🔹 Key Rule (Very Important)</strong></p>
+                        <p class="text-center mt-sm">Always interpret graphs first, formulas second.</p>
+                        <p class="text-center mt-sm">Formulas confirm what graphs visually suggest.</p>
+                    </div>
+                </div>
+
+                <!-- Section 15: Interpretation Using Graphs -->
+                <div class="section" id="graph-interpretation">
+                    <h2>Interpretation Using Graphs</h2>
+
+                    <h3>🔹 A. Histogram Interpretation (Skewness)</h3>
+
+                    <p><strong>📌 What to Observe:</strong></p>
+                    <ul class="icon-list bullet">
+                        <li>Position of peak</li>
+                        <li>Direction of longer tail</li>
+                    </ul>
+
+                    <table class="comparison-table mt-md">
+                        <thead>
+                            <tr>
+                                <th>Graph Shape</th>
+                                <th>Interpretation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Symmetric</td>
+                                <td>No skewness</td>
+                            </tr>
+                            <tr>
+                                <td>Tail to right</td>
+                                <td>Positive skewness</td>
+                            </tr>
+                            <tr>
+                                <td>Tail to left</td>
+                                <td>Negative skewness</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="mt-lg">🔹 B. Boxplot Interpretation (Skewness & Spread)</h3>
+
+                    <p><strong>📌 What to Observe:</strong></p>
+                    <ul class="icon-list bullet">
+                        <li>Median position inside box</li>
+                        <li>Length of whiskers</li>
+                        <li>Presence of outliers</li>
+                    </ul>
+
+                    <table class="comparison-table mt-md">
+                        <thead>
+                            <tr>
+                                <th>Observation</th>
+                                <th>Meaning</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Median centered</td>
+                                <td>Symmetric</td>
+                            </tr>
+                            <tr>
+                                <td>Median near Q1</td>
+                                <td>Positive skew</td>
+                            </tr>
+                            <tr>
+                                <td>Median near Q3</td>
+                                <td>Negative skew</td>
+                            </tr>
+                            <tr>
+                                <td>Long whiskers</td>
+                                <td>High variability</td>
+                            </tr>
+                            <tr>
+                                <td>Points outside</td>
+                                <td>Outliers</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="mt-lg">🔹 C. Density Curve (Kurtosis)</h3>
+
+                    <p><strong>📌 What to Observe:</strong></p>
+                    <ul class="icon-list bullet">
+                        <li>Sharpness of peak</li>
+                        <li>Thickness of tails</li>
+                    </ul>
+
+                    <table class="comparison-table mt-md">
+                        <thead>
+                            <tr>
+                                <th>Shape</th>
+                                <th>Interpretation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Normal peak</td>
+                                <td>Mesokurtic</td>
+                            </tr>
+                            <tr>
+                                <td>Sharp peak + heavy tails</td>
+                                <td>Leptokurtic</td>
+                            </tr>
+                            <tr>
+                                <td>Flat peak</td>
+                                <td>Platykurtic</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 16: Interpretation Using Formulas -->
+                <div class="section" id="formula-interpretation">
+                    <h2>Interpretation Using Formulas</h2>
+
+                    <h3>🔹 A. Skewness Formula Interpretation</h3>
+
+                    <p><strong>General idea:</strong></p>
+                    <ul class="icon-list bullet">
+                        <li>Skewness ≈ 0 → Symmetric</li>
+                        <li>Skewness &gt; 0 → Positive skew</li>
+                        <li>Skewness &lt; 0 → Negative skew</li>
+                    </ul>
+
+                    <h4 class="mt-md">📌 Mean–Median–Mode Rule</h4>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Relationship</th>
+                                <th>Skewness Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mean = Median = Mode</td>
+                                <td>Symmetric</td>
+                            </tr>
+                            <tr>
+                                <td>Mean &gt; Median &gt; Mode</td>
+                                <td>Positive</td>
+                            </tr>
+                            <tr>
+                                <td>Mean &lt; Median &lt; Mode</td>
+                                <td>Negative</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="mt-lg">🔹 B. Kurtosis Formula Interpretation</h3>
+
+                    <p><strong>Raw Kurtosis:</strong></p>
+                    <ul class="icon-list bullet">
+                        <li>Normal distribution → 3</li>
+                    </ul>
+
+                    <p class="mt-sm"><strong>Excess Kurtosis (Most Used):</strong></p>
+
+                    <div class="formula-box">
+                        <div class="formula">Excess Kurtosis = Kurtosis − 3</div>
+                    </div>
+
+                    <table class="comparison-table mt-md">
+                        <thead>
+                            <tr>
+                                <th>Excess Kurtosis</th>
+                                <th>Interpretation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>Mesokurtic</td>
+                            </tr>
+                            <tr>
+                                <td>&gt; 0</td>
+                                <td>Leptokurtic</td>
+                            </tr>
+                            <tr>
+                                <td>&lt; 0</td>
+                                <td>Platykurtic</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="note-box mt-md">
+                        📌 Heavy tails matter more than peak height.
+                    </div>
+                </div>
+
+                <!-- Section 17: Combined Interpretation -->
+                <div class="section" id="combined-interpretation">
+                    <h2>Combined Interpretation (Graphs + Formulas)</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">🎓 Example Dataset Interpretation</div>
+                        
+                        <p><strong>Suppose:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>Histogram shows right-side tail</li>
+                            <li>Boxplot median near Q1</li>
+                            <li>Skewness = +1.2</li>
+                            <li>Excess kurtosis = +0.8</li>
+                        </ul>
+
+                        <div class="highlight-box success mt-lg">
+                            <p><strong>✅ Final Interpretation:</strong></p>
+                            <ul class="icon-list check mt-sm">
+                                <li>Distribution is positively skewed</li>
+                                <li>Has heavy tails</li>
+                                <li>Extreme high values present</li>
+                                <li>Median preferred over mean</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 18: Python Implementation - Interpretation -->
+                <div class="section" id="python-interpretation">
+                    <h2>Python Implementation (Google Colab)</h2>
+
+                    <h3>📦 Step 1: Import Libraries</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📊 Sample Data</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>data = [10, 12, 15, 18, 20, 25, 60]</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📈 Histogram & Boxplot</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>plt.hist(data, bins=5)
+plt.title("Histogram Interpretation")
+plt.show()
+
+plt.boxplot(data)
+plt.title("Boxplot Interpretation")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>🧮 Skewness & Kurtosis</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>series = pd.Series(data)
+
+series.skew(), series.kurt()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Interpretation:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>Positive skewness → right-tailed</li>
+                            <li>Positive kurtosis → heavy tails</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Statistics eBook. Created by <a href="https://github.com/Aman-0402">Aman</a>.</p>
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../contents.html">Contents</a>
+                    <a href="../resources/glossary.html">Glossary</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+</body>
+</html>
