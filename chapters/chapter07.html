@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 7: Correlation Analysis - Statistics eBook</title>
+    <meta name="description" content="Learn about Pearson's correlation coefficient, Spearman's rank correlation, and scatter plots with formulas, examples, and Python implementation.">
+    <meta name="author" content="Aman">
+    <meta name="keywords" content="pearson correlation, spearman correlation, scatter plot, correlation coefficient, statistics, python">
+    
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/chapter-content.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="book-title">Statistics</h1>
+                <nav class="header-nav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="../contents.html" class="nav-link">Contents</a>
+                    <a href="../resources/glossary.html" class="nav-link">Glossary</a>
+                    <a href="../resources/formulas.html" class="nav-link">Formulas</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="chapter-content">
+                <!-- Chapter Header -->
+                <div class="page-header">
+                    <span class="badge">Phase 2: Descriptive Analysis</span>
+                    <h1 class="page-title">Chapter 7: Correlation Analysis</h1>
+                    <p class="page-subtitle">Measuring relationships between variables using correlation coefficients and scatter plots</p>
+                </div>
+
+                <!-- Chapter Topics -->
+                <div class="chapter-topics-section">
+                    <h3>📋 Topics Covered in This Chapter</h3>
+                    <ul class="chapter-topics-list">
+                        <li>Pearson's Correlation Coefficient (Karl Pearson's r)</li>
+                        <li>Spearman's Rank Correlation Coefficient (ρ / rs)</li>
+                        <li>Scatter Plots and Interpretation</li>
+                        <li>Python implementation with visualization</li>
+                    </ul>
+                </div>
+
+                <!-- Section 1: Introduction to Pearson's Correlation -->
+                <div class="section" id="intro-pearson">
+                    <h2>Pearson's Correlation Coefficient (Karl Pearson's r)</h2>
+
+                    <h3>What is Pearson's Correlation?</h3>
+                    
+                    <p>Pearson's correlation coefficient (denoted by r) measures the strength and direction of a linear relationship between two numerical (quantitative) variables.</p>
+                    
+                    <div class="highlight-box success">
+                        <p><strong>In simple words, it answers:</strong></p>
+                        <p class="text-center font-bold mt-sm">When X changes, how strongly and in which direction does Y change?</p>
+                    </div>
+
+                    <h3>Why is Pearson's Correlation Important?</h3>
+
+                    <p>It is important in fields like data science, finance, healthcare, and social sciences, where understanding relationships between different factors is important. Quantifying the degree to which two variables are related helps analysts, researchers, and decision-makers to find patterns that make predictions and inform decisions.</p>
+                </div>
+
+                <!-- Section 2: Core Concepts -->
+                <div class="section" id="pearson-concepts">
+                    <h2>Core Concepts & Definitions</h2>
+
+                    <h3>🔹 Variables</h3>
+                    <ul class="icon-list bullet">
+                        <li>X → Independent variable</li>
+                        <li>Y → Dependent variable</li>
+                        <li>Both must be numerical and continuous</li>
+                    </ul>
+
+                    <h3>🔹 Pearson's Correlation Coefficient (r)</h3>
+                    <p>Value lies between −1 and +1</p>
+
+                    <table class="comparison-table mt-md">
+                        <thead>
+                            <tr>
+                                <th>Value of r</th>
+                                <th>Interpretation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>+1</td>
+                                <td>Perfect positive correlation</td>
+                            </tr>
+                            <tr>
+                                <td>−1</td>
+                                <td>Perfect negative correlation</td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>No linear correlation</td>
+                            </tr>
+                            <tr>
+                                <td>Close to +1</td>
+                                <td>Strong positive</td>
+                            </tr>
+                            <tr>
+                                <td>Close to −1</td>
+                                <td>Strong negative</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="mt-lg">Detailed Interpretation Table</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Pearson r value</th>
+                                <th>Strength</th>
+                                <th>Direction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Greater than .5</td>
+                                <td>Strong</td>
+                                <td>Positive</td>
+                            </tr>
+                            <tr>
+                                <td>Between .3 and .5</td>
+                                <td>Moderate</td>
+                                <td>Positive</td>
+                            </tr>
+                            <tr>
+                                <td>Between 0 and .3</td>
+                                <td>Weak</td>
+                                <td>Positive</td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>None</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td>Between 0 and –.3</td>
+                                <td>Weak</td>
+                                <td>Negative</td>
+                            </tr>
+                            <tr>
+                                <td>Between –.3 and –.5</td>
+                                <td>Moderate</td>
+                                <td>Negative</td>
+                            </tr>
+                            <tr>
+                                <td>Less than –.5</td>
+                                <td>Strong</td>
+                                <td>Negative</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="example-box mt-lg">
+                        <div class="example-title">Pearson Correlation Coefficient Visualization</div>
+                        <img src="../images/pearson_correlation_coefficient.webp" alt="Pearson Correlation Coefficient" style="width: 100%; max-width: 700px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <h3 class="mt-lg">🔹 Key Properties</h3>
+                    <ul class="icon-list bullet">
+                        <li>Unit-free (dimensionless)</li>
+                        <li>Symmetric: r(X, Y) = r(Y, X)</li>
+                        <li>Measures only linear relationship</li>
+                        <li>Correlation ≠ Causation</li>
+                    </ul>
+                </div>
+
+                <!-- Section 3: Real-Life Examples -->
+                <div class="section" id="pearson-examples">
+                    <h2>Real-Life / Practical Examples</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">🎓 Example 1: Study Hours vs Marks</div>
+                        <ul class="icon-list bullet">
+                            <li>More hours → higher marks</li>
+                            <li>Positive correlation</li>
+                        </ul>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">💰 Example 2: Price vs Demand</div>
+                        <ul class="icon-list bullet">
+                            <li>Higher price → lower demand</li>
+                            <li>Negative correlation</li>
+                        </ul>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">🌦 Example 3: Shoe Size vs Intelligence</div>
+                        <ul class="icon-list bullet">
+                            <li>No meaningful relationship</li>
+                            <li>Zero correlation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 4: Visualizing Pearson Correlation -->
+                <div class="section" id="pearson-visualization">
+                    <h2>Visualizing the Pearson Correlation Coefficient</h2>
+
+                    <p>Another way to think of the Pearson correlation coefficient (r) is as a measure of how close the observations are to a line of best fit.</p>
+                    
+                    <p class="mt-sm">The Pearson correlation coefficient also tells you whether the slope of the line of best fit is negative or positive. When the slope is negative, r is negative. When the slope is positive, r is positive.</p>
+
+                    <h3 class="mt-md">Perfect Correlation (r = +1 or r = −1)</h3>
+                    <p>When r is 1 or –1, all the points fall exactly on the line of best fit:</p>
+
+                    <div class="example-box">
+                        <img src="../images/Perfect-positive-correlation-Perfect-negative-correlation.webp" alt="Perfect Positive and Negative Correlation" style="width: 100%; max-width: 700px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <h3 class="mt-lg">Strong Correlation (r > .5 or r < −.5)</h3>
+                    <p>When r is greater than .5 or less than –.5, the points are close to the line of best fit:</p>
+
+                    <div class="example-box">
+                        <img src="../images/Strong-positive-correlation-and-strong-negative-correlation.webp" alt="Strong Positive and Negative Correlation" style="width: 100%; max-width: 700px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <h3 class="mt-lg">Weak Correlation (0 < r < .3 or −.3 < r < 0)</h3>
+                    <p>When r is between 0 and .3 or between 0 and –.3, the points are far from the line of best fit:</p>
+
+                    <div class="example-box">
+                        <img src="../images/Low-positive-correlation-and-low-negative-correlation.webp" alt="Low Positive and Negative Correlation" style="width: 100%; max-width: 700px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <h3 class="mt-lg">Zero Correlation (r = 0)</h3>
+                    <p>When r is 0, a line of best fit is not helpful in describing the relationship between the variables:</p>
+
+                    <div class="example-box">
+                        <img src="../images/Zero-correlation.webp" alt="Zero Correlation" style="width: 100%; max-width: 700px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+
+                <!-- Section 5: Pearson Formula -->
+                <div class="section" id="pearson-formula">
+                    <h2>Mathematical / Numerical Example (Step-by-Step)</h2>
+
+                    <h3>🔹 Pearson's Correlation Formula</h3>
+
+                    <div class="example-box">
+                        <img src="../images/Pearson's Correlation Formula.png" alt="Pearson's Correlation Formula" style="width: 100%; max-width: 500px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="note-box mt-md">
+                        <strong>Where:</strong><br>
+                        • x̄, ȳ → means of X and Y
+                    </div>
+
+                    <h3 class="mt-lg">Numerical Example: Newborns' Weight and Length</h3>
+
+                    <p>Imagine that you're studying the relationship between newborns' weight and length. You have the weights and lengths of the 10 babies born last month at your local hospital.</p>
+
+                    <table class="comparison-table mt-md">
+                        <thead>
+                            <tr>
+                                <th>Weight (kg)</th>
+                                <th>Length (cm)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>3.63</td><td>53.1</td></tr>
+                            <tr><td>3.02</td><td>49.7</td></tr>
+                            <tr><td>3.82</td><td>48.4</td></tr>
+                            <tr><td>3.42</td><td>54.2</td></tr>
+                            <tr><td>3.59</td><td>54.9</td></tr>
+                            <tr><td>2.87</td><td>43.7</td></tr>
+                            <tr><td>3.03</td><td>47.2</td></tr>
+                            <tr><td>3.46</td><td>45.2</td></tr>
+                            <tr><td>3.36</td><td>54.4</td></tr>
+                            <tr><td>3.30</td><td>50.4</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="mt-lg">Step 1: Calculate the sums of x and y</h4>
+                    <p>Start by renaming the variables to "x" and "y." Next, add up the values of x and y.</p>
+
+                    <div class="formula-box mt-md">
+                        <p>Σx = 3.63 + 3.02 + 3.82 + 3.42 + 3.59 + 2.87 + 3.03 + 3.46 + 3.36 + 3.30</p>
+                        <p><strong>Σx = 33.5</strong></p>
+                        <p class="mt-sm">Σy = 53.1 + 49.7 + 48.4 + 54.2 + 54.9 + 43.7 + 47.2 + 45.2 + 54.4 + 50.4</p>
+                        <p><strong>Σy = 501.2</strong></p>
+                    </div>
+
+                    <h4 class="mt-lg">Step 2: Calculate x² and y² and their sums</h4>
+                    
+                    <table class="comparison-table mt-md">
+                        <thead>
+                            <tr>
+                                <th>x</th>
+                                <th>y</th>
+                                <th>x²</th>
+                                <th>y²</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>3.63</td><td>53.1</td><td>13.18</td><td>2,819.6</td></tr>
+                            <tr><td>3.02</td><td>49.7</td><td>9.12</td><td>2,470.1</td></tr>
+                            <tr><td>3.82</td><td>48.4</td><td>14.59</td><td>2,342.6</td></tr>
+                            <tr><td>3.42</td><td>54.2</td><td>11.70</td><td>2,937.6</td></tr>
+                            <tr><td>3.59</td><td>54.9</td><td>12.89</td><td>3,014.0</td></tr>
+                            <tr><td>2.87</td><td>43.7</td><td>8.24</td><td>1,909.7</td></tr>
+                            <tr><td>3.03</td><td>47.2</td><td>9.18</td><td>2,227.8</td></tr>
+                            <tr><td>3.46</td><td>45.2</td><td>11.97</td><td>2,043.0</td></tr>
+                            <tr><td>3.36</td><td>54.4</td><td>11.29</td><td>2,959.4</td></tr>
+                            <tr><td>3.30</td><td>50.4</td><td>10.89</td><td>2,540.2</td></tr>
+                        </tbody>
+                    </table>
+
+                    <div class="formula-box mt-md">
+                        <p><strong>Σx² = 113.05</strong></p>
+                        <p><strong>Σy² = 25,264</strong></p>
+                    </div>
+
+                    <h4 class="mt-lg">Step 3: Calculate the cross product and its sum</h4>
+
+                    <table class="comparison-table mt-md">
+                        <thead>
+                            <tr>
+                                <th>x</th>
+                                <th>y</th>
+                                <th>xy (x*y)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>3.63</td><td>53.1</td><td>192.8</td></tr>
+                            <tr><td>3.02</td><td>49.7</td><td>150.1</td></tr>
+                            <tr><td>3.82</td><td>48.4</td><td>184.9</td></tr>
+                            <tr><td>3.42</td><td>54.2</td><td>185.4</td></tr>
+                            <tr><td>3.59</td><td>54.9</td><td>197.1</td></tr>
+                            <tr><td>2.87</td><td>43.7</td><td>125.4</td></tr>
+                            <tr><td>3.03</td><td>47.2</td><td>143.0</td></tr>
+                            <tr><td>3.46</td><td>45.2</td><td>156.4</td></tr>
+                            <tr><td>3.36</td><td>54.4</td><td>182.8</td></tr>
+                            <tr><td>3.30</td><td>50.4</td><td>166.3</td></tr>
+                        </tbody>
+                    </table>
+
+                    <div class="formula-box mt-md">
+                        <p><strong>Σxy = 1,684.2</strong></p>
+                    </div>
+
+                    <h4 class="mt-lg">Step 4: Calculate r</h4>
+                    <p>Use the formula and the numbers you calculated in the previous steps to find r.</p>
+
+                    <div class="example-box mt-md">
+                        <img src="../images/perason formula.png" alt="Pearson Formula Calculation" style="width: 100%; max-width: 600px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <h3 class="mt-lg">Simple Numerical Example</h3>
+
+                    <table class="comparison-table mt-md">
+                        <thead>
+                            <tr>
+                                <th>X (Hours)</th>
+                                <th>Y (Marks)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>2</td><td>40</td></tr>
+                            <tr><td>4</td><td>50</td></tr>
+                            <tr><td>6</td><td>65</td></tr>
+                            <tr><td>8</td><td>80</td></tr>
+                        </tbody>
+                    </table>
+
+                    <div class="formula-box mt-md">
+                        <p>x̄ = 5</p>
+                        <p>ȳ = 58.75</p>
+                        <p class="mt-sm">After substituting values:</p>
+                        <div class="formula mt-sm">r ≈ +0.98</div>
+                    </div>
+
+                    <div class="highlight-box success mt-md">
+                        <p><strong>✅ Interpretation:</strong> Very strong positive linear correlation</p>
+                        <p class="mt-sm">📌 In exams, focus on sign (+/−) and strength, not long arithmetic</p>
+                    </div>
+                </div>
+
+                <!-- Section 6: Interpretation Guide -->
+                <div class="section" id="interpretation-guide">
+                    <h2>Interpretation Guide</h2>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>r Range</th>
+                                <th>Strength</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0.0 – 0.2</td>
+                                <td>Very weak</td>
+                            </tr>
+                            <tr>
+                                <td>0.2 – 0.4</td>
+                                <td>Weak</td>
+                            </tr>
+                            <tr>
+                                <td>0.4 – 0.6</td>
+                                <td>Moderate</td>
+                            </tr>
+                            <tr>
+                                <td>0.6 – 0.8</td>
+                                <td>Strong</td>
+                            </tr>
+                            <tr>
+                                <td>0.8 – 1.0</td>
+                                <td>Very strong</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="note-box mt-md">
+                        (Same ranges apply for negative values)
+                    </div>
+                </div>
+
+                <!-- Section 7: Python Implementation - Pearson -->
+                <div class="section" id="python-pearson">
+                    <h2>Python Implementation (Google Colab)</h2>
+
+                    <h3>📦 Step 1: Import Libraries</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📊 Dataset</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>study_hours = [2, 4, 6, 8, 10]
+marks = [40, 50, 65, 80, 90]</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📈 Scatter Plot</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>plt.scatter(study_hours, marks)
+plt.xlabel("Study Hours")
+plt.ylabel("Marks")
+plt.title("Study Hours vs Marks")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Visual interpretation:</strong> Points rise left → right → positive correlation</p>
+                    </div>
+
+                    <h3>🧮 Pearson Correlation using NumPy</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>np.corrcoef(study_hours, marks)</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <ul class="icon-list bullet">
+                            <li>Diagonal values = 1</li>
+                            <li>Off-diagonal = Pearson's r</li>
+                        </ul>
+                    </div>
+
+                    <h3>🧮 Pearson Correlation using Pandas</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>df = pd.DataFrame({
+    'Study Hours': study_hours,
+    'Marks': marks
+})
+
+df.corr()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Pandas uses Pearson correlation by default</strong></p>
+                    </div>
+                </div>
+
+                <!-- Section 8: Introduction to Spearman's Correlation -->
+                <div class="section" id="intro-spearman">
+                    <h2>Spearman's Rank Correlation Coefficient (ρ / rs)</h2>
+
+                    <h3>What is Spearman's Rank Correlation?</h3>
+                    
+                    <p>Spearman's Rank Correlation Coefficient is a non-parametric measure that assesses the strength and direction of a monotonic relationship between two variables, using their ranks instead of actual values.</p>
+                    
+                    <div class="highlight-box success">
+                        <p><strong>In simple words:</strong></p>
+                        <p class="text-center font-bold mt-sm">It measures how well the relationship between two variables can be described using ranks</p>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        📌 It is denoted by ρ (rho) or rs
+                    </div>
+
+                    <h3>Why is Spearman's Correlation Important?</h3>
+
+                    <div class="highlight-box info">
+                        <p><strong>📘 In Statistics:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Used when data is ordinal (ranked)</li>
+                            <li>Useful when Pearson's assumptions fail</li>
+                            <li>Very common in exam numericals</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📊 In Data Science:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Works well with nonlinear but monotonic relationships</li>
+                            <li>Robust to outliers</li>
+                            <li>Suitable for survey & ranking data</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🤖 In AI / Machine Learning:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Feature selection when relationships are monotonic</li>
+                            <li>Useful for non-normal data</li>
+                            <li>More reliable when data contains extreme values</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 9: Spearman Core Concepts -->
+                <div class="section" id="spearman-concepts">
+                    <h2>Core Concepts & Definitions</h2>
+
+                    <h3>🔹 Rank</h3>
+                    <ul class="icon-list bullet">
+                        <li>Position of a value when data is arranged in ascending or descending order</li>
+                        <li>Smallest value → Rank 1 (usually)</li>
+                    </ul>
+
+                    <h3>🔹 Monotonic Relationship</h3>
+                    <p>Variables move in one direction only:</p>
+                    <ul class="icon-list bullet">
+                        <li>Increase–increase</li>
+                        <li>Decrease–decrease</li>
+                        <li>Not necessarily linear</li>
+                    </ul>
+
+                    <h3>🔹 Spearman's Correlation Coefficient (ρ)</h3>
+                    <p>Value ranges from −1 to +1</p>
+
+                    <table class="comparison-table mt-md">
+                        <thead>
+                            <tr>
+                                <th>Value</th>
+                                <th>Interpretation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>+1</td>
+                                <td>Perfect positive rank correlation</td>
+                            </tr>
+                            <tr>
+                                <td>−1</td>
+                                <td>Perfect negative rank correlation</td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>No rank correlation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 10: Spearman Examples -->
+                <div class="section" id="spearman-examples">
+                    <h2>Real-Life / Practical Examples</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">🎓 Example 1: Student Ranks in Two Subjects</div>
+                        <ul class="icon-list bullet">
+                            <li>Compare ranks in Math vs Physics</li>
+                            <li>Actual marks don't matter, relative position matters</li>
+                        </ul>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">🏪 Example 2: Product Popularity Ranking</div>
+                        <ul class="icon-list bullet">
+                            <li>Online product ratings</li>
+                            <li>Customer preference ranks</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="mt-lg">When to Prefer Spearman Over Pearson</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Situation</th>
+                                <th>Preferred Method</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Data is ranked</td>
+                                <td><strong>Spearman</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Outliers present</td>
+                                <td><strong>Spearman</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Nonlinear but monotonic</td>
+                                <td><strong>Spearman</strong></td>
+                            </tr>
+                            <tr>
+                                <td>Linear & normal data</td>
+                                <td><strong>Pearson</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 11: Spearman Formula -->
+                <div class="section" id="spearman-formula">
+                    <h2>Mathematical / Numerical Example (Step-by-Step)</h2>
+
+                    <h3>🔹 Spearman's Rank Correlation Formula</h3>
+
+                    <div class="example-box">
+                        <img src="../images/Spearman's Rank Correlation Formula.png" alt="Spearman's Rank Correlation Formula" style="width: 100%; max-width: 500px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="note-box mt-md">
+                        <strong>Where:</strong><br>
+                        • d = Difference between ranks<br>
+                        • n = Number of observations
+                    </div>
+
+                    <h3 class="mt-lg">Numerical Example</h3>
+
+                    <table class="comparison-table mt-md">
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Marks (X)</th>
+                                <th>Rank X</th>
+                                <th>Marks (Y)</th>
+                                <th>Rank Y</th>
+                                <th>d</th>
+                                <th>d²</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>A</td>
+                                <td>85</td>
+                                <td>2</td>
+                                <td>88</td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>B</td>
+                                <td>90</td>
+                                <td>1</td>
+                                <td>92</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>C</td>
+                                <td>70</td>
+                                <td>4</td>
+                                <td>65</td>
+                                <td>4</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>D</td>
+                                <td>60</td>
+                                <td>5</td>
+                                <td>58</td>
+                                <td>5</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>E</td>
+                                <td>75</td>
+                                <td>3</td>
+                                <td>72</td>
+                                <td>3</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="formula-box mt-lg">
+                        <p>Σd² = 0, n = 5</p>
+                        <p class="mt-sm">ρ = 1 − [6(0)] / [5(25−1)]</p>
+                        <div class="formula mt-sm">ρ = 1</div>
+                    </div>
+
+                    <div class="highlight-box success mt-md">
+                        <p class="text-center font-bold">✅ Perfect positive rank correlation</p>
+                    </div>
+                </div>
+
+                <!-- Section 12: Pearson vs Spearman -->
+                <div class="section" id="pearson-vs-spearman">
+                    <h2>Pearson vs Spearman (Quick Comparison)</h2>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Aspect</th>
+                                <th>Pearson</th>
+                                <th>Spearman</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Data type</strong></td>
+                                <td>Numerical</td>
+                                <td>Ranked / Ordinal</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Relationship</strong></td>
+                                <td>Linear</td>
+                                <td>Monotonic</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Outliers</strong></td>
+                                <td>Sensitive</td>
+                                <td>Robust</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Normality needed</strong></td>
+                                <td>Yes</td>
+                                <td>No</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 13: Python Implementation - Spearman -->
+                <div class="section" id="python-spearman">
+                    <h2>Python Implementation (Google Colab)</h2>
+
+                    <h3>📦 Step 1: Import Libraries</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+import pandas as pd
+from scipy.stats import spearmanr
+import matplotlib.pyplot as plt</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📊 Sample Data</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>math_marks = [85, 90, 70, 60, 75]
+physics_marks = [88, 92, 65, 58, 72]</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>🧮 Spearman Correlation (SciPy)</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>spearmanr(math_marks, physics_marks)</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Output:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>Correlation coefficient (ρ)</li>
+                            <li>p-value (significance)</li>
+                        </ul>
+                    </div>
+
+                    <h3>🧮 Using Pandas</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>df = pd.DataFrame({
+    'Math': math_marks,
+    'Physics': physics_marks
+})
+
+df.corr(method='spearman')</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📈 Scatter Plot (Ranks Relationship)</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>plt.scatter(pd.Series(math_marks).rank(), 
+           pd.Series(physics_marks).rank())
+plt.xlabel("Math Rank")
+plt.ylabel("Physics Rank")
+plt.title("Spearman Rank Correlation")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 14: Introduction to Scatter Plots -->
+                <div class="section" id="intro-scatter">
+                    <h2>Scatter Plots</h2>
+
+                    <h3>What is a Scatter Plot?</h3>
+                    
+                    <p>A scatter plot is a graphical representation that shows the relationship between two numerical variables by plotting data points on a 2D coordinate plane.</p>
+                    
+                    <p class="mt-sm">Each point represents one observation:</p>
+                    <ul class="icon-list bullet">
+                        <li>X-axis → Independent variable</li>
+                        <li>Y-axis → Dependent variable</li>
+                    </ul>
+
+                    <div class="note-box mt-md">
+                        📌 Scatter plots are the foundation of correlation and regression analysis
+                    </div>
+
+                    <h3>Why are Scatter Plots Important?</h3>
+
+                    <div class="highlight-box info">
+                        <p><strong>📘 In Statistics:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Visualizes association between variables</li>
+                            <li>Helps detect patterns, trends, and outliers</li>
+                            <li>First step before calculating correlation</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📊 In Data Science:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Core tool in Exploratory Data Analysis (EDA)</li>
+                            <li>Understands feature–target relationships</li>
+                            <li>Checks linearity assumption</li>
+                        </ul>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🤖 In AI / Machine Learning:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Feature selection</li>
+                            <li>Detecting nonlinear relationships</li>
+                            <li>Diagnosing model assumptions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 15: Scatter Plot Concepts -->
+                <div class="section" id="scatter-concepts">
+                    <h2>Core Concepts & Definitions</h2>
+
+                    <h3>🔹 Data Point</h3>
+                    <ul class="icon-list bullet">
+                        <li>One pair of values (x, y)</li>
+                        <li>Represents one observation</li>
+                    </ul>
+
+                    <h3>🔹 Trend</h3>
+                    <p>Overall direction of points:</p>
+                    <ul class="icon-list bullet">
+                        <li>Upward</li>
+                        <li>Downward</li>
+                        <li>No clear direction</li>
+                    </ul>
+
+                    <h3>🔹 Types of Relationships</h3>
+                    <ul class="icon-list bullet">
+                        <li>Positive relationship</li>
+                        <li>Negative relationship</li>
+                        <li>No relationship</li>
+                        <li>Nonlinear relationship</li>
+                    </ul>
+
+                    <h3>🔹 Outliers</h3>
+                    <ul class="icon-list bullet">
+                        <li>Points far away from the main cluster</li>
+                        <li>Can heavily affect correlation & regression</li>
+                    </ul>
+                </div>
+
+                <!-- Section 16: Scatter Plot Examples -->
+                <div class="section" id="scatter-examples">
+                    <h2>Real-Life / Practical Examples</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">🎓 Example 1: Study Hours vs Marks</div>
+                        <ul class="icon-list bullet">
+                            <li>More study → better marks</li>
+                            <li>Positive relationship</li>
+                        </ul>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">💰 Example 2: Price vs Demand</div>
+                        <ul class="icon-list bullet">
+                            <li>Higher price → lower demand</li>
+                            <li>Negative relationship</li>
+                        </ul>
+
+                        <div class="mt-md">
+                            <img src="../images/high-and-low-degree-negative-corelation.png" alt="High and Low Degree Negative Correlation" style="width: 100%; max-width: 600px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        </div>
+
+                        <div class="mt-md">
+                            <img src="../images/demand.png" alt="Demand Relationship" style="width: 100%; max-width: 600px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">🌦 Example 3: Shoe Size vs Intelligence</div>
+                        <ul class="icon-list bullet">
+                            <li>No meaningful relationship</li>
+                            <li>No correlation</li>
+                        </ul>
+
+                        <div class="mt-md">
+                            <img src="../images/No correlation.png" alt="No Correlation" style="width: 100%; max-width: 600px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 17: Scatter Plot Interpretation -->
+                <div class="section" id="scatter-interpretation">
+                    <h2>Mathematical / Conceptual Interpretation</h2>
+
+                    <p>Scatter plots help answer:</p>
+                    <ul class="icon-list bullet">
+                        <li>Do variables move together?</li>
+                        <li>Is the relationship linear or nonlinear?</li>
+                        <li>Are there outliers?</li>
+                        <li>Is correlation meaningful?</li>
+                    </ul>
+
+                    <div class="highlight-box success mt-md">
+                        <p class="text-center"><strong>📌 Important:</strong></p>
+                        <p class="text-center mt-sm">Scatter plot → visual insight</p>
+                        <p class="text-center">Correlation coefficient → numerical confirmation</p>
+                    </div>
+
+                    <h3 class="mt-lg">Scatter Plot Patterns (Very Important)</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Pattern</th>
+                                <th>Interpretation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Points rise left → right</td>
+                                <td>Positive correlation</td>
+                            </tr>
+                            <tr>
+                                <td>Points fall left → right</td>
+                                <td>Negative correlation</td>
+                            </tr>
+                            <tr>
+                                <td>Random cloud</td>
+                                <td>No correlation</td>
+                            </tr>
+                            <tr>
+                                <td>Curved pattern</td>
+                                <td>Nonlinear relationship</td>
+                            </tr>
+                            <tr>
+                                <td>Isolated points</td>
+                                <td>Outliers</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 18: Python Implementation - Scatter Plots -->
+                <div class="section" id="python-scatter">
+                    <h2>Python Implementation (Google Colab)</h2>
+
+                    <h3>📦 Step 1: Import Libraries</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📊 Example Dataset</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>study_hours = [1, 2, 3, 4, 5, 6, 7]
+marks = [30, 35, 45, 55, 65, 70, 80]</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>📈 Basic Scatter Plot</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>plt.scatter(study_hours, marks)
+plt.xlabel("Study Hours")
+plt.ylabel("Marks")
+plt.title("Scatter Plot: Study Hours vs Marks")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="example-box mt-md">
+                        <div class="example-title">Output: Basic Scatter Plot</div>
+                        <img src="../images/Basic Scatter Plot.png" alt="Basic Scatter Plot" style="width: 100%; max-width: 600px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Explanation:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li><code>plt.scatter()</code> plots individual points</li>
+                            <li>Visual upward trend → positive relationship</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="mt-lg">📈 Scatter Plot with Outlier</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>study_hours = [1, 2, 3, 4, 5, 6, 7, 8]
+marks = [30, 35, 45, 55, 65, 70, 80, 20]
+
+plt.scatter(study_hours, marks)
+plt.xlabel("Study Hours")
+plt.ylabel("Marks")
+plt.title("Scatter Plot with Outlier")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="example-box mt-md">
+                        <div class="example-title">Output: Scatter Plot with Outlier</div>
+                        <img src="../images/Scatter Plot with Outlier.png" alt="Scatter Plot with Outlier" style="width: 100%; max-width: 600px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="note-box mt-md">
+                        📌 Notice how one point deviates from the trend
+                    </div>
+
+                    <h3 class="mt-lg">📊 Scatter Plot Using Pandas</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>df = pd.DataFrame({
+    'Study Hours': study_hours,
+    'Marks': marks
+})
+
+df.plot(kind='scatter', x='Study Hours', y='Marks')
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="example-box mt-md">
+                        <div class="example-title">Output: Scatter Plot Using Pandas</div>
+                        <img src="../images/Scatter Plot Using Pandas.png" alt="Scatter Plot Using Pandas" style="width: 100%; max-width: 600px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Statistics eBook. Created by <a href="https://github.com/Aman-0402">Aman</a>.</p>
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../contents.html">Contents</a>
+                    <a href="../resources/glossary.html">Glossary</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+</body>
+</html>
