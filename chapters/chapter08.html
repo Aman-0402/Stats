@@ -3,136 +3,1058 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SALVAGE IN PROGRESS</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@700&family=VT323&display=swap');
-
-        body {
-            margin: 0;
-            background-color: #121212;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            font-family: 'Stardos Stencil', sans-serif;
-            color: #cd7f32; /* Bronze/Rust color */
-        }
-
-        /* Industrial Background Texture */
-        body::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle, transparent 20%, #121212 70%),
-                url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-            opacity: 0.6;
-        }
-
-        .container {
-            position: relative;
-            text-align: center;
-            z-index: 2;
-        }
-
-        /* CSS Rusted Gear */
-        .gear {
-            width: 100px;
-            height: 100px;
-            background: #4a3b2c;
-            border-radius: 50%;
-            position: relative;
-            margin: 0 auto 30px;
-            animation: spin 4s linear infinite;
-            box-shadow: inset 0 0 20px #000;
-        }
-
-        .gear::before {
-            content: "";
-            position: absolute;
-            top: 10px; left: 10px; right: 10px; bottom: 10px;
-            background: #121212;
-            border-radius: 50%;
-            border: 5px solid #3d2b1f;
-        }
-
-        /* Gear Teeth */
-        .gear-tooth {
-            position: absolute;
-            width: 20px;
-            height: 120px;
-            background: #4a3b2c;
-            left: 40px;
-            top: -10px;
-            border-radius: 2px;
-        }
-        .gear-tooth:nth-child(2) { transform: rotate(45deg); }
-        .gear-tooth:nth-child(3) { transform: rotate(90deg); }
-        .gear-tooth:nth-child(4) { transform: rotate(135deg); }
-
-        /* Text Effects */
-        h1 {
-            font-size: 5rem;
-            margin: 0;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            animation: flicker 2s infinite;
-            filter: drop-shadow(0 0 10px rgba(205, 127, 50, 0.5));
-        }
-
-        .subtext {
-            font-family: 'VT323', monospace;
-            font-size: 1.5rem;
-            color: #7d6b5d;
-            letter-spacing: 2px;
-        }
-
-        /* Animations */
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes flicker {
-            0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
-            20%, 24%, 55% { opacity: 0.2; transform: skewX(5deg); }
-        }
-
-        /* Ambient Smoke/Dust Effect */
-        .smoke {
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 50%);
-            animation: drift 10s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes drift {
-            from { transform: translate(-20%, -20%); }
-            to { transform: translate(0%, 0%); }
-        }
-    </style>
+    <title>Chapter 8: Introduction to Regression - Statistics eBook</title>
+    <meta name="description" content="Learn about regression analysis including simple linear regression, least squares method, and practical implementation with Python and Kaggle projects.">
+    <meta name="author" content="Aman">
+    <meta name="keywords" content="regression, linear regression, least squares, slope, intercept, prediction, python, kaggle, statistics">
+    
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/chapter-content.css">
 </head>
 <body>
-
-    <div class="smoke"></div>
-
-    <div class="container">
-        <div class="gear">
-            <div class="gear-tooth"></div>
-            <div class="gear-tooth"></div>
-            <div class="gear-tooth"></div>
-            <div class="gear-tooth"></div>
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="book-title">Statistics</h1>
+                <nav class="header-nav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="../contents.html" class="nav-link">Contents</a>
+                    <a href="../resources/glossary.html" class="nav-link">Glossary</a>
+                    <a href="../resources/formulas.html" class="nav-link">Formulas</a>
+                </nav>
+            </div>
         </div>
+    </header>
 
-        <h1>Coming Soon</h1>
-        <div class="subtext">
-            SYSTEM STATUS: [SALVAGING_ASSETS...]
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="chapter-content">
+                <!-- Chapter Header -->
+                <div class="page-header">
+                    <span class="badge">Phase 3: Predictive Analysis</span>
+                    <h1 class="page-title">Chapter 8: Introduction to Regression</h1>
+                    <p class="page-subtitle">Understanding relationships between variables and predicting future values</p>
+                </div>
+
+                <!-- Chapter Topics -->
+                <div class="chapter-topics-section">
+                    <h3>📋 Topics Covered in This Chapter</h3>
+                    <ul class="chapter-topics-list">
+                        <li>Introduction to Regression</li>
+                        <li>Simple Linear Regression (Step-by-Step with Numericals)</li>
+                        <li>Least Squares Method</li>
+                        <li>Python Implementation</li>
+                        <li>Kaggle Project: House Price Prediction</li>
+                    </ul>
+                </div>
+
+                <!-- Section 1: Introduction to Regression -->
+                <div class="section" id="intro-regression">
+                    <h2>Introduction to Regression</h2>
+
+                    <p>Regression is one of the most important techniques in Statistics, Data Science, Machine Learning, and AI. It helps us understand relationships between variables and predict future values.</p>
+
+                    <h3>What is Regression?</h3>
+
+                    <p>Regression is a statistical method used to:</p>
+                    <ul class="icon-list check">
+                        <li>Study the relationship between variables</li>
+                        <li>Predict the value of one variable based on another</li>
+                        <li>Measure how much change in one variable affects another</li>
+                    </ul>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>📌 Simple Definition</strong></p>
+                        <p class="text-center font-bold mt-sm">Regression tells us how a dependent variable changes when an independent variable changes</p>
+                    </div>
+                </div>
+
+                <!-- Section 2: Variables in Regression -->
+                <div class="section" id="variables-regression">
+                    <h2>Variables in Regression</h2>
+
+                    <p>Every regression model has two main variables:</p>
+
+                    <div class="two-column-grid">
+                        <div class="definition-box">
+                            <div class="term">🔹 Independent Variable (X)</div>
+                            <div class="meaning">
+                                <ul class="icon-list bullet">
+                                    <li>Also called predictor, input, or explanatory variable</li>
+                                    <li>It causes or influences change</li>
+                                    <li><strong>Example:</strong> Study hours, temperature, experience</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="definition-box">
+                            <div class="term">🔹 Dependent Variable (Y)</div>
+                            <div class="meaning">
+                                <ul class="icon-list bullet">
+                                    <li>Also called response or output variable</li>
+                                    <li>It depends on X</li>
+                                    <li><strong>Example:</strong> Marks, ice cream sales, salary</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-box mt-lg">
+                        <div class="example-title">📌 Example</div>
+                        <ul class="icon-list bullet">
+                            <li>X = Hours studied</li>
+                            <li>Y = Exam marks</li>
+                        </ul>
+                        <p class="mt-md"><strong>Regression helps answer:</strong></p>
+                        <p class="text-center font-bold">👉 If study hours increase, how will marks change?</p>
+                    </div>
+                </div>
+
+                <!-- Section 3: Why Do We Need Regression -->
+                <div class="section" id="why-regression">
+                    <h2>Why Do We Need Regression?</h2>
+
+                    <p>Regression is used to:</p>
+                    <ul class="icon-list check">
+                        <li>Make predictions</li>
+                        <li>Identify strength and direction of relationships</li>
+                        <li>Perform trend analysis</li>
+                        <li>Support decision making</li>
+                    </ul>
+
+                    <h3 class="mt-md">💡 Real-Life Examples</h3>
+
+                    <div class="viz-comparison-grid">
+                        <div class="example-box">
+                            <p>🏠 Predicting house prices from area</p>
+                        </div>
+                        <div class="example-box">
+                            <p>💼 Estimating salary from experience</p>
+                        </div>
+                        <div class="example-box">
+                            <p>📊 Forecasting sales based on advertising cost</p>
+                        </div>
+                        <div class="example-box">
+                            <p>🌡️ Predicting temperature trends</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Types of Regression -->
+                <div class="section" id="types-regression">
+                    <h2>Types of Regression (Overview)</h2>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Simple Linear Regression</strong></td>
+                                <td>One X → One Y</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Multiple Linear Regression</strong></td>
+                                <td>Many X → One Y</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Polynomial Regression</strong></td>
+                                <td>Curved relationships</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Logistic Regression</strong></td>
+                                <td>Classification (Yes/No)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ridge / Lasso Regression</strong></td>
+                                <td>Regularization</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Time Series Regression</strong></td>
+                                <td>Trend over time</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="note-box mt-md">
+                        📌 For beginners, we always start with Simple Linear Regression
+                    </div>
+                </div>
+
+                <!-- Section 5: Simple Linear Regression -->
+                <div class="section" id="simple-linear-regression">
+                    <h2>Simple Linear Regression</h2>
+
+                    <h3>🔹 Model Form</h3>
+
+                    <div class="formula-box">
+                        <div class="formula">Y = a + bX</div>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        <strong>Where:</strong><br>
+                        • Y = Dependent variable<br>
+                        • X = Independent variable<br>
+                        • a = Intercept (value of Y when X = 0)<br>
+                        • b = Slope (rate of change)
+                    </div>
+
+                    <h3>🔹 Interpretation</h3>
+                    <ul class="icon-list bullet">
+                        <li>Slope (b) tells how much Y changes when X increases by 1 unit</li>
+                        <li>Intercept (a) is the starting value of Y</li>
+                    </ul>
+
+                    <div class="example-box mt-md">
+                        <div class="example-title">📌 Example</div>
+                        <div class="formula-box">
+                            <p>Marks = 20 + 5 × Study Hours</p>
+                        </div>
+                        <ul class="icon-list bullet mt-md">
+                            <li>Each extra study hour increases marks by 5</li>
+                            <li>Without study, marks = 20</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 6: Regression Line -->
+                <div class="section" id="regression-line">
+                    <h2>Regression Line (Line of Best Fit)</h2>
+
+                    <ul class="icon-list bullet">
+                        <li>The regression line best represents the data</li>
+                        <li>It minimizes the sum of squared errors (Least Squares Method)</li>
+                        <li>Errors = Actual Y − Predicted Y (called residuals)</li>
+                    </ul>
+
+                    <div class="highlight-box success mt-md">
+                        <p><strong>📌 A good regression line:</strong></p>
+                        <ul class="icon-list check mt-sm">
+                            <li>Has small residuals</li>
+                            <li>Closely follows the data trend</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Section 7: Assumptions -->
+                <div class="section" id="assumptions">
+                    <h2>Assumptions of Linear Regression (Intro Level)</h2>
+
+                    <ol class="steps-list">
+                        <li>Linear relationship between X and Y</li>
+                        <li>Errors are independent</li>
+                        <li>Errors have constant variance (Homoscedasticity)</li>
+                        <li>Errors are normally distributed</li>
+                    </ol>
+
+                    <div class="note-box mt-md">
+                        (We'll study these in detail later)
+                    </div>
+                </div>
+
+                <!-- Section 8: Regression vs Correlation -->
+                <div class="section" id="regression-vs-correlation">
+                    <h2>Regression vs Correlation</h2>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Correlation</th>
+                                <th>Regression</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Measures strength of relationship</td>
+                                <td>Predicts values</td>
+                            </tr>
+                            <tr>
+                                <td>No cause-effect assumption</td>
+                                <td>Cause-effect assumed</td>
+                            </tr>
+                            <tr>
+                                <td>No dependent variable</td>
+                                <td>Has dependent variable</td>
+                            </tr>
+                            <tr>
+                                <td>Range: −1 to +1</td>
+                                <td>No fixed range</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box success mt-md">
+                        <p class="text-center">📌 Correlation → Relationship</p>
+                        <p class="text-center">📌 Regression → Prediction</p>
+                    </div>
+                </div>
+
+                <!-- Section 9: Importance in Data Science -->
+                <div class="section" id="importance-ds">
+                    <h2>Importance in Data Science & ML</h2>
+
+                    <p>Regression is the foundation of:</p>
+                    <ul class="icon-list check">
+                        <li>Linear models</li>
+                        <li>Feature importance</li>
+                        <li>Supervised learning</li>
+                        <li>Forecasting systems</li>
+                    </ul>
+
+                    <div class="note-box mt-md">
+                        👉 Most ML algorithms start from regression concepts
+                    </div>
+                </div>
+
+                <!-- Section 10: Simple Linear Regression Step-by-Step -->
+                <div class="section" id="slr-step-by-step">
+                    <h2>Simple Linear Regression (Step-by-Step with Numericals)</h2>
+
+                    <p>We now move from concepts → calculations, exactly how it's asked in exams, interviews, and data science foundations.</p>
+
+                    <h3>Simple Linear Regression Recap</h3>
+
+                    <p>Simple Linear Regression studies the relationship between:</p>
+                    <ul class="icon-list bullet">
+                        <li>One independent variable (X)</li>
+                        <li>One dependent variable (Y)</li>
+                    </ul>
+
+                    <div class="formula-box mt-md">
+                        <p><strong>📌 Model</strong></p>
+                        <div class="formula">Y = a + bX</div>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        <strong>Where:</strong><br>
+                        • a = Intercept<br>
+                        • b = Slope (Regression coefficient)
+                    </div>
+                </div>
+
+                <!-- Section 11: Meaning of Slope and Intercept -->
+                <div class="section" id="slope-intercept-meaning">
+                    <h2>Meaning of Slope (b) & Intercept (a)</h2>
+
+                    <h3>🔹 Slope (b)</h3>
+
+                    <div class="formula-box">
+                        <p>b = Change in Y / Change in X</p>
+                    </div>
+
+                    <p class="mt-md">✔ Shows direction and rate of change</p>
+                    <ul class="icon-list bullet">
+                        <li>b &gt; 0 → Positive relationship</li>
+                        <li>b &lt; 0 → Negative relationship</li>
+                    </ul>
+
+                    <h3 class="mt-lg">🔹 Intercept (a)</h3>
+                    <p>✔ Expected value of Y when X = 0</p>
+                </div>
+
+                <!-- Section 12: Formulas -->
+                <div class="section" id="regression-formulas">
+                    <h2>Formula to Calculate Regression Coefficients</h2>
+
+                    <h3>🔹 Slope (b)</h3>
+
+                    <div class="example-box">
+                        <img src="../images/Slope (b).png" alt="Slope Formula" style="width: 100%; max-width: 500px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <h3 class="mt-lg">Intercept (a)</h3>
+
+                    <div class="example-box">
+                        <img src="../images/Intercept (a).png" alt="Intercept Formula" style="width: 100%; max-width: 500px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="note-box mt-md">
+                        <strong>Where:</strong><br>
+                        • n = number of observations<br>
+                        • X̄, Ȳ = means of X and Y
+                    </div>
+                </div>
+
+                <!-- Section 13: Numerical Example -->
+                <div class="section" id="numerical-example">
+                    <h2>Numerical Example</h2>
+
+                    <h3>📊 Given Data</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>X (Study Hours)</th>
+                                <th>Y (Marks)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>40</td></tr>
+                            <tr><td>2</td><td>50</td></tr>
+                            <tr><td>3</td><td>60</td></tr>
+                            <tr><td>4</td><td>70</td></tr>
+                            <tr><td>5</td><td>80</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="mt-lg">Step 1: Calculate Required Values</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>X</th>
+                                <th>Y</th>
+                                <th>X²</th>
+                                <th>XY</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>40</td><td>1</td><td>40</td></tr>
+                            <tr><td>2</td><td>50</td><td>4</td><td>100</td></tr>
+                            <tr><td>3</td><td>60</td><td>9</td><td>180</td></tr>
+                            <tr><td>4</td><td>70</td><td>16</td><td>280</td></tr>
+                            <tr><td>5</td><td>80</td><td>25</td><td>400</td></tr>
+                        </tbody>
+                    </table>
+
+                    <div class="formula-box mt-md">
+                        <p>ΣX = 15, ΣY = 300</p>
+                        <p>ΣX² = 55, ΣXY = 1000</p>
+                        <p>n = 5</p>
+                    </div>
+
+                    <h3 class="mt-lg">Step 2: Calculate Slope (b)</h3>
+
+                    <div class="formula-box">
+                        <p>b = [5(1000) − (15)(300)] / [5(55) − (15)²]</p>
+                        <p>b = [5000 − 4500] / [275 − 225]</p>
+                        <p>b = 500 / 50</p>
+                        <div class="formula mt-sm">b = 10</div>
+                    </div>
+
+                    <h3 class="mt-lg">Step 3: Calculate Intercept (a)</h3>
+
+                    <div class="formula-box">
+                        <p>X̄ = 15/5 = 3</p>
+                        <p>Ȳ = 300/5 = 60</p>
+                        <p class="mt-sm">a = Ȳ − b × X̄</p>
+                        <p>a = 60 − (10 × 3)</p>
+                        <div class="formula mt-sm">a = 30</div>
+                    </div>
+
+                    <h3 class="mt-lg">Final Regression Equation</h3>
+
+                    <div class="highlight-box success">
+                        <div class="formula">Y = 30 + 10X</div>
+                    </div>
+
+                    <h3 class="mt-lg">Interpretation of Result</h3>
+
+                    <ul class="icon-list check">
+                        <li>If study hours increase by 1, marks increase by 10</li>
+                        <li>If study hours = 0, expected marks = 30</li>
+                    </ul>
+
+                    <div class="example-box mt-md">
+                        <div class="example-title">📌 Prediction Example</div>
+                        <p>If a student studies 6 hours:</p>
+                        <div class="formula-box mt-sm">
+                            <p>Y = 30 + 10(6)</p>
+                            <div class="formula">Y = 90</div>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Graphical Interpretation</h3>
+
+                    <div class="example-box">
+                        <img src="../images/Simple-Linear-Regression2.jpg" alt="Simple Linear Regression Graph" style="width: 100%; max-width: 700px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <ul class="icon-list bullet mt-md">
+                        <li>Points close to the line → Good model</li>
+                        <li>Points far from line → Large errors (residuals)</li>
+                    </ul>
+                </div>
+
+                <!-- Section 14: Least Squares Method -->
+                <div class="section" id="least-squares">
+                    <h2>Least Squares Method (Heart of Regression)</h2>
+
+                    <p>The Least Squares Method is the core idea behind regression. It explains how we get the best-fitting line for given data.</p>
+
+                    <h3>What is the Least Squares Method?</h3>
+
+                    <p>The Least Squares Method is a technique used to:</p>
+                    <ul class="icon-list check">
+                        <li>Find the best fitting regression line</li>
+                        <li>Minimize the errors (residuals) between actual and predicted values</li>
+                    </ul>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>📌 Simple Definition</strong></p>
+                        <p class="text-center mt-sm">The best regression line is the one for which the sum of squared errors is minimum</p>
+                    </div>
+
+                    <h3>What Are Errors (Residuals)?</h3>
+
+                    <p>For each data point:</p>
+
+                    <div class="formula-box">
+                        <p>Error (Residual) = Y<sub>actual</sub> − Y<sub>predicted</sub></p>
+                    </div>
+
+                    <p class="mt-md">Since errors can be positive or negative, we square them to avoid cancellation.</p>
+
+                    <div class="formula-box">
+                        <p>Squared Error = (Y − Ŷ)²</p>
+                    </div>
+
+                    <h3>Why "Squares" and Not Absolute Values?</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Reason</th>
+                                <th>Explanation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>No cancellation</strong></td>
+                                <td>Positive & negative errors don't cancel</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Penalizes large errors</strong></td>
+                                <td>Bigger mistakes get more weight</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mathematical simplicity</strong></td>
+                                <td>Easier differentiation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="note-box mt-md">
+                        📌 That's why it's called Least Squares, not Least Errors
+                    </div>
+
+                    <h3>Objective of Least Squares Method</h3>
+
+                    <p>We want to minimize:</p>
+
+                    <div class="formula-box">
+                        <div class="formula">Σ(Y − Ŷ)²</div>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        <strong>Where:</strong><br>
+                        • Y = Actual value<br>
+                        • Ŷ = a + bX = Predicted value
+                    </div>
+
+                    <h3>How Least Squares Gives Regression Formula</h3>
+
+                    <p>After minimization (using calculus), we get:</p>
+
+                    <div class="example-box mt-md">
+                        <p><strong>🔹 Slope (b)</strong></p>
+                        <img src="../images/Slope (b).png" alt="Slope Formula from Least Squares" style="width: 100%; max-width: 500px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="example-box">
+                        <p><strong>🔹 Intercept (a)</strong></p>
+                        <img src="../images/Intercept (a).png" alt="Intercept Formula from Least Squares" style="width: 100%; max-width: 500px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="note-box mt-md">
+                        📌 These formulas come directly from Least Squares minimization
+                    </div>
+                </div>
+
+                <!-- Section 15: Python Implementation -->
+                <div class="section" id="python-implementation">
+                    <h2>Python Implementation of Simple Linear Regression</h2>
+
+                    <p>We'll implement Simple Linear Regression in Python step by step, exactly matching the statistics formulas + data science practice.</p>
+
+                    <h3>Using NumPy (Pure Statistics Approach)</h3>
+
+                    <p>This follows the Least Squares formulas you learned.</p>
+
+                    <h4>📌 Example Data</h4>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+
+# Independent variable (X) – Study hours
+X = np.array([1, 2, 3, 4, 5])
+
+# Dependent variable (Y) – Marks
+Y = np.array([40, 50, 60, 70, 80])</code></pre>
+                        </div>
+                    </div>
+
+                    <h4>Step 1: Calculate Required Values</h4>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>n = len(X)
+
+sum_x = np.sum(X)
+sum_y = np.sum(Y)
+sum_xy = np.sum(X * Y)
+sum_x2 = np.sum(X ** 2)</code></pre>
+                        </div>
+                    </div>
+
+                    <h4>Step 2: Compute Slope (b)</h4>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>b = (n * sum_xy - sum_x * sum_y) / (n * sum_x2 - sum_x ** 2)
+b</code></pre>
+                        </div>
+                        <div class="code-output">
+10.0
+                        </div>
+                    </div>
+
+                    <h4>Step 3: Compute Intercept (a)</h4>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>x_mean = np.mean(X)
+y_mean = np.mean(Y)
+
+a = y_mean - b * x_mean
+a</code></pre>
+                        </div>
+                        <div class="code-output">
+30.0
+                        </div>
+                    </div>
+
+                    <h4>✅ Final Regression Equation</h4>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>print(f"Regression Equation: Y = {a:.2f} + {b:.2f}X")</code></pre>
+                        </div>
+                        <div class="code-output">
+Regression Equation: Y = 30.00 + 10.00X
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Prediction Using the Model</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># Predict marks for 6 study hours
+x_new = 6
+y_pred = a + b * x_new
+y_pred</code></pre>
+                        </div>
+                        <div class="code-output">
+90.0
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Visualization</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import matplotlib.pyplot as plt
+
+plt.scatter(X, Y, label="Actual Data")
+plt.plot(X, a + b * X, linestyle='--', label="Regression Line")
+plt.xlabel("Study Hours")
+plt.ylabel("Marks")
+plt.legend()
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <ul class="icon-list bullet">
+                            <li>📌 Scatter → actual data</li>
+                            <li>📌 Line → least squares best-fit line</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="mt-lg">Using scikit-learn (Data Science / ML Way)</h3>
+
+                    <p>This is how regression is done in real ML projects.</p>
+
+                    <h4>Step 1: Import & Reshape Data</h4>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>from sklearn.linear_model import LinearRegression
+
+X = X.reshape(-1, 1)  # sklearn expects 2D array</code></pre>
+                        </div>
+                    </div>
+
+                    <h4>Step 2: Train the Model</h4>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>model = LinearRegression()
+model.fit(X, Y)</code></pre>
+                        </div>
+                    </div>
+
+                    <h4>Step 3: Get Coefficients</h4>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>print("Intercept:", model.intercept_)
+print("Slope:", model.coef_[0])</code></pre>
+                        </div>
+                        <div class="code-output">
+Intercept: 30.0
+Slope: 10.0
+                        </div>
+                    </div>
+
+                    <h4>Step 4: Prediction</h4>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>model.predict([[6]])</code></pre>
+                        </div>
+                        <div class="code-output">
+array([90.])
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 16: Kaggle Project -->
+                <div class="section" id="kaggle-project">
+                    <h2>Kaggle Project: House Price Prediction</h2>
+
+                    <p>This is a classic Kaggle regression project and perfect after learning Simple Linear Regression & Least Squares. This section explains it step-by-step like an industry + exam-ready workflow.</p>
+
+                    <h3>Project Overview</h3>
+
+                    <div class="highlight-box info">
+                        <p><strong>📌 Dataset:</strong> Kaggle – House Prices Dataset</p>
+                        <p class="mt-sm"><strong>Goal:</strong> Predict house prices based on features like size, rooms, location, etc.</p>
+                    </div>
+
+                    <p class="mt-md"><strong>This project teaches:</strong></p>
+                    <ul class="icon-list check">
+                        <li>Regression thinking</li>
+                        <li>Feature → target relationship</li>
+                        <li>Model evaluation (R², error)</li>
+                        <li>Real Data Science workflow</li>
+                    </ul>
+
+                    <h3>Problem Statement</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">🎯 Predict the SalePrice of houses</div>
+                        
+                        <p class="mt-sm"><strong>Independent variables (X):</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>Area (sqft)</li>
+                            <li>Number of rooms</li>
+                            <li>Location</li>
+                            <li>Year built</li>
+                        </ul>
+
+                        <p class="mt-md"><strong>Dependent variable (Y):</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>House Price</li>
+                        </ul>
+
+                        <p class="mt-md">📌 This is a <strong>Regression Problem</strong> (continuous output)</p>
+                    </div>
+
+                    <h3>Step-by-Step Implementation (Python)</h3>
+
+                    <h4>🔹 Step 1: Import Libraries</h4>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score, mean_squared_error</code></pre>
+                        </div>
+                    </div>
+
+                    <h4>🔹 Step 2: Load Dataset</h4>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>df = pd.read_csv("house_prices.csv")   # Kaggle dataset
+df.head()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        Typical columns: Size_sqft | Bedrooms | Price
+                    </div>
+
+                    <h4>🔹 Step 3: Simple Linear Regression (Size → Price)</h4>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># Select Features
+X = df[['Size_sqft']]
+Y = df['Price']</code></pre>
+                        </div>
+                    </div>
+
+                    <h4>🔹 Step 4: Train-Test Split</h4>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>X_train, X_test, Y_train, Y_test = train_test_split(
+    X, Y, test_size=0.2, random_state=42
+)</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        📌 80% training, 20% testing (industry standard)
+                    </div>
+
+                    <h4>🔹 Step 5: Train Model</h4>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>model = LinearRegression()
+model.fit(X_train, Y_train)</code></pre>
+                        </div>
+                    </div>
+
+                    <h4>🔹 Step 6: Model Equation</h4>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>print("Intercept:", model.intercept_)
+print("Slope:", model.coef_[0])</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="formula-box mt-md">
+                        <p>📌 Regression Equation:</p>
+                        <div class="formula">Price = a + b × Size</div>
+                    </div>
+
+                    <h4>🔹 Step 7: Prediction</h4>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>Y_pred = model.predict(X_test)</code></pre>
+                        </div>
+                    </div>
+
+                    <h4>🔹 Step 8: Model Evaluation</h4>
+
+                    <p><strong>🔸 R² Score</strong></p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>r2 = r2_score(Y_test, Y_pred)
+r2</code></pre>
+                        </div>
+                        <div class="code-output">
+0.78
+                        </div>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        📌 78% of price variation explained by size
+                    </div>
+
+                    <p class="mt-md"><strong>🔸 Mean Squared Error</strong></p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>mse = mean_squared_error(Y_test, Y_pred)
+mse</code></pre>
+                        </div>
+                    </div>
+
+                    <h4>🔹 Step 9: Visualization</h4>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>plt.scatter(X_test, Y_test, label="Actual Prices")
+plt.plot(X_test, Y_pred, linestyle='--', label="Predicted Line")
+plt.xlabel("House Size (sqft)")
+plt.ylabel("Price")
+plt.legend()
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <h3>Interpretation (Very Important)</h3>
+
+                    <ul class="icon-list check">
+                        <li>Positive slope → Bigger houses cost more</li>
+                        <li>R² close to 1 → Strong model</li>
+                        <li>Errors show prediction accuracy</li>
+                    </ul>
+
+                    <div class="note-box mt-md">
+                        📌 This is exactly how real estate ML models start
+                    </div>
+
+                    <h3>Upgrade to Multiple Linear Regression</h3>
+
+                    <p>Instead of only size:</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>X = df[['Size_sqft', 'Bedrooms', 'Bathrooms']]</code></pre>
+                        </div>
+                    </div>
+
+                    <p class="mt-md">Everything else remains the same.</p>
+
+                    <div class="formula-box mt-md">
+                        <p>📌 This becomes Multiple Linear Regression:</p>
+                        <div class="formula">Price = a + b₁X₁ + b₂X₂ + b₃X₃</div>
+                    </div>
+
+                    <h3>Why This Kaggle Project Is Important</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Skill</th>
+                                <th>Learned</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Regression</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Feature selection</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Model evaluation</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Visualization</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>ML workflow</td>
+                                <td>✅</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box success mt-md">
+                        <p class="text-center font-bold">💡 90% ML interviews ask house-price-type problems</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
+    </main>
 
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Statistics eBook. Created by <a href="https://github.com/Aman-0402">Aman</a>.</p>
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../contents.html">Contents</a>
+                    <a href="../resources/glossary.html">Glossary</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
 </body>
 </html>
