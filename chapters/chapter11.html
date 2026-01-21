@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SALVAGE IN PROGRESS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@700&family=VT323&display=swap');
+
+        body {
+            margin: 0;
+            background-color: #121212;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Stardos Stencil', sans-serif;
+            color: #cd7f32; /* Bronze/Rust color */
+        }
+
+        /* Industrial Background Texture */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle, transparent 20%, #121212 70%),
+                url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            opacity: 0.6;
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+        }
+
+        /* CSS Rusted Gear */
+        .gear {
+            width: 100px;
+            height: 100px;
+            background: #4a3b2c;
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto 30px;
+            animation: spin 4s linear infinite;
+            box-shadow: inset 0 0 20px #000;
+        }
+
+        .gear::before {
+            content: "";
+            position: absolute;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            background: #121212;
+            border-radius: 50%;
+            border: 5px solid #3d2b1f;
+        }
+
+        /* Gear Teeth */
+        .gear-tooth {
+            position: absolute;
+            width: 20px;
+            height: 120px;
+            background: #4a3b2c;
+            left: 40px;
+            top: -10px;
+            border-radius: 2px;
+        }
+        .gear-tooth:nth-child(2) { transform: rotate(45deg); }
+        .gear-tooth:nth-child(3) { transform: rotate(90deg); }
+        .gear-tooth:nth-child(4) { transform: rotate(135deg); }
+
+        /* Text Effects */
+        h1 {
+            font-size: 5rem;
+            margin: 0;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            animation: flicker 2s infinite;
+            filter: drop-shadow(0 0 10px rgba(205, 127, 50, 0.5));
+        }
+
+        .subtext {
+            font-family: 'VT323', monospace;
+            font-size: 1.5rem;
+            color: #7d6b5d;
+            letter-spacing: 2px;
+        }
+
+        /* Animations */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+            20%, 24%, 55% { opacity: 0.2; transform: skewX(5deg); }
+        }
+
+        /* Ambient Smoke/Dust Effect */
+        .smoke {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 50%);
+            animation: drift 10s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes drift {
+            from { transform: translate(-20%, -20%); }
+            to { transform: translate(0%, 0%); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="smoke"></div>
+
+    <div class="container">
+        <div class="gear">
+            <div class="gear-tooth"></div>
+            <div class="gear-tooth"></div>
+            <div class="gear-tooth"></div>
+            <div class="gear-tooth"></div>
+        </div>
+
+        <h1>Coming Soon</h1>
+        <div class="subtext">
+            SYSTEM STATUS: [SALVAGING_ASSETS...]
+        </div>
+    </div>
+
+</body>
+</html>
