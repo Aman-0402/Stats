@@ -3,136 +3,900 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SALVAGE IN PROGRESS</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@700&family=VT323&display=swap');
-
-        body {
-            margin: 0;
-            background-color: #121212;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            font-family: 'Stardos Stencil', sans-serif;
-            color: #cd7f32; /* Bronze/Rust color */
-        }
-
-        /* Industrial Background Texture */
-        body::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle, transparent 20%, #121212 70%),
-                url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-            opacity: 0.6;
-        }
-
-        .container {
-            position: relative;
-            text-align: center;
-            z-index: 2;
-        }
-
-        /* CSS Rusted Gear */
-        .gear {
-            width: 100px;
-            height: 100px;
-            background: #4a3b2c;
-            border-radius: 50%;
-            position: relative;
-            margin: 0 auto 30px;
-            animation: spin 4s linear infinite;
-            box-shadow: inset 0 0 20px #000;
-        }
-
-        .gear::before {
-            content: "";
-            position: absolute;
-            top: 10px; left: 10px; right: 10px; bottom: 10px;
-            background: #121212;
-            border-radius: 50%;
-            border: 5px solid #3d2b1f;
-        }
-
-        /* Gear Teeth */
-        .gear-tooth {
-            position: absolute;
-            width: 20px;
-            height: 120px;
-            background: #4a3b2c;
-            left: 40px;
-            top: -10px;
-            border-radius: 2px;
-        }
-        .gear-tooth:nth-child(2) { transform: rotate(45deg); }
-        .gear-tooth:nth-child(3) { transform: rotate(90deg); }
-        .gear-tooth:nth-child(4) { transform: rotate(135deg); }
-
-        /* Text Effects */
-        h1 {
-            font-size: 5rem;
-            margin: 0;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            animation: flicker 2s infinite;
-            filter: drop-shadow(0 0 10px rgba(205, 127, 50, 0.5));
-        }
-
-        .subtext {
-            font-family: 'VT323', monospace;
-            font-size: 1.5rem;
-            color: #7d6b5d;
-            letter-spacing: 2px;
-        }
-
-        /* Animations */
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes flicker {
-            0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
-            20%, 24%, 55% { opacity: 0.2; transform: skewX(5deg); }
-        }
-
-        /* Ambient Smoke/Dust Effect */
-        .smoke {
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 50%);
-            animation: drift 10s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes drift {
-            from { transform: translate(-20%, -20%); }
-            to { transform: translate(0%, 0%); }
-        }
-    </style>
+    <title>Chapter 10: Probability Distributions - Statistics eBook</title>
+    <meta name="description" content="Learn about probability distributions including Binomial, Poisson, and Normal distributions with formulas, examples, and Python implementation.">
+    <meta name="author" content="Aman">
+    <meta name="keywords" content="probability distributions, binomial distribution, poisson distribution, normal distribution, gaussian distribution, statistics, python">
+    
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/chapter-content.css">
 </head>
 <body>
-
-    <div class="smoke"></div>
-
-    <div class="container">
-        <div class="gear">
-            <div class="gear-tooth"></div>
-            <div class="gear-tooth"></div>
-            <div class="gear-tooth"></div>
-            <div class="gear-tooth"></div>
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="book-title">Statistics</h1>
+                <nav class="header-nav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="../contents.html" class="nav-link">Contents</a>
+                    <a href="../resources/glossary.html" class="nav-link">Glossary</a>
+                    <a href="../resources/formulas.html" class="nav-link">Formulas</a>
+                </nav>
+            </div>
         </div>
+    </header>
 
-        <h1>Coming Soon</h1>
-        <div class="subtext">
-            SYSTEM STATUS: [SALVAGING_ASSETS...]
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="chapter-content">
+                <!-- Chapter Header -->
+                <div class="page-header">
+                    <span class="badge">Phase 4: Probability & Inference</span>
+                    <h1 class="page-title">Chapter 10: Probability Distributions</h1>
+                    <p class="page-subtitle">Understanding Binomial, Poisson, and Normal distributions with applications</p>
+                </div>
+
+                <!-- Chapter Topics -->
+                <div class="chapter-topics-section">
+                    <h3>📋 Topics Covered in This Chapter</h3>
+                    <ul class="chapter-topics-list">
+                        <li>Binomial Distribution (Discrete)</li>
+                        <li>Poisson Distribution (Discrete)</li>
+                        <li>Normal Distribution (Continuous)</li>
+                        <li>Numerical Problems with Solutions</li>
+                        <li>Python Implementation & Visualization</li>
+                    </ul>
+                </div>
+
+                <!-- Section 1: Introduction to Probability Distribution -->
+                <div class="section" id="intro-distribution">
+                    <h2>What is a Probability Distribution?</h2>
+
+                    <p>A probability distribution tells us how probabilities are distributed over possible values of a random variable.</p>
+
+                    <ul class="icon-list bullet">
+                        <li>Discrete → countable values</li>
+                        <li>Continuous → infinite values</li>
+                    </ul>
+
+                    <div class="note-box mt-md">
+                        👉 Binomial and Poisson are discrete probability distributions<br>
+                        👉 Normal is a continuous probability distribution
+                    </div>
+                </div>
+
+                <!-- Section 2: Binomial Distribution -->
+                <div class="section" id="binomial-distribution">
+                    <h2>Part 1: Binomial Distribution</h2>
+
+                    <div class="example-box">
+                        <img src="../images/Binomial Distribution main.png" alt="Binomial Distribution" style="width: 100%; max-width: 700px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="example-box mt-md">
+                        <img src="../images/Shapes of Binomial Distribution.webp" alt="Shapes of Binomial Distribution" style="width: 100%; max-width: 700px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <h3>🎯 What is Binomial Distribution?</h3>
+
+                    <p>A Binomial distribution models the probability of getting <strong>exactly x successes</strong> in <strong>n independent trials</strong>, where each trial has only two outcomes:</p>
+
+                    <ul class="icon-list bullet">
+                        <li>Success (✔️)</li>
+                        <li>Failure (❌)</li>
+                    </ul>
+
+                    <h3 class="mt-lg">✅ Conditions for Binomial Distribution (VERY IMPORTANT ⭐)</h3>
+
+                    <p><strong>All four conditions must be satisfied:</strong></p>
+
+                    <ol class="steps-list">
+                        <li>Fixed number of trials (n)</li>
+                        <li>Each trial has two outcomes (success/failure)</li>
+                        <li>Probability of success (p) is constant</li>
+                        <li>Trials are independent</li>
+                    </ol>
+
+                    <div class="highlight-box mt-md">
+                        <p class="text-center font-bold">👉 If any condition fails → not binomial</p>
+                    </div>
+
+                    <h3 class="mt-lg">📐 Binomial Probability Formula</h3>
+
+                    <div class="example-box">
+                        <img src="../images/Binomial Probability Formula.png" alt="Binomial Probability Formula" style="width: 100%; max-width: 500px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="example-box mt-md">
+                        <img src="../images/Binomial Probability Formula 1.png" alt="Binomial Probability Formula Detailed" style="width: 100%; max-width: 500px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <h3 class="mt-lg">Example 1: Coin Toss</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">🪙 Fair Coin Problem</div>
+                        
+                        <p><strong>Q. A fair coin is tossed 5 times. Find the probability of getting exactly 3 heads.</strong></p>
+
+                        <h4 class="mt-md">✍️ Step-by-step Solution:</h4>
+
+                        <ul class="icon-list bullet">
+                            <li>n = 5</li>
+                            <li>x = 3</li>
+                            <li>p = 1/2</li>
+                        </ul>
+
+                        <div class="formula-box mt-md">
+                            <p>P(X = 3) = C(5,3) × (0.5)³ × (0.5)²</p>
+                            <p>= 10 × 0.125 × 0.25</p>
+                            <div class="formula">= 0.3125</div>
+                        </div>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center"><strong>✔️ Answer: 0.3125</strong></p>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Example 2: Real-Life Student Example</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">🎓 Student Exam Problem</div>
+                        
+                        <p><strong>Q. Probability that a student passes an exam is 0.7. If 4 students appear independently, find probability that exactly 3 pass.</strong></p>
+
+                        <h4 class="mt-md">✍️ Solution:</h4>
+
+                        <ul class="icon-list bullet">
+                            <li>n = 4</li>
+                            <li>x = 3</li>
+                            <li>p = 0.7</li>
+                        </ul>
+
+                        <div class="formula-box mt-md">
+                            <p>P(X = 3) = C(4,3) × (0.7)³ × (0.3)¹</p>
+                            <p>= 4 × 0.343 × 0.3</p>
+                            <div class="formula">= 0.4116</div>
+                        </div>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center"><strong>✔️ Answer: 0.4116</strong></p>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Mean & Variance of Binomial Distribution</h3>
+
+                    <div class="two-column-grid">
+                        <div class="formula-box">
+                            <p><strong>Mean:</strong></p>
+                            <div class="formula">μ = np</div>
+                        </div>
+
+                        <div class="formula-box">
+                            <p><strong>Variance:</strong></p>
+                            <div class="formula">σ² = np(1 − p)</div>
+                        </div>
+                    </div>
+
+                    <div class="example-box mt-md">
+                        <div class="example-title">Example</div>
+                        <p>For n = 10, p = 0.4</p>
+                        <ul class="icon-list bullet mt-sm">
+                            <li>Mean = 10 × 0.4 = 4</li>
+                            <li>Variance = 10 × 0.4 × 0.6 = 2.4</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="mt-lg">Python Implementation</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>from scipy.stats import binom
+
+# n trials, probability of success p
+n = 5
+p = 0.5
+
+# Probability of exactly 3 successes
+binom.pmf(3, n, p)</code></pre>
+                        </div>
+                        <div class="code-output">
+0.3125
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">📈 Visual Understanding</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import matplotlib.pyplot as plt
+import numpy as np
+from scipy.stats import binom
+
+x = np.arange(0, 6)
+y = binom.pmf(x, 5, 0.5)
+
+plt.bar(x, y)
+plt.xlabel("Number of Heads")
+plt.ylabel("Probability")
+plt.title("Binomial Distribution (n=5, p=0.5)")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">📌 Applications of Binomial Distribution</h3>
+
+                    <div class="viz-comparison-grid">
+                        <div class="example-box">
+                            <p>🏭 Quality control (defective items)</p>
+                        </div>
+                        <div class="example-box">
+                            <p>🎓 Exam pass/fail analysis</p>
+                        </div>
+                        <div class="example-box">
+                            <p>📧 Email spam detection</p>
+                        </div>
+                        <div class="example-box">
+                            <p>🤖 ML classification assumptions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Poisson Distribution -->
+                <div class="section" id="poisson-distribution">
+                    <h2>Part 2: Poisson Distribution</h2>
+
+                    <div class="example-box">
+                        <img src="../images/Poisson-distribution-graph.png" alt="Poisson Distribution Graph" style="width: 100%; max-width: 700px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <h3>What is Poisson Distribution?</h3>
+
+                    <p>Poisson distribution gives the probability of a given number of events occurring in a fixed interval of time or space, when events occur:</p>
+
+                    <ul class="icon-list bullet">
+                        <li>randomly</li>
+                        <li>independently</li>
+                        <li>at a constant average rate</li>
+                    </ul>
+
+                    <div class="highlight-box success mt-md">
+                        <p class="text-center"><strong>👉 It answers:</strong></p>
+                        <p class="text-center font-bold mt-sm">"How many times will an event occur in a fixed interval?"</p>
+                    </div>
+
+                    <h3 class="mt-lg">✅ Conditions for Poisson Distribution (Exam Favorite ⭐)</h3>
+
+                    <ol class="steps-list">
+                        <li>Events occur independently</li>
+                        <li>Average rate (λ) is constant</li>
+                        <li>Two events cannot occur at the same instant</li>
+                        <li>Probability of more than one event in a very small interval ≈ 0</li>
+                    </ol>
+
+                    <h3 class="mt-lg">📐 Poisson Probability Formula</h3>
+
+                    <div class="example-box">
+                        <img src="../images/Poisson Probability Formula.jpg" alt="Poisson Probability Formula" style="width: 100%; max-width: 500px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="note-box mt-md">
+                        <strong>Where:</strong><br>
+                        • x = number of occurrences<br>
+                        • λ = average rate<br>
+                        • e ≈ 2.718
+                    </div>
+
+                    <h3 class="mt-lg">⚡ Very Important Property</h3>
+
+                    <p>For Poisson distribution:</p>
+
+                    <div class="formula-box">
+                        <p>Mean = Variance = λ</p>
+                        <div class="formula">μ = σ² = λ</div>
+                    </div>
+
+                    <h3 class="mt-lg">🚕 Example 1: Real-Life Exam Question</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Road Accidents Problem</div>
+                        
+                        <p><strong>Q. The average number of road accidents at a crossing is 2 per day. Find the probability that exactly 3 accidents occur on a given day.</strong></p>
+
+                        <h4 class="mt-md">✍️ Step-by-step Solution:</h4>
+
+                        <ul class="icon-list bullet">
+                            <li>λ = 2</li>
+                            <li>x = 3</li>
+                        </ul>
+
+                        <div class="example-box mt-md">
+                            <img src="../images/ansewer1.png" alt="Poisson Calculation Example" style="width: 100%; max-width: 400px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        </div>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center"><strong>Answer: ≈ 0.180</strong></p>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Example 2: Call Center Problem</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">📞 Call Center</div>
+                        
+                        <p><strong>Average calls per minute = 5. Find probability of receiving no call in a minute.</strong></p>
+
+                        <div class="formula-box mt-md">
+                            <p>P(X = 0) = (e<sup>-5</sup> × 5<sup>0</sup>) / 0!</p>
+                            <p>= e<sup>-5</sup> × 1</p>
+                            <div class="formula">≈ 0.0067</div>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Relation with Binomial Distribution</h3>
+
+                    <p>Poisson is a limiting case of Binomial when:</p>
+
+                    <ul class="icon-list bullet">
+                        <li>n is large</li>
+                        <li>p is small</li>
+                        <li>np = λ (constant)</li>
+                    </ul>
+
+                    <div class="note-box mt-md">
+                        👉 Used when binomial calculations become heavy
+                    </div>
+
+                    <h3 class="mt-lg">🧪 Python Implementation (Exam + DS Friendly)</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>from scipy.stats import poisson
+
+# Average rate
+lam = 2
+
+# Probability of exactly 3 events
+poisson.pmf(3, lam)</code></pre>
+                        </div>
+                        <div class="code-output">
+0.1804470443
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">📈 Visualization</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import matplotlib.pyplot as plt
+import numpy as np
+from scipy.stats import poisson
+
+x = np.arange(0, 10)
+y = poisson.pmf(x, 2)
+
+plt.bar(x, y)
+plt.xlabel("Number of Events")
+plt.ylabel("Probability")
+plt.title("Poisson Distribution (λ = 2)")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">📌 Applications of Poisson Distribution</h3>
+
+                    <div class="viz-comparison-grid">
+                        <div class="example-box">
+                            <p>📞 Call arrivals at call centers</p>
+                        </div>
+                        <div class="example-box">
+                            <p>📧 Number of emails per hour</p>
+                        </div>
+                        <div class="example-box">
+                            <p>🔧 Machine breakdowns</p>
+                        </div>
+                        <div class="example-box">
+                            <p>🌐 Website traffic</p>
+                        </div>
+                        <div class="example-box">
+                            <p>📡 Network packet arrivals</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Normal Distribution -->
+                <div class="section" id="normal-distribution">
+                    <h2>Part 3: Continuous Probability Distribution – Normal Distribution</h2>
+
+                    <div class="example-box">
+                        <img src="../images/Normal Distribution.png" alt="Normal Distribution" style="width: 100%; max-width: 700px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <h3>What is a Continuous Probability Distribution?</h3>
+
+                    <p>A continuous distribution:</p>
+                    <ul class="icon-list bullet">
+                        <li>Deals with continuous values</li>
+                        <li>Probability is measured over an interval</li>
+                        <li>Probability at a single point = 0</li>
+                    </ul>
+
+                    <div class="note-box mt-md">
+                        👉 Example: height, weight, time, marks, errors
+                    </div>
+
+                    <h3 class="mt-lg">🎯 What is Normal Distribution?</h3>
+
+                    <p>A Normal distribution is a symmetrical, bell-shaped probability distribution where:</p>
+
+                    <ul class="icon-list bullet">
+                        <li>Most values cluster around the mean</li>
+                        <li>Extreme values are rare</li>
+                        <li>Left and right sides are mirror images</li>
+                    </ul>
+
+                    <div class="highlight-box info mt-md">
+                        <p><strong>It is also called:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Gaussian Distribution</li>
+                            <li>Bell Curve</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="mt-lg">🔑 Key Characteristics (Very Important ⭐)</h3>
+
+                    <ol class="steps-list">
+                        <li>Mean = Median = Mode</li>
+                        <li>Curve is perfectly symmetric</li>
+                        <li>Total area under curve = 1</li>
+                        <li>Defined by two parameters:
+                            <ul class="icon-list bullet ml-lg">
+                                <li>Mean (μ)</li>
+                                <li>Standard deviation (σ)</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h3 class="mt-lg">📐 Probability Density Function (PDF)</h3>
+
+                    <div class="example-box">
+                        <img src="../images/Probability Density Function (PDF) formula.png" alt="PDF Formula" style="width: 100%; max-width: 500px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="note-box mt-md">
+                        ⚠️ In exams:<br>
+                        • Formula recognition is enough<br>
+                        • Rarely asked to derive
+                    </div>
+
+                    <h3 class="mt-lg">The 68–95–99.7 Rule</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Interval</th>
+                                <th>Percentage of Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>μ ± 1σ</td>
+                                <td>≈ 68%</td>
+                            </tr>
+                            <tr>
+                                <td>μ ± 2σ</td>
+                                <td>≈ 95%</td>
+                            </tr>
+                            <tr>
+                                <td>μ ± 3σ</td>
+                                <td>≈ 99.7%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="note-box mt-md">
+                        👉 This rule helps estimate probabilities quickly
+                    </div>
+
+                    <h3 class="mt-lg">🎓 Example 1: Marks Distribution (Exam-Style)</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Student Marks Problem</div>
+                        
+                        <p>Marks of students follow a normal distribution with:</p>
+                        <ul class="icon-list bullet">
+                            <li>Mean = 60</li>
+                            <li>SD = 10</li>
+                        </ul>
+
+                        <p class="mt-md"><strong>Q. Approximate percentage of students scoring between 50 and 70?</strong></p>
+
+                        <div class="formula-box mt-md">
+                            <p>50 = μ − 1σ</p>
+                            <p>70 = μ + 1σ</p>
+                        </div>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center"><strong>✔️ Using 68% rule:</strong></p>
+                            <p class="text-center font-bold mt-sm">68%</p>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">🧠 Why Mean = Median = Mode?</h3>
+
+                    <p>Because:</p>
+                    <ul class="icon-list bullet">
+                        <li>Curve is symmetric</li>
+                        <li>No skewness</li>
+                        <li>Central peak at μ</li>
+                    </ul>
+
+                    <h3 class="mt-lg">🔄 Standard Normal Distribution (Z-Distribution)</h3>
+
+                    <p>When:</p>
+                    <ul class="icon-list bullet">
+                        <li>Mean = 0</li>
+                        <li>SD = 1</li>
+                    </ul>
+
+                    <p class="mt-sm">It is called <strong>standard normal distribution</strong>.</p>
+
+                    <p class="mt-md">We convert any normal variable to Z-score:</p>
+
+                    <div class="formula-box">
+                        <div class="formula">Z = (X − μ) / σ</div>
+                    </div>
+
+                    <h3 class="mt-lg">🧮 Example 2: Z-Score Calculation</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Height Distribution</div>
+                        
+                        <p>Height distribution:</p>
+                        <ul class="icon-list bullet">
+                            <li>μ = 170 cm</li>
+                            <li>σ = 10 cm</li>
+                        </ul>
+
+                        <p class="mt-md"><strong>Find Z-score for X = 180.</strong></p>
+
+                        <div class="formula-box mt-md">
+                            <p>Z = (180 − 170) / 10</p>
+                            <div class="formula">Z = 1</div>
+                        </div>
+
+                        <p class="mt-md">👉 Means 1 standard deviation above mean</p>
+                    </div>
+
+                    <h3 class="mt-lg">🧪 Python Implementation</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>from scipy.stats import norm
+
+# Probability between two values
+mu = 60
+sigma = 10
+
+# P(50 < X < 70)
+prob = norm.cdf(70, mu, sigma) - norm.cdf(50, mu, sigma)
+prob</code></pre>
+                        </div>
+                        <div class="code-output">
+0.6826
+                        </div>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        ✔️ Matches 68% rule
+                    </div>
+
+                    <h3 class="mt-lg">📈 Visualizing Normal Distribution</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm
+
+x = np.linspace(30, 90, 100)
+y = norm.pdf(x, 60, 10)
+
+plt.plot(x, y)
+plt.title("Normal Distribution (μ=60, σ=10)")
+plt.xlabel("Marks")
+plt.ylabel("Probability Density")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">📌 Applications of Normal Distribution</h3>
+
+                    <div class="viz-comparison-grid">
+                        <div class="example-box">
+                            <p>📝 Exam marks analysis</p>
+                        </div>
+                        <div class="example-box">
+                            <p>📏 Measurement errors</p>
+                        </div>
+                        <div class="example-box">
+                            <p>📊 Heights & weights</p>
+                        </div>
+                        <div class="example-box">
+                            <p>🤖 ML model errors</p>
+                        </div>
+                        <div class="example-box">
+                            <p>🏭 Quality control</p>
+                        </div>
+                        <div class="example-box">
+                            <p>🌍 Natural & social phenomena</p>
+                        </div>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        👉 Many ML algorithms assume normality
+                    </div>
+                </div>
+
+                <!-- Section 5: Numerical Problems -->
+                <div class="section" id="numerical-problems">
+                    <h2>Numericals on Normal Distribution</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">✅ Problem 1: Direct 68–95–99.7 Rule</div>
+                        
+                        <p><strong>Q1. The marks of students follow a normal distribution with mean = 50 and standard deviation = 5. Find the percentage of students scoring between 45 and 55.</strong></p>
+
+                        <h4 class="mt-md">✍️ Solution:</h4>
+
+                        <p>Given: μ = 50, σ = 5</p>
+
+                        <div class="formula-box mt-md">
+                            <p>45 = μ − 1σ = 50 − 5</p>
+                            <p>55 = μ + 1σ = 50 + 5</p>
+                        </div>
+
+                        <p class="mt-md">This is the interval μ ± 1σ</p>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center"><strong>Using 68% rule:</strong></p>
+                            <p class="text-center font-bold mt-sm">Answer: 68%</p>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">✅ Problem 2: One-Sided Probability</div>
+                        
+                        <p><strong>Q2. IQ scores are normally distributed with mean = 100 and SD = 15. Find the percentage of people with IQ above 115.</strong></p>
+
+                        <h4 class="mt-md">✍️ Solution:</h4>
+
+                        <p>Given: μ = 100, σ = 15</p>
+
+                        <div class="formula-box mt-md">
+                            <p>Z = (115 − 100) / 15 = 1</p>
+                        </div>
+
+                        <p class="mt-md">We know μ ± 1σ contains 68% of data</p>
+                        <p>So, each tail contains: (100% − 68%) / 2 = 16%</p>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center"><strong>Answer: 16%</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">✅ Problem 3: Using Z-Score</div>
+                        
+                        <p><strong>Q3. Heights of men are normally distributed with mean = 170 cm and SD = 10 cm. Find the probability that a man's height is between 160 cm and 180 cm.</strong></p>
+
+                        <h4 class="mt-md">✍️ Solution:</h4>
+
+                        <p>Given: μ = 170, σ = 10</p>
+
+                        <div class="formula-box mt-md">
+                            <p>160 = μ − 1σ = 170 − 10</p>
+                            <p>180 = μ + 1σ = 170 + 10</p>
+                        </div>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center"><strong>Answer: 0.68 or 68%</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">✅ Problem 4: Above a Given Value</div>
+                        
+                        <p><strong>Q4. Marks in an exam follow a normal distribution with mean = 60 and SD = 10. Find the probability that a student scores more than 70 marks.</strong></p>
+
+                        <h4 class="mt-md">✍️ Solution:</h4>
+
+                        <p>Given: μ = 60, σ = 10</p>
+
+                        <div class="formula-box mt-md">
+                            <p>Z = (70 − 60) / 10 = 1</p>
+                        </div>
+
+                        <p class="mt-md">From 68% rule, right tail beyond μ + 1σ = 16%</p>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center"><strong>Answer: 0.16 or 16%</strong></p>
+                        </div>
+
+                        <h4 class="mt-md">Python Verification:</h4>
+
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-language">Python</span>
+                            </div>
+                            <div class="code-content">
+<pre><code>from scipy.stats import norm
+
+1 - norm.cdf(70, 60, 10)</code></pre>
+                            </div>
+                            <div class="code-output">
+0.1587
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">✅ Problem 5: Below a Given Value</div>
+                        
+                        <p><strong>Q5. The lifetime of bulbs is normally distributed with mean = 1200 hours and SD = 100 hours. Find the probability that a bulb lasts less than 1100 hours.</strong></p>
+
+                        <h4 class="mt-md">✍️ Solution:</h4>
+
+                        <p>Given: μ = 1200, σ = 100</p>
+
+                        <div class="formula-box mt-md">
+                            <p>Z = (1100 − 1200) / 100 = −1</p>
+                        </div>
+
+                        <p class="mt-md">Left tail beyond μ − 1σ = 16%</p>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center"><strong>Answer: 0.16 or 16%</strong></p>
+                        </div>
+
+                        <h4 class="mt-md">Python Verification:</h4>
+
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-language">Python</span>
+                            </div>
+                            <div class="code-content">
+<pre><code>from scipy.stats import norm
+
+norm.cdf(1100, 1200, 100)</code></pre>
+                            </div>
+                            <div class="code-output">
+0.1587
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">✅ Problem 6: Between Two Unequal Values</div>
+                        
+                        <p><strong>Q6. A variable follows a normal distribution with mean = 50 and SD = 5. Find the probability that X lies between 45 and 60.</strong></p>
+
+                        <h4 class="mt-md">✍️ Solution:</h4>
+
+                        <p>Given: μ = 50, σ = 5</p>
+
+                        <div class="formula-box mt-md">
+                            <p>Z₁ = (45 − 50) / 5 = −1</p>
+                            <p>Z₂ = (60 − 50) / 5 = 2</p>
+                        </div>
+
+                        <p class="mt-md">P(45 < X < 60) = P(−1 < Z < 2)</p>
+
+                        <h4 class="mt-md">Python Solution:</h4>
+
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-language">Python</span>
+                            </div>
+                            <div class="code-content">
+<pre><code>from scipy.stats import norm
+
+norm.cdf(60, 50, 5) - norm.cdf(45, 50, 5)</code></pre>
+                            </div>
+                            <div class="code-output">
+0.8186
+                            </div>
+                        </div>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center"><strong>Answer: 0.8186 or 81.86%</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">✅ Problem 7: Finding the Cut-Off Value</div>
+                        
+                        <p><strong>Q7. Marks are normally distributed with mean = 70 and SD = 10. Find the minimum marks required to be in the top 5%.</strong></p>
+
+                        <h4 class="mt-md">✍️ Solution:</h4>
+
+                        <p>We need to find X such that P(X > x) = 0.05</p>
+                        <p>Or P(X < x) = 0.95</p>
+
+                        <div class="code-block mt-md">
+                            <div class="code-header">
+                                <span class="code-language">Python</span>
+                            </div>
+                            <div class="code-content">
+<pre><code>from scipy.stats import norm
+
+# Find the value at 95th percentile
+norm.ppf(0.95, 70, 10)</code></pre>
+                            </div>
+                            <div class="code-output">
+86.45
+                            </div>
+                        </div>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center"><strong>Answer: 86.45 marks</strong></p>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Python General Verification Template</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>from scipy.stats import norm
+
+# Example: P(45 < X < 60), mean=50, sd=5
+norm.cdf(60, 50, 5) - norm.cdf(45, 50, 5)</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
+    </main>
 
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Statistics eBook. Created by <a href="https://github.com/Aman-0402">Aman</a>.</p>
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../contents.html">Contents</a>
+                    <a href="../resources/glossary.html">Glossary</a>
+                </div>
+            </div>
+        </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
 </body>
 </html>
