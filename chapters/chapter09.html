@@ -3,136 +3,991 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SALVAGE IN PROGRESS</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@700&family=VT323&display=swap');
-
-        body {
-            margin: 0;
-            background-color: #121212;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            font-family: 'Stardos Stencil', sans-serif;
-            color: #cd7f32; /* Bronze/Rust color */
-        }
-
-        /* Industrial Background Texture */
-        body::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle, transparent 20%, #121212 70%),
-                url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-            opacity: 0.6;
-        }
-
-        .container {
-            position: relative;
-            text-align: center;
-            z-index: 2;
-        }
-
-        /* CSS Rusted Gear */
-        .gear {
-            width: 100px;
-            height: 100px;
-            background: #4a3b2c;
-            border-radius: 50%;
-            position: relative;
-            margin: 0 auto 30px;
-            animation: spin 4s linear infinite;
-            box-shadow: inset 0 0 20px #000;
-        }
-
-        .gear::before {
-            content: "";
-            position: absolute;
-            top: 10px; left: 10px; right: 10px; bottom: 10px;
-            background: #121212;
-            border-radius: 50%;
-            border: 5px solid #3d2b1f;
-        }
-
-        /* Gear Teeth */
-        .gear-tooth {
-            position: absolute;
-            width: 20px;
-            height: 120px;
-            background: #4a3b2c;
-            left: 40px;
-            top: -10px;
-            border-radius: 2px;
-        }
-        .gear-tooth:nth-child(2) { transform: rotate(45deg); }
-        .gear-tooth:nth-child(3) { transform: rotate(90deg); }
-        .gear-tooth:nth-child(4) { transform: rotate(135deg); }
-
-        /* Text Effects */
-        h1 {
-            font-size: 5rem;
-            margin: 0;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            animation: flicker 2s infinite;
-            filter: drop-shadow(0 0 10px rgba(205, 127, 50, 0.5));
-        }
-
-        .subtext {
-            font-family: 'VT323', monospace;
-            font-size: 1.5rem;
-            color: #7d6b5d;
-            letter-spacing: 2px;
-        }
-
-        /* Animations */
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes flicker {
-            0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
-            20%, 24%, 55% { opacity: 0.2; transform: skewX(5deg); }
-        }
-
-        /* Ambient Smoke/Dust Effect */
-        .smoke {
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 50%);
-            animation: drift 10s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes drift {
-            from { transform: translate(-20%, -20%); }
-            to { transform: translate(0%, 0%); }
-        }
-    </style>
+    <title>Chapter 9: Probability Basics - Statistics eBook</title>
+    <meta name="description" content="Learn about probability basics including classical, empirical, and subjective probability, rules of probability, independent and mutually exclusive events with examples and Python implementation.">
+    <meta name="author" content="Aman">
+    <meta name="keywords" content="probability, classical probability, empirical probability, subjective probability, independent events, mutually exclusive events, statistics, python">
+    
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/chapter-content.css">
 </head>
 <body>
-
-    <div class="smoke"></div>
-
-    <div class="container">
-        <div class="gear">
-            <div class="gear-tooth"></div>
-            <div class="gear-tooth"></div>
-            <div class="gear-tooth"></div>
-            <div class="gear-tooth"></div>
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="book-title">Statistics</h1>
+                <nav class="header-nav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="../contents.html" class="nav-link">Contents</a>
+                    <a href="../resources/glossary.html" class="nav-link">Glossary</a>
+                    <a href="../resources/formulas.html" class="nav-link">Formulas</a>
+                </nav>
+            </div>
         </div>
+    </header>
 
-        <h1>Coming Soon</h1>
-        <div class="subtext">
-            SYSTEM STATUS: [SALVAGING_ASSETS...]
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="chapter-content">
+                <!-- Chapter Header -->
+                <div class="page-header">
+                    <span class="badge">Phase 4: Probability & Inference</span>
+                    <h1 class="page-title">Chapter 9: Probability Basics</h1>
+                    <p class="page-subtitle">Understanding the fundamental concepts of probability and how to apply them</p>
+                </div>
+
+                <!-- Chapter Topics -->
+                <div class="chapter-topics-section">
+                    <h3>📋 Topics Covered in This Chapter</h3>
+                    <ul class="chapter-topics-list">
+                        <li>Classical Probability (Theoretical Probability)</li>
+                        <li>Empirical Probability (Experimental Probability)</li>
+                        <li>Subjective Probability</li>
+                        <li>Rules of Probability</li>
+                        <li>Independent & Mutually Exclusive Events</li>
+                        <li>Exam-Level Numerical Problems</li>
+                    </ul>
+                </div>
+
+                <!-- Section 1: What is Probability -->
+                <div class="section" id="intro-probability">
+                    <h2>What is Probability?</h2>
+
+                    <p>Probability measures how likely an event is to happen.</p>
+
+                    <div class="formula-box">
+                        <p>It always lies between:</p>
+                        <div class="formula">0 ≤ P(event) ≤ 1</div>
+                    </div>
+
+                    <ul class="icon-list bullet mt-md">
+                        <li>0 → impossible</li>
+                        <li>1 → certain</li>
+                    </ul>
+                </div>
+
+                <!-- Section 2: Classical Probability -->
+                <div class="section" id="classical-probability">
+                    <h2>Part 1: Classical Probability</h2>
+
+                    <h3>Classical Probability (Theoretical Probability)</h3>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>✅ Definition</strong></p>
+                        <p class="text-center mt-sm">Classical probability is used when all outcomes are equally likely</p>
+                    </div>
+
+                    <h4 class="mt-lg">📐 Formula</h4>
+
+                    <div class="formula-box">
+                        <div class="math-formula">
+                            P(E) = Number of favorable outcomes / Total number of possible outcomes
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Example 1: Tossing a Fair Coin</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">🪙 Coin Toss</div>
+                        
+                        <p><strong>Sample Space (S):</strong></p>
+                        <p>S = {H, T}</p>
+
+                        <ul class="icon-list bullet mt-md">
+                            <li>Total outcomes = 2</li>
+                            <li>Favorable outcomes for Head = 1</li>
+                        </ul>
+
+                        <div class="formula-box mt-md">
+                            <div class="formula">P(H) = 1/2</div>
+                        </div>
+
+                        <div class="note-box mt-md">
+                            💡 Since the coin is fair, both outcomes are equally likely → classical probability applies
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">🎲 Example 2: Rolling a Fair Die</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Sample Space</div>
+                        <p>S = {1, 2, 3, 4, 5, 6}</p>
+
+                        <h4 class="mt-md">Q1: Probability of getting an even number?</h4>
+                        <ul class="icon-list bullet">
+                            <li>Favorable outcomes = {2, 4, 6} → 3</li>
+                            <li>Total outcomes = 6</li>
+                        </ul>
+
+                        <div class="formula-box mt-sm">
+                            <div class="formula">P(Even) = 3/6 = 1/2</div>
+                        </div>
+
+                        <h4 class="mt-lg">Q2: Probability of getting a number greater than 4?</h4>
+                        <ul class="icon-list bullet">
+                            <li>Favorable outcomes = {5, 6} → 2</li>
+                        </ul>
+
+                        <div class="formula-box mt-sm">
+                            <div class="formula">P(Number > 4) = 2/6 = 1/3</div>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">🧠 Key Assumptions (Very Important ⚠️)</h3>
+
+                    <p><strong>Classical probability works ONLY IF:</strong></p>
+                    <ol class="steps-list">
+                        <li>All outcomes are known</li>
+                        <li>All outcomes are equally likely</li>
+                        <li>Situation is theoretical, not based on experiments</li>
+                    </ol>
+
+                    <div class="highlight-box mt-md">
+                        <p><strong>❌ Not suitable when:</strong></p>
+                        <ul class="icon-list cross mt-sm">
+                            <li>Data comes from real-life observations</li>
+                            <li>Outcomes are not equally likely</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="mt-lg">Python Demo (Just to build intuition)</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># Probability of getting an even number on a fair die
+favorable = 3   # {2, 4, 6}
+total = 6
+
+probability = favorable / total
+probability</code></pre>
+                        </div>
+                        <div class="code-output">
+0.5
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">📊 Where Classical Probability is Used</h3>
+
+                    <div class="viz-comparison-grid">
+                        <div class="example-box">
+                            <p>🎴 Card games</p>
+                        </div>
+                        <div class="example-box">
+                            <p>🎲 Dice & coins</p>
+                        </div>
+                        <div class="example-box">
+                            <p>🤖 Theoretical ML assumptions</p>
+                        </div>
+                        <div class="example-box">
+                            <p>📝 Intro probability questions in exams</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Empirical Probability -->
+                <div class="section" id="empirical-probability">
+                    <h2>Part 2: Empirical Probability (Experimental Probability)</h2>
+
+                    <h3>🔹 What is Empirical Probability?</h3>
+
+                    <p>Empirical probability is based on actual experiments, observations, or real data, not theory.</p>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>👉 It answers:</strong></p>
+                        <p class="text-center font-bold mt-sm">"What happened in real life?"</p>
+                    </div>
+
+                    <h4 class="mt-lg">📐 Formula</h4>
+
+                    <div class="formula-box">
+                        <div class="math-formula">
+                            P(E) = Number of times event occurred / Total number of trials
+                        </div>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        This is also called <strong>relative frequency</strong>
+                    </div>
+
+                    <h3 class="mt-lg">Example 1: Coin Toss Experiment</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">🪙 Real Coin Toss</div>
+                        
+                        <p>Suppose you toss a coin 100 times and observe:</p>
+                        <ul class="icon-list bullet">
+                            <li>Heads = 56 times</li>
+                            <li>Tails = 44 times</li>
+                        </ul>
+
+                        <p class="mt-md"><strong>Probability of getting Head:</strong></p>
+
+                        <div class="formula-box">
+                            <div class="formula">P(H) = 56/100 = 0.56</div>
+                        </div>
+
+                        <div class="highlight-box mt-md">
+                            <p><strong>Notice:</strong></p>
+                            <ul class="icon-list bullet mt-sm">
+                                <li>Theoretical (classical) value = 0.5</li>
+                                <li>Empirical value = 0.56</li>
+                            </ul>
+                            <p class="mt-sm">➡️ Because this is based on real outcomes, not assumptions</p>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Example 2: Real-Life Student Example</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">🎓 Class Performance</div>
+                        
+                        <p>In a class:</p>
+                        <ul class="icon-list bullet">
+                            <li>Total students = 50</li>
+                            <li>Students who passed = 42</li>
+                        </ul>
+
+                        <div class="formula-box mt-md">
+                            <div class="formula">P(Pass) = 42/50 = 0.84</div>
+                        </div>
+
+                        <p class="mt-md">✔️ This is empirical probability, because it comes from observed data</p>
+                    </div>
+
+                    <h3 class="mt-lg">⚡ Important!</h3>
+
+                    <div class="highlight-box success">
+                        <p class="text-center">As the number of trials increases,</p>
+                        <p class="text-center font-bold mt-sm">👉 Empirical probability approaches classical probability</p>
+                        <p class="text-center mt-sm">This idea is called the <strong>Law of Large Numbers</strong></p>
+                    </div>
+
+                    <h3 class="mt-lg">Python Implementation</h3>
+
+                    <p>Let's simulate a coin toss 👇</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+
+# Simulate 1000 coin tosses (0 = Tail, 1 = Head)
+tosses = np.random.choice([0, 1], size=1000)
+
+# Empirical probability of head
+prob_head = np.sum(tosses == 1) / len(tosses)
+prob_head</code></pre>
+                        </div>
+                        <div class="code-output">
+0.497
+                        </div>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        ➡️ Close to 0.5, but not exactly — because it's empirical
+                    </div>
+
+                    <h4 class="mt-lg">📊 Visual Understanding</h4>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import matplotlib.pyplot as plt
+
+plt.bar(['Head', 'Tail'], 
+        [np.sum(tosses == 1), np.sum(tosses == 0)])
+plt.title("Empirical Results of Coin Toss")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        This kind of thinking is exactly how ML models learn from data 📈
+                    </div>
+                </div>
+
+                <!-- Section 4: Classical vs Empirical -->
+                <div class="section" id="classical-vs-empirical">
+                    <h2>🔍 Classical vs Empirical</h2>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Classical</th>
+                                <th>Empirical</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Theoretical</td>
+                                <td>Based on experiment</td>
+                            </tr>
+                            <tr>
+                                <td>Assumes equal chance</td>
+                                <td>Uses real data</td>
+                            </tr>
+                            <tr>
+                                <td>Coins, dice, cards</td>
+                                <td>Surveys, ML datasets</td>
+                            </tr>
+                            <tr>
+                                <td>Fixed value</td>
+                                <td>Changes with data</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 5: Subjective Probability -->
+                <div class="section" id="subjective-probability">
+                    <h2>Part 3: Subjective Probability</h2>
+
+                    <h3>What is Subjective Probability?</h3>
+
+                    <p>Subjective probability is based on personal judgment, experience, belief, or opinion, not on formulas or experiments.</p>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>👉 It answers:</strong></p>
+                        <p class="text-center font-bold mt-sm">"What do I think will happen?"</p>
+                    </div>
+
+                    <h4 class="mt-lg">📐 Is there a formula?</h4>
+
+                    <p>❌ No fixed formula like classical or empirical probability.</p>
+
+                    <p class="mt-sm"><strong>It depends on:</strong></p>
+                    <ul class="icon-list bullet">
+                        <li>Past experience</li>
+                        <li>Expertise</li>
+                        <li>Available information</li>
+                        <li>Intuition</li>
+                    </ul>
+
+                    <h3 class="mt-lg">🌧️ Example 1: Weather Forecast</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Weather Prediction</div>
+                        
+                        <p>A meteorologist says:</p>
+                        <p class="text-center font-bold mt-sm">"There is a 70% chance of rain tomorrow."</p>
+
+                        <p class="mt-md"><strong>✔️ This is subjective probability because:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>It's based on experience + models + judgment</li>
+                            <li>Not a simple equally-likely outcome</li>
+                            <li>Not a repeated experiment by you</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="mt-lg">⚽ Example 2: Sports Prediction</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Sports Match</div>
+                        
+                        <p>You say:</p>
+                        <p class="text-center font-bold mt-sm">"India has a 60% chance of winning this match."</p>
+
+                        <p class="mt-md"><strong>Why subjective?</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>Based on team form, pitch, injuries</li>
+                            <li>Different experts may give different probabilities</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="mt-lg">💼 Example 3: Business / ML Thinking</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Startup Success</div>
+                        
+                        <p>A startup founder says:</p>
+                        <p class="text-center font-bold mt-sm">"There's an 80% chance our app will succeed."</p>
+
+                        <p class="mt-md"><strong>This is:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>Not theoretical</li>
+                            <li>Not experimental</li>
+                            <li>Based on belief + market knowledge</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="mt-lg">🧠 Why Subjective Probability Matters (Very Important ⭐)</h3>
+
+                    <div class="highlight-box info">
+                        <p><strong>In Data Science & AI:</strong></p>
+                        <ul class="icon-list bullet mt-xs">
+                            <li>Prior beliefs are used in Bayesian Statistics</li>
+                            <li>Human judgment influences:
+                                <ul class="icon-list bullet ml-lg">
+                                    <li>Risk analysis</li>
+                                    <li>Decision-making systems</li>
+                                    <li>Expert systems</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <p class="mt-md">👉 Later, you'll see how subjective beliefs + data = Bayesian probability</p>
+                    </div>
+
+                    <h3 class="mt-lg">🧪 Simple Python Analogy (Conceptual Only)</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># Subjective probabilities assigned by an expert
+events = {
+    "Market Up": 0.6,
+    "Market Down": 0.4
+}
+
+events</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        ⚠️ These numbers are beliefs, not measured values
+                    </div>
+                </div>
+
+                <!-- Section 6: Comparison All Types -->
+                <div class="section" id="comparison-all-types">
+                    <h2>🔍 Comparison (All 3 Types)</h2>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Based On</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Classical</strong></td>
+                                <td>Theory</td>
+                                <td>Dice, cards</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Empirical</strong></td>
+                                <td>Data</td>
+                                <td>Surveys, experiments</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Subjective</strong></td>
+                                <td>Belief</td>
+                                <td>Weather, sports</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 7: Rules of Probability -->
+                <div class="section" id="rules-probability">
+                    <h2>Part 4: Rules of Probability</h2>
+
+                    <h3>🔹 Why Rules of Probability Matter?</h3>
+
+                    <p>Rules help us:</p>
+                    <ul class="icon-list check">
+                        <li>Combine events</li>
+                        <li>Avoid double counting</li>
+                        <li>Solve real exam & ML problems</li>
+                    </ul>
+
+                    <p class="mt-md">Think of them as <strong>grammar rules of probability</strong>.</p>
+
+                    <h3 class="mt-lg">🧩 Rule 1: Probability of an Event Lies Between 0 and 1</h3>
+
+                    <div class="formula-box">
+                        <div class="formula">0 ≤ P(A) ≤ 1</div>
+                    </div>
+
+                    <ul class="icon-list bullet mt-md">
+                        <li>0 → Impossible</li>
+                        <li>1 → Certain</li>
+                    </ul>
+
+                    <div class="example-box mt-md">
+                        <p><strong>Example:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>P(getting 7 on a die) = 0</li>
+                            <li>P(sun rises tomorrow) ≈ 1</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="mt-lg">🧩 Rule 2: Sum of Probabilities of All Outcomes = 1</h3>
+
+                    <p>If S is the sample space:</p>
+
+                    <div class="formula-box">
+                        <div class="formula">P(S) = 1</div>
+                    </div>
+
+                    <div class="example-box mt-md">
+                        <div class="example-title">Example: Fair Die</div>
+                        <div class="formula-box">
+                            <p>P(1) + P(2) + P(3) + P(4) + P(5) + P(6) = 1</p>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">🧩 Rule 3: Complement Rule</h3>
+
+                    <h4>📐 Formula</h4>
+
+                    <div class="formula-box">
+                        <div class="formula">P(A<sup>c</sup>) = 1 − P(A)</div>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        <strong>Where:</strong><br>
+                        • A<sup>c</sup> = "NOT A"
+                    </div>
+
+                    <div class="example-box mt-md">
+                        <div class="example-title">Example</div>
+                        <p>Probability of rain today = 0.3</p>
+
+                        <div class="formula-box mt-sm">
+                            <p>P(No rain) = 1 − 0.3 = 0.7</p>
+                        </div>
+
+                        <p class="mt-md">✔️ Very useful when direct calculation is hard</p>
+                    </div>
+
+                    <h3 class="mt-lg">🧩 Rule 4: Addition Rule (Most Important 🔥)</h3>
+
+                    <h4>Case 1: Mutually Exclusive Events</h4>
+                    <p>(Events that cannot happen together)</p>
+
+                    <div class="formula-box">
+                        <div class="formula">P(A ∪ B) = P(A) + P(B)</div>
+                    </div>
+
+                    <div class="example-box mt-md">
+                        <div class="example-title">Example</div>
+                        <p>On a die:</p>
+                        <ul class="icon-list bullet">
+                            <li>A = getting 1 → 1/6</li>
+                            <li>B = getting 6 → 1/6</li>
+                        </ul>
+
+                        <div class="formula-box mt-md">
+                            <p>P(1 or 6) = 1/6 + 1/6 = 1/3</p>
+                        </div>
+                    </div>
+
+                    <h4 class="mt-lg">Case 2: Not Mutually Exclusive</h4>
+                    <p>(Events can happen together)</p>
+
+                    <div class="formula-box">
+                        <div class="formula">P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</div>
+                    </div>
+
+                    <div class="example-box mt-md">
+                        <div class="example-title">Example</div>
+                        <p>From a class:</p>
+                        <ul class="icon-list bullet">
+                            <li>P(Student plays Cricket) = 0.6</li>
+                            <li>P(Student plays Football) = 0.5</li>
+                            <li>P(Plays both) = 0.2</li>
+                        </ul>
+
+                        <div class="formula-box mt-md">
+                            <p>P(C or F) = 0.6 + 0.5 − 0.2 = 0.9</p>
+                        </div>
+
+                        <p class="mt-md">👉 Subtraction avoids double counting</p>
+                    </div>
+
+                    <h4 class="mt-lg">🧠 Visual Intuition (Venn Diagram Logic)</h4>
+
+                    <ul class="icon-list bullet">
+                        <li>Overlapping area = P(A ∩ B)</li>
+                        <li>Union = total shaded area</li>
+                    </ul>
+
+                    <h3 class="mt-lg">🧪 Python Example (Addition Rule)</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>P_A = 0.6
+P_B = 0.5
+P_A_and_B = 0.2
+
+P_A_or_B = P_A + P_B - P_A_and_B
+P_A_or_B</code></pre>
+                        </div>
+                        <div class="code-output">
+0.9
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 8: Independent & Mutually Exclusive Events -->
+                <div class="section" id="independent-mutually-exclusive">
+                    <h2>Part 5: Independent & Mutually Exclusive Events</h2>
+
+                    <h3>First, Understand "Events"</h3>
+
+                    <p>An event is any outcome or group of outcomes.</p>
+
+                    <div class="example-box">
+                        <p><strong>Examples:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>Getting Head</li>
+                            <li>Rolling a 6</li>
+                            <li>Student passing exam</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="mt-lg">🔵 A. Mutually Exclusive Events</h3>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>✅ Definition</strong></p>
+                        <p class="text-center mt-sm">Two events are mutually exclusive if they cannot occur at the same time</p>
+                    </div>
+
+                    <div class="formula-box mt-md">
+                        <div class="formula">P(A ∩ B) = 0</div>
+                    </div>
+
+                    <div class="example-box mt-lg">
+                        <div class="example-title">🎲 Example 1: Die Roll</div>
+                        <ul class="icon-list bullet">
+                            <li>A = getting 2</li>
+                            <li>B = getting 5</li>
+                        </ul>
+
+                        <p class="mt-md">You cannot get 2 and 5 together in one roll.</p>
+
+                        <p class="mt-sm">✔️ Mutually exclusive</p>
+
+                        <div class="formula-box mt-sm">
+                            <div class="formula">P(A ∩ B) = 0</div>
+                        </div>
+                    </div>
+
+                    <h4 class="mt-lg">🧠 Key Property</h4>
+
+                    <p>If events are mutually exclusive:</p>
+
+                    <div class="formula-box">
+                        <div class="formula">P(A ∪ B) = P(A) + P(B)</div>
+                    </div>
+
+                    <div class="example-box mt-lg">
+                        <div class="example-title">❌ Not Mutually Exclusive Example</div>
+                        <ul class="icon-list bullet">
+                            <li>A = getting even number</li>
+                            <li>B = getting number greater than 3</li>
+                        </ul>
+
+                        <p class="mt-md">Overlap = {4, 6} → not mutually exclusive</p>
+                    </div>
+
+                    <h3 class="mt-lg">🟢 B. Independent Events</h3>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>✅ Definition</strong></p>
+                        <p class="text-center mt-sm">Two events are independent if the occurrence of one does NOT affect the other</p>
+                    </div>
+
+                    <div class="formula-box mt-md">
+                        <div class="formula">P(A ∩ B) = P(A) × P(B)</div>
+                    </div>
+
+                    <div class="example-box mt-lg">
+                        <div class="example-title">🪙 Example 2: Tossing Two Coins</div>
+                        <ul class="icon-list bullet">
+                            <li>A = Head on first coin → 1/2</li>
+                            <li>B = Head on second coin → 1/2</li>
+                        </ul>
+
+                        <p class="mt-md">First coin doesn't affect second coin.</p>
+
+                        <div class="formula-box mt-md">
+                            <p>P(A ∩ B) = 1/2 × 1/2 = 1/4</p>
+                        </div>
+
+                        <p class="mt-md">✔️ Independent</p>
+                    </div>
+
+                    <div class="example-box mt-lg">
+                        <div class="example-title">🎲 Example 3: Coin Toss + Die Roll</div>
+                        <p>Coin result has no effect on die</p>
+                        <p class="mt-sm">✔️ Independent events</p>
+                    </div>
+
+                    <h3 class="mt-lg">🚨 VERY IMPORTANT CONFUSION (Exam Favorite)</h3>
+
+                    <div class="highlight-box">
+                        <p class="text-center font-bold">❌ Mutually Exclusive ≠ Independent</p>
+                    </div>
+
+                    <table class="comparison-table mt-md">
+                        <thead>
+                            <tr>
+                                <th>Case</th>
+                                <th>Mutually Exclusive</th>
+                                <th>Independent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Can occur together?</strong></td>
+                                <td>❌ No</td>
+                                <td>✅ Yes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Intersection</strong></td>
+                                <td>0</td>
+                                <td>P(A) × P(B)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Relationship</strong></td>
+                                <td>Disjoint</td>
+                                <td>Unrelated</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="note-box mt-md">
+                        👉 They can NEVER be both at the same time (except trivial zero-probability cases)
+                    </div>
+
+                    <h3 class="mt-lg">🧠 Trick to Remember</h3>
+
+                    <ul class="icon-list bullet">
+                        <li>Mutually Exclusive → No overlap</li>
+                        <li>Independent → No influence</li>
+                    </ul>
+
+                    <h3 class="mt-lg">🧪 Python Example (Independent Events)</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># Probability of getting Head on first coin
+P_A = 0.5
+
+# Probability of getting Head on second coin
+P_B = 0.5
+
+# Independent events
+P_A_and_B = P_A * P_B
+P_A_and_B</code></pre>
+                        </div>
+                        <div class="code-output">
+0.25
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 9: Numerical Problems -->
+                <div class="section" id="numerical-problems">
+                    <h2>Exam-Level Numerical Problems on Probability</h2>
+
+                    <div class="example-box">
+                        <div class="example-title">✅ Problem 1: Classical Probability </div>
+                        
+                        <p><strong>Q1. A fair die is thrown once. Find the probability of getting</strong></p>
+                        <p>(a) a prime number</p>
+                        <p>(b) a number divisible by 3</p>
+
+                        <h4 class="mt-md">✍️ Solution:</h4>
+
+                        <p>Sample space: S = {1, 2, 3, 4, 5, 6}, n(S) = 6</p>
+
+                        <p class="mt-md"><strong>(a) Prime numbers = {2, 3, 5}</strong></p>
+                        <p>Favorable outcomes = 3</p>
+
+                        <div class="formula-box mt-sm">
+                            <div class="formula">P(Prime) = 3/6 = 1/2</div>
+                        </div>
+
+                        <p class="mt-md"><strong>(b) Numbers divisible by 3 = {3, 6}</strong></p>
+                        <p>Favorable outcomes = 2</p>
+
+                        <div class="formula-box mt-sm">
+                            <div class="formula">P(Divisible by 3) = 2/6 = 1/3</div>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">✅ Problem 2: Complement Rule </div>
+                        
+                        <p><strong>Q2. The probability that a student passes an exam is 0.78. Find the probability that the student fails.</strong></p>
+
+                        <h4 class="mt-md">✍️ Solution:</h4>
+
+                        <p>Let: P(Pass) = 0.78</p>
+
+                        <p class="mt-sm">Using complement rule:</p>
+
+                        <div class="formula-box mt-sm">
+                            <p>P(Fail) = 1 − P(Pass)</p>
+                            <p>P(Fail) = 1 − 0.78</p>
+                            <div class="formula">P(Fail) = 0.22</div>
+                        </div>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center"><strong>Answer: 0.22</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">✅ Problem 3: Empirical Probability</div>
+                        
+                        <p><strong>Q3. In 200 tosses of a coin, heads appeared 110 times. Find the probability of getting a head.</strong></p>
+
+                        <h4 class="mt-md">✍️ Solution:</h4>
+
+                        <div class="formula-box">
+                            <p>P(H) = Number of heads / Total tosses</p>
+                            <p>P(H) = 110 / 200</p>
+                            <div class="formula">P(H) = 0.55</div>
+                        </div>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center"><strong>✔️ Answer: 0.55</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">✅ Problem 4: Mutually Exclusive Events</div>
+                        
+                        <p><strong>Q4. A card is drawn from a deck of 52 cards. Find the probability that the card is a king or a queen.</strong></p>
+
+                        <h4 class="mt-md">✍️ Solution:</h4>
+
+                        <ul class="icon-list bullet">
+                            <li>Number of Kings = 4</li>
+                            <li>Number of Queens = 4</li>
+                        </ul>
+
+                        <p class="mt-md">These events are mutually exclusive (a card can't be both).</p>
+
+                        <div class="formula-box mt-md">
+                            <p>P(K ∪ Q) = P(K) + P(Q)</p>
+                            <p>P = 4/52 + 4/52 = 8/52</p>
+                            <div class="formula">P = 0.1538</div>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">✅ Problem 5: Not Mutually Exclusive Events </div>
+                        
+                        <p><strong>Q5. From a class:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>60% students like Mathematics</li>
+                            <li>50% like Physics</li>
+                            <li>20% like both</li>
+                        </ul>
+                        <p class="mt-sm"><strong>Find the probability that a student likes Mathematics or Physics.</strong></p>
+
+                        <h4 class="mt-md">✍️ Solution:</h4>
+
+                        <p>Given:</p>
+                        <p>P(M) = 0.6, P(P) = 0.5, P(M ∩ P) = 0.2</p>
+
+                        <p class="mt-md">Using addition rule:</p>
+
+                        <div class="formula-box mt-sm">
+                            <p>P(M ∪ P) = P(M) + P(P) − P(M ∩ P)</p>
+                            <p>P = 0.6 + 0.5 − 0.2</p>
+                            <div class="formula">P = 0.9</div>
+                        </div>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center"><strong>✔️ Answer: 0.9</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">✅ Problem 6: Independent Events</div>
+                        
+                        <p><strong>Q6. Two coins are tossed simultaneously. Find the probability of getting two heads.</strong></p>
+
+                        <h4 class="mt-md">✍️ Solution:</h4>
+
+                        <ul class="icon-list bullet">
+                            <li>P(H on first coin) = 1/2</li>
+                            <li>P(H on second coin) = 1/2</li>
+                        </ul>
+
+                        <p class="mt-md">Coins are independent.</p>
+
+                        <div class="formula-box mt-md">
+                            <p>P(HH) = 1/2 × 1/2</p>
+                            <div class="formula">P(HH) = 1/4</div>
+                        </div>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center"><strong>✔️ Answer: 1/4</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">✅ Problem 7: Mixed Concept </div>
+                        
+                        <p><strong>Q7. A number is chosen at random from {1, 2, 3, 4, 5, 6, 7, 8}. Find the probability that the number is even or prime.</strong></p>
+
+                        <h4 class="mt-md">✍️ Solution:</h4>
+
+                        <ul class="icon-list bullet">
+                            <li>Even numbers = {2, 4, 6, 8} → 4</li>
+                            <li>Prime numbers = {2, 3, 5, 7} → 4</li>
+                            <li>Common (both even & prime) = {2} → 1</li>
+                        </ul>
+
+                        <p class="mt-md">Using addition rule:</p>
+
+                        <div class="formula-box mt-md">
+                            <p>P(E ∪ P) = 4/8 + 4/8 − 1/8</p>
+                            <div class="formula">P(E ∪ P) = 7/8</div>
+                        </div>
+
+                        <div class="highlight-box success mt-md">
+                            <p class="text-center"><strong>✔️ Answer: 7/8</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
+    </main>
 
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Statistics eBook. Created by <a href="https://github.com/Aman-0402">Aman</a>.</p>
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../contents.html">Contents</a>
+                    <a href="../resources/glossary.html">Glossary</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
 </body>
 </html>
