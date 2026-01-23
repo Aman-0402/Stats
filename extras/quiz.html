@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz – Statistics & Probability</title>
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style>
+/* ===========================
+   GLOBAL THEME
+=========================== */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(135deg, #1a1a1a, #000000, #0a2342);
+    color: #e5e5e5;
+    min-height: 100vh;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+header {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+header h1 {
+    font-size: 2.6rem;
+    background: linear-gradient(90deg, #9fb3ff, #ffffff, #9fb3ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ===========================
+   QUIZ CONTAINER
+=========================== */
+.quiz-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 2rem;
+    display: grid;
+    gap: 1.8rem;
+}
+
+/* ===========================
+   QUESTION CARD
+=========================== */
+.question-card {
+    background: linear-gradient(145deg, #1f1f1f, #0c1625);
+    border-radius: 18px;
+    padding: 1.6rem;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+    animation: fadeUp 0.8s ease;
+}
+
+.question-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+/* ===========================
+   OPTIONS
+=========================== */
+.options label {
+    display: block;
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.options input {
+    margin-right: 0.6rem;
+}
+
+.options label:hover {
+    background: rgba(120,180,255,0.2);
+}
+
+/* ===========================
+   SUBMIT BUTTON
+=========================== */
+.submit-btn {
+    margin: 2.5rem auto;
+    display: block;
+    padding: 0.9rem 2.4rem;
+    font-size: 1rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(135deg, #3f6fa5, #5a8fd4);
+    box-shadow: 0 0 30px rgba(90,150,255,0.7);
+    transition: 0.4s;
+}
+
+.submit-btn:hover {
+    transform: scale(1.08);
+}
+
+/* ===========================
+   ANIMATION
+=========================== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>MCQs – Statistics & Probability 🧠</h1>
+</header>
+
+<form class="quiz-container" id="quizForm">
+
+<!-- QUESTION TEMPLATE -->
+<script>
+const questions = [
+ {q:"A smaller p-value provides stronger evidence against the null hypothesis.", o:["True","False"], a:["True"]},
+ {q:"Which measures can be used to study dispersion?", o:["Standard deviation","Variance","Mean","Range"], a:["Standard deviation","Variance","Range"]},
+ {q:"Scatter plot rising upward left to right indicates:", o:["No correlation","Strong positive correlation","Weak correlation","Strong negative correlation"], a:["Strong positive correlation"]},
+ {q:"The ordinal scale allows ranking but not exact difference.", o:["True","False"], a:["True"]},
+ {q:"Pearson’s correlation – correct statements?", o:["Measures strength & direction","Ranked data only","Quantitative variables","Value between −1 and +1"], a:["Measures strength & direction","Quantitative variables","Value between −1 and +1"]},
+ {q:"Average with more importance to higher usage months:", o:["Mode","Median","Arithmetic mean","Weighted mean"], a:["Weighted mean"]},
+ {q:"Mutually exclusive events can occur together.", o:["True","False"], a:["False"]},
+ {q:"Dispersion in same units as data:", o:["Standard deviation","Variance","Interquartile range","Coefficient of variation"], a:["Standard deviation"]},
+ {q:"Graphs showing numerical distribution:", o:["Pie chart","Frequency polygon","Boxplot","Histogram"], a:["Frequency polygon","Boxplot","Histogram"]},
+ {q:"Variability of sample means is called:", o:["Standard deviation","Variance","Standard error","Confidence interval"], a:["Standard error"]},
+ {q:"Correlation implies causation.", o:["True","False"], a:["False"]},
+ {q:"Inferential statistics activities:", o:["Confidence intervals","Hypothesis testing","Estimating parameters","Tabulating data"], a:["Confidence intervals","Hypothesis testing","Estimating parameters"]},
+ {q:"Relative variability percentage:", o:["Coefficient of variation","Standard deviation","Range","IQR"], a:["Coefficient of variation"]},
+ {q:"Highest minus lowest value uses:", o:["IQR","Variance","Standard deviation","Range"], a:["Range"]},
+ {q:"Long left tail means:", o:["Zero skewness","Negative skewness","Leptokurtic","Positive skewness"], a:["Negative skewness"]},
+ {q:"Population is complete set.", o:["True","False"], a:["True"]},
+ {q:"Median is used when:", o:["House price","Equal importance","Income with outliers","Open-ended classes"], a:["House price","Income with outliers","Open-ended classes"]},
+ {q:"Probability of rolling 6 on fair die:", o:["Classical","Empirical","Subjective","Conditional"], a:["Classical"]},
+ {q:"Standard error – correct:", o:["Always larger than SD","Used in testing","Decreases with sample size","Measures sample mean variability"], a:["Used in testing","Decreases with sample size","Measures sample mean variability"]},
+ {q:"Skewness measures asymmetry.", o:["True","False"], a:["True"]},
+ {q:"Descriptive statistics include:", o:["Bar charts","Predicting revenue","Tables","Average sales"], a:["Bar charts","Tables","Average sales"]},
+ {q:"Quantitative data:", o:["Blood group","Absentees","Height","Marks"], a:["Absentees","Height","Marks"]},
+ {q:"Small sample, unknown SD:", o:["Chi-square","F-test","t-test","Z-test"], a:["t-test"]},
+ {q:"Combined mean depends on:", o:["Group size","First mean","Second mean","Median"], a:["Group size","First mean","Second mean"]},
+ {q:"Intuition-based probability:", o:["Experimental","Empirical","Classical","Subjective"], a:["Subjective"]},
+ {q:"Ogive shows cumulative frequency.", o:["True","False"], a:["True"]},
+ {q:"Calls per hour follow:", o:["Poisson","Binomial","Normal","Uniform"], a:["Poisson"]},
+ {q:"Failing to reject false null:", o:["Random","Systematic","Type I","Type II"], a:["Type II"]},
+ {q:"Frequency distribution shows pattern.", o:["True","False"], a:["True"]},
+ {q:"Bell-shaped curve:", o:["Binomial","Normal","Skewed","Poisson"], a:["Normal"]},
+ {q:"Skewness & kurtosis from:", o:["Mean-median distance","Peak height","Observations","Tail direction"], a:["Mean-median distance","Peak height","Tail direction"]},
+ {q:"Simple linear regression:", o:["One IV & DV","Linear relation","Exact predictions","Regression line"], a:["One IV & DV","Linear relation","Regression line"]},
+ {q:"Proportional sampling:", o:["Stratified","Judgment","Random","Convenience"], a:["Stratified"]},
+ {q:"Ratio scale:", o:["Meaningful ratios","Categories","True zero","Arithmetic ops"], a:["Meaningful ratios","True zero","Arithmetic ops"]},
+ {q:"Mode – correct:", o:["Most frequent","May not exist","Affected by extremes","Qualitative data"], a:["Most frequent","May not exist","Qualitative data"]},
+ {q:"Weighted mean used for:", o:["Subject weightage","GPA credits","Price × quantity","Middle value"], a:["Subject weightage","GPA credits","Price × quantity"]},
+ {q:"Bars in bar chart touch.", o:["True","False"], a:["False"]},
+ {q:"CLT explains:", o:["Normal sampling dist","Law of averages","Testing","Standard error"], a:["Normal sampling dist"]},
+ {q:"Binomial conditions:", o:["Fixed trials","Two outcomes","Constant probability","Events over time"], a:["Fixed trials","Two outcomes","Constant probability"]},
+ {q:"Middle 50% ignoring extremes:", o:["Variance","SD","IQR","Range"], a:["IQR"]}
+];
+
+// Render questions
+const form = document.getElementById("quizForm");
+questions.forEach((q,i)=>{
+    const multi = q.a.length > 1;
+    form.innerHTML += `
+    <div class="question-card">
+        <h3>${i+1}. ${q.q}</h3>
+        <div class="options">
+            ${q.o.map(opt=>`
+                <label>
+                    <input type="${multi ? 'checkbox':'radio'}" name="q${i}" value="${opt}">
+                    ${opt}
+                </label>
+            `).join("")}
+        </div>
+    </div>`;
+});
+</script>
+
+<button type="button" class="submit-btn" onclick="submitQuiz()">Submit Quiz</button>
+</form>
+
+<script>
+function submitQuiz(){
+    let score = 0;
+    questions.forEach((q,i)=>{
+        const selected = [...document.querySelectorAll(`[name="q${i}"]:checked`)].map(e=>e.value);
+        if(selected.sort().join() === q.a.sort().join()) score++;
+    });
+
+    Swal.fire({
+        title: "Quiz Completed 🎉",
+        html: `<h2>${score} / ${questions.length}</h2>`,
+        background: "#0c1625",
+        color: "#fff",
+        confirmButtonColor: "#5a8fd4"
+    });
+}
+</script>
+
+</body>
+</html>
