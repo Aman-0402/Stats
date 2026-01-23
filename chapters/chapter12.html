@@ -3,136 +3,947 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SALVAGE IN PROGRESS</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@700&family=VT323&display=swap');
-
-        body {
-            margin: 0;
-            background-color: #121212;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            font-family: 'Stardos Stencil', sans-serif;
-            color: #cd7f32; /* Bronze/Rust color */
-        }
-
-        /* Industrial Background Texture */
-        body::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle, transparent 20%, #121212 70%),
-                url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-            opacity: 0.6;
-        }
-
-        .container {
-            position: relative;
-            text-align: center;
-            z-index: 2;
-        }
-
-        /* CSS Rusted Gear */
-        .gear {
-            width: 100px;
-            height: 100px;
-            background: #4a3b2c;
-            border-radius: 50%;
-            position: relative;
-            margin: 0 auto 30px;
-            animation: spin 4s linear infinite;
-            box-shadow: inset 0 0 20px #000;
-        }
-
-        .gear::before {
-            content: "";
-            position: absolute;
-            top: 10px; left: 10px; right: 10px; bottom: 10px;
-            background: #121212;
-            border-radius: 50%;
-            border: 5px solid #3d2b1f;
-        }
-
-        /* Gear Teeth */
-        .gear-tooth {
-            position: absolute;
-            width: 20px;
-            height: 120px;
-            background: #4a3b2c;
-            left: 40px;
-            top: -10px;
-            border-radius: 2px;
-        }
-        .gear-tooth:nth-child(2) { transform: rotate(45deg); }
-        .gear-tooth:nth-child(3) { transform: rotate(90deg); }
-        .gear-tooth:nth-child(4) { transform: rotate(135deg); }
-
-        /* Text Effects */
-        h1 {
-            font-size: 5rem;
-            margin: 0;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            animation: flicker 2s infinite;
-            filter: drop-shadow(0 0 10px rgba(205, 127, 50, 0.5));
-        }
-
-        .subtext {
-            font-family: 'VT323', monospace;
-            font-size: 1.5rem;
-            color: #7d6b5d;
-            letter-spacing: 2px;
-        }
-
-        /* Animations */
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes flicker {
-            0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
-            20%, 24%, 55% { opacity: 0.2; transform: skewX(5deg); }
-        }
-
-        /* Ambient Smoke/Dust Effect */
-        .smoke {
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 50%);
-            animation: drift 10s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes drift {
-            from { transform: translate(-20%, -20%); }
-            to { transform: translate(0%, 0%); }
-        }
-    </style>
+    <title>Chapter 12: Hypothesis Testing - Statistics eBook</title>
+    <meta name="description" content="Learn about hypothesis testing including null and alternative hypotheses, Type I & II errors, Z-test, t-test with numerical examples and Python implementation.">
+    <meta name="author" content="Aman">
+    <meta name="keywords" content="hypothesis testing, null hypothesis, alternative hypothesis, type I error, type II error, z-test, t-test, p-value, statistics, python">
+    
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/chapter-content.css">
 </head>
 <body>
-
-    <div class="smoke"></div>
-
-    <div class="container">
-        <div class="gear">
-            <div class="gear-tooth"></div>
-            <div class="gear-tooth"></div>
-            <div class="gear-tooth"></div>
-            <div class="gear-tooth"></div>
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="book-title">Statistics</h1>
+                <nav class="header-nav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="../contents.html" class="nav-link">Contents</a>
+                    <a href="../resources/glossary.html" class="nav-link">Glossary</a>
+                    <a href="../resources/formulas.html" class="nav-link">Formulas</a>
+                </nav>
+            </div>
         </div>
+    </header>
 
-        <h1>Coming Soon</h1>
-        <div class="subtext">
-            SYSTEM STATUS: [SALVAGING_ASSETS...]
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="chapter-content">
+                <!-- Chapter Header -->
+                <div class="page-header">
+                    <span class="badge">Phase 5: Inference and Practical Application</span>
+                    <h1 class="page-title">Chapter 12: Hypothesis Testing</h1>
+                    <p class="page-subtitle">Making statistical decisions using null and alternative hypotheses, Z-tests, and t-tests</p>
+                </div>
+
+                <!-- Chapter Topics -->
+                <div class="chapter-topics-section">
+                    <h3>📋 Topics Covered in This Chapter</h3>
+                    <ul class="chapter-topics-list">
+                        <li>Null Hypothesis (H₀) & Alternative Hypothesis (H₁)</li>
+                        <li>Type I & Type II Errors</li>
+                        <li>Z-test & t-test Overview</li>
+                        <li>One-Sample Z-Test with Examples</li>
+                        <li>One-Sample t-Test with Examples</li>
+                        <li>Python Implementation</li>
+                    </ul>
+                </div>
+
+                <!-- Section 1: Introduction -->
+                <div class="section" id="intro-hypothesis-testing">
+                    <h2>What is Hypothesis Testing?</h2>
+
+                    <p>Hypothesis testing is a statistical method used to make a decision about a population based on sample data.</p>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>👉 In simple words:</strong></p>
+                        <p class="text-center font-bold mt-sm">We test whether a claim is likely true or likely false using data</p>
+                    </div>
+
+                    <h3 class="mt-lg">🧠 Real-Life Intuition (Very Important)</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Think like a court case ⚖️</div>
+                        
+                        <ul class="icon-list bullet">
+                            <li>Accused is innocent by default</li>
+                            <li>Evidence must be strong to prove guilt</li>
+                        </ul>
+
+                        <p class="mt-md"><strong>Similarly in statistics:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>We assume something is true</li>
+                            <li>We reject it only if evidence is strong</li>
+                        </ul>
+
+                        <p class="mt-md">That "assumed true statement" is the <strong>Null Hypothesis</strong>.</p>
+                    </div>
+                </div>
+
+                <!-- Section 2: Null and Alternative Hypothesis -->
+                <div class="section" id="null-alternative-hypothesis">
+                    <h2>Part 1: Null Hypothesis (H₀) & Alternative Hypothesis (H₁)</h2>
+
+                    <div class="example-box">
+                        <img src="../images/Null_vs._Alternative_Hypothesis.png" alt="Null vs Alternative Hypothesis" style="width: 100%; max-width: 700px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="example-box mt-md">
+                        <img src="../images/Generalized_figure_of_two_sided_test.png" alt="Two-sided Test" style="width: 100%; max-width: 700px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <h3 class="mt-lg">🔵 Null Hypothesis (H₀)</h3>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>✅ Definition</strong></p>
+                        <p class="text-center mt-sm">The Null Hypothesis (H₀) is:</p>
+                        <ul class="icon-list bullet mt-sm">
+                            <li>A statement of no effect</li>
+                            <li>A statement of no difference</li>
+                            <li>A default assumption</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        👉 It is what we try to disprove
+                    </div>
+
+                    <h4 class="mt-lg">✍️ Examples</h4>
+
+                    <div class="example-box">
+                        <ol class="steps-list">
+                            <li>Average marks of students is 50
+                                <div class="formula-box mt-sm">
+                                    <div class="formula">H₀: μ = 50</div>
+                                </div>
+                            </li>
+                            <li class="mt-md">A coin is fair
+                                <div class="formula-box mt-sm">
+                                    <div class="formula">H₀: p = 0.5</div>
+                                </div>
+                            </li>
+                            <li class="mt-md">A new medicine has no effect
+                                <div class="formula-box mt-sm">
+                                    <div class="formula">H₀: No improvement</div>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <h4 class="mt-lg">🧠 Key Points about H₀</h4>
+
+                    <ul class="icon-list bullet">
+                        <li>Always contains "="</li>
+                        <li>Represents status quo</li>
+                        <li>Assumed true initially</li>
+                    </ul>
+
+                    <h3 class="mt-lg">🔴 Alternative Hypothesis (H₁ or Hₐ)</h3>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>✅ Definition</strong></p>
+                        <p class="text-center mt-sm">The Alternative Hypothesis (H₁):</p>
+                        <ul class="icon-list bullet mt-sm">
+                            <li>Contradicts H₀</li>
+                            <li>Represents what we want to prove</li>
+                            <li>Indicates change, effect, or difference</li>
+                        </ul>
+                    </div>
+
+                    <h4 class="mt-lg">✍️ Examples (Matching the above)</h4>
+
+                    <div class="example-box">
+                        <ol class="steps-list">
+                            <li>Average marks is not 50
+                                <div class="formula-box mt-sm">
+                                    <div class="formula">H₁: μ ≠ 50</div>
+                                </div>
+                            </li>
+                            <li class="mt-md">Coin is biased
+                                <div class="formula-box mt-sm">
+                                    <div class="formula">H₁: p ≠ 0.5</div>
+                                </div>
+                            </li>
+                            <li class="mt-md">Medicine improves health
+                                <div class="formula-box mt-sm">
+                                    <div class="formula">H₁: Improvement exists</div>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <h3 class="mt-lg">🔺 Types of Alternative Hypothesis</h3>
+
+                    <div class="two-column-grid">
+                        <div class="definition-box">
+                            <div class="term">1️⃣ Two-tailed Test</div>
+                            <div class="meaning">
+                                <div class="formula-box mt-sm">
+                                    <div class="formula">H₁: μ ≠ μ₀</div>
+                                </div>
+                                <p class="mt-sm">✔️ Looks for any difference</p>
+                                <p class="mt-sm"><strong>Example:</strong> Mean is not equal to 50</p>
+                            </div>
+                        </div>
+
+                        <div class="definition-box">
+                            <div class="term">2️⃣ Right-tailed Test</div>
+                            <div class="meaning">
+                                <div class="formula-box mt-sm">
+                                    <div class="formula">H₁: μ > μ₀</div>
+                                </div>
+                                <p class="mt-sm">✔️ Looks for increase</p>
+                                <p class="mt-sm"><strong>Example:</strong> Average score increased</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="definition-box mt-md">
+                        <div class="term">3️⃣ Left-tailed Test</div>
+                        <div class="meaning">
+                            <div class="formula-box mt-sm">
+                                <div class="formula">H₁: μ < μ₀</div>
+                            </div>
+                            <p class="mt-sm">✔️ Looks for decrease</p>
+                            <p class="mt-sm"><strong>Example:</strong> Average weight reduced</p>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">🎓 Example</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Statement</div>
+                        <p>"The average height of students is more than 165 cm."</p>
+
+                        <h4 class="mt-md">✍️ Hypotheses:</h4>
+                        <div class="formula-box">
+                            <p>H₀: μ = 165</p>
+                            <p>H₁: μ > 165 (Right-tailed)</p>
+                        </div>
+
+                        <div class="highlight-box success mt-md">
+                            <p>✔️ Correct format</p>
+                        </div>
+
+                        <div class="highlight-box mt-md">
+                            <p>❌ Writing H₀: μ > 165 is WRONG</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Type I and Type II Errors -->
+                <div class="section" id="type-errors">
+                    <h2>Part 2: Type I & Type II Errors</h2>
+
+                    <div class="example-box">
+                        <img src="../images/Type-I-and-Type-II-Errors-Table-of-Differences.png" alt="Type I and Type II Errors" style="width: 100%; max-width: 700px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <h3>🔹 Why Do Errors Exist in Hypothesis Testing?</h3>
+
+                    <p>Because we make decisions based on sample data, not the full population.</p>
+                    <p class="mt-sm">So there's always a chance of making a wrong decision.</p>
+
+                    <div class="note-box mt-md">
+                        👉 These wrong decisions are called Type I and Type II errors
+                    </div>
+
+                    <h3 class="mt-lg">🧠 Core Idea (Very Important)</h3>
+
+                    <p>In hypothesis testing, we either:</p>
+                    <ul class="icon-list bullet">
+                        <li>Reject H₀</li>
+                        <li>Fail to reject H₀</li>
+                    </ul>
+
+                    <p class="mt-sm">But reality may be different.</p>
+
+                    <h3 class="mt-lg">🟦 Type I Error (α error)</h3>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>✅ Definition</strong></p>
+                        <p class="text-center mt-sm">Type I Error occurs when:</p>
+                        <p class="text-center font-bold mt-sm">We reject the null hypothesis even though it is true</p>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        📌 In simple words: <strong>False alarm</strong>
+                    </div>
+
+                    <h4 class="mt-lg">✍️ Symbol</h4>
+
+                    <div class="formula-box">
+                        <div class="formula">α = P(Type I Error)</div>
+                    </div>
+
+                    <p class="mt-md">This α is also called the <strong>level of significance</strong></p>
+                    <p>(common values: 0.05, 0.01)</p>
+
+                    <h4 class="mt-lg">🎓 Example (Exam Friendly)</h4>
+
+                    <div class="example-box">
+                        <div class="example-title">Medical Diagnosis</div>
+                        
+                        <ul class="icon-list bullet">
+                            <li>H₀: A patient has no disease</li>
+                            <li>Decision: Doctor says patient has disease</li>
+                            <li>➡️ Patient is actually healthy</li>
+                        </ul>
+
+                        <p class="mt-md">✔️ Type I Error</p>
+                    </div>
+
+                    <h4 class="mt-lg">🧠 Another Example</h4>
+
+                    <div class="example-box">
+                        <div class="example-title">Coin Test</div>
+                        
+                        <ul class="icon-list bullet">
+                            <li>H₀: Coin is fair</li>
+                            <li>We conclude coin is biased</li>
+                            <li>Coin was actually fair</li>
+                        </ul>
+
+                        <p class="mt-md">✔️ Type I Error</p>
+                    </div>
+
+                    <h3 class="mt-lg">🟥 Type II Error (β error)</h3>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>✅ Definition</strong></p>
+                        <p class="text-center mt-sm">Type II Error occurs when:</p>
+                        <p class="text-center font-bold mt-sm">We fail to reject the null hypothesis even though it is false</p>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        📌 In simple words: <strong>Missed detection</strong>
+                    </div>
+
+                    <h4 class="mt-lg">✍️ Symbol</h4>
+
+                    <div class="formula-box">
+                        <div class="formula">β = P(Type II Error)</div>
+                    </div>
+
+                    <h4 class="mt-lg">🎓 Example</h4>
+
+                    <div class="example-box">
+                        <div class="example-title">Medical Diagnosis</div>
+                        
+                        <ul class="icon-list bullet">
+                            <li>H₀: Patient has no disease</li>
+                            <li>Decision: Doctor says patient is healthy</li>
+                            <li>➡️ Patient actually has disease</li>
+                        </ul>
+
+                        <p class="mt-md">✔️ Type II Error</p>
+                    </div>
+
+                    <h4 class="mt-lg">🧠 Another Example</h4>
+
+                    <div class="example-box">
+                        <div class="example-title">Coin Test</div>
+                        
+                        <ul class="icon-list bullet">
+                            <li>H₀: Coin is fair</li>
+                            <li>We conclude coin is fair</li>
+                            <li>Coin is actually biased</li>
+                        </ul>
+
+                        <p class="mt-md">✔️ Type II Error</p>
+                    </div>
+                </div>
+
+                <!-- Section 4: Z-test and t-test Overview -->
+                <div class="section" id="z-t-test-overview">
+                    <h2>Part 3: Z-test & t-test (Overview + Decision Logic)</h2>
+
+                    <div class="example-box">
+                        <img src="../images/Z-test & t-test 1.png" alt="Z-test and t-test" style="width: 100%; max-width: 700px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <h3>Why Do We Need Z-test & t-test?</h3>
+
+                    <p>In hypothesis testing, we want to check:</p>
+                    
+                    <div class="highlight-box success">
+                        <p class="text-center font-bold">Is the sample mean significantly different from the population mean (or another sample)?</p>
+                    </div>
+
+                    <p class="mt-md">To do this, we use test statistics:</p>
+                    <ul class="icon-list bullet">
+                        <li>Z-test</li>
+                        <li>t-test</li>
+                    </ul>
+
+                    <h3 class="mt-lg">🔵 Z-Test</h3>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>✅ What is a Z-test?</strong></p>
+                        <p class="text-center mt-sm">A Z-test is used when:</p>
+                        <ul class="icon-list bullet mt-sm">
+                            <li>Population standard deviation σ is known</li>
+                            <li>Sample size is large (n ≥ 30)</li>
+                            <li>Data is approximately normal (or CLT applies)</li>
+                        </ul>
+                    </div>
+
+                    <h4 class="mt-lg">📐 Z-Test Statistic Formula</h4>
+
+                    <div class="example-box">
+                        <img src="../images/Z-Test Statistic Formula.png" alt="Z-Test Statistic Formula" style="width: 100%; max-width: 400px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="note-box mt-md">
+                        <strong>Where:</strong><br>
+                        • X̄ = sample mean<br>
+                        • μ = population mean<br>
+                        • σ = population SD<br>
+                        • n = sample size
+                    </div>
+
+                    <h4 class="mt-lg">🎓 Simple Example (Conceptual)</h4>
+
+                    <div class="example-box">
+                        <div class="example-title">Z-test Calculation</div>
+                        
+                        <ul class="icon-list bullet">
+                            <li>Population mean = 50</li>
+                            <li>Population SD = 10</li>
+                            <li>Sample mean = 53</li>
+                            <li>Sample size = 100</li>
+                        </ul>
+
+                        <div class="formula-box mt-md">
+                            <p>Z = (53 − 50) / (10 / √100)</p>
+                            <p>Z = 3 / 1</p>
+                            <div class="formula">Z = 3</div>
+                        </div>
+
+                        <p class="mt-md"><strong>Find Yourself:</strong> Complete the interpretation</p>
+                        <p class="mt-sm">Large Z ⇒ strong evidence against H₀</p>
+                    </div>
+
+                    <h3 class="mt-lg">🟢 t-Test</h3>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>✅ What is a t-test?</strong></p>
+                        <p class="text-center mt-sm">A t-test is used when:</p>
+                        <ul class="icon-list bullet mt-sm">
+                            <li>Population SD σ is unknown</li>
+                            <li>Sample size is small (n < 30)</li>
+                            <li>Data is approximately normal</li>
+                        </ul>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        👉 Most real-life problems use t-test
+                    </div>
+
+                    <h4 class="mt-lg">t-Test Statistic Formula</h4>
+
+                    <div class="example-box">
+                        <img src="../images/t-Test Statistic Formula.png" alt="t-Test Statistic Formula" style="width: 100%; max-width: 400px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="note-box mt-md">
+                        <strong>Where:</strong><br>
+                        • s = sample SD
+                    </div>
+
+                    <h4 class="mt-lg">🎓 Conceptual Example</h4>
+
+                    <div class="example-box">
+                        <div class="example-title">t-test Calculation</div>
+                        
+                        <ul class="icon-list bullet">
+                            <li>Sample mean = 52</li>
+                            <li>Sample SD = 8</li>
+                            <li>Sample size = 16</li>
+                            <li>Population mean = 50</li>
+                        </ul>
+
+                        <div class="formula-box mt-md">
+                            <p>t = (52 − 50) / (8 / √16)</p>
+                            <p>t = 2 / 2</p>
+                            <div class="formula">t = 1</div>
+                        </div>
+
+                        <p class="mt-md"><strong>Find Yourself:</strong> Complete the analysis</p>
+                        <p class="mt-sm">➡️ Decision depends on t-table & p-value</p>
+                    </div>
+
+                    <h3 class="mt-lg">Key Difference Between Z-test & t-test</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Z-test</th>
+                                <th>t-test</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Population SD</strong></td>
+                                <td>Known</td>
+                                <td>Unknown</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sample size</strong></td>
+                                <td>Large (≥30)</td>
+                                <td>Small (<30)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Distribution</strong></td>
+                                <td>Normal</td>
+                                <td>t-distribution</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tail thickness</strong></td>
+                                <td>Thin</td>
+                                <td>Thick</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Practical use</strong></td>
+                                <td>Rare</td>
+                                <td>Very common</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="mt-lg">🧠 Important Insight</h3>
+
+                    <div class="highlight-box success">
+                        <p class="text-center">👉 As sample size increases,</p>
+                        <p class="text-center font-bold mt-sm">t-distribution → normal distribution</p>
+                        <p class="text-center mt-sm">So for large n: Z-test ≈ t-test</p>
+                    </div>
+
+                    <h3 class="mt-lg">📊 Types of t-Tests (Just Names for Now)</h3>
+
+                    <p>We'll solve each one by one later:</p>
+
+                    <div class="viz-comparison-grid">
+                        <div class="example-box">
+                            <p>1️⃣ <strong>One-sample t-test</strong></p>
+                            <p class="mt-xs">→ Sample mean vs population mean</p>
+                        </div>
+                        <div class="example-box">
+                            <p>2️⃣ <strong>Two-sample t-test</strong></p>
+                            <p class="mt-xs">→ Mean of two independent samples</p>
+                        </div>
+                        <div class="example-box">
+                            <p>3️⃣ <strong>Paired t-test</strong></p>
+                            <p class="mt-xs">→ Before–after comparison</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5: One-Sample Z-Test -->
+                <div class="section" id="one-sample-z-test">
+                    <h2>Part 4: One-Sample Z-Test</h2>
+
+                    <h3>What is a One-Sample Z-Test?</h3>
+
+                    <p>A one-sample Z-test is used to check whether the sample mean differs significantly from a known population mean, when:</p>
+
+                    <ul class="icon-list check">
+                        <li>Population SD (σ) is known</li>
+                        <li>Sample size is large (n ≥ 30)</li>
+                    </ul>
+
+                    <h3 class="mt-lg">🧠 When Do Examiners Expect a Z-Test?</h3>
+
+                    <p>Look for phrases like:</p>
+                    <ul class="icon-list bullet">
+                        <li>"Population standard deviation is known"</li>
+                        <li>"Large sample"</li>
+                        <li>"Test the significance of the mean"</li>
+                    </ul>
+
+                    <h3 class="mt-lg">📐 Z-Test Statistic Formula</h3>
+
+                    <div class="example-box">
+                        <img src="../images/Z-Test Statistic Formula.png" alt="Z-Test Statistic Formula" style="width: 100%; max-width: 400px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="note-box mt-md">
+                        <strong>Where:</strong><br>
+                        • X̄ = sample mean<br>
+                        • μ = population mean<br>
+                        • σ = population SD<br>
+                        • n = sample size
+                    </div>
+
+                    <h3 class="mt-lg">🪜 Standard Steps in Any Exam Answer (VERY IMPORTANT ⭐⭐⭐)</h3>
+
+                    <ol class="steps-list">
+                        <li>State H₀ and H₁</li>
+                        <li>Choose level of significance (α)</li>
+                        <li>Compute Z-statistic</li>
+                        <li>Find critical value / p-value</li>
+                        <li>Decision (Reject / Fail to reject H₀)</li>
+                        <li>Conclusion in words</li>
+                    </ol>
+
+                    <h3 class="mt-lg">✅ Numerical 1: Two-Tailed Z-Test (Most Common)</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Question</div>
+                        
+                        <p>The mean weight of packets is claimed to be 500 g.</p>
+                        <p>A random sample of 64 packets has:</p>
+                        <ul class="icon-list bullet">
+                            <li>Mean = 495 g</li>
+                            <li>Population SD = 20 g</li>
+                        </ul>
+                        <p class="mt-sm">Test the claim at 5% level of significance.</p>
+
+                        <h4 class="mt-lg">✍️ Step 1: Hypotheses</h4>
+                        <div class="formula-box">
+                            <p>H₀: μ = 500</p>
+                            <p>H₁: μ ≠ 500</p>
+                            <p class="mt-sm">(two-tailed test)</p>
+                        </div>
+
+                        <h4 class="mt-lg">✍️ Step 2: Level of Significance</h4>
+                        <div class="formula-box">
+                            <p>α = 0.05</p>
+                            <p>Critical Z values: ±1.96</p>
+                        </div>
+
+                        <h4 class="mt-lg">✍️ Step 3: Z-Statistic</h4>
+                        <div class="formula-box">
+                            <p>Z = (495 − 500) / (20 / √64)</p>
+                            <p>Z = −5 / 2.5</p>
+                            <div class="formula">Z = −2</div>
+                        </div>
+
+                        <h4 class="mt-lg">✍️ Step 4: Decision Rule</h4>
+                        <div class="formula-box">
+                            <p>|Z| = 2 > 1.96</p>
+                            <p>➡️ Reject H₀</p>
+                        </div>
+
+                        <h4 class="mt-lg">✍️ Step 5: Conclusion</h4>
+                        <div class="highlight-box success">
+                            <p>There is significant evidence to conclude that the mean weight of packets is not equal to 500 g.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">✅ Numerical 2: Right-Tailed Z-Test</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Question</div>
+                        
+                        <p>The average lifetime of a bulb is 1000 hours.</p>
+                        <p>A sample of 36 bulbs shows:</p>
+                        <ul class="icon-list bullet">
+                            <li>Mean lifetime = 1040 hours</li>
+                            <li>Population SD = 120 hours</li>
+                        </ul>
+                        <p class="mt-sm">Test whether the lifetime has increased, at 5% level.</p>
+
+                        <h4 class="mt-lg">✍️ Step 1: Hypotheses</h4>
+                        <div class="formula-box">
+                            <p>H₀: μ = 1000</p>
+                            <p>H₁: μ > 1000</p>
+                            <p class="mt-sm">(right-tailed)</p>
+                        </div>
+
+                        <h4 class="mt-lg">✍️ Step 2: Critical Value</h4>
+                        <div class="formula-box">
+                            <p>Z₀.₀₅ = 1.645</p>
+                        </div>
+
+                        <h4 class="mt-lg">✍️ Step 3: Z-Statistic</h4>
+                        <div class="formula-box">
+                            <p>Z = (1040 − 1000) / (120 / √36)</p>
+                            <p>Z = 40 / 20</p>
+                            <div class="formula">Z = 2</div>
+                        </div>
+
+                        <h4 class="mt-lg">✍️ Step 4: Decision</h4>
+                        <div class="formula-box">
+                            <p>Z = 2 > 1.645</p>
+                            <p>➡️ Reject H₀</p>
+                        </div>
+
+                        <h4 class="mt-lg">✍️ Step 5: Conclusion</h4>
+                        <div class="highlight-box success">
+                            <p>There is significant evidence that the average lifetime of bulbs has increased.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">🧪 Python Verification (Optional, DS-Friendly)</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>from scipy.stats import norm
+
+# Two-tailed test example
+z = -2
+p_value = 2 * (1 - norm.cdf(abs(z)))
+p_value</code></pre>
+                        </div>
+                        <div class="code-output">
+0.0455
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">🧠 Z-Critical Values</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Test Type</th>
+                                <th>α = 0.05</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Two-tailed</td>
+                                <td>±1.96</td>
+                            </tr>
+                            <tr>
+                                <td>Right-tailed</td>
+                                <td>1.645</td>
+                            </tr>
+                            <tr>
+                                <td>Left-tailed</td>
+                                <td>−1.645</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Section 6: One-Sample t-Test -->
+                <div class="section" id="one-sample-t-test">
+                    <h2>Part 5: One-Sample t-Test</h2>
+
+                    <h3>🔹 What is a One-Sample t-Test?</h3>
+
+                    <p>A one-sample t-test is used to test whether the sample mean differs significantly from a given population mean, when:</p>
+
+                    <ul class="icon-list check">
+                        <li>Population SD (σ) is unknown</li>
+                        <li>Sample size is small (n < 30)</li>
+                        <li>Population is approximately normal</li>
+                    </ul>
+
+                    <div class="note-box mt-md">
+                        👉 This is the most frequent test in university exams
+                    </div>
+
+                    <h3 class="mt-lg">🧠 When to Use t-Test (Exam Signal Words)</h3>
+
+                    <p>Look for:</p>
+                    <ul class="icon-list bullet">
+                        <li>"Small sample"</li>
+                        <li>"Sample standard deviation is given"</li>
+                        <li>"Population variance is unknown"</li>
+                    </ul>
+
+                    <h3 class="mt-lg">📐 t-Test Statistic Formula</h3>
+
+                    <div class="example-box">
+                        <img src="../images/t-Test Statistic Formula.png" alt="t-Test Statistic Formula" style="width: 100%; max-width: 400px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <div class="note-box mt-md">
+                        <strong>Where:</strong><br>
+                        • X̄ = sample mean<br>
+                        • μ = population mean<br>
+                        • s = sample SD<br>
+                        • n = sample size
+                    </div>
+
+                    <div class="formula-box mt-md">
+                        <p><strong>📌 Degrees of freedom (df):</strong></p>
+                        <div class="formula">df = n − 1</div>
+                    </div>
+
+                    <h3 class="mt-lg">🪜 Standard Exam Steps</h3>
+
+                    <ol class="steps-list">
+                        <li>State H₀ and H₁</li>
+                        <li>Choose α (level of significance)</li>
+                        <li>Compute t-statistic</li>
+                        <li>Find critical t-value from table</li>
+                        <li>Decision</li>
+                        <li>Conclusion</li>
+                    </ol>
+
+                    <h3 class="mt-lg">✅ Numerical 1: Two-Tailed One-Sample t-Test</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Question</div>
+                        
+                        <p>A machine fills bottles with an average content of 500 ml.</p>
+                        <p>A sample of 16 bottles has:</p>
+                        <ul class="icon-list bullet">
+                            <li>Mean = 492 ml</li>
+                            <li>Sample SD = 8 ml</li>
+                        </ul>
+                        <p class="mt-sm">Test the claim at 5% level of significance.</p>
+
+                        <h4 class="mt-lg">✍️ Step 1: Hypotheses</h4>
+                        <div class="formula-box">
+                            <p>H₀: μ = 500</p>
+                            <p>H₁: μ ≠ 500</p>
+                            <p class="mt-sm">(two-tailed)</p>
+                        </div>
+
+                        <h4 class="mt-lg">✍️ Step 2: Level of Significance</h4>
+                        <div class="formula-box">
+                            <p>α = 0.05</p>
+                            <p>Degrees of freedom: df = 16 − 1 = 15</p>
+                            <p>Critical value: t₀.₀₂₅,₁₅ = ±2.131</p>
+                        </div>
+
+                        <h4 class="mt-lg">✍️ Step 3: t-Statistic</h4>
+                        <div class="formula-box">
+                            <p>t = (492 − 500) / (8 / √16)</p>
+                            <p>t = −8 / 2</p>
+                            <div class="formula">t = −4</div>
+                        </div>
+
+                        <h4 class="mt-lg">✍️ Step 4: Decision</h4>
+                        <div class="formula-box">
+                            <p>|t| = 4 > 2.131</p>
+                            <p>➡️ Reject H₀</p>
+                        </div>
+
+                        <h4 class="mt-lg">✍️ Step 5: Conclusion</h4>
+                        <div class="highlight-box success">
+                            <p>There is significant evidence that the mean bottle content is not equal to 500 ml.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">✅ Numerical 2: Right-Tailed One-Sample t-Test</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Question</div>
+                        
+                        <p>The average score of students is claimed to be 70.</p>
+                        <p>A random sample of 25 students has:</p>
+                        <ul class="icon-list bullet">
+                            <li>Mean = 73</li>
+                            <li>Sample SD = 6</li>
+                        </ul>
+                        <p class="mt-sm">Test at 5% level whether the average score has increased.</p>
+
+                        <h4 class="mt-lg">✍️ Step 1: Hypotheses</h4>
+                        <div class="formula-box">
+                            <p>H₀: μ = 70</p>
+                            <p>H₁: μ > 70</p>
+                            <p class="mt-sm">(right-tailed)</p>
+                        </div>
+
+                        <h4 class="mt-lg">✍️ Step 2: Critical Value</h4>
+                        <div class="formula-box">
+                            <p>df = 25 − 1 = 24</p>
+                            <p>t₀.₀₅,₂₄ = 1.711</p>
+                        </div>
+
+                        <h4 class="mt-lg">✍️ Step 3: t-Statistic</h4>
+                        <div class="formula-box">
+                            <p>t = (73 − 70) / (6 / √25)</p>
+                            <p>t = 3 / 1.2</p>
+                            <div class="formula">t = 2.5</div>
+                        </div>
+
+                        <h4 class="mt-lg">✍️ Step 4: Decision</h4>
+                        <div class="formula-box">
+                            <p>t = 2.5 > 1.711</p>
+                            <p>➡️ Reject H₀</p>
+                        </div>
+
+                        <h4 class="mt-lg">✍️ Step 5: Conclusion</h4>
+                        <div class="highlight-box success">
+                            <p>There is significant evidence that the average score of students has increased.</p>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">🧪 Python Verification (Optional, DS-Friendly)</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>from scipy.stats import ttest_1samp
+
+sample = [72, 74, 70, 75, 73, 71, 76, 72, 74, 73]
+ttest_1samp(sample, popmean=70)</code></pre>
+                        </div>
+                        <div class="code-output">
+Ttest_1sampResult(statistic=3.4641, pvalue=0.0069)
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">🧠 Z-test vs t-test</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Z-test</th>
+                                <th>t-test</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>SD</strong></td>
+                                <td>Known</td>
+                                <td>Unknown</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sample size</strong></td>
+                                <td>Large</td>
+                                <td>Small</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Distribution</strong></td>
+                                <td>Normal</td>
+                                <td>t</td>
+                            </tr>
+                            <tr>
+                                <td><strong>df</strong></td>
+                                <td>—</td>
+                                <td>n−1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
         </div>
-    </div>
+    </main>
 
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Statistics eBook. Created by <a href="https://github.com/Aman-0402">Aman</a>.</p>
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../contents.html">Contents</a>
+                    <a href="../resources/glossary.html">Glossary</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
 </body>
 </html>
