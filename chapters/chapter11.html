@@ -3,136 +3,640 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SALVAGE IN PROGRESS</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@700&family=VT323&display=swap');
-
-        body {
-            margin: 0;
-            background-color: #121212;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            font-family: 'Stardos Stencil', sans-serif;
-            color: #cd7f32; /* Bronze/Rust color */
-        }
-
-        /* Industrial Background Texture */
-        body::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle, transparent 20%, #121212 70%),
-                url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-            opacity: 0.6;
-        }
-
-        .container {
-            position: relative;
-            text-align: center;
-            z-index: 2;
-        }
-
-        /* CSS Rusted Gear */
-        .gear {
-            width: 100px;
-            height: 100px;
-            background: #4a3b2c;
-            border-radius: 50%;
-            position: relative;
-            margin: 0 auto 30px;
-            animation: spin 4s linear infinite;
-            box-shadow: inset 0 0 20px #000;
-        }
-
-        .gear::before {
-            content: "";
-            position: absolute;
-            top: 10px; left: 10px; right: 10px; bottom: 10px;
-            background: #121212;
-            border-radius: 50%;
-            border: 5px solid #3d2b1f;
-        }
-
-        /* Gear Teeth */
-        .gear-tooth {
-            position: absolute;
-            width: 20px;
-            height: 120px;
-            background: #4a3b2c;
-            left: 40px;
-            top: -10px;
-            border-radius: 2px;
-        }
-        .gear-tooth:nth-child(2) { transform: rotate(45deg); }
-        .gear-tooth:nth-child(3) { transform: rotate(90deg); }
-        .gear-tooth:nth-child(4) { transform: rotate(135deg); }
-
-        /* Text Effects */
-        h1 {
-            font-size: 5rem;
-            margin: 0;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            animation: flicker 2s infinite;
-            filter: drop-shadow(0 0 10px rgba(205, 127, 50, 0.5));
-        }
-
-        .subtext {
-            font-family: 'VT323', monospace;
-            font-size: 1.5rem;
-            color: #7d6b5d;
-            letter-spacing: 2px;
-        }
-
-        /* Animations */
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes flicker {
-            0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
-            20%, 24%, 55% { opacity: 0.2; transform: skewX(5deg); }
-        }
-
-        /* Ambient Smoke/Dust Effect */
-        .smoke {
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 50%);
-            animation: drift 10s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes drift {
-            from { transform: translate(-20%, -20%); }
-            to { transform: translate(0%, 0%); }
-        }
-    </style>
+    <title>Chapter 11: Sampling and Sampling Distributions - Statistics eBook</title>
+    <meta name="description" content="Learn about sampling methods, Central Limit Theorem, and Standard Error with examples and Python implementation.">
+    <meta name="author" content="Aman">
+    <meta name="keywords" content="sampling, sampling distributions, central limit theorem, standard error, random sampling, stratified sampling, statistics, python">
+    
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/chapter-content.css">
 </head>
 <body>
-
-    <div class="smoke"></div>
-
-    <div class="container">
-        <div class="gear">
-            <div class="gear-tooth"></div>
-            <div class="gear-tooth"></div>
-            <div class="gear-tooth"></div>
-            <div class="gear-tooth"></div>
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="book-title">Statistics</h1>
+                <nav class="header-nav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="../contents.html" class="nav-link">Contents</a>
+                    <a href="../resources/glossary.html" class="nav-link">Glossary</a>
+                    <a href="../resources/formulas.html" class="nav-link">Formulas</a>
+                </nav>
+            </div>
         </div>
+    </header>
 
-        <h1>Coming Soon</h1>
-        <div class="subtext">
-            SYSTEM STATUS: [SALVAGING_ASSETS...]
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="chapter-content">
+                <!-- Chapter Header -->
+                <div class="page-header">
+                    <span class="badge">Phase 4: Probability & Inference</span>
+                    <h1 class="page-title">Chapter 11: Sampling and Sampling Distributions</h1>
+                    <p class="page-subtitle">Understanding sampling methods, Central Limit Theorem, and Standard Error</p>
+                </div>
+
+                <!-- Chapter Topics -->
+                <div class="chapter-topics-section">
+                    <h3>📋 Topics Covered in This Chapter</h3>
+                    <ul class="chapter-topics-list">
+                        <li>Types of Sampling (SRS, Stratified, Systematic, Cluster)</li>
+                        <li>Central Limit Theorem (CLT)</li>
+                        <li>Standard Error</li>
+                        <li>Python Implementation & Visualization</li>
+                    </ul>
+                </div>
+
+                <!-- Section 1: Introduction to Sampling -->
+                <div class="section" id="intro-sampling">
+                    <h2>Part 1: Types of Sampling</h2>
+
+                    <div class="example-box">
+                        <img src="../images/Sampling Distribution.webp" alt="Sampling Distribution" style="width: 100%; max-width: 700px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <h3>🔹 What is Sampling?</h3>
+
+                    <p>Sampling is the process of selecting a subset (sample) from a population to draw conclusions about the whole population.</p>
+
+                    <div class="highlight-box success mt-md">
+                        <p><strong>👉 Why sampling?</strong></p>
+                        <ul class="icon-list bullet mt-sm">
+                            <li>Population may be too large</li>
+                            <li>Saves time, cost, effort</li>
+                            <li>Used everywhere in Statistics, ML, surveys</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="mt-lg">🧠 Population vs Sample (Quick Recall)</h3>
+
+                    <ul class="icon-list bullet">
+                        <li><strong>Population</strong> → Entire group (all students, all voters)</li>
+                        <li><strong>Sample</strong> → Selected subset (100 students from college)</li>
+                    </ul>
+
+                    <h3 class="mt-lg">🔹 Types of Sampling</h3>
+
+                    <p>We'll cover the most important ones used in exams and data science.</p>
+                </div>
+
+                <!-- Section 2: Simple Random Sampling -->
+                <div class="section" id="simple-random-sampling">
+                    <h2>1️⃣ Simple Random Sampling (SRS)</h2>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>✅ Definition</strong></p>
+                        <p class="text-center mt-sm">Every individual in the population has an equal chance of being selected</p>
+                    </div>
+
+                    <div class="example-box mt-md">
+                        <div class="example-title">🎓 Example</div>
+                        <p>From 1,000 students, randomly select 100 students using a lottery or random number generator.</p>
+                        <p class="mt-sm">✔️ Fair and unbiased</p>
+                    </div>
+
+                    <h3 class="mt-lg">🧪 Python Example</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import random
+
+students = list(range(1, 1001))
+sample = random.sample(students, 100)
+sample[:10]</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="two-column-grid mt-lg">
+                        <div class="highlight-box">
+                            <p><strong>👍 Advantages</strong></p>
+                            <ul class="icon-list check mt-sm">
+                                <li>Easy to understand</li>
+                                <li>No bias (if truly random)</li>
+                            </ul>
+                        </div>
+
+                        <div class="highlight-box">
+                            <p><strong>👎 Disadvantages</strong></p>
+                            <ul class="icon-list cross mt-sm">
+                                <li>Not practical for very large populations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Stratified Sampling -->
+                <div class="section" id="stratified-sampling">
+                    <h2>2️⃣ Stratified Sampling</h2>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>✅ Definition</strong></p>
+                        <p class="text-center mt-sm">Population is divided into homogeneous groups (strata), then random samples are taken from each stratum</p>
+                    </div>
+
+                    <div class="example-box mt-md">
+                        <div class="example-title">🎓 Example</div>
+                        <p><strong>College population:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>60% boys</li>
+                            <li>40% girls</li>
+                        </ul>
+
+                        <p class="mt-md"><strong>Sample of 100:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>60 boys</li>
+                            <li>40 girls</li>
+                        </ul>
+
+                        <p class="mt-md">✔️ Ensures proper representation</p>
+                    </div>
+
+                    <h3 class="mt-lg">🧠 When to Use?</h3>
+
+                    <p>When population has subgroups:</p>
+                    <ul class="icon-list bullet">
+                        <li>Gender, department, income groups, age groups</li>
+                    </ul>
+
+                    <div class="two-column-grid mt-lg">
+                        <div class="highlight-box">
+                            <p><strong>👍 Advantages</strong></p>
+                            <ul class="icon-list check mt-sm">
+                                <li>More representative</li>
+                                <li>Higher accuracy</li>
+                            </ul>
+                        </div>
+
+                        <div class="highlight-box">
+                            <p><strong>👎 Disadvantages</strong></p>
+                            <ul class="icon-list cross mt-sm">
+                                <li>Needs prior population information</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 4: Systematic Sampling -->
+                <div class="section" id="systematic-sampling">
+                    <h2>3️⃣ Systematic Sampling</h2>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>✅ Definition</strong></p>
+                        <p class="text-center mt-sm">Select every k-th element from the population after a random start</p>
+                    </div>
+
+                    <div class="formula-box mt-md">
+                        <div class="formula">k = N / n</div>
+                    </div>
+
+                    <div class="example-box mt-md">
+                        <div class="example-title">🎓 Example</div>
+                        <p>Population = 1,000<br>
+                        Sample size = 100</p>
+
+                        <div class="formula-box mt-sm">
+                            <p>k = 1000 / 100 = 10</p>
+                        </div>
+
+                        <p class="mt-md">Pick every 10th person</p>
+                    </div>
+
+                    <div class="two-column-grid mt-lg">
+                        <div class="highlight-box">
+                            <p><strong>👍 Advantages</strong></p>
+                            <ul class="icon-list check mt-sm">
+                                <li>Simple and fast</li>
+                                <li>Easy to implement</li>
+                            </ul>
+                        </div>
+
+                        <div class="highlight-box">
+                            <p><strong>👎 Disadvantages</strong></p>
+                            <ul class="icon-list cross mt-sm">
+                                <li>Can be biased if pattern exists</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5: Cluster Sampling -->
+                <div class="section" id="cluster-sampling">
+                    <h2>4️⃣ Cluster Sampling</h2>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>✅ Definition</strong></p>
+                        <p class="text-center mt-sm">Population is divided into clusters, then entire clusters are randomly selected</p>
+                    </div>
+
+                    <div class="example-box mt-md">
+                        <div class="example-title">🎓 Example</div>
+                        <p>A city has 100 schools.</p>
+                        <p class="mt-sm">Randomly select 10 schools and survey all students in them.</p>
+                        <p class="mt-sm">✔️ Cost-effective for large areas</p>
+                    </div>
+
+                    <div class="two-column-grid mt-lg">
+                        <div class="highlight-box">
+                            <p><strong>👍 Advantages</strong></p>
+                            <ul class="icon-list check mt-sm">
+                                <li>Cheap</li>
+                                <li>Suitable for large geographic areas</li>
+                            </ul>
+                        </div>
+
+                        <div class="highlight-box">
+                            <p><strong>👎 Disadvantages</strong></p>
+                            <ul class="icon-list cross mt-sm">
+                                <li>Less accurate than stratified sampling</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 6: Convenience Sampling -->
+                <div class="section" id="convenience-sampling">
+                    <h2>5️⃣ Convenience Sampling (Non-Probability)</h2>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>✅ Definition</strong></p>
+                        <p class="text-center mt-sm">Sample is chosen based on ease of access</p>
+                    </div>
+
+                    <div class="example-box mt-md">
+                        <div class="example-title">🎓 Example</div>
+                        <p>Survey students sitting in the front row only.</p>
+                        <p class="mt-sm">⚠️ Highly biased → not preferred in exams</p>
+                    </div>
+                </div>
+
+                <!-- Section 7: Central Limit Theorem -->
+                <div class="section" id="central-limit-theorem">
+                    <h2>Part 2: Central Limit Theorem (CLT)</h2>
+
+                    <div class="example-box">
+                        <img src="../images/Central Limit Theorem (CLT).png" alt="Central Limit Theorem" style="width: 100%; max-width: 700px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <h3>What is the Central Limit Theorem?</h3>
+
+                    <div class="highlight-box success">
+                        <p><strong>The Central Limit Theorem (CLT) says:</strong></p>
+                        <p class="mt-sm">If we take sufficiently large random samples from any population, the distribution of the sample mean will be approximately normal, regardless of the population's original distribution.</p>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        📌 This is true even if the population is skewed or non-normal
+                    </div>
+
+                    <h3 class="mt-lg">🧠 Why CLT is So Important?</h3>
+
+                    <p>Because it:</p>
+                    <ul class="icon-list check">
+                        <li>Justifies using Normal Distribution everywhere</li>
+                        <li>Powers confidence intervals</li>
+                        <li>Enables hypothesis testing</li>
+                        <li>Is the foundation of inferential statistics</li>
+                        <li>Explains why many ML errors look normal</li>
+                    </ul>
+
+                    <div class="highlight-box mt-md">
+                        <p class="text-center font-bold">👉 Without CLT, most statistics would collapse</p>
+                    </div>
+
+                    <h3 class="mt-lg">🔑 Key Conditions for CLT</h3>
+
+                    <ol class="steps-list">
+                        <li>Samples must be random</li>
+                        <li>Sample size should be large
+                            <ul class="icon-list bullet ml-lg">
+                                <li>Rule of thumb: n ≥ 30</li>
+                            </ul>
+                        </li>
+                        <li>Observations must be independent</li>
+                    </ol>
+
+                    <div class="note-box mt-md">
+                        ⚠️ Population does NOT need to be normal
+                    </div>
+
+                    <h3 class="mt-lg">📈 What Exactly Becomes Normal?</h3>
+
+                    <p>Not the population — but:</p>
+
+                    <div class="highlight-box success">
+                        <p class="text-center font-bold">✅ Sampling distribution of the sample mean</p>
+                    </div>
+
+                    <p class="mt-md">Let:</p>
+                    <ul class="icon-list bullet">
+                        <li>Population mean = μ</li>
+                        <li>Population SD = σ</li>
+                        <li>Sample size = n</li>
+                    </ul>
+
+                    <p class="mt-md"><strong>Then:</strong></p>
+
+                    <div class="formula-box mt-sm">
+                        <p><strong>Mean of sampling distribution:</strong></p>
+                        <div class="example-box mt-sm">
+                            <img src="../images/Mean of sampling distribution.png" alt="Mean of Sampling Distribution" style="width: 100%; max-width: 300px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        </div>
+                    </div>
+
+                    <div class="formula-box mt-md">
+                        <p><strong>Standard deviation of sampling distribution:</strong></p>
+                        <div class="example-box mt-sm">
+                            <img src="../images/Standard deviation of sampling distribution.png" alt="Standard Deviation of Sampling Distribution" style="width: 100%; max-width: 300px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                        </div>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        This SD is called <strong>Standard Error</strong>
+                    </div>
+
+                    <h3 class="mt-lg">Example 1: Conceptual (Very Common Exam Question)</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Income Distribution</div>
+                        
+                        <p>Suppose population is highly right-skewed (like income).</p>
+
+                        <ul class="icon-list bullet mt-md">
+                            <li>Take sample size n = 5 → sample means look skewed</li>
+                            <li>Take sample size n = 30 → less skewed</li>
+                            <li>Take sample size n = 100 → almost normal</li>
+                        </ul>
+
+                        <p class="mt-md">✔️ CLT in action</p>
+                    </div>
+
+                    <h3 class="mt-lg">🎓 Example 2: Numerical Understanding</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Numerical Example</div>
+                        
+                        <p><strong>Population:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>Mean μ = 50</li>
+                            <li>SD σ = 10</li>
+                        </ul>
+
+                        <p class="mt-md"><strong>Sample size:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>n = 25</li>
+                        </ul>
+
+                        <div class="formula-box mt-md">
+                            <p><strong>Mean of sample mean distribution:</strong></p>
+                            <div class="formula">μ<sub>x̄</sub> = 50</div>
+                        </div>
+
+                        <div class="formula-box mt-md">
+                            <p><strong>SD of sample mean distribution:</strong></p>
+                            <p>σ<sub>x̄</sub> = 10 / √25 = 2</p>
+                        </div>
+
+                        <p class="mt-md">👉 Sample means are less variable than raw data</p>
+                    </div>
+
+                    <h3 class="mt-lg">🧪 Python Demonstration</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+import matplotlib.pyplot as plt
+
+# Skewed population (exponential)
+population = np.random.exponential(scale=2, size=100000)
+
+# Take many samples and compute means
+sample_means = [
+    np.mean(np.random.choice(population, size=30))
+    for _ in range(5000)
+]
+
+plt.hist(sample_means, bins=30)
+plt.title("Sampling Distribution of Sample Mean (CLT)")
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="code-explanation">
+                        <p><strong>🔍 Even though population is skewed →</strong></p>
+                        <p>✔️ sample means are approximately normal</p>
+                    </div>
+                </div>
+
+                <!-- Section 8: Standard Error -->
+                <div class="section" id="standard-error">
+                    <h2>Part 3: Standard Error</h2>
+
+                    <div class="example-box">
+                        <img src="../images/standard-error-vs-standard-deviation.webp" alt="Standard Error vs Standard Deviation" style="width: 100%; max-width: 700px; display: block; margin: 1rem auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <h3>🔹 What is Standard Error?</h3>
+
+                    <p>Standard Error (SE) measures the variability of a sample statistic (usually the sample mean) from sample to sample.</p>
+
+                    <div class="highlight-box success mt-md">
+                        <p class="text-center"><strong>👉 In simple words:</strong></p>
+                        <p class="text-center font-bold mt-sm">Standard deviation of the sampling distribution</p>
+                    </div>
+
+                    <h3 class="mt-lg">🧠 Why Standard Error is Important?</h3>
+
+                    <p>Because it tells us:</p>
+                    <ul class="icon-list check">
+                        <li>How precise our sample mean is</li>
+                        <li>How close sample mean is to population mean</li>
+                        <li>Basis for:
+                            <ul class="icon-list bullet ml-lg">
+                                <li>Confidence intervals</li>
+                                <li>Hypothesis testing</li>
+                                <li>Z-tests & t-tests</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <h3 class="mt-lg">📐 Formula for Standard Error of Mean</h3>
+
+                    <div class="formula-box">
+                        <p><strong>If population SD is known:</strong></p>
+                        <div class="formula">SE = σ / √n</div>
+                    </div>
+
+                    <div class="formula-box mt-md">
+                        <p><strong>If population SD is unknown (common in exams & practice):</strong></p>
+                        <div class="formula">SE = s / √n</div>
+                    </div>
+
+                    <div class="note-box mt-md">
+                        <strong>Where:</strong><br>
+                        • σ = population SD<br>
+                        • s = sample SD<br>
+                        • n = sample size
+                    </div>
+
+                    <h3 class="mt-lg">⚠️ COMPARISON</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Standard Deviation (SD)</th>
+                                <th>Standard Error (SE)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Spread of raw data</td>
+                                <td>Spread of sample means</td>
+                            </tr>
+                            <tr>
+                                <td>Measures variability in population</td>
+                                <td>Measures precision of mean</td>
+                            </tr>
+                            <tr>
+                                <td>Fixed for population</td>
+                                <td>Decreases as n increases</td>
+                            </tr>
+                            <tr>
+                                <td>Uses σ or s</td>
+                                <td>Uses σ/√n</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box mt-md">
+                        <p class="text-center font-bold">👉 SD ≠ SE (biggest student mistake!)</p>
+                    </div>
+
+                    <h3 class="mt-lg">🎓 Example 1</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Population SD Known</div>
+                        
+                        <p>Population SD = 12<br>
+                        Sample size = 36</p>
+
+                        <div class="formula-box mt-md">
+                            <p>SE = σ / √n</p>
+                            <p>SE = 12 / √36</p>
+                            <p>SE = 12 / 6</p>
+                            <div class="formula">SE = 2</div>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Example 2: Sample Data</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">Sample SD Given</div>
+                        
+                        <p>Sample SD = 10<br>
+                        Sample size = 25</p>
+
+                        <div class="formula-box mt-md">
+                            <p>SE = s / √n</p>
+                            <p>SE = 10 / √25</p>
+                            <p>SE = 10 / 5</p>
+                            <div class="formula">SE = 2</div>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Example 3: Effect of Sample Size</h3>
+
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Sample Size (n)</th>
+                                <th>SE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>25</td>
+                                <td>σ / 5</td>
+                            </tr>
+                            <tr>
+                                <td>100</td>
+                                <td>σ / 10</td>
+                            </tr>
+                            <tr>
+                                <td>400</td>
+                                <td>σ / 20</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="highlight-box success mt-md">
+                        <p class="text-center">👉 As n increases, SE decreases</p>
+                        <p class="text-center font-bold mt-sm">✔️ Mean estimate becomes more reliable</p>
+                    </div>
+
+                    <h3 class="mt-lg">🔄 Link Between CLT and Standard Error</h3>
+
+                    <p>From CLT:</p>
+                    <ul class="icon-list bullet">
+                        <li>Sampling distribution of mean is normal</li>
+                        <li>Its SD = Standard Error</li>
+                    </ul>
+
+                    <div class="formula-box mt-md">
+                        <p>μ<sub>x̄</sub> = μ</p>
+                        <p>σ<sub>x̄</sub> = SE</p>
+                    </div>
+
+                    <h3 class="mt-lg">🧪 Python Example (Optional, DS Friendly)</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import numpy as np
+
+sample = [50, 52, 48, 49, 51]
+s = np.std(sample, ddof=1)  # sample SD
+n = len(sample)
+
+SE = s / np.sqrt(n)
+SE</code></pre>
+                        </div>
+                        <div class="code-output">
+0.7071
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
+    </main>
 
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Statistics eBook. Created by <a href="https://github.com/Aman-0402">Aman</a>.</p>
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../contents.html">Contents</a>
+                    <a href="../resources/glossary.html">Glossary</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
 </body>
 </html>
