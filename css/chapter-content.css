@@ -1164,3 +1164,39 @@ code {
         font-size: 0.9rem;
     }
 }
+/* ==========================================
+   GLOBAL CONTENT PROTECTION
+   ========================================== */
+
+body {
+    -webkit-user-select: none; /* Chrome, Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Edge */
+    user-select: none;         /* Standard */
+}
+/* Allow interaction for inputs & MCQs */
+input,
+textarea,
+.mcq-container,
+.option,
+.answer-content {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+/* Code blocks should NEVER be selectable */
+pre,
+code,
+.code-content,
+.code-block {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+/* Disable callout menu on mobile */
+* {
+    -webkit-touch-callout: none;
+}
