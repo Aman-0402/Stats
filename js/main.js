@@ -443,3 +443,65 @@ function initMCQs() {
   
   document.addEventListener('DOMContentLoaded', initMCQs);
   
+  // ==========================================
+  // CONTENT PROTECTION (ANTI COPY / RIGHT CLICK)
+  // ==========================================
+  
+  // Disable right-click context menu
+  document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+  });
+  
+  // Disable copy, cut, paste
+  ['copy', 'cut', 'paste'].forEach(event => {
+      document.addEventListener(event, function (e) {
+          e.preventDefault();
+      });
+  });
+  
+  // Disable common developer & copy shortcuts
+  document.addEventListener('keydown', function (e) {
+  
+      // Block Ctrl / Cmd combinations
+      if (
+          (e.ctrlKey || e.metaKey) &&
+          ['c', 'x', 'v', 'u', 's'].includes(e.key.toLowerCase())
+      ) {
+          e.preventDefault();
+          return false;
+      }
+  
+      // Block F12 (DevTools)
+      if (e.key === 'F12') {
+          e.preventDefault();
+          return false;
+      }
+  });
+  
+  // Extra protection for code blocks only
+  function protectCodeBlocks() {
+      document.querySelectorAll('pre, code, .code-content').forEach(block => {
+          block.setAttribute('unselectable', 'on');
+          block.style.userSelect = 'none';
+          block.style.webkitUserSelect = 'none';
+          block.style.mozUserSelect = 'none';
+          block.style.msUserSelect = 'none';
+          block.style.pointerEvents = 'none';
+      });
+  }
+  
+  // Allow selection ONLY for inputs & MCQs
+  function allowInteractiveSelection() {
+      document.querySelectorAll('input, textarea, .mcq-container').forEach(el => {
+          el.style.userSelect = 'text';
+          el.style.webkitUserSelect = 'text';
+          el.style.pointerEvents = 'auto';
+      });
+  }
+  
+  // Initialize protection after page load
+  document.addEventListener('DOMContentLoaded', function () {
+      protectCodeBlocks();
+      allowInteractiveSelection();
+  });
+  
