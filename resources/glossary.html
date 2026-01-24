@@ -31,7 +31,7 @@
             <i class="fas fa-question-circle"></i>
             <div>
                 <div class="stat-label">Remaining</div>
-                <div class="stat-value" id="remainingCount">20</div>
+                <div class="stat-value" id="remainingCount">105</div>
             </div>
         </div>
         <div class="stat-box">
@@ -50,197 +50,914 @@
 <div class="quiz">
     <div class="question fade-in" data-answer="A" data-qno="1">
         <p class="question-text"><span class="q-number">Q1.</span> The ordinal scale allows ranking but does not show the exact difference between values.</p>
-        <label class="option-label"><input type="radio" name="q1" value="A"> <span>A) True</span></label>
-        <label class="option-label"><input type="radio" name="q1" value="B"> <span>B) False</span></label>
+        <label class="option-label "><input type="radio" name="q1" value="A"> <span>A) True</span></label>
+        <label class="option-label "><input type="radio" name="q1" value="B"> <span>B) False</span></label>
         <button class="submit-btn" onclick="checkAnswer(1)"><i class="fas fa-paper-plane"></i> Submit</button>
         <div class="result" id="result1"></div>
     </div>
 
     <div class="question fade-in" data-answer="C" data-qno="2">
         <p class="question-text"><span class="q-number">Q2.</span> Which of the following is a measure of central tendency?</p>
-        <label class="option-label"><input type="radio" name="q2" value="A"> <span>A) Variance</span></label>
-        <label class="option-label"><input type="radio" name="q2" value="B"> <span>B) Standard deviation</span></label>
-        <label class="option-label"><input type="radio" name="q2" value="C"> <span>C) Mean</span></label>
-        <label class="option-label"><input type="radio" name="q2" value="D"> <span>D) Range</span></label>
+        <label class="option-label "><input type="radio" name="q2" value="A"> <span>A) Variance</span></label>
+        <label class="option-label "><input type="radio" name="q2" value="B"> <span>B) Standard deviation</span></label>
+        <label class="option-label "><input type="radio" name="q2" value="C"> <span>C) Mean</span></label>
+        <label class="option-label "><input type="radio" name="q2" value="D"> <span>D) Range</span></label>
         <button class="submit-btn" onclick="checkAnswer(2)"><i class="fas fa-paper-plane"></i> Submit</button>
         <div class="result" id="result2"></div>
     </div>
 
-    <div class="question fade-in" data-answer="A,C,D" data-qno="3">
-        <p class="question-text"><span class="q-number">Q3.</span> Pearson's correlation coefficient – which statements are correct? <span class="multi-badge">Multiple Answers</span></p>
-        <label class="option-label checkbox-label"><input type="checkbox" name="q3" value="A"> <span>A) Measures strength & direction</span></label>
-        <label class="option-label checkbox-label"><input type="checkbox" name="q3" value="B"> <span>B) Used with ranked data only</span></label>
-        <label class="option-label checkbox-label"><input type="checkbox" name="q3" value="C"> <span>C) Assumes quantitative variables</span></label>
-        <label class="option-label checkbox-label"><input type="checkbox" name="q3" value="D"> <span>D) Lies between −1 and +1</span></label>
-        <button class="submit-btn" onclick="checkMultiAnswer(3)"><i class="fas fa-paper-plane"></i> Submit</button>
-        <div class="result" id="result3"></div>
-    </div>
-
-    <div class="question fade-in" data-answer="C" data-qno="4">
-        <p class="question-text"><span class="q-number">Q4.</span> Variability of sample means around the population mean is called:</p>
-        <label class="option-label"><input type="radio" name="q4" value="A"> <span>A) Standard deviation</span></label>
-        <label class="option-label"><input type="radio" name="q4" value="B"> <span>B) Variance</span></label>
-        <label class="option-label"><input type="radio" name="q4" value="C"> <span>C) Standard error</span></label>
-        <label class="option-label"><input type="radio" name="q4" value="D"> <span>D) Confidence interval</span></label>
-        <button class="submit-btn" onclick="checkAnswer(4)"><i class="fas fa-paper-plane"></i> Submit</button>
-        <div class="result" id="result4"></div>
-    </div>
-
-    <div class="question fade-in" data-answer="B,C,D" data-qno="5">
-        <p class="question-text"><span class="q-number">Q5.</span> Which of the following graphs show distribution of numerical data? <span class="multi-badge">Multiple Answers</span></p>
-        <label class="option-label checkbox-label"><input type="checkbox" name="q5" value="A"> <span>A) Pie chart</span></label>
-        <label class="option-label checkbox-label"><input type="checkbox" name="q5" value="B"> <span>B) Frequency polygon</span></label>
-        <label class="option-label checkbox-label"><input type="checkbox" name="q5" value="C"> <span>C) Boxplot</span></label>
-        <label class="option-label checkbox-label"><input type="checkbox" name="q5" value="D"> <span>D) Histogram</span></label>
-        <button class="submit-btn" onclick="checkMultiAnswer(5)"><i class="fas fa-paper-plane"></i> Submit</button>
-        <div class="result" id="result5"></div>
-    </div>
-
-    <div class="question fade-in" data-answer="B" data-qno="6">
-        <p class="question-text"><span class="q-number">Q6.</span> If the probability of an event is 0, it means the event is:</p>
-        <label class="option-label"><input type="radio" name="q6" value="A"> <span>A) Certain</span></label>
-        <label class="option-label"><input type="radio" name="q6" value="B"> <span>B) Impossible</span></label>
-        <label class="option-label"><input type="radio" name="q6" value="C"> <span>C) Equally likely</span></label>
-        <label class="option-label"><input type="radio" name="q6" value="D"> <span>D) Random</span></label>
-        <button class="submit-btn" onclick="checkAnswer(6)"><i class="fas fa-paper-plane"></i> Submit</button>
+    <div class="question fade-in" data-answer="A,C,D" data-qno="6">
+        <p class="question-text"><span class="q-number">Q6.</span> Pearson's correlation coefficient – which statements are correct? <span class="multi-badge">Multiple Answers</span></p>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q6" value="A"> <span>A) Measures strength & direction</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q6" value="B"> <span>B) Used with ranked data only</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q6" value="C"> <span>C) Assumes quantitative variables</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q6" value="D"> <span>D) Lies between −1 and +1</span></label>
+        <button class="submit-btn" onclick="checkMultiAnswer(6)"><i class="fas fa-paper-plane"></i> Submit</button>
         <div class="result" id="result6"></div>
     </div>
 
-    <div class="question fade-in" data-answer="D" data-qno="7">
-        <p class="question-text"><span class="q-number">Q7.</span> A data analyst calculates the average monthly electricity consumption giving more importance to higher-usage months. Which average is used?</p>
-        <label class="option-label"><input type="radio" name="q7" value="A"> <span>A) Mode</span></label>
-        <label class="option-label"><input type="radio" name="q7" value="B"> <span>B) Median</span></label>
-        <label class="option-label"><input type="radio" name="q7" value="C"> <span>C) Arithmetic mean</span></label>
-        <label class="option-label"><input type="radio" name="q7" value="D"> <span>D) Weighted mean</span></label>
-        <button class="submit-btn" onclick="checkAnswer(7)"><i class="fas fa-paper-plane"></i> Submit</button>
-        <div class="result" id="result7"></div>
-    </div>
-
-    <div class="question fade-in" data-answer="C" data-qno="8">
-        <p class="question-text"><span class="q-number">Q8.</span> Which measure is most affected by extreme values (outliers)?</p>
-        <label class="option-label"><input type="radio" name="q8" value="A"> <span>A) Median</span></label>
-        <label class="option-label"><input type="radio" name="q8" value="B"> <span>B) Mode</span></label>
-        <label class="option-label"><input type="radio" name="q8" value="C"> <span>C) Mean</span></label>
-        <label class="option-label"><input type="radio" name="q8" value="D"> <span>D) Quartile</span></label>
-        <button class="submit-btn" onclick="checkAnswer(8)"><i class="fas fa-paper-plane"></i> Submit</button>
-        <div class="result" id="result8"></div>
-    </div>
-
-    <div class="question fade-in" data-answer="B" data-qno="9">
-        <p class="question-text"><span class="q-number">Q9.</span> Mutually exclusive events can occur at the same time.</p>
-        <label class="option-label"><input type="radio" name="q9" value="A"> <span>A) True</span></label>
-        <label class="option-label"><input type="radio" name="q9" value="B"> <span>B) False</span></label>
-        <button class="submit-btn" onclick="checkAnswer(9)"><i class="fas fa-paper-plane"></i> Submit</button>
-        <div class="result" id="result9"></div>
-    </div>
-
-    <div class="question fade-in" data-answer="D" data-qno="10">
-        <p class="question-text"><span class="q-number">Q10.</span> The sum of probabilities of all possible outcomes of an experiment is:</p>
-        <label class="option-label"><input type="radio" name="q10" value="A"> <span>A) Less than 1</span></label>
-        <label class="option-label"><input type="radio" name="q10" value="B"> <span>B) Greater than 1</span></label>
-        <label class="option-label"><input type="radio" name="q10" value="C"> <span>C) Equal to 0</span></label>
-        <label class="option-label"><input type="radio" name="q10" value="D"> <span>D) Equal to 1</span></label>
-        <button class="submit-btn" onclick="checkAnswer(10)"><i class="fas fa-paper-plane"></i> Submit</button>
-        <div class="result" id="result10"></div>
-    </div>
-
-    <div class="question fade-in" data-answer="A" data-qno="11">
-        <p class="question-text"><span class="q-number">Q11.</span> A dispersion measure expressed in the same units as data is needed. Which should be used?</p>
-        <label class="option-label"><input type="radio" name="q11" value="A"> <span>A) Standard deviation</span></label>
-        <label class="option-label"><input type="radio" name="q11" value="B"> <span>B) Variance</span></label>
-        <label class="option-label"><input type="radio" name="q11" value="C"> <span>C) Interquartile range</span></label>
-        <label class="option-label"><input type="radio" name="q11" value="D"> <span>D) Coefficient of variation</span></label>
-        <button class="submit-btn" onclick="checkAnswer(11)"><i class="fas fa-paper-plane"></i> Submit</button>
-        <div class="result" id="result11"></div>
-    </div>
-
-    <div class="question fade-in" data-answer="C" data-qno="12">
-        <p class="question-text"><span class="q-number">Q12.</span> Which type of data is measured on a nominal scale?</p>
-        <label class="option-label"><input type="radio" name="q12" value="A"> <span>A) Temperature</span></label>
-        <label class="option-label"><input type="radio" name="q12" value="B"> <span>B) Rank in a competition</span></label>
-        <label class="option-label"><input type="radio" name="q12" value="C"> <span>C) Blood group</span></label>
-        <label class="option-label"><input type="radio" name="q12" value="D"> <span>D) Height</span></label>
-        <button class="submit-btn" onclick="checkAnswer(12)"><i class="fas fa-paper-plane"></i> Submit</button>
-        <div class="result" id="result12"></div>
-    </div>
-
-    <div class="question fade-in" data-answer="C" data-qno="13">
-        <p class="question-text"><span class="q-number">Q13.</span> In a normal distribution, mean, median, and mode are:</p>
-        <label class="option-label"><input type="radio" name="q13" value="A"> <span>A) Different</span></label>
-        <label class="option-label"><input type="radio" name="q13" value="B"> <span>B) Unrelated</span></label>
-        <label class="option-label"><input type="radio" name="q13" value="C"> <span>C) Equal</span></label>
-        <label class="option-label"><input type="radio" name="q13" value="D"> <span>D) Zero</span></label>
-        <button class="submit-btn" onclick="checkAnswer(13)"><i class="fas fa-paper-plane"></i> Submit</button>
-        <div class="result" id="result13"></div>
-    </div>
-
-    <div class="question fade-in" data-answer="D" data-qno="14">
-        <p class="question-text"><span class="q-number">Q14.</span> Which of the following is NOT a measure of dispersion?</p>
-        <label class="option-label"><input type="radio" name="q14" value="A"> <span>A) Range</span></label>
-        <label class="option-label"><input type="radio" name="q14" value="B"> <span>B) Variance</span></label>
-        <label class="option-label"><input type="radio" name="q14" value="C"> <span>C) Mean deviation</span></label>
-        <label class="option-label"><input type="radio" name="q14" value="D"> <span>D) Mean</span></label>
-        <button class="submit-btn" onclick="checkAnswer(14)"><i class="fas fa-paper-plane"></i> Submit</button>
-        <div class="result" id="result14"></div>
-    </div>
-
-    <div class="question fade-in" data-answer="C" data-qno="15">
-        <p class="question-text"><span class="q-number">Q15.</span> A histogram is mainly used to represent:</p>
-        <label class="option-label"><input type="radio" name="q15" value="A"> <span>A) Qualitative data</span></label>
-        <label class="option-label"><input type="radio" name="q15" value="B"> <span>B) Discrete data only</span></label>
-        <label class="option-label"><input type="radio" name="q15" value="C"> <span>C) Continuous frequency distribution</span></label>
-        <label class="option-label"><input type="radio" name="q15" value="D"> <span>D) Ranked data</span></label>
-        <button class="submit-btn" onclick="checkAnswer(15)"><i class="fas fa-paper-plane"></i> Submit</button>
-        <div class="result" id="result15"></div>
-    </div>
-
     <div class="question fade-in" data-answer="C" data-qno="16">
-        <p class="question-text"><span class="q-number">Q16.</span> The probability of an impossible event is:</p>
-        <label class="option-label"><input type="radio" name="q16" value="A"> <span>A) 1</span></label>
-        <label class="option-label"><input type="radio" name="q16" value="B"> <span>B) −1</span></label>
-        <label class="option-label"><input type="radio" name="q16" value="C"> <span>C) 0</span></label>
-        <label class="option-label"><input type="radio" name="q16" value="D"> <span>D) Between 0 and 1</span></label>
+        <p class="question-text"><span class="q-number">Q16.</span> Variability of sample means around the population mean is called:</p>
+        <label class="option-label "><input type="radio" name="q16" value="A"> <span>A) Standard deviation</span></label>
+        <label class="option-label "><input type="radio" name="q16" value="B"> <span>B) Variance</span></label>
+        <label class="option-label "><input type="radio" name="q16" value="C"> <span>C) Standard error</span></label>
+        <label class="option-label "><input type="radio" name="q16" value="D"> <span>D) Confidence interval</span></label>
         <button class="submit-btn" onclick="checkAnswer(16)"><i class="fas fa-paper-plane"></i> Submit</button>
         <div class="result" id="result16"></div>
     </div>
 
-    <div class="question fade-in" data-answer="B" data-qno="17">
-        <p class="question-text"><span class="q-number">Q17.</span> Which sampling technique divides the population into homogeneous groups before sampling?</p>
-        <label class="option-label"><input type="radio" name="q17" value="A"> <span>A) Random sampling</span></label>
-        <label class="option-label"><input type="radio" name="q17" value="B"> <span>B) Stratified sampling</span></label>
-        <label class="option-label"><input type="radio" name="q17" value="C"> <span>C) Systematic sampling</span></label>
-        <label class="option-label"><input type="radio" name="q17" value="D"> <span>D) Convenience sampling</span></label>
-        <button class="submit-btn" onclick="checkAnswer(17)"><i class="fas fa-paper-plane"></i> Submit</button>
+    <div class="question fade-in" data-answer="B,C,D" data-qno="17">
+        <p class="question-text"><span class="q-number">Q17.</span> Which of the following graphs show distribution of numerical data? <span class="multi-badge">Multiple Answers</span></p>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q17" value="A"> <span>A) Pie chart</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q17" value="B"> <span>B) Frequency polygon</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q17" value="C"> <span>C) Boxplot</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q17" value="D"> <span>D) Histogram</span></label>
+        <button class="submit-btn" onclick="checkMultiAnswer(17)"><i class="fas fa-paper-plane"></i> Submit</button>
         <div class="result" id="result17"></div>
     </div>
 
     <div class="question fade-in" data-answer="B" data-qno="18">
-        <p class="question-text"><span class="q-number">Q18.</span> Coefficient of variation is mainly used to:</p>
-        <label class="option-label"><input type="radio" name="q18" value="A"> <span>A) Measure absolute dispersion</span></label>
-        <label class="option-label"><input type="radio" name="q18" value="B"> <span>B) Compare variability between datasets</span></label>
-        <label class="option-label"><input type="radio" name="q18" value="C"> <span>C) Find central tendency</span></label>
-        <label class="option-label"><input type="radio" name="q18" value="D"> <span>D) Calculate probability</span></label>
+        <p class="question-text"><span class="q-number">Q18.</span> If the probability of an event is 0, it means the event is:</p>
+        <label class="option-label "><input type="radio" name="q18" value="A"> <span>A) Certain</span></label>
+        <label class="option-label "><input type="radio" name="q18" value="B"> <span>B) Impossible</span></label>
+        <label class="option-label "><input type="radio" name="q18" value="C"> <span>C) Equally likely</span></label>
+        <label class="option-label "><input type="radio" name="q18" value="D"> <span>D) Random</span></label>
         <button class="submit-btn" onclick="checkAnswer(18)"><i class="fas fa-paper-plane"></i> Submit</button>
         <div class="result" id="result18"></div>
     </div>
 
-    <div class="question fade-in" data-answer="A" data-qno="19">
-        <p class="question-text"><span class="q-number">Q19.</span> Skewness measures the degree of asymmetry in a distribution.</p>
-        <label class="option-label"><input type="radio" name="q19" value="A"> <span>A) True</span></label>
-        <label class="option-label"><input type="radio" name="q19" value="B"> <span>B) False</span></label>
+    <div class="question fade-in" data-answer="D" data-qno="19">
+        <p class="question-text"><span class="q-number">Q19.</span> A data analyst calculates the average monthly electricity consumption giving more importance to higher-usage months. Which average is used?</p>
+        <label class="option-label "><input type="radio" name="q19" value="A"> <span>A) Mode</span></label>
+        <label class="option-label "><input type="radio" name="q19" value="B"> <span>B) Median</span></label>
+        <label class="option-label "><input type="radio" name="q19" value="C"> <span>C) Arithmetic mean</span></label>
+        <label class="option-label "><input type="radio" name="q19" value="D"> <span>D) Weighted mean</span></label>
         <button class="submit-btn" onclick="checkAnswer(19)"><i class="fas fa-paper-plane"></i> Submit</button>
         <div class="result" id="result19"></div>
     </div>
 
-    <div class="question fade-in" data-answer="D" data-qno="20">
-        <p class="question-text"><span class="q-number">Q20.</span> Comparing highest and lowest tensile strength values uses:</p>
-        <label class="option-label"><input type="radio" name="q20" value="A"> <span>A) Interquartile range</span></label>
-        <label class="option-label"><input type="radio" name="q20" value="B"> <span>B) Variance</span></label>
-        <label class="option-label"><input type="radio" name="q20" value="C"> <span>C) Standard deviation</span></label>
-        <label class="option-label"><input type="radio" name="q20" value="D"> <span>D) Range</span></label>
+    <div class="question fade-in" data-answer="C" data-qno="20">
+        <p class="question-text"><span class="q-number">Q20.</span> Which measure is most affected by extreme values (outliers)?</p>
+        <label class="option-label "><input type="radio" name="q20" value="A"> <span>A) Median</span></label>
+        <label class="option-label "><input type="radio" name="q20" value="B"> <span>B) Mode</span></label>
+        <label class="option-label "><input type="radio" name="q20" value="C"> <span>C) Mean</span></label>
+        <label class="option-label "><input type="radio" name="q20" value="D"> <span>D) Quartile</span></label>
         <button class="submit-btn" onclick="checkAnswer(20)"><i class="fas fa-paper-plane"></i> Submit</button>
         <div class="result" id="result20"></div>
     </div>
+
+    <div class="question fade-in" data-answer="B" data-qno="21">
+        <p class="question-text"><span class="q-number">Q21.</span> Mutually exclusive events can occur at the same time.</p>
+        <label class="option-label "><input type="radio" name="q21" value="A"> <span>A) True</span></label>
+        <label class="option-label "><input type="radio" name="q21" value="B"> <span>B) False</span></label>
+        <button class="submit-btn" onclick="checkAnswer(21)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result21"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="D" data-qno="22">
+        <p class="question-text"><span class="q-number">Q22.</span> The sum of probabilities of all possible outcomes of an experiment is:</p>
+        <label class="option-label "><input type="radio" name="q22" value="A"> <span>A) Less than 1</span></label>
+        <label class="option-label "><input type="radio" name="q22" value="B"> <span>B) Greater than 1</span></label>
+        <label class="option-label "><input type="radio" name="q22" value="C"> <span>C) Equal to 0</span></label>
+        <label class="option-label "><input type="radio" name="q22" value="D"> <span>D) Equal to 1</span></label>
+        <button class="submit-btn" onclick="checkAnswer(22)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result22"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A" data-qno="23">
+        <p class="question-text"><span class="q-number">Q23.</span> A dispersion measure expressed in the same units as data is needed. Which should be used?</p>
+        <label class="option-label "><input type="radio" name="q23" value="A"> <span>A) Standard deviation</span></label>
+        <label class="option-label "><input type="radio" name="q23" value="B"> <span>B) Variance</span></label>
+        <label class="option-label "><input type="radio" name="q23" value="C"> <span>C) Interquartile range</span></label>
+        <label class="option-label "><input type="radio" name="q23" value="D"> <span>D) Coefficient of variation</span></label>
+        <button class="submit-btn" onclick="checkAnswer(23)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result23"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="24">
+        <p class="question-text"><span class="q-number">Q24.</span> Which type of data is measured on a nominal scale?</p>
+        <label class="option-label "><input type="radio" name="q24" value="A"> <span>A) Temperature</span></label>
+        <label class="option-label "><input type="radio" name="q24" value="B"> <span>B) Rank in a competition</span></label>
+        <label class="option-label "><input type="radio" name="q24" value="C"> <span>C) Blood group</span></label>
+        <label class="option-label "><input type="radio" name="q24" value="D"> <span>D) Height</span></label>
+        <button class="submit-btn" onclick="checkAnswer(24)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result24"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="25">
+        <p class="question-text"><span class="q-number">Q25.</span> In a normal distribution, mean, median, and mode are:</p>
+        <label class="option-label "><input type="radio" name="q25" value="A"> <span>A) Different</span></label>
+        <label class="option-label "><input type="radio" name="q25" value="B"> <span>B) Unrelated</span></label>
+        <label class="option-label "><input type="radio" name="q25" value="C"> <span>C) Equal</span></label>
+        <label class="option-label "><input type="radio" name="q25" value="D"> <span>D) Zero</span></label>
+        <button class="submit-btn" onclick="checkAnswer(25)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result25"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="D" data-qno="26">
+        <p class="question-text"><span class="q-number">Q26.</span> Which of the following is NOT a measure of dispersion?</p>
+        <label class="option-label "><input type="radio" name="q26" value="A"> <span>A) Range</span></label>
+        <label class="option-label "><input type="radio" name="q26" value="B"> <span>B) Variance</span></label>
+        <label class="option-label "><input type="radio" name="q26" value="C"> <span>C) Mean deviation</span></label>
+        <label class="option-label "><input type="radio" name="q26" value="D"> <span>D) Mean</span></label>
+        <button class="submit-btn" onclick="checkAnswer(26)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result26"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="27">
+        <p class="question-text"><span class="q-number">Q27.</span> A histogram is mainly used to represent:</p>
+        <label class="option-label "><input type="radio" name="q27" value="A"> <span>A) Qualitative data</span></label>
+        <label class="option-label "><input type="radio" name="q27" value="B"> <span>B) Discrete data only</span></label>
+        <label class="option-label "><input type="radio" name="q27" value="C"> <span>C) Continuous frequency distribution</span></label>
+        <label class="option-label "><input type="radio" name="q27" value="D"> <span>D) Ranked data</span></label>
+        <button class="submit-btn" onclick="checkAnswer(27)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result27"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="28">
+        <p class="question-text"><span class="q-number">Q28.</span> The probability of an impossible event is:</p>
+        <label class="option-label "><input type="radio" name="q28" value="A"> <span>A) 1</span></label>
+        <label class="option-label "><input type="radio" name="q28" value="B"> <span>B) −1</span></label>
+        <label class="option-label "><input type="radio" name="q28" value="C"> <span>C) 0</span></label>
+        <label class="option-label "><input type="radio" name="q28" value="D"> <span>D) Between 0 and 1</span></label>
+        <button class="submit-btn" onclick="checkAnswer(28)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result28"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B" data-qno="29">
+        <p class="question-text"><span class="q-number">Q29.</span> Which sampling technique divides the population into homogeneous groups before sampling?</p>
+        <label class="option-label "><input type="radio" name="q29" value="A"> <span>A) Random sampling</span></label>
+        <label class="option-label "><input type="radio" name="q29" value="B"> <span>B) Stratified sampling</span></label>
+        <label class="option-label "><input type="radio" name="q29" value="C"> <span>C) Systematic sampling</span></label>
+        <label class="option-label "><input type="radio" name="q29" value="D"> <span>D) Convenience sampling</span></label>
+        <button class="submit-btn" onclick="checkAnswer(29)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result29"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B" data-qno="30">
+        <p class="question-text"><span class="q-number">Q30.</span> Coefficient of variation is mainly used to:</p>
+        <label class="option-label "><input type="radio" name="q30" value="A"> <span>A) Measure absolute dispersion</span></label>
+        <label class="option-label "><input type="radio" name="q30" value="B"> <span>B) Compare variability between datasets</span></label>
+        <label class="option-label "><input type="radio" name="q30" value="C"> <span>C) Find central tendency</span></label>
+        <label class="option-label "><input type="radio" name="q30" value="D"> <span>D) Calculate probability</span></label>
+        <button class="submit-btn" onclick="checkAnswer(30)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result30"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A" data-qno="31">
+        <p class="question-text"><span class="q-number">Q31.</span> Skewness measures the degree of asymmetry in a distribution.</p>
+        <label class="option-label "><input type="radio" name="q31" value="A"> <span>A) True</span></label>
+        <label class="option-label "><input type="radio" name="q31" value="B"> <span>B) False</span></label>
+        <button class="submit-btn" onclick="checkAnswer(31)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result31"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="D" data-qno="32">
+        <p class="question-text"><span class="q-number">Q32.</span> Comparing highest and lowest tensile strength values uses:</p>
+        <label class="option-label "><input type="radio" name="q32" value="A"> <span>A) Interquartile range</span></label>
+        <label class="option-label "><input type="radio" name="q32" value="B"> <span>B) Variance</span></label>
+        <label class="option-label "><input type="radio" name="q32" value="C"> <span>C) Standard deviation</span></label>
+        <label class="option-label "><input type="radio" name="q32" value="D"> <span>D) Range</span></label>
+        <button class="submit-btn" onclick="checkAnswer(32)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result32"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="33">
+        <p class="question-text"><span class="q-number">Q33.</span> Which of the following is NOT a measure of dispersion?</p>
+        <label class="option-label "><input type="radio" name="q33" value="A"> <span>A) Range</span></label>
+        <label class="option-label "><input type="radio" name="q33" value="B"> <span>B) Variance</span></label>
+        <label class="option-label "><input type="radio" name="q33" value="C"> <span>C) Mean</span></label>
+        <label class="option-label "><input type="radio" name="q33" value="D"> <span>D) Standard deviation</span></label>
+        <button class="submit-btn" onclick="checkAnswer(33)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result33"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A" data-qno="34">
+        <p class="question-text"><span class="q-number">Q34.</span> Probability of getting a 6 on a fair die using theory is:</p>
+        <label class="option-label "><input type="radio" name="q34" value="A"> <span>A) Classical probability</span></label>
+        <label class="option-label "><input type="radio" name="q34" value="B"> <span>B) Empirical probability</span></label>
+        <label class="option-label "><input type="radio" name="q34" value="C"> <span>C) Subjective probability</span></label>
+        <label class="option-label "><input type="radio" name="q34" value="D"> <span>D) Conditional probability</span></label>
+        <button class="submit-btn" onclick="checkAnswer(34)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result34"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B" data-qno="35">
+        <p class="question-text"><span class="q-number">Q35.</span> In regression analysis, correlation implies causation.</p>
+        <label class="option-label "><input type="radio" name="q35" value="A"> <span>A) True</span></label>
+        <label class="option-label "><input type="radio" name="q35" value="B"> <span>B) False</span></label>
+        <button class="submit-btn" onclick="checkAnswer(35)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result35"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="36">
+        <p class="question-text"><span class="q-number">Q36.</span> Which of the following is an example of descriptive statistics?</p>
+        <label class="option-label "><input type="radio" name="q36" value="A"> <span>A) Hypothesis testing</span></label>
+        <label class="option-label "><input type="radio" name="q36" value="B"> <span>B) Confidence interval estimation</span></label>
+        <label class="option-label "><input type="radio" name="q36" value="C"> <span>C) Calculating mean and standard deviation</span></label>
+        <label class="option-label "><input type="radio" name="q36" value="D"> <span>D) Drawing inference about population</span></label>
+        <button class="submit-btn" onclick="checkAnswer(36)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result36"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B" data-qno="37">
+        <p class="question-text"><span class="q-number">Q37.</span> Long left tail with many high scores indicates:</p>
+        <label class="option-label "><input type="radio" name="q37" value="A"> <span>A) Zero skewness</span></label>
+        <label class="option-label "><input type="radio" name="q37" value="B"> <span>B) Negative skewness</span></label>
+        <label class="option-label "><input type="radio" name="q37" value="C"> <span>C) Leptokurtic</span></label>
+        <label class="option-label "><input type="radio" name="q37" value="D"> <span>D) Positive skewness</span></label>
+        <button class="submit-btn" onclick="checkAnswer(37)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result37"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A" data-qno="38">
+        <p class="question-text"><span class="q-number">Q38.</span> A population represents the complete set of all elements under study.</p>
+        <label class="option-label "><input type="radio" name="q38" value="A"> <span>A) True</span></label>
+        <label class="option-label "><input type="radio" name="q38" value="B"> <span>B) False</span></label>
+        <button class="submit-btn" onclick="checkAnswer(38)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result38"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A" data-qno="39">
+        <p class="question-text"><span class="q-number">Q39.</span> Relative variability using a percentage measure is measured by:</p>
+        <label class="option-label "><input type="radio" name="q39" value="A"> <span>A) Coefficient of variation</span></label>
+        <label class="option-label "><input type="radio" name="q39" value="B"> <span>B) Standard deviation</span></label>
+        <label class="option-label "><input type="radio" name="q39" value="C"> <span>C) Range</span></label>
+        <label class="option-label "><input type="radio" name="q39" value="D"> <span>D) Interquartile range</span></label>
+        <button class="submit-btn" onclick="checkAnswer(39)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result39"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A,C,D" data-qno="40">
+        <p class="question-text"><span class="q-number">Q40.</span> When should median be used? <span class="multi-badge">Multiple Answers</span></p>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q40" value="A"> <span>A) House price analysis</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q40" value="B"> <span>B) When all values are equally important</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q40" value="C"> <span>C) Income distribution with outliers</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q40" value="D"> <span>D) Open-ended class intervals</span></label>
+        <button class="submit-btn" onclick="checkMultiAnswer(40)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result40"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A,B,C" data-qno="41">
+        <p class="question-text"><span class="q-number">Q41.</span> Which are inferential statistics activities? <span class="multi-badge">Multiple Answers</span></p>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q41" value="A"> <span>A) Constructing confidence intervals</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q41" value="B"> <span>B) Hypothesis testing</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q41" value="C"> <span>C) Estimating population parameters</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q41" value="D"> <span>D) Tabulating raw data</span></label>
+        <button class="submit-btn" onclick="checkMultiAnswer(41)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result41"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B" data-qno="42">
+        <p class="question-text"><span class="q-number">Q42.</span> Which scale of measurement allows ranking but not meaningful differences?</p>
+        <label class="option-label "><input type="radio" name="q42" value="A"> <span>A) Nominal</span></label>
+        <label class="option-label "><input type="radio" name="q42" value="B"> <span>B) Ordinal</span></label>
+        <label class="option-label "><input type="radio" name="q42" value="C"> <span>C) Interval</span></label>
+        <label class="option-label "><input type="radio" name="q42" value="D"> <span>D) Ratio</span></label>
+        <button class="submit-btn" onclick="checkAnswer(42)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result42"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B,C,D" data-qno="43">
+        <p class="question-text"><span class="q-number">Q43.</span> Which statements about standard error are correct? <span class="multi-badge">Multiple Answers</span></p>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q43" value="A"> <span>A) It is always larger than standard deviation</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q43" value="B"> <span>B) It is used in hypothesis testing</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q43" value="C"> <span>C) It decreases as sample size increases</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q43" value="D"> <span>D) It measures variability of sample means</span></label>
+        <button class="submit-btn" onclick="checkMultiAnswer(43)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result43"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B" data-qno="44">
+        <p class="question-text"><span class="q-number">Q44.</span> A histogram is mainly used to represent:</p>
+        <label class="option-label "><input type="radio" name="q44" value="A"> <span>A) Qualitative data</span></label>
+        <label class="option-label "><input type="radio" name="q44" value="B"> <span>B) Continuous frequency distribution</span></label>
+        <label class="option-label "><input type="radio" name="q44" value="C"> <span>C) Ranked data</span></label>
+        <label class="option-label "><input type="radio" name="q44" value="D"> <span>D) Nominal data</span></label>
+        <button class="submit-btn" onclick="checkAnswer(44)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result44"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="D" data-qno="45">
+        <p class="question-text"><span class="q-number">Q45.</span> Comparing variability between two datasets with different units uses:</p>
+        <label class="option-label "><input type="radio" name="q45" value="A"> <span>A) Variance</span></label>
+        <label class="option-label "><input type="radio" name="q45" value="B"> <span>B) Range</span></label>
+        <label class="option-label "><input type="radio" name="q45" value="C"> <span>C) Standard deviation</span></label>
+        <label class="option-label "><input type="radio" name="q45" value="D"> <span>D) Coefficient of variation</span></label>
+        <button class="submit-btn" onclick="checkAnswer(45)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result45"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="46">
+        <p class="question-text"><span class="q-number">Q46.</span> Which probability is based on personal judgment or experience?</p>
+        <label class="option-label "><input type="radio" name="q46" value="A"> <span>A) Classical</span></label>
+        <label class="option-label "><input type="radio" name="q46" value="B"> <span>B) Empirical</span></label>
+        <label class="option-label "><input type="radio" name="q46" value="C"> <span>C) Subjective</span></label>
+        <label class="option-label "><input type="radio" name="q46" value="D"> <span>D) Conditional</span></label>
+        <button class="submit-btn" onclick="checkAnswer(46)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result46"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B" data-qno="47">
+        <p class="question-text"><span class="q-number">Q47.</span> If two events are independent, then:</p>
+        <label class="option-label "><input type="radio" name="q47" value="A"> <span>A) P(A ∩ B) = P(A) + P(B)</span></label>
+        <label class="option-label "><input type="radio" name="q47" value="B"> <span>B) P(A ∩ B) = P(A) × P(B)</span></label>
+        <label class="option-label "><input type="radio" name="q47" value="C"> <span>C) P(A ∪ B) = 0</span></label>
+        <label class="option-label "><input type="radio" name="q47" value="D"> <span>D) Events cannot occur together</span></label>
+        <button class="submit-btn" onclick="checkAnswer(47)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result47"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="48">
+        <p class="question-text"><span class="q-number">Q48.</span> The main purpose of regression analysis is to:</p>
+        <label class="option-label "><input type="radio" name="q48" value="A"> <span>A) Measure dispersion</span></label>
+        <label class="option-label "><input type="radio" name="q48" value="B"> <span>B) Test independence</span></label>
+        <label class="option-label "><input type="radio" name="q48" value="C"> <span>C) Predict values of one variable from another</span></label>
+        <label class="option-label "><input type="radio" name="q48" value="D"> <span>D) Classify data</span></label>
+        <button class="submit-btn" onclick="checkAnswer(48)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result48"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="49">
+        <p class="question-text"><span class="q-number">Q49.</span> Which measure is most affected by extreme values?</p>
+        <label class="option-label "><input type="radio" name="q49" value="A"> <span>A) Median</span></label>
+        <label class="option-label "><input type="radio" name="q49" value="B"> <span>B) Mode</span></label>
+        <label class="option-label "><input type="radio" name="q49" value="C"> <span>C) Mean</span></label>
+        <label class="option-label "><input type="radio" name="q49" value="D"> <span>D) Quartile</span></label>
+        <button class="submit-btn" onclick="checkAnswer(49)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result49"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="50">
+        <p class="question-text"><span class="q-number">Q50.</span> Estimation of population parameters using sample data is called:</p>
+        <label class="option-label "><input type="radio" name="q50" value="A"> <span>A) Census</span></label>
+        <label class="option-label "><input type="radio" name="q50" value="B"> <span>B) Descriptive statistics</span></label>
+        <label class="option-label "><input type="radio" name="q50" value="C"> <span>C) Inferential statistics</span></label>
+        <label class="option-label "><input type="radio" name="q50" value="D"> <span>D) Tabulation</span></label>
+        <button class="submit-btn" onclick="checkAnswer(50)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result50"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B" data-qno="51">
+        <p class="question-text"><span class="q-number">Q51.</span> Bell-shaped symmetric curve represents:</p>
+        <label class="option-label "><input type="radio" name="q51" value="A"> <span>A) Binomial</span></label>
+        <label class="option-label "><input type="radio" name="q51" value="B"> <span>B) Normal</span></label>
+        <label class="option-label "><input type="radio" name="q51" value="C"> <span>C) Skewed</span></label>
+        <label class="option-label "><input type="radio" name="q51" value="D"> <span>D) Poisson</span></label>
+        <button class="submit-btn" onclick="checkAnswer(51)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result51"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="52">
+        <p class="question-text"><span class="q-number">Q52.</span> Small sample, unknown population SD – which test?</p>
+        <label class="option-label "><input type="radio" name="q52" value="A"> <span>A) Chi-square</span></label>
+        <label class="option-label "><input type="radio" name="q52" value="B"> <span>B) F-test</span></label>
+        <label class="option-label "><input type="radio" name="q52" value="C"> <span>C) t-test</span></label>
+        <label class="option-label "><input type="radio" name="q52" value="D"> <span>D) Z-test</span></label>
+        <button class="submit-btn" onclick="checkAnswer(52)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result52"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B" data-qno="53">
+        <p class="question-text"><span class="q-number">Q53.</span> Which of the following is a measure of central tendency?</p>
+        <label class="option-label "><input type="radio" name="q53" value="A"> <span>A) Variance</span></label>
+        <label class="option-label "><input type="radio" name="q53" value="B"> <span>B) Mean</span></label>
+        <label class="option-label "><input type="radio" name="q53" value="C"> <span>C) Range</span></label>
+        <label class="option-label "><input type="radio" name="q53" value="D"> <span>D) Standard deviation</span></label>
+        <button class="submit-btn" onclick="checkAnswer(53)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result53"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A" data-qno="54">
+        <p class="question-text"><span class="q-number">Q54.</span> An ogive represents cumulative frequency.</p>
+        <label class="option-label "><input type="radio" name="q54" value="A"> <span>A) True</span></label>
+        <label class="option-label "><input type="radio" name="q54" value="B"> <span>B) False</span></label>
+        <button class="submit-btn" onclick="checkAnswer(54)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result54"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A" data-qno="55">
+        <p class="question-text"><span class="q-number">Q55.</span> Calls per hour with known average rate follow:</p>
+        <label class="option-label "><input type="radio" name="q55" value="A"> <span>A) Poisson</span></label>
+        <label class="option-label "><input type="radio" name="q55" value="B"> <span>B) Binomial</span></label>
+        <label class="option-label "><input type="radio" name="q55" value="C"> <span>C) Normal</span></label>
+        <label class="option-label "><input type="radio" name="q55" value="D"> <span>D) Uniform</span></label>
+        <button class="submit-btn" onclick="checkAnswer(55)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result55"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A,C,D" data-qno="56">
+        <p class="question-text"><span class="q-number">Q56.</span> Descriptive statistics include: <span class="multi-badge">Multiple Answers</span></p>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q56" value="A"> <span>A) Creating bar charts</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q56" value="B"> <span>B) Predicting next year's revenue</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q56" value="C"> <span>C) Summarizing data using tables</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q56" value="D"> <span>D) Calculating average monthly sales</span></label>
+        <button class="submit-btn" onclick="checkMultiAnswer(56)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result56"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="57">
+        <p class="question-text"><span class="q-number">Q57.</span> Which of the following graphs is best suited for continuous data?</p>
+        <label class="option-label "><input type="radio" name="q57" value="A"> <span>A) Pie chart</span></label>
+        <label class="option-label "><input type="radio" name="q57" value="B"> <span>B) Bar chart</span></label>
+        <label class="option-label "><input type="radio" name="q57" value="C"> <span>C) Histogram</span></label>
+        <label class="option-label "><input type="radio" name="q57" value="D"> <span>D) Pictograph</span></label>
+        <button class="submit-btn" onclick="checkAnswer(57)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result57"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A" data-qno="58">
+        <p class="question-text"><span class="q-number">Q58.</span> Frequency distribution helps understand pattern and spread of data.</p>
+        <label class="option-label "><input type="radio" name="q58" value="A"> <span>A) True</span></label>
+        <label class="option-label "><input type="radio" name="q58" value="B"> <span>B) False</span></label>
+        <button class="submit-btn" onclick="checkAnswer(58)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result58"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B,C,D" data-qno="59">
+        <p class="question-text"><span class="q-number">Q59.</span> Which are quantitative data? <span class="multi-badge">Multiple Answers</span></p>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q59" value="A"> <span>A) Student blood group</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q59" value="B"> <span>B) Number of absentees</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q59" value="C"> <span>C) Student height</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q59" value="D"> <span>D) Exam marks</span></label>
+        <button class="submit-btn" onclick="checkMultiAnswer(59)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result59"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="D" data-qno="60">
+        <p class="question-text"><span class="q-number">Q60.</span> Probability based on intuition and experience is:</p>
+        <label class="option-label "><input type="radio" name="q60" value="A"> <span>A) Experimental</span></label>
+        <label class="option-label "><input type="radio" name="q60" value="B"> <span>B) Empirical</span></label>
+        <label class="option-label "><input type="radio" name="q60" value="C"> <span>C) Classical</span></label>
+        <label class="option-label "><input type="radio" name="q60" value="D"> <span>D) Subjective</span></label>
+        <button class="submit-btn" onclick="checkAnswer(60)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result60"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A,B,C" data-qno="61">
+        <p class="question-text"><span class="q-number">Q61.</span> Combined mean depends on: <span class="multi-badge">Multiple Answers</span></p>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q61" value="A"> <span>A) Number of observations in each group</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q61" value="B"> <span>B) Mean of first group</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q61" value="C"> <span>C) Mean of second group</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q61" value="D"> <span>D) Median of both groups</span></label>
+        <button class="submit-btn" onclick="checkMultiAnswer(61)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result61"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="D" data-qno="62">
+        <p class="question-text"><span class="q-number">Q62.</span> Which sampling method is easiest but least reliable?</p>
+        <label class="option-label "><input type="radio" name="q62" value="A"> <span>A) Simple random sampling</span></label>
+        <label class="option-label "><input type="radio" name="q62" value="B"> <span>B) Stratified sampling</span></label>
+        <label class="option-label "><input type="radio" name="q62" value="C"> <span>C) Systematic sampling</span></label>
+        <label class="option-label "><input type="radio" name="q62" value="D"> <span>D) Convenience sampling</span></label>
+        <button class="submit-btn" onclick="checkAnswer(62)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result62"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="D" data-qno="63">
+        <p class="question-text"><span class="q-number">Q63.</span> Failing to reject a false null hypothesis is:</p>
+        <label class="option-label "><input type="radio" name="q63" value="A"> <span>A) Random error</span></label>
+        <label class="option-label "><input type="radio" name="q63" value="B"> <span>B) Systematic error</span></label>
+        <label class="option-label "><input type="radio" name="q63" value="C"> <span>C) Type I error</span></label>
+        <label class="option-label "><input type="radio" name="q63" value="D"> <span>D) Type II error</span></label>
+        <button class="submit-btn" onclick="checkAnswer(63)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result63"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="64">
+        <p class="question-text"><span class="q-number">Q64.</span> The sum of all relative frequencies in a frequency distribution is:</p>
+        <label class="option-label "><input type="radio" name="q64" value="A"> <span>A) 0</span></label>
+        <label class="option-label "><input type="radio" name="q64" value="B"> <span>B) Less than 1</span></label>
+        <label class="option-label "><input type="radio" name="q64" value="C"> <span>C) Equal to 1</span></label>
+        <label class="option-label "><input type="radio" name="q64" value="D"> <span>D) Greater than 1</span></label>
+        <button class="submit-btn" onclick="checkAnswer(64)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result64"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="65">
+        <p class="question-text"><span class="q-number">Q65.</span> Which of the following is NOT a measure of dispersion?</p>
+        <label class="option-label "><input type="radio" name="q65" value="A"> <span>A) Range</span></label>
+        <label class="option-label "><input type="radio" name="q65" value="B"> <span>B) Variance</span></label>
+        <label class="option-label "><input type="radio" name="q65" value="C"> <span>C) Mean</span></label>
+        <label class="option-label "><input type="radio" name="q65" value="D"> <span>D) Standard deviation</span></label>
+        <button class="submit-btn" onclick="checkAnswer(65)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result65"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A" data-qno="66">
+        <p class="question-text"><span class="q-number">Q66.</span> A bar chart is mainly used for:</p>
+        <label class="option-label "><input type="radio" name="q66" value="A"> <span>A) Qualitative data</span></label>
+        <label class="option-label "><input type="radio" name="q66" value="B"> <span>B) Continuous data</span></label>
+        <label class="option-label "><input type="radio" name="q66" value="C"> <span>C) Cumulative frequency</span></label>
+        <label class="option-label "><input type="radio" name="q66" value="D"> <span>D) Probability distribution</span></label>
+        <button class="submit-btn" onclick="checkAnswer(66)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result66"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B" data-qno="67">
+        <p class="question-text"><span class="q-number">Q67.</span> Probability values always lie between:</p>
+        <label class="option-label "><input type="radio" name="q67" value="A"> <span>A) −1 and +1</span></label>
+        <label class="option-label "><input type="radio" name="q67" value="B"> <span>B) 0 and 1</span></label>
+        <label class="option-label "><input type="radio" name="q67" value="C"> <span>C) −∞ and +∞</span></label>
+        <label class="option-label "><input type="radio" name="q67" value="D"> <span>D) 1 and 100</span></label>
+        <button class="submit-btn" onclick="checkAnswer(67)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result67"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="68">
+        <p class="question-text"><span class="q-number">Q68.</span> Which distribution is suitable for yes/no outcomes?</p>
+        <label class="option-label "><input type="radio" name="q68" value="A"> <span>A) Normal</span></label>
+        <label class="option-label "><input type="radio" name="q68" value="B"> <span>B) Poisson</span></label>
+        <label class="option-label "><input type="radio" name="q68" value="C"> <span>C) Binomial</span></label>
+        <label class="option-label "><input type="radio" name="q68" value="D"> <span>D) Uniform</span></label>
+        <button class="submit-btn" onclick="checkAnswer(68)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result68"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="69">
+        <p class="question-text"><span class="q-number">Q69.</span> Mean is calculated by:</p>
+        <label class="option-label "><input type="radio" name="q69" value="A"> <span>A) Middle value</span></label>
+        <label class="option-label "><input type="radio" name="q69" value="B"> <span>B) Most frequent value</span></label>
+        <label class="option-label "><input type="radio" name="q69" value="C"> <span>C) Sum of observations ÷ number of observations</span></label>
+        <label class="option-label "><input type="radio" name="q69" value="D"> <span>D) Maximum − minimum</span></label>
+        <button class="submit-btn" onclick="checkAnswer(69)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result69"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B" data-qno="70">
+        <p class="question-text"><span class="q-number">Q70.</span> Predicting future values based on existing data is mainly done using:</p>
+        <label class="option-label "><input type="radio" name="q70" value="A"> <span>A) Correlation</span></label>
+        <label class="option-label "><input type="radio" name="q70" value="B"> <span>B) Regression</span></label>
+        <label class="option-label "><input type="radio" name="q70" value="C"> <span>C) Tabulation</span></label>
+        <label class="option-label "><input type="radio" name="q70" value="D"> <span>D) Classification</span></label>
+        <button class="submit-btn" onclick="checkAnswer(70)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result70"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A" data-qno="71">
+        <p class="question-text"><span class="q-number">Q71.</span> Selecting proportional samples from departments is:</p>
+        <label class="option-label "><input type="radio" name="q71" value="A"> <span>A) Stratified sampling</span></label>
+        <label class="option-label "><input type="radio" name="q71" value="B"> <span>B) Judgment sampling</span></label>
+        <label class="option-label "><input type="radio" name="q71" value="C"> <span>C) Random sampling</span></label>
+        <label class="option-label "><input type="radio" name="q71" value="D"> <span>D) Convenience sampling</span></label>
+        <button class="submit-btn" onclick="checkAnswer(71)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result71"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B" data-qno="72">
+        <p class="question-text"><span class="q-number">Q72.</span> Bars in a bar chart must touch each other.</p>
+        <label class="option-label "><input type="radio" name="q72" value="A"> <span>A) True</span></label>
+        <label class="option-label "><input type="radio" name="q72" value="B"> <span>B) False</span></label>
+        <button class="submit-btn" onclick="checkAnswer(72)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result72"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="D" data-qno="73">
+        <p class="question-text"><span class="q-number">Q73.</span> Which measure focuses only on the middle 50% of data?</p>
+        <label class="option-label "><input type="radio" name="q73" value="A"> <span>A) Range</span></label>
+        <label class="option-label "><input type="radio" name="q73" value="B"> <span>B) Variance</span></label>
+        <label class="option-label "><input type="radio" name="q73" value="C"> <span>C) Standard deviation</span></label>
+        <label class="option-label "><input type="radio" name="q73" value="D"> <span>D) Interquartile range</span></label>
+        <button class="submit-btn" onclick="checkAnswer(73)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result73"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A,B,D" data-qno="74">
+        <p class="question-text"><span class="q-number">Q74.</span> Simple linear regression – true statements: <span class="multi-badge">Multiple Answers</span></p>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q74" value="A"> <span>A) One independent and one dependent variable</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q74" value="B"> <span>B) Assumes linear relationship</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q74" value="C"> <span>C) Gives exact predictions</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q74" value="D"> <span>D) Estimates regression line</span></label>
+        <button class="submit-btn" onclick="checkMultiAnswer(74)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result74"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A,B,C" data-qno="75">
+        <p class="question-text"><span class="q-number">Q75.</span> Conditions for binomial distribution: <span class="multi-badge">Multiple Answers</span></p>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q75" value="A"> <span>A) Fixed number of trials</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q75" value="B"> <span>B) Two outcomes</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q75" value="C"> <span>C) Constant probability</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q75" value="D"> <span>D) Random events over time</span></label>
+        <button class="submit-btn" onclick="checkMultiAnswer(75)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result75"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A,B,C" data-qno="76">
+        <p class="question-text"><span class="q-number">Q76.</span> Weighted mean is appropriate for: <span class="multi-badge">Multiple Answers</span></p>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q76" value="A"> <span>A) Different subject weightage</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q76" value="B"> <span>B) GPA using credits</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q76" value="C"> <span>C) Average price with quantities</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q76" value="D"> <span>D) Middle value of ordered data</span></label>
+        <button class="submit-btn" onclick="checkMultiAnswer(76)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result76"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A,C,D" data-qno="77">
+        <p class="question-text"><span class="q-number">Q77.</span> Ratio scale characteristics: <span class="multi-badge">Multiple Answers</span></p>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q77" value="A"> <span>A) Ratios are meaningful</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q77" value="B"> <span>B) Classification into categories</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q77" value="C"> <span>C) True zero exists</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q77" value="D"> <span>D) Arithmetic operations possible</span></label>
+        <button class="submit-btn" onclick="checkMultiAnswer(77)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result77"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A" data-qno="78">
+        <p class="question-text"><span class="q-number">Q78.</span> Central Limit Theorem explains:</p>
+        <label class="option-label "><input type="radio" name="q78" value="A"> <span>A) Sampling distribution becomes normal with large samples</span></label>
+        <label class="option-label "><input type="radio" name="q78" value="B"> <span>B) Law of averages</span></label>
+        <label class="option-label "><input type="radio" name="q78" value="C"> <span>C) Hypothesis testing</span></label>
+        <label class="option-label "><input type="radio" name="q78" value="D"> <span>D) Standard error</span></label>
+        <button class="submit-btn" onclick="checkAnswer(78)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result78"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="D" data-qno="79">
+        <p class="question-text"><span class="q-number">Q79.</span> Which of the following is NOT a measure of central tendency?</p>
+        <label class="option-label "><input type="radio" name="q79" value="A"> <span>A) Mean</span></label>
+        <label class="option-label "><input type="radio" name="q79" value="B"> <span>B) Median</span></label>
+        <label class="option-label "><input type="radio" name="q79" value="C"> <span>C) Mode</span></label>
+        <label class="option-label "><input type="radio" name="q79" value="D"> <span>D) Standard deviation</span></label>
+        <button class="submit-btn" onclick="checkAnswer(79)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result79"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A,B,D" data-qno="80">
+        <p class="question-text"><span class="q-number">Q80.</span> Mode – correct statements: <span class="multi-badge">Multiple Answers</span></p>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q80" value="A"> <span>A) Most frequent value</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q80" value="B"> <span>B) May not exist</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q80" value="C"> <span>C) Affected by extreme values</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q80" value="D"> <span>D) Can be used with qualitative data</span></label>
+        <button class="submit-btn" onclick="checkMultiAnswer(80)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result80"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="81">
+        <p class="question-text"><span class="q-number">Q81.</span> Ignoring extreme values to study middle 50% uses:</p>
+        <label class="option-label "><input type="radio" name="q81" value="A"> <span>A) Variance</span></label>
+        <label class="option-label "><input type="radio" name="q81" value="B"> <span>B) Standard deviation</span></label>
+        <label class="option-label "><input type="radio" name="q81" value="C"> <span>C) Interquartile range</span></label>
+        <label class="option-label "><input type="radio" name="q81" value="D"> <span>D) Range</span></label>
+        <button class="submit-btn" onclick="checkAnswer(81)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result81"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A,B,D" data-qno="82">
+        <p class="question-text"><span class="q-number">Q82.</span> Which features help interpret skewness and kurtosis graphically? <span class="multi-badge">Multiple Answers</span></p>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q82" value="A"> <span>A) Distance between mean and median</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q82" value="B"> <span>B) Height of central peak</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q82" value="C"> <span>C) Number of observations</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q82" value="D"> <span>D) Direction of tail</span></label>
+        <button class="submit-btn" onclick="checkMultiAnswer(82)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result82"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A" data-qno="83">
+        <p class="question-text"><span class="q-number">Q83.</span> A histogram differs from a bar chart because:</p>
+        <label class="option-label "><input type="radio" name="q83" value="A"> <span>A) Bars touch each other</span></label>
+        <label class="option-label "><input type="radio" name="q83" value="B"> <span>B) Data is qualitative</span></label>
+        <label class="option-label "><input type="radio" name="q83" value="C"> <span>C) Scale is nominal</span></label>
+        <label class="option-label "><input type="radio" name="q83" value="D"> <span>D) Frequencies are cumulative</span></label>
+        <button class="submit-btn" onclick="checkAnswer(83)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result83"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="D" data-qno="84">
+        <p class="question-text"><span class="q-number">Q84.</span> Which scale of measurement allows meaningful ratios?</p>
+        <label class="option-label "><input type="radio" name="q84" value="A"> <span>A) Nominal</span></label>
+        <label class="option-label "><input type="radio" name="q84" value="B"> <span>B) Ordinal</span></label>
+        <label class="option-label "><input type="radio" name="q84" value="C"> <span>C) Interval</span></label>
+        <label class="option-label "><input type="radio" name="q84" value="D"> <span>D) Ratio</span></label>
+        <button class="submit-btn" onclick="checkAnswer(84)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result84"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B" data-qno="85">
+        <p class="question-text"><span class="q-number">Q85.</span> Which statement about kurtosis is correct?</p>
+        <label class="option-label "><input type="radio" name="q85" value="A"> <span>A) Measures symmetry</span></label>
+        <label class="option-label "><input type="radio" name="q85" value="B"> <span>B) Measures peakedness</span></label>
+        <label class="option-label "><input type="radio" name="q85" value="C"> <span>C) Measures dispersion</span></label>
+        <label class="option-label "><input type="radio" name="q85" value="D"> <span>D) Measures correlation</span></label>
+        <button class="submit-btn" onclick="checkAnswer(85)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result85"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B" data-qno="86">
+        <p class="question-text"><span class="q-number">Q86.</span> The standard error decreases when:</p>
+        <label class="option-label "><input type="radio" name="q86" value="A"> <span>A) Sample size decreases</span></label>
+        <label class="option-label "><input type="radio" name="q86" value="B"> <span>B) Sample size increases</span></label>
+        <label class="option-label "><input type="radio" name="q86" value="C"> <span>C) Variance increases</span></label>
+        <label class="option-label "><input type="radio" name="q86" value="D"> <span>D) Mean increases</span></label>
+        <button class="submit-btn" onclick="checkAnswer(86)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result86"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="87">
+        <p class="question-text"><span class="q-number">Q87.</span> Which probability distribution is used for rare events over time?</p>
+        <label class="option-label "><input type="radio" name="q87" value="A"> <span>A) Normal</span></label>
+        <label class="option-label "><input type="radio" name="q87" value="B"> <span>B) Binomial</span></label>
+        <label class="option-label "><input type="radio" name="q87" value="C"> <span>C) Poisson</span></label>
+        <label class="option-label "><input type="radio" name="q87" value="D"> <span>D) Uniform</span></label>
+        <button class="submit-btn" onclick="checkAnswer(87)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result87"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="88">
+        <p class="question-text"><span class="q-number">Q88.</span> Which measure is least affected by extreme values?</p>
+        <label class="option-label "><input type="radio" name="q88" value="A"> <span>A) Mean</span></label>
+        <label class="option-label "><input type="radio" name="q88" value="B"> <span>B) Mode</span></label>
+        <label class="option-label "><input type="radio" name="q88" value="C"> <span>C) Median</span></label>
+        <label class="option-label "><input type="radio" name="q88" value="D"> <span>D) Range</span></label>
+        <button class="submit-btn" onclick="checkAnswer(88)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result88"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="89">
+        <p class="question-text"><span class="q-number">Q89.</span> A distribution with a long right tail is:</p>
+        <label class="option-label "><input type="radio" name="q89" value="A"> <span>A) Symmetric</span></label>
+        <label class="option-label "><input type="radio" name="q89" value="B"> <span>B) Negatively skewed</span></label>
+        <label class="option-label "><input type="radio" name="q89" value="C"> <span>C) Positively skewed</span></label>
+        <label class="option-label "><input type="radio" name="q89" value="D"> <span>D) Mesokurtic</span></label>
+        <button class="submit-btn" onclick="checkAnswer(89)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result89"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="90">
+        <p class="question-text"><span class="q-number">Q90.</span> Regression analysis is mainly used to:</p>
+        <label class="option-label "><input type="radio" name="q90" value="A"> <span>A) Measure dispersion</span></label>
+        <label class="option-label "><input type="radio" name="q90" value="B"> <span>B) Test randomness</span></label>
+        <label class="option-label "><input type="radio" name="q90" value="C"> <span>C) Predict values</span></label>
+        <label class="option-label "><input type="radio" name="q90" value="D"> <span>D) Classify data</span></label>
+        <button class="submit-btn" onclick="checkAnswer(90)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result90"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A" data-qno="91">
+        <p class="question-text"><span class="q-number">Q91.</span> The ordinal scale allows ranking but does not show the exact difference between values.</p>
+        <label class="option-label "><input type="radio" name="q91" value="A"> <span>A) True</span></label>
+        <label class="option-label "><input type="radio" name="q91" value="B"> <span>B) False</span></label>
+        <button class="submit-btn" onclick="checkAnswer(91)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result91"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="92">
+        <p class="question-text"><span class="q-number">Q92.</span> Which of the following is a measure of central tendency?</p>
+        <label class="option-label "><input type="radio" name="q92" value="A"> <span>A) Variance</span></label>
+        <label class="option-label "><input type="radio" name="q92" value="B"> <span>B) Standard deviation</span></label>
+        <label class="option-label "><input type="radio" name="q92" value="C"> <span>C) Mean</span></label>
+        <label class="option-label "><input type="radio" name="q92" value="D"> <span>D) Range</span></label>
+        <button class="submit-btn" onclick="checkAnswer(92)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result92"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A" data-qno="93">
+        <p class="question-text"><span class="q-number">Q93.</span> A smaller p-value provides stronger evidence against the null hypothesis.</p>
+        <label class="option-label "><input type="radio" name="q93" value="A"> <span>A) True</span></label>
+        <label class="option-label "><input type="radio" name="q93" value="B"> <span>B) False</span></label>
+        <button class="submit-btn" onclick="checkAnswer(93)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result93"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B" data-qno="94">
+        <p class="question-text"><span class="q-number">Q94.</span> A scatter plot shows points rising upward from left to right in a roughly straight-line pattern. What does this indicate?</p>
+        <label class="option-label "><input type="radio" name="q94" value="A"> <span>A) No correlation</span></label>
+        <label class="option-label "><input type="radio" name="q94" value="B"> <span>B) Strong positive correlation</span></label>
+        <label class="option-label "><input type="radio" name="q94" value="C"> <span>C) Weak correlation</span></label>
+        <label class="option-label "><input type="radio" name="q94" value="D"> <span>D) Strong negative correlation</span></label>
+        <button class="submit-btn" onclick="checkAnswer(94)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result94"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="95">
+        <p class="question-text"><span class="q-number">Q95.</span> Which of the following distributions is symmetric and bell-shaped?</p>
+        <label class="option-label "><input type="radio" name="q95" value="A"> <span>A) Binomial distribution</span></label>
+        <label class="option-label "><input type="radio" name="q95" value="B"> <span>B) Poisson distribution</span></label>
+        <label class="option-label "><input type="radio" name="q95" value="C"> <span>C) Normal distribution</span></label>
+        <label class="option-label "><input type="radio" name="q95" value="D"> <span>D) Uniform distribution</span></label>
+        <button class="submit-btn" onclick="checkAnswer(95)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result95"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A,C,D" data-qno="96">
+        <p class="question-text"><span class="q-number">Q96.</span> Pearson's correlation coefficient – which statements are correct? <span class="multi-badge">Multiple Answers</span></p>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q96" value="A"> <span>A) It measures strength and direction of linear relationship</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q96" value="B"> <span>B) It can be used with ranked data only</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q96" value="C"> <span>C) It assumes quantitative variables</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q96" value="D"> <span>D) Its value lies between −1 and +1</span></label>
+        <button class="submit-btn" onclick="checkMultiAnswer(96)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result96"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="D" data-qno="97">
+        <p class="question-text"><span class="q-number">Q97.</span> Which of the following is NOT a probability value?</p>
+        <label class="option-label "><input type="radio" name="q97" value="A"> <span>A) 0</span></label>
+        <label class="option-label "><input type="radio" name="q97" value="B"> <span>B) 0.5</span></label>
+        <label class="option-label "><input type="radio" name="q97" value="C"> <span>C) 1</span></label>
+        <label class="option-label "><input type="radio" name="q97" value="D"> <span>D) 1.25</span></label>
+        <button class="submit-btn" onclick="checkAnswer(97)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result97"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="A,B,D" data-qno="98">
+        <p class="question-text"><span class="q-number">Q98.</span> A sports analyst compares performance consistency of two players. Which measures can be used to study dispersion? <span class="multi-badge">Multiple Answers</span></p>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q98" value="A"> <span>A) Standard deviation</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q98" value="B"> <span>B) Variance</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q98" value="C"> <span>C) Mean</span></label>
+        <label class="option-label checkbox-label"><input type="checkbox" name="q98" value="D"> <span>D) Range</span></label>
+        <button class="submit-btn" onclick="checkMultiAnswer(98)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result98"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B" data-qno="99">
+        <p class="question-text"><span class="q-number">Q99.</span> In hypothesis testing, a Type I error occurs when:</p>
+        <label class="option-label "><input type="radio" name="q99" value="A"> <span>A) A false null hypothesis is accepted</span></label>
+        <label class="option-label "><input type="radio" name="q99" value="B"> <span>B) A true null hypothesis is rejected</span></label>
+        <label class="option-label "><input type="radio" name="q99" value="C"> <span>C) A false null hypothesis is rejected</span></label>
+        <label class="option-label "><input type="radio" name="q99" value="D"> <span>D) A true null hypothesis is accepted</span></label>
+        <button class="submit-btn" onclick="checkAnswer(99)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result99"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B" data-qno="100">
+        <p class="question-text"><span class="q-number">Q100.</span> If two events A and B are mutually exclusive, then:</p>
+        <label class="option-label "><input type="radio" name="q100" value="A"> <span>A) P(A ∩ B) = 1</span></label>
+        <label class="option-label "><input type="radio" name="q100" value="B"> <span>B) P(A ∩ B) = 0</span></label>
+        <label class="option-label "><input type="radio" name="q100" value="C"> <span>C) P(A ∪ B) = P(A) × P(B)</span></label>
+        <label class="option-label "><input type="radio" name="q100" value="D"> <span>D) Events are independent</span></label>
+        <button class="submit-btn" onclick="checkAnswer(100)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result100"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="D" data-qno="101">
+        <p class="question-text"><span class="q-number">Q101.</span> Which sampling method ensures every member of the population has an equal chance of selection?</p>
+        <label class="option-label "><input type="radio" name="q101" value="A"> <span>A) Stratified sampling</span></label>
+        <label class="option-label "><input type="radio" name="q101" value="B"> <span>B) Systematic sampling</span></label>
+        <label class="option-label "><input type="radio" name="q101" value="C"> <span>C) Convenience sampling</span></label>
+        <label class="option-label "><input type="radio" name="q101" value="D"> <span>D) Simple random sampling</span></label>
+        <button class="submit-btn" onclick="checkAnswer(101)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result101"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="C" data-qno="102">
+        <p class="question-text"><span class="q-number">Q102.</span> The variance is the square of:</p>
+        <label class="option-label "><input type="radio" name="q102" value="A"> <span>A) Mean</span></label>
+        <label class="option-label "><input type="radio" name="q102" value="B"> <span>B) Median</span></label>
+        <label class="option-label "><input type="radio" name="q102" value="C"> <span>C) Standard deviation</span></label>
+        <label class="option-label "><input type="radio" name="q102" value="D"> <span>D) Range</span></label>
+        <button class="submit-btn" onclick="checkAnswer(102)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result102"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B" data-qno="103">
+        <p class="question-text"><span class="q-number">Q103.</span> The Central Limit Theorem states that the sampling distribution of the mean tends to be normal when:</p>
+        <label class="option-label "><input type="radio" name="q103" value="A"> <span>A) Population is normal</span></label>
+        <label class="option-label "><input type="radio" name="q103" value="B"> <span>B) Sample size is sufficiently large</span></label>
+        <label class="option-label "><input type="radio" name="q103" value="C"> <span>C) Variance is zero</span></label>
+        <label class="option-label "><input type="radio" name="q103" value="D"> <span>D) Data is qualitative</span></label>
+        <button class="submit-btn" onclick="checkAnswer(103)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result103"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="D" data-qno="104">
+        <p class="question-text"><span class="q-number">Q104.</span> Which correlation value indicates the strongest linear relationship?</p>
+        <label class="option-label "><input type="radio" name="q104" value="A"> <span>A) 0.25</span></label>
+        <label class="option-label "><input type="radio" name="q104" value="B"> <span>B) −0.40</span></label>
+        <label class="option-label "><input type="radio" name="q104" value="C"> <span>C) 0</span></label>
+        <label class="option-label "><input type="radio" name="q104" value="D"> <span>D) −0.95</span></label>
+        <button class="submit-btn" onclick="checkAnswer(104)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result104"></div>
+    </div>
+
+    <div class="question fade-in" data-answer="B" data-qno="105">
+        <p class="question-text"><span class="q-number">Q105.</span> In a normal distribution, approximately 95% of observations lie within:</p>
+        <label class="option-label "><input type="radio" name="q105" value="A"> <span>A) ±1 standard deviation</span></label>
+        <label class="option-label "><input type="radio" name="q105" value="B"> <span>B) ±2 standard deviations</span></label>
+        <label class="option-label "><input type="radio" name="q105" value="C"> <span>C) ±3 standard deviations</span></label>
+        <label class="option-label "><input type="radio" name="q105" value="D"> <span>D) Mean only</span></label>
+        <button class="submit-btn" onclick="checkAnswer(105)"><i class="fas fa-paper-plane"></i> Submit</button>
+        <div class="result" id="result105"></div>
+    </div>
+
 </div>
 
 <canvas id="confetti-canvas"></canvas>
