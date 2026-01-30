@@ -3,136 +3,1113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SALVAGE IN PROGRESS</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@700&family=VT323&display=swap');
-
-        body {
-            margin: 0;
-            background-color: #121212;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            font-family: 'Stardos Stencil', sans-serif;
-            color: #cd7f32; /* Bronze/Rust color */
-        }
-
-        /* Industrial Background Texture */
-        body::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle, transparent 20%, #121212 70%),
-                url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
-            opacity: 0.6;
-        }
-
-        .container {
-            position: relative;
-            text-align: center;
-            z-index: 2;
-        }
-
-        /* CSS Rusted Gear */
-        .gear {
-            width: 100px;
-            height: 100px;
-            background: #4a3b2c;
-            border-radius: 50%;
-            position: relative;
-            margin: 0 auto 30px;
-            animation: spin 4s linear infinite;
-            box-shadow: inset 0 0 20px #000;
-        }
-
-        .gear::before {
-            content: "";
-            position: absolute;
-            top: 10px; left: 10px; right: 10px; bottom: 10px;
-            background: #121212;
-            border-radius: 50%;
-            border: 5px solid #3d2b1f;
-        }
-
-        /* Gear Teeth */
-        .gear-tooth {
-            position: absolute;
-            width: 20px;
-            height: 120px;
-            background: #4a3b2c;
-            left: 40px;
-            top: -10px;
-            border-radius: 2px;
-        }
-        .gear-tooth:nth-child(2) { transform: rotate(45deg); }
-        .gear-tooth:nth-child(3) { transform: rotate(90deg); }
-        .gear-tooth:nth-child(4) { transform: rotate(135deg); }
-
-        /* Text Effects */
-        h1 {
-            font-size: 5rem;
-            margin: 0;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            animation: flicker 2s infinite;
-            filter: drop-shadow(0 0 10px rgba(205, 127, 50, 0.5));
-        }
-
-        .subtext {
-            font-family: 'VT323', monospace;
-            font-size: 1.5rem;
-            color: #7d6b5d;
-            letter-spacing: 2px;
-        }
-
-        /* Animations */
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes flicker {
-            0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
-            20%, 24%, 55% { opacity: 0.2; transform: skewX(5deg); }
-        }
-
-        /* Ambient Smoke/Dust Effect */
-        .smoke {
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 50%);
-            animation: drift 10s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes drift {
-            from { transform: translate(-20%, -20%); }
-            to { transform: translate(0%, 0%); }
-        }
-    </style>
+    <title>Chapter 13: Mini Project/Case Study - Statistics eBook</title>
+    <meta name="description" content="Complete guide to statistics projects including data collection, descriptive & inferential statistics, and presenting findings with real Kaggle datasets.">
+    <meta name="author" content="Aman">
+    <meta name="keywords" content="statistics project, case study, data analysis, kaggle dataset, descriptive statistics, inferential statistics, data visualization">
+    
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/chapter-content.css">
 </head>
 <body>
-
-    <div class="smoke"></div>
-
-    <div class="container">
-        <div class="gear">
-            <div class="gear-tooth"></div>
-            <div class="gear-tooth"></div>
-            <div class="gear-tooth"></div>
-            <div class="gear-tooth"></div>
+    <!-- Header Section -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="book-title">Statistics</h1>
+                <nav class="header-nav">
+                    <a href="../index.html" class="nav-link">Home</a>
+                    <a href="../contents.html" class="nav-link">Contents</a>
+                    <a href="../resources/glossary.html" class="nav-link">Glossary</a>
+                    <a href="../resources/formulas.html" class="nav-link">Formulas</a>
+                </nav>
+            </div>
         </div>
+    </header>
 
-        <h1>Coming Soon</h1>
-        <div class="subtext">
-            SYSTEM STATUS: [SALVAGING_ASSETS...]
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="chapter-content">
+                <!-- Chapter Header -->
+                <div class="page-header">
+                    <span class="badge">Phase 6: Practical Application</span>
+                    <h1 class="page-title">Chapter 13: Mini Project/Case Study</h1>
+                    <p class="page-subtitle">Applying statistics to real-world datasets from data collection to presenting findings</p>
+                </div>
+
+                <!-- Chapter Topics -->
+                <div class="chapter-topics-section">
+                    <h3>📋 Topics Covered in This Chapter</h3>
+                    <ul class="chapter-topics-list">
+                        <li>Project Workflow & Methodology</li>
+                        <li>Data Collection & Preparation</li>
+                        <li>Applying Descriptive Statistics</li>
+                        <li>Applying Inferential Statistics</li>
+                        <li>Data Visualization & Presentation</li>
+                        <li>5 Real Kaggle Project Options</li>
+                        <li>Complete Project Template</li>
+                    </ul>
+                </div>
+
+                <!-- Section 1: Introduction -->
+                <div class="section" id="intro-project">
+                    <h2>Introduction to Statistics Projects</h2>
+
+                    <p>A statistics project allows you to apply all the concepts you've learned throughout this book to real-world datasets. This is where theory meets practice!</p>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>🎯 Project Goal</strong></p>
+                        <p class="text-center mt-sm">Transform raw data into actionable insights using statistical methods</p>
+                    </div>
+
+                    <h3 class="mt-lg">Why Projects Matter</h3>
+
+                    <ul class="icon-list check">
+                        <li>Bridge theory and practice</li>
+                        <li>Build portfolio for job interviews</li>
+                        <li>Understand real-world data challenges</li>
+                        <li>Learn complete data science workflow</li>
+                        <li>Develop critical thinking skills</li>
+                    </ul>
+                </div>
+
+                <!-- Section 2: Project Workflow -->
+                <div class="section" id="project-workflow">
+                    <h2>Complete Project Workflow</h2>
+
+                    <div class="highlight-box info">
+                        <p><strong>📊 The 6-Phase Statistics Project Workflow:</strong></p>
+                    </div>
+
+                    <div class="viz-comparison-grid mt-md">
+                        <div class="chart-type-card">
+                            <div class="card-icon">1️⃣</div>
+                            <h3>Problem Definition</h3>
+                            <p>Define research questions and objectives</p>
+                        </div>
+
+                        <div class="chart-type-card">
+                            <div class="card-icon">2️⃣</div>
+                            <h3>Data Collection</h3>
+                            <p>Gather and load dataset</p>
+                        </div>
+
+                        <div class="chart-type-card">
+                            <div class="card-icon">3️⃣</div>
+                            <h3>Data Preparation</h3>
+                            <p>Clean and preprocess data</p>
+                        </div>
+
+                        <div class="chart-type-card">
+                            <div class="card-icon">4️⃣</div>
+                            <h3>Descriptive Analysis</h3>
+                            <p>Summarize and visualize data</p>
+                        </div>
+
+                        <div class="chart-type-card">
+                            <div class="card-icon">5️⃣</div>
+                            <h3>Inferential Analysis</h3>
+                            <p>Test hypotheses and make predictions</p>
+                        </div>
+
+                        <div class="chart-type-card">
+                            <div class="card-icon">6️⃣</div>
+                            <h3>Reporting & Presentation</h3>
+                            <p>Communicate findings effectively</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 3: Phase 1 - Problem Definition -->
+                <div class="section" id="phase1-problem">
+                    <h2>Phase 1: Problem Definition</h2>
+
+                    <h3>What to Do</h3>
+
+                    <ol class="steps-list">
+                        <li>Understand the dataset domain</li>
+                        <li>Identify key variables</li>
+                        <li>Formulate research questions</li>
+                        <li>Define objectives</li>
+                    </ol>
+
+                    <h3 class="mt-lg">Example Research Questions</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">📊 Ecommerce Sales Dataset</div>
+                        <ul class="icon-list bullet">
+                            <li>What is the average profit margin across different categories?</li>
+                            <li>Is there a significant difference in sales between 2022 and 2024?</li>
+                            <li>Which product category has the highest sales?</li>
+                            <li>What factors influence customer purchase behavior?</li>
+                        </ul>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">🎓 Student Placement Dataset</div>
+                        <ul class="icon-list bullet">
+                            <li>What is the average placement package?</li>
+                            <li>Does CGPA significantly affect placement chances?</li>
+                            <li>Is there a correlation between internship experience and salary?</li>
+                            <li>Which specialization has the highest placement rate?</li>
+                        </ul>
+                    </div>
+
+                    <h3 class="mt-lg">Tips for Good Research Questions</h3>
+
+                    <ul class="icon-list check">
+                        <li>Make them specific and measurable</li>
+                        <li>Ensure they can be answered with your data</li>
+                        <li>Focus on 3-5 main questions</li>
+                        <li>Mix descriptive and inferential questions</li>
+                    </ul>
+                </div>
+
+                <!-- Section 4: Phase 2 - Data Collection -->
+                <div class="section" id="phase2-collection">
+                    <h2>Phase 2: Data Collection & Loading</h2>
+
+                    <h3>Step 1: Import Libraries</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy import stats
+
+# Set plot style
+sns.set_style("whitegrid")
+plt.rcParams['figure.figsize'] = (10, 6)</code></pre>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Step 2: Load Dataset</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># Load data from CSV
+df = pd.read_csv('your_dataset.csv')
+
+# Display first few rows
+df.head()</code></pre>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Step 3: Initial Exploration</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># Dataset shape
+print(f"Dataset shape: {df.shape}")
+print(f"Rows: {df.shape[0]}, Columns: {df.shape[1]}")
+
+# Column names and types
+print("\nColumn Information:")
+df.info()
+
+# Summary statistics
+print("\nSummary Statistics:")
+df.describe()</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5: Phase 3 - Data Preparation -->
+                <div class="section" id="phase3-preparation">
+                    <h2>Phase 3: Data Preparation & Cleaning</h2>
+
+                    <h3>Check for Missing Values</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># Check missing values
+missing = df.isnull().sum()
+missing_percent = (missing / len(df)) * 100
+
+missing_df = pd.DataFrame({
+    'Missing Count': missing,
+    'Percentage': missing_percent
+})
+
+print(missing_df[missing_df['Missing Count'] > 0])</code></pre>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Handle Missing Values</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># Option 1: Drop rows with missing values
+df_clean = df.dropna()
+
+# Option 2: Fill with mean (for numerical columns)
+df['column_name'].fillna(df['column_name'].mean(), inplace=True)
+
+# Option 3: Fill with median
+df['column_name'].fillna(df['column_name'].median(), inplace=True)
+
+# Option 4: Fill with mode (for categorical)
+df['column_name'].fillna(df['column_name'].mode()[0], inplace=True)</code></pre>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Check for Duplicates</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># Check duplicates
+duplicates = df.duplicated().sum()
+print(f"Number of duplicate rows: {duplicates}")
+
+# Remove duplicates
+df = df.drop_duplicates()</code></pre>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Data Type Conversion</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># Convert to appropriate data types
+df['date_column'] = pd.to_datetime(df['date_column'])
+df['numeric_column'] = pd.to_numeric(df['numeric_column'])
+df['category_column'] = df['category_column'].astype('category')</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 6: Phase 4 - Descriptive Analysis -->
+                <div class="section" id="phase4-descriptive">
+                    <h2>Phase 4: Descriptive Statistics Analysis</h2>
+
+                    <h3>Measures of Central Tendency</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># For a numerical column
+column = 'sales'  # Replace with your column name
+
+mean_val = df[column].mean()
+median_val = df[column].median()
+mode_val = df[column].mode()[0]
+
+print(f"Mean: {mean_val:.2f}")
+print(f"Median: {median_val:.2f}")
+print(f"Mode: {mode_val:.2f}")</code></pre>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Measures of Dispersion</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># Dispersion measures
+std_dev = df[column].std()
+variance = df[column].var()
+range_val = df[column].max() - df[column].min()
+iqr = df[column].quantile(0.75) - df[column].quantile(0.25)
+
+print(f"Standard Deviation: {std_dev:.2f}")
+print(f"Variance: {variance:.2f}")
+print(f"Range: {range_val:.2f}")
+print(f"IQR: {iqr:.2f}")</code></pre>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Distribution Shape</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># Skewness and Kurtosis
+skewness = df[column].skew()
+kurtosis = df[column].kurt()
+
+print(f"Skewness: {skewness:.2f}")
+print(f"Kurtosis: {kurtosis:.2f}")
+
+# Interpretation
+if abs(skewness) < 0.5:
+    print("Distribution is approximately symmetric")
+elif skewness > 0:
+    print("Distribution is positively skewed (right-tailed)")
+else:
+    print("Distribution is negatively skewed (left-tailed)")</code></pre>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Correlation Analysis</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># Correlation matrix
+correlation_matrix = df.corr()
+
+# Heatmap
+plt.figure(figsize=(12, 8))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', 
+            center=0, fmt='.2f')
+plt.title('Correlation Heatmap')
+plt.tight_layout()
+plt.show()
+
+# Specific correlation between two variables
+corr = df['variable1'].corr(df['variable2'])
+print(f"Correlation: {corr:.3f}")</code></pre>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Frequency Distribution</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># For categorical variables
+category_counts = df['category_column'].value_counts()
+category_percent = df['category_column'].value_counts(normalize=True) * 100
+
+print("Frequency Distribution:")
+print(category_counts)
+print("\nPercentage Distribution:")
+print(category_percent)</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 7: Data Visualization -->
+                <div class="section" id="data-visualization">
+                    <h2>Data Visualization</h2>
+
+                    <h3>Histogram (Distribution)</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># Histogram with mean and median lines
+plt.figure(figsize=(10, 6))
+plt.hist(df[column], bins=30, edgecolor='black', alpha=0.7)
+plt.axvline(mean_val, color='red', linestyle='--', 
+            label=f'Mean: {mean_val:.2f}')
+plt.axvline(median_val, color='green', linestyle='--', 
+            label=f'Median: {median_val:.2f}')
+plt.xlabel(column)
+plt.ylabel('Frequency')
+plt.title(f'Distribution of {column}')
+plt.legend()
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Box Plot (Outlier Detection)</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># Box plot
+plt.figure(figsize=(10, 6))
+sns.boxplot(data=df, y=column)
+plt.title(f'Box Plot of {column}')
+plt.ylabel(column)
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Bar Chart (Categorical Data)</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># Bar chart
+category_counts.plot(kind='bar', figsize=(10, 6))
+plt.xlabel('Category')
+plt.ylabel('Count')
+plt.title('Category Distribution')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()</code></pre>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Scatter Plot (Relationship)</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># Scatter plot
+plt.figure(figsize=(10, 6))
+plt.scatter(df['variable1'], df['variable2'], alpha=0.5)
+plt.xlabel('Variable 1')
+plt.ylabel('Variable 2')
+plt.title('Scatter Plot: Variable 1 vs Variable 2')
+
+# Add regression line
+z = np.polyfit(df['variable1'], df['variable2'], 1)
+p = np.poly1d(z)
+plt.plot(df['variable1'], p(df['variable1']), "r--", 
+         label='Trend Line')
+plt.legend()
+plt.show()</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 8: Phase 5 - Inferential Analysis -->
+                <div class="section" id="phase5-inferential">
+                    <h2>Phase 5: Inferential Statistics Analysis</h2>
+
+                    <h3>Hypothesis Testing: One-Sample t-Test</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>from scipy.stats import ttest_1samp
+
+# Test if mean is significantly different from a hypothesized value
+hypothesized_mean = 50  # Replace with your value
+sample_data = df[column]
+
+t_stat, p_value = ttest_1samp(sample_data, hypothesized_mean)
+
+print(f"t-statistic: {t_stat:.4f}")
+print(f"p-value: {p_value:.4f}")
+
+alpha = 0.05
+if p_value < alpha:
+    print(f"Reject H₀: Mean is significantly different from {hypothesized_mean}")
+else:
+    print(f"Fail to reject H₀: No significant difference from {hypothesized_mean}")</code></pre>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Hypothesis Testing: Two-Sample t-Test</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>from scipy.stats import ttest_ind
+
+# Compare means of two groups
+group1 = df[df['category'] == 'Category1'][column]
+group2 = df[df['category'] == 'Category2'][column]
+
+t_stat, p_value = ttest_ind(group1, group2)
+
+print(f"t-statistic: {t_stat:.4f}")
+print(f"p-value: {p_value:.4f}")
+
+if p_value < 0.05:
+    print("Reject H₀: Means are significantly different")
+else:
+    print("Fail to reject H₀: No significant difference in means")</code></pre>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Confidence Interval</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>from scipy import stats
+
+# 95% Confidence Interval
+confidence = 0.95
+sample_mean = df[column].mean()
+sample_std = df[column].std()
+sample_size = len(df[column])
+
+# Calculate margin of error
+margin_error = stats.t.ppf((1 + confidence) / 2, 
+                           sample_size - 1) * (sample_std / np.sqrt(sample_size))
+
+# Confidence interval
+ci_lower = sample_mean - margin_error
+ci_upper = sample_mean + margin_error
+
+print(f"95% Confidence Interval: [{ci_lower:.2f}, {ci_upper:.2f}]")
+print(f"We are 95% confident the true mean lies in this range")</code></pre>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Simple Linear Regression</h3>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-language">Python</span>
+                        </div>
+                        <div class="code-content">
+<pre><code>from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score
+
+# Prepare data
+X = df[['independent_var']].values
+y = df['dependent_var'].values
+
+# Create and fit model
+model = LinearRegression()
+model.fit(X, y)
+
+# Get results
+slope = model.coef_[0]
+intercept = model.intercept_
+y_pred = model.predict(X)
+r2 = r2_score(y, y_pred)
+
+print(f"Regression Equation: y = {intercept:.2f} + {slope:.2f}x")
+print(f"R² Score: {r2:.4f}")
+
+# Visualize
+plt.figure(figsize=(10, 6))
+plt.scatter(X, y, alpha=0.5, label='Data')
+plt.plot(X, y_pred, 'r-', label='Regression Line')
+plt.xlabel('Independent Variable')
+plt.ylabel('Dependent Variable')
+plt.title('Linear Regression')
+plt.legend()
+plt.show()</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 9: Phase 6 - Reporting -->
+                <div class="section" id="phase6-reporting">
+                    <h2>Phase 6: Reporting & Presentation</h2>
+
+                    <h3>Report Structure</h3>
+
+                    <div class="viz-comparison-grid">
+                        <div class="chart-type-card">
+                            <h4>1. Executive Summary</h4>
+                            <ul class="icon-list bullet mt-xs">
+                                <li>Brief overview</li>
+                                <li>Key findings</li>
+                                <li>Main conclusions</li>
+                            </ul>
+                        </div>
+
+                        <div class="chart-type-card">
+                            <h4>2. Introduction</h4>
+                            <ul class="icon-list bullet mt-xs">
+                                <li>Background</li>
+                                <li>Research questions</li>
+                                <li>Objectives</li>
+                            </ul>
+                        </div>
+
+                        <div class="chart-type-card">
+                            <h4>3. Methodology</h4>
+                            <ul class="icon-list bullet mt-xs">
+                                <li>Data source</li>
+                                <li>Sample size</li>
+                                <li>Methods used</li>
+                            </ul>
+                        </div>
+
+                        <div class="chart-type-card">
+                            <h4>4. Results</h4>
+                            <ul class="icon-list bullet mt-xs">
+                                <li>Descriptive stats</li>
+                                <li>Visualizations</li>
+                                <li>Statistical tests</li>
+                            </ul>
+                        </div>
+
+                        <div class="chart-type-card">
+                            <h4>5. Discussion</h4>
+                            <ul class="icon-list bullet mt-xs">
+                                <li>Interpret findings</li>
+                                <li>Answer questions</li>
+                                <li>Limitations</li>
+                            </ul>
+                        </div>
+
+                        <div class="chart-type-card">
+                            <h4>6. Conclusion</h4>
+                            <ul class="icon-list bullet mt-xs">
+                                <li>Summary</li>
+                                <li>Recommendations</li>
+                                <li>Future work</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Key Findings Template</h3>
+
+                    <div class="example-box">
+                        <div class="example-title">📊 Presenting Results</div>
+                        
+                        <p><strong>Finding 1: Central Tendency</strong></p>
+                        <p class="ml-lg">"The average sales across all categories is $X with a median of $Y, indicating a [symmetric/skewed] distribution."</p>
+
+                        <p class="mt-md"><strong>Finding 2: Correlation</strong></p>
+                        <p class="ml-lg">"There is a [strong/moderate/weak] [positive/negative] correlation (r = X.XX) between Variable A and Variable B."</p>
+
+                        <p class="mt-md"><strong>Finding 3: Hypothesis Test</strong></p>
+                        <p class="ml-lg">"The t-test revealed a statistically significant difference (p < 0.05) between Group A and Group B, suggesting that [interpretation]."</p>
+
+                        <p class="mt-md"><strong>Finding 4: Prediction</strong></p>
+                        <p class="ml-lg">"The regression model explains X% (R² = 0.XX) of the variance in [dependent variable], with [independent variable] being a significant predictor."</p>
+                    </div>
+
+                    <h3 class="mt-lg">Visualization Best Practices</h3>
+
+                    <ul class="icon-list check">
+                        <li>Use clear, descriptive titles</li>
+                        <li>Label all axes with units</li>
+                        <li>Include legends when necessary</li>
+                        <li>Choose appropriate chart types</li>
+                        <li>Use consistent color schemes</li>
+                        <li>Avoid 3D charts (they distort data)</li>
+                        <li>Keep it simple and focused</li>
+                    </ul>
+                </div>
+
+                <!-- Section 10: Project Options -->
+                <div class="section" id="project-options">
+                    <h2>📁 Available Project Options</h2>
+
+                    <p>Choose one of these curated Kaggle datasets for your statistics project:</p>
+
+                    <div class="example-box">
+                        <div class="example-title">Project 01: Ecommerce Sales & Profit Trends (2022–2024)</div>
+                        
+                        <p><strong>Dataset Description:</strong></p>
+                        <p>Analyze ecommerce sales data across multiple categories, regions, and time periods.</p>
+
+                        <p class="mt-sm"><strong>Key Variables:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>Sales, Profit, Quantity</li>
+                            <li>Product Categories</li>
+                            <li>Customer Segments</li>
+                            <li>Geographic Regions</li>
+                            <li>Time Period (2022-2024)</li>
+                        </ul>
+
+                        <p class="mt-md"><strong>Potential Research Questions:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>What is the average profit margin by category?</li>
+                            <li>Is there a significant trend in sales over time?</li>
+                            <li>Which region has the highest sales?</li>
+                            <li>Is there a correlation between quantity and profit?</li>
+                        </ul>
+
+                        <p class="mt-md"><strong>Dataset Link:</strong></p>
+                        <p><a href="https://www.kaggle.com/datasets/aliiihussain/e-commerce-data-analyst" target="_blank">https://www.kaggle.com/datasets/aliiihussain/e-commerce-data-analyst</a></p>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">Project 02: Student Placement Dataset</div>
+                        
+                        <p><strong>Dataset Description:</strong></p>
+                        <p>Analyze factors affecting student placement in companies.</p>
+
+                        <p class="mt-sm"><strong>Key Variables:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>CGPA, Academic Scores</li>
+                            <li>Specialization</li>
+                            <li>Internship Experience</li>
+                            <li>Placement Status</li>
+                            <li>Salary Package</li>
+                        </ul>
+
+                        <p class="mt-md"><strong>Potential Research Questions:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>What is the average placement package?</li>
+                            <li>Does CGPA significantly affect placement chances?</li>
+                            <li>Is there a correlation between internships and salary?</li>
+                            <li>Which specialization has the best placement rate?</li>
+                        </ul>
+
+                        <p class="mt-md"><strong>Dataset Link:</strong></p>
+                        <p><a href="https://www.kaggle.com/datasets/sonalshinde123/student-placement-dataset" target="_blank">https://www.kaggle.com/datasets/sonalshinde123/student-placement-dataset</a></p>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">Project 03: Student Social Media & Relationships</div>
+                        
+                        <p><strong>Dataset Description:</strong></p>
+                        <p>Explore the relationship between social media usage and student life.</p>
+
+                        <p class="mt-sm"><strong>Key Variables:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>Social Media Usage Time</li>
+                            <li>Academic Performance</li>
+                            <li>Relationship Status</li>
+                            <li>Sleep Hours</li>
+                            <li>Stress Levels</li>
+                        </ul>
+
+                        <p class="mt-md"><strong>Potential Research Questions:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>Is there a correlation between social media time and grades?</li>
+                            <li>Does relationship status affect academic performance?</li>
+                            <li>What is the average daily social media usage?</li>
+                            <li>Is excessive social media use related to stress?</li>
+                        </ul>
+
+                        <p class="mt-md"><strong>Dataset Link:</strong></p>
+                        <p><a href="https://www.kaggle.com/datasets/thedrzee/student-social-media-and-relationships" target="_blank">https://www.kaggle.com/datasets/thedrzee/student-social-media-and-relationships</a></p>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">Project 04: Sleep Health and Lifestyle Dataset</div>
+                        
+                        <p><strong>Dataset Description:</strong></p>
+                        <p>Analyze the relationship between sleep patterns, lifestyle, and health.</p>
+
+                        <p class="mt-sm"><strong>Key Variables:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>Sleep Duration</li>
+                            <li>Sleep Quality</li>
+                            <li>Physical Activity Level</li>
+                            <li>Stress Level</li>
+                            <li>BMI, Blood Pressure</li>
+                            <li>Occupation</li>
+                        </ul>
+
+                        <p class="mt-md"><strong>Potential Research Questions:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>What is the average sleep duration?</li>
+                            <li>Is there a correlation between exercise and sleep quality?</li>
+                            <li>Does occupation affect stress levels?</li>
+                            <li>How does sleep duration relate to BMI?</li>
+                        </ul>
+
+                        <p class="mt-md"><strong>Dataset Link:</strong></p>
+                        <p><a href="https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset" target="_blank">https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset</a></p>
+                    </div>
+
+                    <div class="example-box">
+                        <div class="example-title">Project 05: Student Habits vs Academic Performance</div>
+                        
+                        <p><strong>Dataset Description:</strong></p>
+                        <p>Investigate how student habits influence academic outcomes.</p>
+
+                        <p class="mt-sm"><strong>Key Variables:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>Study Hours</li>
+                            <li>Class Attendance</li>
+                            <li>Assignment Completion</li>
+                            <li>Exam Scores</li>
+                            <li>Extracurricular Activities</li>
+                        </ul>
+
+                        <p class="mt-md"><strong>Potential Research Questions:</strong></p>
+                        <ul class="icon-list bullet">
+                            <li>How do study hours affect exam performance?</li>
+                            <li>Is attendance correlated with grades?</li>
+                            <li>What is the optimal study time for best results?</li>
+                            <li>Do extracurriculars impact academic performance?</li>
+                        </ul>
+
+                        <p class="mt-md"><strong>Dataset Link:</strong></p>
+                        <p><a href="https://www.kaggle.com/datasets/jayaantanaath/student-habits-vs-academic-performance" target="_blank">https://www.kaggle.com/datasets/jayaantanaath/student-habits-vs-academic-performance</a></p>
+                    </div>
+                </div>
+
+                <!-- Section 11: Complete Template -->
+                <div class="section" id="project-template">
+                    <h2>Complete Project Template</h2>
+
+                    <div class="highlight-box success">
+                        <p class="text-center"><strong>📝 Use This Template for Your Project</strong></p>
+                    </div>
+
+                    <div class="code-block mt-md">
+                        <div class="code-header">
+                            <span class="code-language">Python - Complete Template</span>
+                        </div>
+                        <div class="code-content">
+<pre><code># ============================================
+# STATISTICS PROJECT TEMPLATE
+# ============================================
+
+# 1. IMPORT LIBRARIES
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy import stats
+from scipy.stats import ttest_1samp, ttest_ind
+from sklearn.linear_model import LinearRegression
+
+# Set style
+sns.set_style("whitegrid")
+plt.rcParams['figure.figsize'] = (10, 6)
+
+# 2. LOAD DATA
+df = pd.read_csv('your_dataset.csv')
+
+# 3. INITIAL EXPLORATION
+print("=" * 50)
+print("DATASET OVERVIEW")
+print("=" * 50)
+print(f"\nShape: {df.shape}")
+print(f"\nFirst 5 rows:")
+print(df.head())
+print(f"\nData Info:")
+print(df.info())
+print(f"\nSummary Statistics:")
+print(df.describe())
+
+# 4. DATA CLEANING
+print("\n" + "=" * 50)
+print("DATA CLEANING")
+print("=" * 50)
+
+# Missing values
+print("\nMissing Values:")
+print(df.isnull().sum())
+
+# Handle missing values (choose appropriate method)
+df = df.dropna()  # or use fillna()
+
+# Remove duplicates
+df = df.drop_duplicates()
+
+# 5. DESCRIPTIVE STATISTICS
+print("\n" + "=" * 50)
+print("DESCRIPTIVE STATISTICS")
+print("=" * 50)
+
+# For numerical column
+column = 'your_numerical_column'
+
+mean_val = df[column].mean()
+median_val = df[column].median()
+std_val = df[column].std()
+skew_val = df[column].skew()
+
+print(f"\nMean: {mean_val:.2f}")
+print(f"Median: {median_val:.2f}")
+print(f"Std Dev: {std_val:.2f}")
+print(f"Skewness: {skew_val:.2f}")
+
+# 6. VISUALIZATION
+print("\n" + "=" * 50)
+print("CREATING VISUALIZATIONS")
+print("=" * 50)
+
+# Histogram
+plt.figure(figsize=(10, 6))
+plt.hist(df[column], bins=30, edgecolor='black')
+plt.axvline(mean_val, color='red', linestyle='--', 
+            label=f'Mean: {mean_val:.2f}')
+plt.xlabel(column)
+plt.ylabel('Frequency')
+plt.title(f'Distribution of {column}')
+plt.legend()
+plt.savefig('histogram.png')
+plt.show()
+
+# Box plot
+plt.figure(figsize=(10, 6))
+sns.boxplot(data=df, y=column)
+plt.title(f'Box Plot of {column}')
+plt.savefig('boxplot.png')
+plt.show()
+
+# Correlation heatmap
+plt.figure(figsize=(12, 8))
+correlation_matrix = df.corr()
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', 
+            center=0, fmt='.2f')
+plt.title('Correlation Heatmap')
+plt.tight_layout()
+plt.savefig('correlation_heatmap.png')
+plt.show()
+
+# 7. INFERENTIAL STATISTICS
+print("\n" + "=" * 50)
+print("INFERENTIAL STATISTICS")
+print("=" * 50)
+
+# One-sample t-test
+hypothesized_mean = 50  # Replace with your value
+t_stat, p_value = ttest_1samp(df[column], hypothesized_mean)
+
+print(f"\nOne-Sample t-test:")
+print(f"t-statistic: {t_stat:.4f}")
+print(f"p-value: {p_value:.4f}")
+
+if p_value < 0.05:
+    print("Result: Reject H₀ (significant difference)")
+else:
+    print("Result: Fail to reject H₀ (no significant difference)")
+
+# Confidence Interval
+confidence = 0.95
+margin_error = stats.t.ppf((1 + confidence) / 2, len(df) - 1) * \
+               (df[column].std() / np.sqrt(len(df)))
+ci_lower = mean_val - margin_error
+ci_upper = mean_val + margin_error
+
+print(f"\n95% Confidence Interval: [{ci_lower:.2f}, {ci_upper:.2f}]")
+
+# 8. FINAL REPORT
+print("\n" + "=" * 50)
+print("PROJECT SUMMARY")
+print("=" * 50)
+print(f"""
+Key Findings:
+1. The average {column} is {mean_val:.2f}
+2. The distribution is {'symmetric' if abs(skew_val) < 0.5 else 'skewed'}
+3. Statistical test {'shows' if p_value < 0.05 else 'does not show'} 
+   significant difference from {hypothesized_mean}
+4. We are 95% confident the true mean lies between 
+   {ci_lower:.2f} and {ci_upper:.2f}
+""")</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 12: Tips for Success -->
+                <div class="section" id="success-tips">
+                    <h2>💡 Tips for Project Success</h2>
+
+                    <div class="two-column-grid">
+                        <div class="highlight-box">
+                            <p><strong>✅ Do's</strong></p>
+                            <ul class="icon-list check mt-sm">
+                                <li>Start with clear research questions</li>
+                                <li>Clean your data thoroughly</li>
+                                <li>Use appropriate statistical methods</li>
+                                <li>Create clear, labeled visualizations</li>
+                                <li>Interpret results in context</li>
+                                <li>Document your code</li>
+                                <li>Check assumptions before tests</li>
+                                <li>Present findings clearly</li>
+                            </ul>
+                        </div>
+
+                        <div class="highlight-box">
+                            <p><strong>❌ Don'ts</strong></p>
+                            <ul class="icon-list cross mt-sm">
+                                <li>Don't skip data exploration</li>
+                                <li>Don't ignore missing values</li>
+                                <li>Don't use wrong statistical tests</li>
+                                <li>Don't make charts without labels</li>
+                                <li>Don't confuse correlation with causation</li>
+                                <li>Don't ignore outliers without reason</li>
+                                <li>Don't overcomplicate analysis</li>
+                                <li>Don't forget to interpret p-values</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3 class="mt-lg">Common Pitfalls to Avoid</h3>
+
+                    <ul class="icon-list bullet">
+                        <li><strong>P-value misinterpretation:</strong> p < 0.05 means "reject H₀", not "accept H₁"</li>
+                        <li><strong>Sample size:</strong> Small samples may not be representative</li>
+                        <li><strong>Outliers:</strong> Always investigate before removing</li>
+                        <li><strong>Correlation ≠ Causation:</strong> Association doesn't imply cause</li>
+                        <li><strong>Multiple testing:</strong> More tests = higher chance of false positives</li>
+                    </ul>
+                </div>
+
+                <!-- Section 13: Next Steps -->
+                <div class="section" id="next-steps">
+                    <h2>🚀 Next Steps</h2>
+
+                    <ol class="steps-list">
+                        <li><strong>Choose Your Dataset:</strong> Select one of the 5 project options above</li>
+                        <li><strong>Download Data:</strong> Get the dataset from Kaggle</li>
+                        <li><strong>Define Questions:</strong> Write 3-5 research questions</li>
+                        <li><strong>Set Up Environment:</strong> Install Python libraries (pandas, scipy, matplotlib)</li>
+                        <li><strong>Follow the Template:</strong> Use the complete template provided</li>
+                        <li><strong>Analyze Step-by-Step:</strong> Go through each phase systematically</li>
+                        <li><strong>Create Report:</strong> Document findings clearly</li>
+                        <li><strong>Present Results:</strong> Share your insights</li>
+                    </ol>
+
+                    <div class="highlight-box success mt-lg">
+                        <p class="text-center"><strong>🎯 Your Goal</strong></p>
+                        <p class="text-center mt-sm">Complete a professional statistics project that demonstrates your understanding of both descriptive and inferential statistics!</p>
+                    </div>
+
+                    <h3 class="mt-lg">Resources for Help</h3>
+
+                    <ul class="icon-list bullet">
+                        <li>Review relevant chapters in this eBook</li>
+                        <li>Kaggle notebooks for similar datasets</li>
+                        <li>Python documentation (pandas, scipy, matplotlib)</li>
+                        <li>Statistical software tutorials</li>
+                        <li>Peer discussions and code reviews</li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
-    </div>
+    </main>
 
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Statistics eBook. Created by <a href="https://github.com/Aman-0402">Aman</a>.</p>
+                <div class="footer-links">
+                    <a href="../index.html">Home</a>
+                    <a href="../contents.html">Contents</a>
+                    <a href="../resources/glossary.html">Glossary</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
 </body>
 </html>
