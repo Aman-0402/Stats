@@ -3,7 +3,7 @@ let stats = {
     correct: 0,
     wrong: 0,
     attempted: 0,
-    total: 20 // Change this to 105 for the full exam
+    total: 78 // Change this to 105 for the full exam
 };
 
 // Track answered questions
