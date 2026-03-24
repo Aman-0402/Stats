@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IBM Statistics Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0a0a0a;
+    --surface:   #141414;
+    --card:      #1c1c1c;
+    --border:    #2a2a2a;
+    --blue:      #0f62fe;
+    --blue-h:    #0353e9;
+    --blue-glow: rgba(15,98,254,0.18);
+    --cyan:      #33b1ff;
+    --green:     #24a148;
+    --green-bg:  rgba(36,161,72,0.12);
+    --red:       #da1e28;
+    --red-bg:    rgba(218,30,40,0.12);
+    --gold:      #f1c21b;
+    --text:      #f4f4f4;
+    --text-dim:  #8d8d8d;
+    --text-mid:  #c6c6c6;
+    --mono:      'IBM Plex Mono', monospace;
+    --sans:      'IBM Plex Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Subtle grid bg */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── HEADER ───────────────────────────── */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,10,0.9);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+  }
+
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+    gap: 1rem;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .ibm-badge {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--bg);
+    background: var(--blue);
+    padding: 4px 8px;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%);
+  }
+
+  .header-title {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--text-mid);
+    text-transform: uppercase;
+  }
+
+  .hud {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .hud-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+  }
+
+  .hud-val {
+    font-family: var(--mono);
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1;
+    transition: color 0.3s;
+  }
+
+  .hud-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    font-weight: 500;
+  }
+
+  .hud-stat.correct .hud-val  { color: var(--green); }
+  .hud-stat.wrong   .hud-val  { color: var(--red); }
+  .hud-stat.remain  .hud-val  { color: var(--cyan); }
+  .hud-stat.score   .hud-val  { color: var(--gold); }
+
+  .hud-divider {
+    width: 1px;
+    height: 28px;
+    background: var(--border);
+  }
+
+  /* ── PROGRESS BAR ─────────────────────── */
+  .progress-track {
+    position: sticky;
+    top: 56px;
+    z-index: 99;
+    height: 3px;
+    background: var(--border);
+  }
+
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--blue), var(--cyan));
+    transition: width 0.6s cubic-bezier(.4,0,.2,1);
+    box-shadow: 0 0 8px var(--blue);
+  }
+
+  /* ── MAIN LAYOUT ──────────────────────── */
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+  }
+
+  /* ── SECTION HEADER ───────────────────── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 3rem 0 1.5rem;
+  }
+
+  .section-header:first-child { margin-top: 0; }
+
+  .section-tag {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--cyan);
+    padding: 3px 8px;
+  }
+
+  .section-title {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
+  }
+
+  /* ── QUESTION CARD ────────────────────── */
+  .question {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid transparent;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    animation: slideIn 0.4s ease both;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .question::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--blue-glow), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .question:hover::before { opacity: 1; }
+
+  .question:hover {
+    border-color: #333;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    transform: translateY(-1px);
+  }
+
+  .question.answered-correct {
+    border-left-color: var(--green);
+    background: linear-gradient(135deg, var(--card) 0%, rgba(36,161,72,0.04) 100%);
+  }
+
+  .question.answered-wrong {
+    border-left-color: var(--red);
+    background: linear-gradient(135deg, var(--card) 0%, rgba(218,30,40,0.04) 100%);
+  }
+
+  .q-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .q-num {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--blue);
+    letter-spacing: 0.1em;
+    padding: 2px 6px;
+    border: 1px solid var(--blue);
+    flex-shrink: 0;
+    margin-top: 2px;
+    opacity: 0.8;
+  }
+
+  .q-text {
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--text);
+    letter-spacing: 0.01em;
+  }
+
+  .q-body { padding: 0.75rem 1.5rem 1.25rem; }
+
+  /* ── OPTIONS ──────────────────────────── */
+  .options { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s;
+    user-select: none;
+    position: relative;
+  }
+
+  .option:hover:not(.locked) {
+    background: rgba(15,98,254,0.06);
+    border-color: rgba(15,98,254,0.3);
+  }
+
+  .option.selected:not(.locked) {
+    background: rgba(15,98,254,0.1);
+    border-color: var(--blue);
+  }
+
+  .option-key {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+    color: var(--text-dim);
+    transition: all 0.2s;
+  }
+
+  .option.selected:not(.locked) .option-key {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: white;
+  }
+
+  .option-text {
+    font-size: 0.875rem;
+    color: var(--text-mid);
+    line-height: 1.4;
+    transition: color 0.2s;
+  }
+
+  .option.selected:not(.locked) .option-text { color: var(--text); }
+
+  /* Locked states */
+  .option.locked { cursor: default; }
+
+  .option.correct-ans {
+    background: var(--green-bg);
+    border-color: var(--green);
+  }
+  .option.correct-ans .option-key {
+    background: var(--green);
+    border-color: var(--green);
+    color: white;
+  }
+  .option.correct-ans .option-text { color: #a7f3d0; }
+
+  .option.wrong-ans {
+    background: var(--red-bg);
+    border-color: var(--red);
+  }
+  .option.wrong-ans .option-key {
+    background: var(--red);
+    border-color: var(--red);
+    color: white;
+  }
+  .option.wrong-ans .option-text { color: #fca5a5; }
+
+  /* ── SUBMIT BTN ───────────────────────── */
+  .submit-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .btn-submit {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: white;
+    background: var(--blue);
+    border: none;
+    padding: 0.55rem 1.4rem;
+    cursor: pointer;
+    clip-path: polygon(0 0, 100% 0, 100% 65%, 95% 100%, 0 100%);
+    transition: background 0.2s, transform 0.15s;
+    position: relative;
+  }
+
+  .btn-submit:hover  { background: var(--blue-h); transform: translateX(2px); }
+  .btn-submit:active { transform: scale(0.97); }
+  .btn-submit:disabled { background: #333; color: var(--text-dim); cursor: default; transform: none; }
+
+  /* ── RESULT FEEDBACK ──────────────────── */
+  .result-bar {
+    display: none;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+  }
+
+  .result-bar.show { display: flex; }
+
+  .result-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .result-bar.correct .result-icon { background: var(--green); color: white; }
+  .result-bar.wrong   .result-icon { background: var(--red); color: white; }
+
+  .result-bar.correct .result-msg { color: #6ee7b7; }
+  .result-bar.wrong   .result-msg { color: #fca5a5; }
+
+  /* ── ANIMATIONS ───────────────────────── */
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse-green {
+    0%,100% { box-shadow: 0 0 0 0 rgba(36,161,72,0); }
+    50%      { box-shadow: 0 0 0 6px rgba(36,161,72,0.15); }
+  }
+
+  @keyframes pulse-red {
+    0%,100% { box-shadow: 0 0 0 0 rgba(218,30,40,0); }
+    50%      { box-shadow: 0 0 0 6px rgba(218,30,40,0.15); }
+  }
+
+  .question.answered-correct { animation: pulse-green 0.6s ease; }
+  .question.answered-wrong   { animation: pulse-red   0.6s ease; }
+
+  /* ── COMPLETION BANNER ────────────────── */
+  #complete-banner {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(12px);
+    align-items: center;
+    justify-content: center;
+  }
+
+  #complete-banner.show { display: flex; }
+
+  .banner-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--blue);
+    padding: 3rem 4rem;
+    text-align: center;
+    max-width: 480px;
+    width: 90%;
+    animation: slideIn 0.5s ease;
+    position: relative;
+  }
+
+  .banner-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 1rem;
+  }
+
+  .banner-score {
+    font-family: var(--mono);
+    font-size: 4rem;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .banner-total {
+    font-size: 0.875rem;
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+
+  .banner-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .banner-stat-val {
+    font-family: var(--mono);
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .banner-stat-lbl {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+
+  .banner-stat.c .banner-stat-val { color: var(--green); }
+  .banner-stat.w .banner-stat-val { color: var(--red); }
+
+  .btn-restart {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: white;
+    background: transparent;
+    border: 1px solid var(--blue);
+    padding: 0.75rem 2rem;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .btn-restart:hover {
+    background: var(--blue);
+    box-shadow: 0 0 20px var(--blue-glow);
+  }
+
+  /* ── FLOATING COUNTER ─────────────────── */
+  .float-counter {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 50;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--blue);
+    padding: 0.75rem 1rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+    pointer-events: none;
+  }
+
+  .float-counter span {
+    color: var(--cyan);
+    font-weight: 600;
+  }
+
+  /* ── RESPONSIVE ───────────────────────── */
+  @media (max-width: 640px) {
+    header { padding: 0 1rem; }
+    main   { padding: 2rem 1rem 5rem; }
+    .hud   { gap: 1rem; }
+    .hud-stat:nth-child(3), .hud-divider:nth-child(4) { display: none; }
+    .q-header { padding: 1rem 1rem 0.6rem; }
+    .q-body   { padding: 0.6rem 1rem 1rem; }
+    .banner-box { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ──────────────────────────────────────────── -->
+<header>
+  <div class="header-inner">
+    <div class="logo-area">
+      <span class="ibm-badge">IBM</span>
+      <span class="header-title">Statistics&nbsp;/&nbsp;Data&nbsp;Literacy</span>
+    </div>
+    <div class="hud">
+      <div class="hud-stat correct">
+        <div class="hud-val" id="hud-correct">0</div>
+        <div class="hud-label">Correct</div>
+      </div>
+      <div class="hud-divider"></div>
+      <div class="hud-stat wrong">
+        <div class="hud-val" id="hud-wrong">0</div>
+        <div class="hud-label">Wrong</div>
+      </div>
+      <div class="hud-divider"></div>
+      <div class="hud-stat remain">
+        <div class="hud-val" id="hud-remain">34</div>
+        <div class="hud-label">Left</div>
+      </div>
+      <div class="hud-divider"></div>
+      <div class="hud-stat score">
+        <div class="hud-val" id="hud-score">—</div>
+        <div class="hud-label">Score</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ── PROGRESS BAR ──────────────────────────────────── -->
+<div class="progress-track">
+  <div class="progress-fill" id="progress-fill"></div>
+</div>
+
+<!-- ── MAIN ──────────────────────────────────────────── -->
+<main id="quiz"></main>
+
+<!-- ── FLOATING COUNTER ─────────────────────────────── -->
+<div class="float-counter">
+  <span id="fc-done">0</span> / 34 answered
+</div>
+
+<!-- ── COMPLETION BANNER ─────────────────────────────── -->
+<div id="complete-banner">
+  <div class="banner-box">
+    <div class="banner-label">Quiz Complete — IBM Statistics</div>
+    <div class="banner-score" id="b-pct">0%</div>
+    <div class="banner-total" id="b-total">You answered 0 out of 34 correctly</div>
+    <div class="banner-stats">
+      <div class="banner-stat c">
+        <div class="banner-stat-val" id="b-cor">0</div>
+        <div class="banner-stat-lbl">Correct</div>
+      </div>
+      <div class="banner-stat w">
+        <div class="banner-stat-val" id="b-wrg">0</div>
+        <div class="banner-stat-lbl">Wrong</div>
+      </div>
+    </div>
+    <button class="btn-restart" onclick="restartQuiz()">↺ &nbsp;Restart Quiz</button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   DATA
+============================================================ */
+const QUESTIONS = [
+  // ── Section A ──────────────────────────────────────────────
+  { section: 'A', id: 1,
+    text: 'Which one of the following is <em>not</em> an example of statistics?',
+    opts: ['The sweet smell of success','Monthly housing prices in a city','Traffic noise at a busy intersection','Annual unemployment rate in a country'],
+    ans: 0 },
+
+  { section: 'A', id: 2,
+    text: 'One can estimate the votes for a presidential candidate by:',
+    opts: ['Asking your barber','Conducting a poll of a random sample of the voting-age population','Asking your favourite university about who is going to win','Asking cab drivers'],
+    ans: 1 },
+
+  { section: 'A', id: 3,
+    text: 'Which of the following is <em>not</em> a type of data visualization?',
+    opts: ['An organization chart','A pie chart','A time series plot','A bar chart'],
+    ans: 0 },
+
+  { section: 'A', id: 4,
+    text: 'Which of the following is <em>not</em> a cross-sectional data set?',
+    opts: ['Monthly survey of consumer confidence','National Census conducted every 5 or 10 years','Weekly data on average temperature','A survey of student satisfaction'],
+    ans: 2 },
+
+  { section: 'A', id: 5,
+    text: 'Which of the following is an example of time series data?',
+    opts: ['Number of dolphins in the Pacific Ocean','Average batting average of a baseball player','Number of trees in a garden','Annual average housing price in New York'],
+    ans: 3 },
+
+  { section: 'A', id: 6,
+    text: 'Which of the following is an example of multivariate data?',
+    opts: ['Vital signs recorded for a newborn baby','Number of songs played in a day','Daily temperature in Antarctica','Number of words in a speech'],
+    ans: 0 },
+
+  { section: 'A', id: 7,
+    text: 'Suitable way to display average income by gender:',
+    opts: ['Scatter plot','Pie chart','Histogram','Bar chart'],
+    ans: 3 },
+
+  { section: 'A', id: 8,
+    text: 'Suitable way to display relationship between two variables:',
+    opts: ['Scatter plot','Pie chart','Histogram','Bar chart'],
+    ans: 0 },
+
+  { section: 'A', id: 9,
+    text: 'Best way to display median and outliers:',
+    opts: ['Bubble chart','Time series plot','Box plot','Scatter plot'],
+    ans: 2 },
+
+  { section: 'A', id: 10,
+    text: 'Best way to display daily temperature for a city:',
+    opts: ['Histogram','Pie chart','Box plot','Line plot'],
+    ans: 3 },
+
+  { section: 'A', id: 11,
+    text: 'What extra step is needed for variables with very different magnitudes?',
+    opts: ['Use two axes to display the lines','Use different colors','Use different thickness','Plot separately'],
+    ans: 0 },
+
+  { section: 'A', id: 12,
+    text: 'When total categories sum to 100%, best chart:',
+    opts: ['Line chart','Pie chart','Box plot','Histogram'],
+    ans: 1 },
+
+  { section: 'A', id: 13,
+    text: 'When using sample data with weights, compute statistics by:',
+    opts: ['Filtering data','Weighting the data with the appropriate variable','Ignoring weights','None of the above'],
+    ans: 1 },
+
+  { section: 'A', id: 14,
+    text: 'When multiple observations exist per respondent:',
+    opts: ['Ignore duplicates','Weight duplicates','Remove duplicates before running analysis','None of the above'],
+    ans: 2 },
+
+  { section: 'A', id: 15,
+    text: "To trace one's steps, one must:",
+    opts: ['Generate and record syntax for every command executed','Take notes','Use mouse clicks','None of the above'],
+    ans: 0 },
+
+  // ── Section B ──────────────────────────────────────────────
+  { section: 'B', id: 1,
+    text: 'What is <em>meta data</em>?',
+    opts: ['Data about metal fatigue','The metabolism data in a clinical trial','The data about metamorphin','It\'s the data about data'],
+    ans: 3 },
+
+  { section: 'B', id: 2,
+    text: 'Which of the following is <em>not</em> an example of big data?',
+    opts: ['Number of photographs uploaded daily','Emails sent daily','Number of big basketball players in NBA','Weekly credit card transactions'],
+    ans: 2 },
+
+  { section: 'B', id: 3,
+    text: 'SPSS is ideally suited to analyze data stored in:',
+    opts: ['Books as words','Digital video files','Tables as rows and columns','Audio files'],
+    ans: 2 },
+
+  { section: 'B', id: 4,
+    text: 'Reproducibility in statistical analysis requires:',
+    opts: ['Free usage','Syntax (script) based analysis','Tabular output','Point-and-click'],
+    ans: 1 },
+
+  { section: 'B', id: 5,
+    text: 'Example of categorical data:',
+    opts: ['Number of fire hydrants','Number of children','Length of river Nile','Mode of travel to work'],
+    ans: 3 },
+
+  { section: 'B', id: 6,
+    text: 'Which is <em>not</em> an example of ordinal data?',
+    opts: ['Ranking of athletes','Number of trees in a park','Happiness scale','Street numbers'],
+    ans: 1 },
+
+  { section: 'B', id: 7,
+    text: 'Example of interval data:',
+    opts: ['Ethnicity','Exercise frequency labels','Sports rankings','Weight'],
+    ans: 3 },
+
+  { section: 'B', id: 8,
+    text: 'Population in a student satisfaction survey:',
+    opts: ['All students enrolled in the course','Male students only','Students in the department','All university students'],
+    ans: 0 },
+
+  { section: 'B', id: 9,
+    text: 'Mean is meaningful for:',
+    opts: ['Audio data','Ordinal data','Ratio data','Categorical data'],
+    ans: 2 },
+
+  { section: 'B', id: 10,
+    text: 'Median represents:',
+    opts: ['Half of data above and half below the median','Most values negative','Half values known','Most values positive'],
+    ans: 0 },
+
+  { section: 'B', id: 11,
+    text: 'If SD > mean, it indicates:',
+    opts: ['Fluidity','Low variance','Smoothness','High variance'],
+    ans: 3 },
+
+  { section: 'B', id: 12,
+    text: 'A histogram shows how data is:',
+    opts: ['Observed','Displayed','Distributed','Recorded'],
+    ans: 2 },
+
+  { section: 'B', id: 13,
+    text: 'Computation for categorical data:',
+    opts: ['Proportions','Standard deviation','Histogram','Averages'],
+    ans: 0 },
+
+  { section: 'B', id: 14,
+    text: 'Relationship between categorical variables:',
+    opts: ['Standard deviation','Cross-tabulation','Bar chart','Histogram'],
+    ans: 1 },
+
+  { section: 'B', id: 15,
+    text: 'Probability of getting a sum of 2 by rolling two dice:',
+    opts: ['1/36','1/18','2/6','2/36'],
+    ans: 0 },
+
+  { section: 'B', id: 16,
+    text: 'Test for relationship between two categorical variables:',
+    opts: ['Regression','Pearson correlation','Chi-square test','t-test'],
+    ans: 2 },
+
+  { section: 'B', id: 17,
+    text: 'A positive correlation scatter plot shows:',
+    opts: ['A flat line','A downward slope','An upward slope','No visible pattern'],
+    ans: 2 },
+
+  { section: 'B', id: 18,
+    text: 'Test for relationship between two continuous variables:',
+    opts: ['Regression','Pearson Correlation test','Chi-square','t-test'],
+    ans: 1 },
+
+  { section: 'B', id: 19,
+    text: 'A good chart must include:',
+    opts: ['Self-explanatory variable title','Thick borders','Dark background','Bright colors'],
+    ans: 0 },
+];
+
+const KEYS = ['A','B','C','D'];
+const TOTAL = QUESTIONS.length;
+
+let correct = 0, wrong = 0, answered = 0;
+const state = new Array(TOTAL).fill(null); // null | 'correct' | 'wrong'
+
+/* ============================================================
+   BUILD DOM
+============================================================ */
+function buildQuiz() {
+  const quiz = document.getElementById('quiz');
+  quiz.innerHTML = '';
+  let lastSection = null;
+  let globalIdx = 0;
+
+  QUESTIONS.forEach((q, gi) => {
+    // Section header
+    if (q.section !== lastSection) {
+      lastSection = q.section;
+      const sh = document.createElement('div');
+      sh.className = 'section-header';
+      sh.innerHTML = `
+        <span class="section-tag">Module ${q.section}</span>
+        <span class="section-title">${q.section === 'A' ? 'Data Fundamentals & Visualization' : 'SPSS / Advanced Concepts'}</span>
+        <div class="section-line"></div>`;
+      quiz.appendChild(sh);
+    }
+
+    const card = document.createElement('div');
+    card.className = 'question';
+    card.id = `q${gi}`;
+    card.style.animationDelay = `${(gi % 15) * 0.03}s`;
+
+    const optsHTML = q.opts.map((o, i) => `
+      <div class="option" data-idx="${i}" onclick="selectOption(${gi},${i})">
+        <span class="option-key">${KEYS[i]}</span>
+        <span class="option-text">${o}</span>
+      </div>`).join('');
+
+    card.innerHTML = `
+      <div class="q-header">
+        <span class="q-num">${q.section}${q.id}</span>
+        <span class="q-text">${q.text}</span>
+      </div>
+      <div class="q-body">
+        <div class="options">${optsHTML}</div>
+        <div class="submit-row">
+          <button class="btn-submit" id="btn${gi}" onclick="submitAnswer(${gi})" disabled>Submit</button>
+          <div class="result-bar" id="res${gi}">
+            <div class="result-icon"></div>
+            <div class="result-msg"></div>
+          </div>
+        </div>
+      </div>`;
+
+    quiz.appendChild(card);
+  });
+}
+
+/* ============================================================
+   INTERACTION
+============================================================ */
+let selected = new Array(TOTAL).fill(null);
+
+function selectOption(gi, idx) {
+  if (state[gi] !== null) return; // already answered
+  selected[gi] = idx;
+
+  const card = document.getElementById(`q${gi}`);
+  card.querySelectorAll('.option').forEach((el, i) => {
+    el.classList.toggle('selected', i === idx);
+  });
+  document.getElementById(`btn${gi}`).disabled = false;
+}
+
+function submitAnswer(gi) {
+  if (selected[gi] === null || state[gi] !== null) return;
+
+  const q = QUESTIONS[gi];
+  const isCorrect = selected[gi] === q.ans;
+
+  state[gi] = isCorrect ? 'correct' : 'wrong';
+  answered++;
+
+  const card   = document.getElementById(`q${gi}`);
+  const resBar = document.getElementById(`res${gi}`);
+  const btn    = document.getElementById(`btn${gi}`);
+
+  // Lock options
+  card.querySelectorAll('.option').forEach((el, i) => {
+    el.classList.add('locked');
+    el.classList.remove('selected');
+    if (i === q.ans)           el.classList.add('correct-ans');
+    if (i === selected[gi] && !isCorrect) el.classList.add('wrong-ans');
+  });
+
+  // Disable button
+  btn.disabled = true;
+
+  // Card state
+  card.classList.add(isCorrect ? 'answered-correct' : 'answered-wrong');
+
+  // Result bar
+  resBar.className = `result-bar show ${isCorrect ? 'correct' : 'wrong'}`;
+  resBar.querySelector('.result-icon').textContent = isCorrect ? '✓' : '✗';
+  resBar.querySelector('.result-msg').textContent  = isCorrect
+    ? 'Correct'
+    : `Correct: ${KEYS[q.ans]}. ${q.opts[q.ans]}`;
+
+  // Counters
+  if (isCorrect) correct++;
+  else wrong++;
+
+  updateHUD();
+  checkComplete();
+}
+
+/* ============================================================
+   HUD
+============================================================ */
+function updateHUD() {
+  const remain = TOTAL - answered;
+  const pct    = answered ? Math.round(correct / answered * 100) : null;
+
+  document.getElementById('hud-correct').textContent = correct;
+  document.getElementById('hud-wrong').textContent   = wrong;
+  document.getElementById('hud-remain').textContent  = remain;
+  document.getElementById('hud-score').textContent   = pct !== null ? pct + '%' : '—';
+  document.getElementById('fc-done').textContent     = answered;
+  document.getElementById('progress-fill').style.width = (answered / TOTAL * 100) + '%';
+}
+
+/* ============================================================
+   COMPLETE
+============================================================ */
+function checkComplete() {
+  if (answered < TOTAL) return;
+
+  const pct = Math.round(correct / TOTAL * 100);
+  document.getElementById('b-pct').textContent   = pct + '%';
+  document.getElementById('b-total').textContent = `You answered ${correct} out of ${TOTAL} correctly`;
+  document.getElementById('b-cor').textContent   = correct;
+  document.getElementById('b-wrg').textContent   = wrong;
+
+  setTimeout(() => {
+    document.getElementById('complete-banner').classList.add('show');
+    launchConfetti(pct);
+  }, 600);
+}
+
+function launchConfetti(pct) {
+  if (pct < 40) return;
+  const colors = pct >= 80
+    ? ['#0f62fe','#33b1ff','#f1c21b','#ffffff']
+    : ['#0f62fe','#33b1ff','#c6c6c6'];
+
+  let count = 0;
+  const interval = setInterval(() => {
+    confettiShot(colors);
+    count++;
+    if (count > (pct >= 80 ? 6 : 3)) clearInterval(interval);
+  }, 350);
+}
+
+function confettiShot(colors) {
+  const canvas = document.createElement('canvas');
+  canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999';
+  document.body.appendChild(canvas);
+  const myConfetti = window.confetti?.create ? window.confetti.create(canvas, { resize: true }) : null;
+  if (!myConfetti) { document.body.removeChild(canvas); return; }
+  myConfetti({ particleCount: 60, spread: 70, origin: { y: 0.6 }, colors });
+  setTimeout(() => document.body.removeChild(canvas), 4000);
+}
+
+/* ============================================================
+   RESTART
+============================================================ */
+function restartQuiz() {
+  correct = 0; wrong = 0; answered = 0;
+  selected.fill(null);
+  state.fill(null);
+  document.getElementById('complete-banner').classList.remove('show');
+  updateHUD();
+  buildQuiz();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+// Load confetti lazily
+const confettiScript = document.createElement('script');
+confettiScript.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js';
+document.head.appendChild(confettiScript);
+
+buildQuiz();
+updateHUD();
+</script>
+</body>
+</html>
